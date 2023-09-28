@@ -1,0 +1,206 @@
+.cliente-servicio-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 20px;
+}
+
+::ng-deep .cliente-servicio-container .mat-form-field-wrapper{
+  margin-bottom: -1.25em!important;
+}
+
+.home-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 0;
+}
+
+.cuadro-servicio{
+  border: 2px solid#C4C4C4;
+  box-shadow: 8px 16px 32px #EDEDED;
+  border-radius: 10px;
+  min-height: 190px;
+  padding: 20px;
+  padding-bottom: 5px;
+}
+
+.cuadro-servicio:hover{
+  border: 2px solid #27509B;
+}
+
+.texto-ticket{
+  font-weight: 700; 
+  font-size: 11px; 
+  color: #9399B2;
+  display: flex;
+  align-items: center;
+}
+
+.cuadro-servicio:hover .texto-ticket{
+  color: #3B4559;
+}
+
+.cuadro-servicio:hover .img-servicio-expand{
+  visibility: visible;
+}
+
+.cuadro-servicio:hover .img-servicio-historico{
+  visibility: visible;
+}
+
+.cuadro-servicio:hover .img-servicio-metrica{
+  visibility: visible;
+}
+
+.img-servicio-expand{
+  background-image: url("src\assets\img\expand.svg");
+  background-size: 16px 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 15px;
+  width: 15px;
+  visibility: hidden;
+}
+
+.img-servicio-paginator{
+  background-image: url("src\assets\img\paginator-servicio.svg");
+  background-size: 13px 13px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 19px;
+  width: 24px;
+}
+
+.img-servicio-arrow{
+  background-image: url("src\assets\img\arrow-servicio.svg");
+  background-size: 10px 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 10px;
+  width: 14px;
+}
+
+.img-servicio-ticket{
+  background-image: url("src\assets\img\ticket-ico3-inactivo.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 28px;
+}
+
+.img-servicio-historico{
+  background-image: url("src\assets\img\historico.svg");
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  visibility: hidden;
+}
+.img-servicio-metrica{
+  background-image: url("src\assets\img\metrica.svg");
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* visibility: hidden; */
+  
+}
+
+
+.img-dispositivo-sitio{
+  background-image: url('src\assets\img\dash-punta.svg');
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.img-dispositivo-servicio{
+  /*
+  background-image: url('src\assets\img\dash-interface.svg');
+  */
+  background-image: url('src\assets\img\interfaz.svg');
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+
+.img-dispositivo-enlace{
+  background-image: url('src\assets\img\dash-enlace.svg');
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.img-dispositivo-rendimiento-alto{
+  background-image: url('src\assets\img\dash-shield-no.svg');
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.img-dispositivo-rendimiento-bajo{
+  background-image: url('src\assets\img\dash-shield-check.svg');
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.img-dispositivo-afectaciones{
+  background-image: url('src\assets\img\dash-loading.svg');
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+
+.cuadro-servicio:hover .img-servicio-ticket{
+  background-image: url("src\assets\img\ticket-ico3.svg");
+}
+
+.cuadro-servicio:hover .img-dispositivo-sitio{
+  background-image: url("src\assets\img\dash-punta-blue.svg");
+}
+
+.cuadro-servicio:hover .img-dispositivo-enlace{
+  background-image: url("src\assets\img\dash-enlace-blue.svg");
+}
+
+.cuadro-servicio:hover .img-dispositivo-servicio{
+  background-image: url("src\assets\img\dash-interface-blue.svg");
+}
+
+
+
+.busqueda-personalizada::-webkit-scrollbar {
+  width: 7px;               /* width of the entire scrollbar */
+}
+
+.busqueda-personalizada::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+  border-radius: 10px;
+}
+
+
+.disable-scrollbars::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.disable-scrollbars::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #ccc !important;
+    border-radius: 4px !important;
+    border: none !important;
+}

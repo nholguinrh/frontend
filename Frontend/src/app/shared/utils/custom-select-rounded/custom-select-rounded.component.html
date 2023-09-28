@@ -1,0 +1,15 @@
+<mat-form-field style="max-width: 140px;">
+  <mat-select
+    [placeholder]="placeholder"
+    [(value)]="selected"
+    class="custom-selected-rounded-container"
+    (valueChange)="valueChange($event)"
+  >
+    <mat-option *ngFor="let option of options" [value]="option" 
+    [ngStyle]="{'background-color': (isDarkTheme | async) ? '#0b112a': '#fff',
+                'color': (isDarkTheme | async) ? '#fff': '#000'}">
+      {{ option }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+

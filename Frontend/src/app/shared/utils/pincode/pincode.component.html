@@ -1,0 +1,25 @@
+<div>
+  <code-input [isCodeHidden]="false"
+              [codeLength]="numOfDigits"
+              [isCharsCode]="false"
+              (codeChanged)="onCodeChanged($event)"
+              (codeCompleted)="onCodeCompleted($event)"  #codeInput>
+  </code-input>
+  <div class="invalid-feedback" 
+      *ngIf="confirmCodeForm.controls['digits'].hasError('invalid')">
+      {{ message }}
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6">Tiempo de espera</div>
+    <div class="col-md-6 counter">
+      
+        <strong style="float: right; margin-right: 4px;">
+          <app-timer #timer
+            (TimerExpired)="timeOut()"
+            [ElapsTime]="timeLimit"
+          ></app-timer>
+        </strong>
+      
+    </div>
+  </div>
+</div>

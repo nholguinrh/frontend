@@ -1,0 +1,40 @@
+.admin-clientes-container{
+    width: 100%!important;
+    margin: 0;
+    padding: 20px;
+}
+
+::ng-deep .worskpace-tab .mat-tab-label-active {
+    border-style: solid;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px 8px 0px 0px;
+    font-weight: bold!important;
+    color: #000000!important;
+    /* margin-left: 10px!important; */
+}
+
+::ng-deep .worskpace-tab .mat-ripple-container-active{
+    background-color: none!important;
+}
+
+::ng-deep .worskpace-tab .mat-tab-label{
+    color: #000000!important;
+    font-weight: bold!important;
+}
+
+::ng-deep .worskpace-tab .mat-ink-bar{
+    display: none!important;
+}
+
+::ng-deep .worskpace-tab .mat-tab-link {
+    border-style: solid;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px 8px 0px 0px;
+    font-weight: bold!important;
+}
+
+.mat-ripple.mat-tab-label.mat-focus-indicator.mat-tab-label.ng-star-inserted {
+    opacity: 1;
+}

@@ -1,0 +1,135 @@
+<div fxLayout="row" fxLayoutAlign="space-between stretch" >
+    <div fxLayout="row" fxLayoutAlign="space-between stretch"style="margin-top: 20px;" fxFlex="30">
+        <div [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" style="width: 100%; min-height: 300px;border-radius: 15px;"  >
+            <ng-container >
+                <smc-carousel-voz></smc-carousel-voz>
+            </ng-container>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between stretch"style="margin-top: 20px;" fxFlex="66">
+        <div [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" style="width: 100%; min-height: 300px;border-radius: 15px;"  >
+            <ng-container >
+                <smc-title-dashboard [menu]="false" [buttonMenu]="true" title="Vista de Llamadas  - {{ idDispositivoseleccionado }}" 
+                [viewGraph]="1" fullType="VISTA_LLAMADAS_VOZ"></smc-title-dashboard>
+                <smc-voz-vista-llamadas></smc-voz-vista-llamadas>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="30px" style="margin-top: 40px;" class="carrusel-metricas">
+    <ng-container *ngIf="!spinnerLoading">
+        <ng-container *ngIf="(isDarkTheme | async)">
+            <carousel [height]="100" [cellWidth]="width > 1440 ? 399 : 299" [margin]="20" [autoplay]="true" 
+                [autoplayInterval]="4000" [images]="_images" [loop]="true" >
+                <ng-container *ngFor="let metrica of metricasVoz">
+                    <div class="carousel-cell">
+                        <div class="row" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" 
+                            style="width: 100%; min-height: 80px; border-radius: 15px;font-size: 12px; margin: 0;">
+                                <div class="row" style="padding-top: 6px;">
+                                    <div class="col-10">
+                                        {{ metrica.name }}
+                                    </div>
+                                    
+                                    <div class="col-2">
+                                        <div class="row">{{ metrica.siglas }}</div>
+                                        <div class="row" [ngStyle]="{'color': metrica.color ? metrica.color : '#000000'}" style="margin-top: -8px;">{{ metrica.promedioComparativo }}</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6" style="margin-left: 12px;">
+                                        <div class="row">
+                                            {{ metrica.titulo }} - Última hora
+                                        </div>
+                                        <div class="row" style="font-weight: 500;font-size: 18px;line-height: 22px;" [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A' }">
+                                            {{ metrica.total }} <span style="font-size: 10px;display: contents;">{{ metrica.unidad }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6" style="display: flex;justify-content: end;margin-left: -12px;">
+                                        <app-area-voz [data]="metrica.data" [areaType]="'tickets'" [sizey]="30" [sizex]="150" 
+                                        [color]="metrica.color" [showTol]="false"
+                                        [linear-gradient]="'#FFFFFF'" [gradient-stop]="'#FFFFFF'" 
+                                        [gradient-start]="metrica.color"  [tooltip-color]="tooltipColor" 
+                                        [margin]="{top: 0, right: 0, bottom: 0, left: 0}" tick-last-color="#797C8C" 
+                                        [showYLabels]="false" [showXLabels]="false" [isDynamicRange]="false" [range]="[0, 90]" 
+                                        [specialFormat]="true" [full]="true" [showSLA]="false"></app-area-voz>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </ng-container>    
+                <div class="carousel-cell" style="display: none; "></div>
+            </carousel>
+        </ng-container>
+        <ng-container *ngIf="!(isDarkTheme | async)">
+            <carousel [height]="100" [cellWidth]="width > 1440 ? 399 : 299" [margin]="20" [autoplay]="true" 
+                [autoplayInterval]="4000" [images]="_images" [loop]="true" >
+                <ng-container *ngFor="let metrica of metricasVoz">
+                    <div class="carousel-cell">
+                        <div class="row" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" 
+                            style="width: 100%; min-height: 80px; border-radius: 15px;font-size: 12px; margin: 0;">
+                                <div class="row" style="padding-top: 6px;">
+                                    <div class="col-10">
+                                        {{ metrica.name }}
+                                    </div>
+                                    
+                                    <div class="col-2">
+                                        <div class="row">{{ metrica.siglas }}</div>
+                                        <div class="row" [ngStyle]="{'color': metrica.color ? metrica.color : '#000000'}" style="margin-top: -8px;">{{ metrica.promedioComparativo }}</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6" style="margin-left: 12px;">
+                                        <div class="row">
+                                            {{ metrica.titulo }} - Última hora
+                                        </div>
+                                        <div class="row" style="font-weight: 500;font-size: 18px;line-height: 22px;" [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A' }">
+                                            {{ metrica.total }} <span style="font-size: 10px;display: contents;">{{ metrica.unidad }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6" style="display: flex;justify-content: end;margin-left: -12px;">
+                                        <app-area-voz [data]="metrica.data" [areaType]="'tickets'" [sizey]="30" [sizex]="150" 
+                                        [color]="metrica.color" [showTol]="false"
+                                        [linear-gradient]="'#FFFFFF'" [gradient-stop]="'#FFFFFF'" 
+                                        [gradient-start]="metrica.color"  [tooltip-color]="tooltipColor" 
+                                        [margin]="{top: 0, right: 0, bottom: 0, left: 0}" tick-last-color="#797C8C" 
+                                        [showYLabels]="false" [showXLabels]="false" [isDynamicRange]="false" [range]="[0, 90]" 
+                                        [specialFormat]="true" [full]="true" [showSLA]="false"></app-area-voz>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </ng-container>    
+                <div class="carousel-cell" style="display: none; "></div>
+            </carousel>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="spinnerLoading">
+        <div class="col-12" style=" display: flex; align-items: center; justify-content: center; min-height: 100px;">
+            <mat-spinner [diameter]="50"></mat-spinner>
+        </div>
+      </ng-container>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="space-between stretch" style="margin-top: 30px;">
+    <div fxLayout="row" fxLayoutAlign="space-between stretch"style="margin-top: 30px;" fxFlex="66">
+        <div [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" style="width: 100%; min-height: 300px;border-radius: 15px;"  >
+            <ng-container >
+                <smc-title-dashboard [menu]="false" [buttonMenu]="true" title="Métricas  - {{ idDispositivoseleccionado }}" [viewGraph]="4" fullType="RENDIMIENTO_DIARIO_VOZ"></smc-title-dashboard>
+            </ng-container>
+            <ng-container>
+                <smc-voz-rendimiento-metricas></smc-voz-rendimiento-metricas>
+            </ng-container>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between stretch"style="margin-top: 30px;" fxFlex="30">
+        <div [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" style="width: 100%; min-height: 300px;border-radius: 15px;"  >
+            <ng-container >
+                <smc-title-dashboard [menu]="false" [buttonMenu]="true" title="Duración de Llamada (ACD)  - {{ idDispositivoseleccionado }}" [viewGraph]="7" fullType="DURACION_LLAMADAS_VOZ"></smc-title-dashboard>
+            </ng-container>
+            <ng-container>
+               <smc-voz-duracion-llamada></smc-voz-duracion-llamada>
+            </ng-container>
+        </div>
+    </div>
+</div>

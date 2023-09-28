@@ -1,0 +1,137 @@
+.autorization-container{
+    /* height: 100vh;
+    width: 100vw; */
+    /* background-color: #F4F4F4; */
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.tablero-wrapper{
+    margin-top: 20px;
+    height: 900px;
+    width: 1362px;
+    /* background-color: antiquewhite; */
+    display: grid; 
+    grid-gap: 5px; 
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "top"
+    "dashboard";
+}
+
+.top{
+    /* background-color: aqua; */
+    width: 1362px;
+    height: 51px;
+}
+
+.scroll-container{
+    margin-left: 36px; 
+    margin-right: 36px; 
+    /* background-color: black; */
+    height: 51px;
+}
+
+.scrollmenu {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.estadistica{
+    height: 51px; 
+    min-width: 238px; 
+    /* background-color: yellow; */
+    margin-right: 10px; 
+    margin-left: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-bottom: 4px;
+}
+
+.dashboard{
+    /* background-color: red; */
+    width: 1362px;
+    height: 819px;
+    display: grid; 
+    grid-gap: 20px; 
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "vista-general afectaciones servicios"
+    "alarmas afectaciones tickets";
+}
+
+.vista-general{
+    grid-area: vista-general;
+    width: 455px;
+    height: 420px;
+    /* background-color: pink; */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.alarmas{
+    grid-area: alarmas;
+    width: 455px;
+    height: 377px;
+    /* background-color: pink; */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.afectaciones{
+    grid-area: afectaciones;
+    width: 296px;
+    height: 818px;
+    /* background-color: pink; */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.servicios{
+    grid-area: servicios;
+    width: 571px;
+    height: 740px;
+    /* background-color: pink; */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.tickets{
+    grid-area: tickets;
+    width: 571px;
+    height: 377px;
+    /* background-color: pink; */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+::ng-deep .filters .mat-form-field-label {
+    padding-left: 2px!important;
+}
+
+::ng-deep .filters .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    padding-left: 0px!important;
+}
+
+::ng-deep .filters .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #F2F2F2!important;
+    opacity: 1!important;
+}
+
+::ng-deep .filters .mat-select-arrow {
+    border-left: 8px solid transparent !important;
+    border-right: none !important;
+    border-top: 5px solid transparent !important;
+    border-image-source: url('src\assets\img\select-arrow.svg') !important;
+    border-image-repeat: no-repeat !important;
+}

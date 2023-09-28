@@ -1,0 +1,147 @@
+.dashboard-container {    
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;    
+    flex-wrap: wrap;
+    width: 100%;
+    /* background-color: bisque; */
+    min-width: 100vh;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-left: -50px;
+}
+
+.btn-back-totalplay{
+    background-color: #FFFFFF; 
+    width: 30px;
+}
+
+.dashboard-container .box{
+    min-width: 400px;
+    max-width: 50%;
+}
+
+.dashboard-tittle{
+    min-width: 100%;
+    color: #E6EDF6;
+}
+
+.dashboard-tittle p{
+    margin: 0;
+    padding: 0;
+}
+
+.dashboards{    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 20px;
+    width: 365px;
+    /* background-color: aqua; */
+}
+
+.item-dashboard {
+    flex: 0 30%;
+    max-width: fit-content;
+    min-height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+    /* background-color: aqua; */
+}
+
+
+.grafana-container{
+    align-items: center;
+    justify-content: center;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;    
+    width: 100%;
+}
+
+.grafana{    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: 300px;
+    height: 420px;
+}
+
+.grafana-view{
+    flex: 0 100%;
+    position: relative;
+    height: auto;
+}
+
+.bxpt{
+    align-self: flex-end!important;
+    max-width: 650px;
+}
+
+.boxbtns{
+    margin: 0;
+    padding: 0;
+}
+
+@media(max-width: 1100px){
+    .dashboard-container{
+        margin-left: 0px;
+    }
+
+    .dashboard-container .box{
+        max-width: 50%;
+    }
+    
+}
+
+@media(max-width: 900px){
+
+    .dashboard-container .box{
+        max-width: 50%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        align-content: center!important;
+        /* background-color: aqua; */ 
+        max-height: none!important;
+    }
+
+    .dashboard-container{
+        margin-top: 35px;
+        margin-right: 30px;
+    }
+
+    .dashboard-container {  
+        margin-left: 10px;
+    }
+
+    .dashboard-tittle{
+        padding-left: 30px;      
+    }
+
+    .grafana{
+        margin-top: 50px!important;
+        margin-bottom: 20px!important;
+        margin-right: 0px;
+        margin-left: 0;
+    }
+
+    .dashboards{
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .item-dashboard {
+        flex: 0 60%;    
+    }
+
+    .bxpt{
+        padding-left: 0%;
+        min-width: 400px;
+        max-width: 50%;
+    }
+
+    .dashboard-container .box{
+        min-width: fit-content;
+        max-width: fit-content;
+    }
+}

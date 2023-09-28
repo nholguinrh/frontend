@@ -1,0 +1,71 @@
+<div class="clientes-container">
+  <div class="row w100m0p0">
+    <div class="col-6">
+      <span style="font-size: 18px; font-weight: 600; color: #0B112A;">
+        Tu equipo de trabajo
+        <p class="equipo-subtitle">
+          Invita a personas para trabajar, asignarles roles y establece sus permisos.
+        </p>
+      </span>
+    </div>
+    <div class="col-6 row" style="margin: 0; padding: 0; display: flex;     align-items: center;">
+      <div class="col-2"></div>
+      <div class="col-5">
+        <button mat-button class="btn-totalplay" style="width: 100%; height: 45px; font-size: 14px; font-weight: 600;" (click)="invitarPersona()">
+          <mat-icon class="img-inicio-acceso"></mat-icon>
+          Invitar persona
+        </button>
+      </div>
+      <div class="col-5 input-busqueda">
+        <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>Buscar</mat-label>
+              <input matInput formControlName="busqueda" (keyup.enter)="buscarCadena()"/>
+              <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important;"></mat-icon>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+  <div class="row" style="margin-top: 40px; padding: 0 40px;" *ngIf="pageResponse?.content?.length > 0">
+    <div class="col-4" *ngFor="let user of this.pageResponse.content" style="margin-top: 20px;     padding: 0px 5px;">
+      <div class="equipo-card" *ngIf="usuario != user.idUsuario"> 
+        <div class="equipo-ico img-equipo-option-user"></div>
+        <div class="equipo-title">
+          {{ user.nombreCompleto | slice:0:25 }} <span *ngIf="user.nombreCompleto.length > 25">...</span><div class="border-warning badge text-warning warning-text" *ngIf="user?.tbCatEstatus?.idCatEstatus == 3">PENDIENTE</div>
+          <p class="equipo-card-subtitle">
+              {{ user.tbCatPerfil.descripcion | slice:0:30 }}
+          </p>
+          <a style="color: #285CED; text-decoration: underline; font-weight: 400; font-size: 14px;">
+            {{ user.email | slice:0:28 }}<span *ngIf="user.email.length > 25">...</span>
+          </a>
+        </div>
+        <div class="equipo-detail img-equipo-option-document" (click)="cambiarRol(user)" style="cursor: pointer;"></div>
+      </div>
+      <div class="equipo-card2" *ngIf="usuario == user.idUsuario"> 
+        <div class="equipo-ico img-equipo-option-user"></div>
+        <div class="equipo-title">
+            {{ user.nombreCompleto | slice:0:25 }} <span *ngIf="user.nombreCompleto.length > 25">...</span><div class="border-warning badge text-warning warning-text" *ngIf="user?.tbCatEstatus?.idCatEstatus == 3">PENDIENTE</div>
+            <p class="equipo-card-subtitle">
+                {{ user.tbCatPerfil.descripcion | slice:0:30 }}
+            </p>
+            <a style="color: #285CED; line-height: 20px; text-decoration: underline;">
+                {{ user.email | slice:0:28 }} <span *ngIf="user.email.length > 25">...</span>
+            </a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 40px; padding: 0 40px;" *ngIf="pageResponse?.content?.length == 0">
+    <app-filter-error (clickReturn)="returnFilter()"></app-filter-error>
+  </div>
+  <div class="row w100m0p0" style="margin-top: 30px!important; min-height: 50px;" *ngIf="pageResponse?.content?.length > 0">
+    <div class="col-6" style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px; padding-left: 20px;">
+        Mostrando pág {{ this.pageResponse.number + 1 }} de {{ this.pageResponse.totalOfPages }} de {{ this.pageResponse.totalElements }} resultados
+    </div>
+    <div class="col-6" style="margin: 0; padding: 0; padding-right: 20px;">
+        <app-pager [pageModel]="pageResponse" (paged)="onPaged($event + 1)" style="float: right;" [variant]="true"></app-pager>
+    </div>
+  </div>
+</div>

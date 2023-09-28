@@ -1,0 +1,20 @@
+<mat-dialog-content>
+  <div class="row service-error-dashboard" [ngClass]="{'service-error-dashboard-full': full }">
+    <div class="col-1"></div>
+    <div class="col-10" style="padding: 0;">
+      <div class="row" style="margin: 0;">
+        <div class="col-12">
+          <div><img [src]="typeError == 1 ? 'assets/img/error-robot.svg' : 'assets/img/error-robot-data.svg'" alt="Servicio no responde" class="img-robot" [ngStyle]="{'width': width, 'height': height}"/></div>
+        </div>
+        <div class="col-12" style="padding: 0;" [ngClass]="{'service-error-text-dark': dark == 1 }">
+          <span *ngIf="typeError == 1">¡Uy! Algo salio mal...</span>
+          <span *ngIf="typeError == 2">¡No se encontraron datos para mostrar!</span>
+          <p *ngIf="typeError == 1">No te preocupes, tus dispositivos se encuentran bien,<br>vamos a intentarlo de nuevo.</p>
+          <p *ngIf="typeError == 2">No te preocupes, tus dispositivos se encuentran bien,<br>Intenta cambiando la escala de tiempo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+    
+  </div>
+</mat-dialog-content>

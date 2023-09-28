@@ -1,0 +1,30 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start start"
+  fxLayoutGap="1em"
+  style="width: 100%"
+  class="border"
+>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between start"
+    fxLayoutGap="1em"
+    fxFlexFill
+  >
+    <div></div>
+    <span class="lines-group-chart-title">{{ title }}</span>
+    <mat-icon class="image-expand" style="cursor: pointer"></mat-icon>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="26px">
+    <div #linesGroupFullSize></div>
+    <div
+      class="border"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="1em"
+    >
+      <span class="lines-group-chart-title">{{ titleC }}</span>
+      <div #complementaryFullSize></div>
+    </div>
+  </div>
+</div>

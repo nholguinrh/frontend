@@ -1,0 +1,29 @@
+path {
+    stroke: steelblue;
+    stroke-width: 3;
+    fill: none;
+  }
+  
+  line {
+    stroke: black;
+  }
+  
+  .xGrids {
+    stroke: lightgray;
+  }
+  
+  .yGrids {
+    stroke: lightgray;
+  }
+  
+  text {
+    font-size: 9pt;
+  }
+  
+  .xLabel {
+    text-anchor: middle;
+  }
+  
+  .yLabel {
+    text-anchor: end;
+  }

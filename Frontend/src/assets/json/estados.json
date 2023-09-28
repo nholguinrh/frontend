@@ -1,0 +1,130 @@
+[
+    {
+     "clave": "01",
+     "entidad": "Aguascalientes"
+    },
+    {
+     "clave": "02",
+     "entidad": "Baja California"
+    },
+    {
+     "clave": "03",
+     "entidad": "Baja California Sur"
+    },
+    {
+     "clave": "04",
+     "entidad": "Campeche"
+    },
+    {
+     "clave": "05",
+     "entidad": "Chiapas"
+    },
+    {
+     "clave": "06",
+     "entidad": "Chihuahua"
+    },
+    {
+     "clave": "07",
+     "entidad": "Coahuila"
+    },
+    {
+     "clave": "08",
+     "entidad": "Colima"
+    },
+    {
+     "clave": "09",
+     "entidad": "Distrito Federal"
+    },
+    {
+     "clave": "10",
+     "entidad": "Durango"
+    },
+    {
+     "clave": "11",
+     "entidad": "Guanajuato"
+    },
+    {
+     "clave": "12",
+     "entidad": "Guerrero"
+    },
+    {
+     "clave": "13",
+     "entidad": "Hidalgo"
+    },
+    {
+     "clave": "15",
+     "entidad": "Jalisco"
+    },
+    {
+     "clave": "15",
+     "entidad": "México"
+    },
+    {
+     "clave": "16",
+     "entidad": "Michoacán"
+    },
+    {
+     "clave": "17",
+     "entidad": "Morelos"
+    },
+    {
+     "clave": "18",
+     "entidad": "Nayarit"
+    },
+    {
+     "clave": "19",
+     "entidad": "Nuevo León"
+    },
+    {
+     "clave": "20",
+     "entidad": "Oaxaca"
+    },
+    {
+     "clave": "21",
+     "entidad": "Puebla"
+    },
+    {
+     "clave": "22",
+     "entidad": "Querétaro"
+    },
+    {
+     "clave": "23",
+     "entidad": "Quintana Roo"
+    },
+    {
+     "clave": "24",
+     "entidad": "San Luis Potosí"
+    },
+    {
+     "clave": "25",
+     "entidad": "Sinaloa"
+    },
+    {
+     "clave": "26",
+     "entidad": "Sonora"
+    },
+    {
+     "clave": "27",
+     "entidad": "Tabasco"
+    },
+    {
+     "clave": "28",
+     "entidad": "Tamaulipas"
+    },
+    {
+     "clave": "29",
+     "entidad": "Tlaxcala"
+    },
+    {
+     "clave": "30",
+     "entidad": "Veracruz"
+    },
+    {
+     "clave": "31",
+     "entidad": "Yucatán"
+    },
+    {
+     "clave": "32",
+     "entidad": "Zacatecas"
+    }
+   ]

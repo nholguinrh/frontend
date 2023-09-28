@@ -1,0 +1,102 @@
+<div [ngClass]="darkMode ? 'disable-scrollbars-dark' : 'disable-scrollbars'"
+    style="width: 100%; background-color: #FFFFFF; min-height: 200px; height: 450px; padding: 0; overflow: auto;"
+    [ngStyle]="{'background-color': darkMode ? '#161C33' : '#FFFFFF'}">
+    <ng-container *ngIf="notifications.length > 0" >
+        <ng-container *ngFor="let itemNotificacion of ordenNotificacion">
+            <div class="row" style="margin: 0; padding: 0; font-size: 12px; letter-spacing: 2px; color: #7B8AA0; font-weight: 600; margin-top: 10px;">
+                <span> {{itemNotificacion.titulo}}</span>
+            </div>
+            
+            <ng-container *ngIf="leidas">
+                <div class="row notification-item" *ngFor="let item of itemNotificacion.listaNotificacion; let i = index;"
+                    (mouseout)="ocultarMenu(item)" (click)="item.tipoNotificacion == 'G' ? refreshPage() : goToInbox(item.idNotificacion)"
+                    style="width: 400px; margin: 0; padding: 15px 10px; border-radius: 8px; background-color: #E6EDF6; display: flex; margin-top: 10px; cursor: pointer;"
+                    [ngStyle]="{'background-color': darkMode ? '#21273D' : '#E6EDF6','min-height': item.tipoNotificacion == 'A' ? '110px' : '80px'}">
+                    <div class="row" style="margin: 0; padding: 0;">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12" style="margin: 0; padding: 0;font-weight: bold; font-size: 16px;" [ngStyle]="{'color': darkMode ? '#D0D0CE' : '#0B112A'}">
+                                    {{item.titulo | slice:0:28}}{{item.titulo.length > 28 ? '...' : ''}}
+                                </div>
+                                <div class="col-12" style="margin-top: 15px; padding: 0;font-weight: 400px; font-size: 14px;" [ngStyle]="{'color': darkMode ? '#D0D0CE' : '#0B112A'}" *ngIf="item.tipoNotificacion == 'I'">
+                                    {{ item.descripcion | slice:0:31 }}{{ item.titulo.length > 31 ? '...' : '' }}
+                                </div>
+                                <div id="notificacionAccion" class="col-12" style="margin-top: 15px; padding: 0; font-size: 14px;" [ngStyle]="{'color': darkMode ? '#D0D0CE' : '#000000'}" *ngIf="item.tipoNotificacion == 'A'">
+                                    <span style="font-weight: bold">¡ Hey !</span> {{ item.descripcion | slice:5:40}} de<div style="color: blue;margin-top: 2px;" (click)="alerta($event,item)">{{ item.tbParametroUrl.descripcion | slice:0:28 }}...</div>
+                                </div>
+                                <div id="notificacionAccion2" class="col-12" style="margin-top: 15px; padding: 0; font-size: 14px;" [ngStyle]="{'color': darkMode ? '#D0D0CE' : '#000000'}" *ngIf="item.tipoNotificacion == 'G'">
+                                    <span style="font-weight: bold"> {{ item.descripcion }} </span><div style="color: blue;margin-top: 2px;" (click)="refreshPage($event)">{{ item.tbParametroUrl.descripcion}}...</div>
+                                </div>
+                            </div>
+                        </div>            
+                        <div class="col-2" style="margin: 0; padding: 0; display: block;" (click)="$event.stopPropagation()">
+                            <div class="image-close-notification" style="height: 16px; width: 16px; float: right;"
+                                *ngIf="item.status == 0" (click)="showDelete(item, $event)"></div>
+                            <div class="image-delete-notification" style="height: 20px; width: 50px; float: right;"
+                                *ngIf="item.status == 1" (click)="deleteNotification(i, $event,item)"></div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            
+            <ng-container *ngIf="!leidas">
+                <div class="row notification-item" *ngFor="let item of itemNotificacion.listaNotificacion; let i = index;"
+                    (mouseout)="ocultarMenu(item)" (click)="goToInbox(item.idNotificacion)"
+                    style="width: 400px; margin: 0; padding: 15px 10px; min-height: 80px; border-radius: 8px; background-color: #F4F4F4; display: flex; margin-top: 10px; cursor: pointer;"
+                    [ngStyle]="{'background-color': darkMode ? '#21273D' : '#F4F4F4'}">
+                    <div class="row" style="margin: 0; padding: 0;">
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-12" style="margin: 0; padding: 0; font-weight: 600px; font-size: 16px;" [ngStyle]="{'color': darkMode ? '#D0D0CE' : '#0B112A'}">
+                                    {{item.titulo | slice:0:28}}{{item.titulo.length > 28 ? '...' : ''}}
+                                </div>
+                                <div class="col-12" style="margin-top: 15px; padding: 0;font-weight: 400px; font-size: 14px;" [ngStyle]="{'color': darkMode ? '#D0D0CE' : '#0B112A'}">
+                                    {{ item.descripcion | slice:0:31 }}{{ item.titulo.length > 31 ? '...' : '' }}
+                                </div>
+                            </div>
+                        </div>            
+                        <div class="col-2" style="margin: 0; padding: 0; display: block;" (click)="$event.stopPropagation()">
+                            <div class="image-close-notification" style="height: 16px; width: 16px; float: right;"
+                                *ngIf="item.status == 0" (click)="showDelete(item, $event)"></div>
+                            <div class="image-delete-notification" style="height: 20px; width: 50px; float: right;"
+                                *ngIf="item.status == 1" (click)="deleteNotification(i, $event,item)"></div>
+                        </div>
+                        <!-- <div class="col-9" style="margin: 0; padding: 0;"
+                            [ngStyle]="{'color': darkMode ? '#FFFFFF' : '#000000'}">
+                            {{item.titulo | slice:0:15}}
+                        </div>
+                        <div class="col-10" style="margin-top: 15px; padding: 0;"
+                        [ngStyle]="{'color': darkMode ? '#A0A5A8' : '#7B8AA0'}">
+                            {{ item.descripcion | slice:0:30 }} ...
+                        </div> -->
+                        <!-- <div class="col-3" style="margin: 0; padding: 0; display: block;">
+                            <div class="image-close-notification-dark" style="height: 16px; width: 16px; float: right;"
+                                *ngIf="item.status == 0" (click)="showDelete(item, $event)"></div>
+                            <div class="image-delete-notification-dark" style="height: 20px; width: 50px; float: right;"
+                                *ngIf="item.status == 1" (click)="deleteNotification(i, $event,item)"></div>
+                        </div> -->
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+        
+        </ng-container>
+        <ng-container *ngIf="sinResultados">
+            <div class="row notification-item"
+                style="width: 400px; margin: 0; padding: 15px 10px; min-height: 80px; border-radius: 8px; background-color: #FFFFFF; display: flex; margin-top: 10px;"
+                [ngStyle]="{'background-color': darkMode ? '#161C33' : '#FFFFFF'}">
+                <div class="col-12"
+                    style="margin: 0; padding: 0; height: 80px; margin-top: 10px; display: flex; justify-content: center;">
+                    <div class="image-notification-empty" style="width: 80px; height: 80px;"></div>
+                </div>
+                <div class="col-12"
+                    style="margin: 0; padding: 0; margin-top: 10px; font-weight: 600; font-size: 18px; color: #7B8AA0; line-height: 20px; text-align: center;">
+                    ¡Excelente! estás al día con <br> el trabajo!
+                </div>
+                <div class="col-12"
+                    style="margin: 0; padding: 0;  margin-top: 10px; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: #7B8AA0;">
+                    Vuelve a consultar más tarde para ver las actualizaciones del trabajo en el que eres colabroador.
+                </div>
+            </div>
+        </ng-container>
+</div>

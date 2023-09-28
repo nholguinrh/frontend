@@ -1,0 +1,244 @@
+<alert></alert>
+<div class="cliente-servicio-container" style="margin-top: 30px">
+  <div class="row w100m0p0">
+    <div class="col-1" style="margin: 0; padding: 0">
+      <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer"
+        (click)="goToBack()"></div>
+    </div>
+    <div class="col-5">
+      <div class="row w100m0p0">
+        <div class="col" style="
+            margin: 0;
+            padding: 0;
+            padding-top: 1px;
+            font-size: 21px;
+            font-weight: 400;
+          ">
+          DETALLE DE MÉTRICAS
+          <p style="
+              margin: 0;
+              padding: 0;
+              padding-top: 10px;
+              font-size: 14px;
+              font-weight: 400;
+              color: #7b8aa0;
+            ">
+            Puedes ver en tiempo real el detalle de tus servicios.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-5 row" style="text-align: right; font-weight: 600">
+      <div class="col" style="
+          margin: 0;
+          padding: 0;
+          padding-top: 1px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #0b112a;
+        ">
+        Última actualización
+        <p style="
+            margin: 0;
+            padding: 0;
+            padding-top: 10px;
+            font-size: 14px;
+            font-weight: 400;
+            color: #7b8aa0;
+          ">
+          <!-- {{ update  | date: 'd MMM h:mm aaaaa' | lowercase }} -->
+          {{ update  | date: 'd MMM h:mm aaaaa' | lowercase }}
+        </p>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+<div class="home-container" style="margin-top: 30px">
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-10 row" style="background-color: #ffffff; min-height: 350px; padding-bottom: 20px">
+      <div class="col-9" style="margin-top: 15px;">
+        <div class="row">
+          <div class="col-12" style="
+              font-weight: 600;
+              padding-right: 50px;
+            " [ngStyle]="{'text-align': optionSelected == 3 ? 'right' : 'left'}">
+            <div class="col" style="
+                font-weight: 600;
+                font-size: 16px;
+                color: #0b112a;
+                padding-right: 25px;
+                margin-bottom: 10px;
+                text-transform: capitalize;
+              ">
+              {{ dispositivo }}:
+              <span style="font-weight: 400; font-size: 12px; color: #0b112a">{{ nombreMetricaLargo }}
+              </span>
+            </div>
+            <ng-container *ngIf="!spinnerLoading">
+              <div style="border: 1px solid #000000; border-radius: 10px">
+                <!-- <smc-title-dashboard title="" [menu]="false" [buttonMenu]="true" fullType="DETALLE_METRICA">
+                </smc-title-dashboard> -->
+                <!-- <app-lines-group [scaleRange]="rangeControl.value" [data]="enlace" [single]="true"
+                [sizex]="width > 1440 ? 1080 : width < 1440 ? 725 : 780" 
+                [sizey]="300"
+                [title]="'Promedio de '+nombreMetrica+' del dispositivo de las ultimas '+rangeControl.value+''"
+                [color]="'#285CED'" [margin]="marginEnlace" [graficaIndividual]="1"></app-lines-group> -->
+                <!-- <div div fxLayout="row" fxLayoutAlign="center center">
+                  Promedio de {{nombreMetrica}} del dispositivo de las ultimas {{rangeControl.value}}
+                </div> -->
+                <div class="row">
+                  <div class="col-12" style="display: flex; justify-content: flex-end; padding: 10px 25px 0 0;">
+                    <mat-icon
+                      class="image-expand"
+                      style="margin: 0; padding: 0; cursor: pointer;"
+                      (click)="fullSizeDashboard()"
+                    ></mat-icon>
+                  </div>
+                </div>
+                <app-area [data]="dateValue" [areaType]="'tickets'" 
+                  [sizey]="width > 1440 ? 400 : 300" 
+                  [sizex]="width > 1440 ? 1200 : 900" 
+                  [showXLabels]="true" [showDomain]="true" color="#3b68ed" linear-gradient="#3b68ed" [margin]="marginArea"
+                  gradient-stop="#FFFFFF" gradient-start="#FFFFFF" tooltip-color="rgba(151,175,243, 0.2)"
+                  [showDomain]="true" tick-last-color="#FFFFFF" [showYLabels]="true" [isDynamicRange]="false" [range]="[0,120]"
+                  [specialFormat]="true" [scale]="scale" [showSLA]="false" [sla]="slaPromedio" [unit]="unit"></app-area>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="spinnerLoading">
+              <div class="row busqueda-personalizada disable-scrollbars" style="margin-left: 0; display: flex; align-items: center; justify-content: center; min-height: 400px;" >
+                <mat-spinner [diameter]="60"></mat-spinner>
+              </div>
+            </ng-container>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-9" *ngIf="optionSelected == 2" style="margin-top: 15px;">
+        <div class="row">
+          <div class="col-12" style="
+              text-align: left;
+              font-weight: 600;
+              font-size: 16px;
+              color: #0b112a;
+              margin-bottom: 10px;
+            ">
+            Servicios:
+            <span style="font-weight: 500; font-size: 12px; color: #0b112a">
+              {{ nombreMetricaLargo }}
+            </span>
+          </div>
+          <div class="row lista-interfaz" style="
+              margin-left: 0;
+              height: 400px;
+              overflow-x: hidden;
+              overflow-y: scroll;
+            ">
+            <div class="col-12" *ngFor="let interfaz of inteterfaces" style="
+                border: 1px solid #000000;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                padding-right: 30px;
+              ">
+              <app-lines-group [data]="interfaz.data" [dataComplementary]="interfaz.dataComplementary"
+                [color]="interfaz.color" [margin]="marginEnlace" [marginComplementary]="marginInterfaz"
+                
+                [sizex]="width > 1440 ? 850 : width < 1440 ? 500 : 550" 
+                [sizey]="280" 
+                [single]="false"
+                [graficaIndividual]="2"
+                [title]="'Promedio de '+rangeMetrica.value+' del dispositivo (Périodo seleccionado)'"></app-lines-group>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3 d-flex" style="margin-top: 20px; padding: 0px">
+        <mat-divider vertical></mat-divider>
+        <div class="row" style="padding-left: 15px">
+          <div class="col-12" style="margin-top: 20px">
+            <label style="
+                font-weight: 600;
+                font-size: 16px;
+                color: #0b112a;
+                padding: 0px 10px;
+              ">Elige una opción</label>
+            <mat-radio-group class="radio-group-detalle" [(ngModel)]="optionSelected"
+              *ngIf="dispositivo == 'sitio' || dispositivo == 'servicio' || dispositivo == 'Sitio' || dispositivo == 'Servicio'">
+              <mat-radio-button class="radio-button" *ngFor="let paquete of ['Sitio']; index as i"
+                [value]="i + 1">
+                {{ paquete }}
+              </mat-radio-button>
+            </mat-radio-group>
+
+            <mat-radio-group class="radio-group-detalle" *ngIf="dispositivo == 'Enlace'" [(ngModel)]="optionSelected">
+              <mat-radio-button class="radio-button" [value]="3">
+                Enlace
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-12">
+            <form [formGroup]="form">
+            <label style="
+                font-weight: 600;
+                font-size: 16px;
+                color: #0b112a;
+                padding: 0px 10px;
+              ">Selecciona una métrica</label>
+            <mat-form-field appearance="outline" style="
+                width: 100%;
+                font-size: 12px;
+                padding: 0px 10px;
+                margin-top: 20px;
+              ">
+              <mat-label>MÉTRICA</mat-label>
+              <mat-select formControlName="metrica" disableOptionCentering (selectionChange)="changeMetrica()">
+                <mat-option *ngFor="
+                    let servicio of metricas
+                  " [value]="servicio?.metrica">
+                  {{ servicio.metrica }}
+                </mat-option>
+              </mat-select>
+<!-- 
+              <mat-select id="paquete" name="paquete" *ngIf="optionSelected == 2" [formControl]="rangeMetrica" value>
+                <mat-option *ngFor="
+                    let servicio of [
+                      'Disponibilidad y eventos',
+                      'Errores y descartes'
+                    ]
+                  " [value]="servicio">
+                  {{ servicio }}
+                </mat-option>
+              </mat-select> -->
+            </mat-form-field>
+          </form>
+          </div>
+          <div class="col-12">
+            <label style="
+                font-weight: 600;
+                font-size: 16px;
+                color: #0b112a;
+                padding: 0px 10px;
+              ">Aplica un rango</label>
+            <mat-form-field appearance="outline" style="
+                width: 100%;
+                font-size: 12px;
+                padding: 10px;
+                padding: 0px 10px;
+                margin-top: 20px;
+              ">
+              <mat-label>RANGO</mat-label>
+              <mat-select id="paquete" name="paquete" [formControl]="rangeControl">
+                <mat-option *ngFor="let servicio of services" [value]="servicio.value" (click)="changeRange(servicio.value)">
+                  {{ servicio.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+::ng-deep .confirm .mat-dialog-content{
+    max-width: 350px!important;
+}

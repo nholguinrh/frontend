@@ -1,0 +1,13 @@
+.content-home {
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    min-height: none!important;
+    max-height: none!important;
+}
+
+.content-wrapper{
+    min-height: none!important;
+    max-height: none!important;
+    height: 800px;
+}

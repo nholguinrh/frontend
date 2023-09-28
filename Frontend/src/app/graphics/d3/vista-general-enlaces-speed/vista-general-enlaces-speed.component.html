@@ -1,0 +1,204 @@
+<div style="width: 100%; margin: 0; padding: 0; min-height: 380px;" fxLayout="column" fxLayoutAlign="space-evenly stretch"  fxLayoutGap="10px"
+    [ngStyle]="{'min-width': full ? width + 'px' : '408px'}" *ngIf="!spinnerLoading">
+    <div fxFlex="15" fxLayout="row" [fxLayoutAlign]="'space-between center'" style="padding-left: 10px; padding-right: 25px">
+        <div fxFlex="50" [ngStyle]="{'padding-left': full ? '50px' : '0px'}">
+            <form [formGroup]="form"  style="width: 160px;">
+                <div class="smc-select-dashboard-speed" style="border-radius: 7.99373px;"
+                [ngStyle]="{'background-color': (isDark) ?  '#21273d': '#FFFFFF'}">
+                <mat-form-field appearance="outline"
+                style="width: 160px; height: 38px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                font-size: 12px; margin-right: 0; border: 1.5px solid#2c8eff;">
+                    <!-- <mat-select disableOptionCentering formControlName="tipo" id="tipo" name="tipo" (selectionChange)="changeType()">
+                        <mat-option [value]="1">
+                            <mat-icon class="image-dashboard-enlace"></mat-icon> Enlaces
+                        </mat-option>
+                        <mat-option [value]="3">
+                            <mat-icon [ngClass]="(isDark) ?  'image-dashboard-punta-blanco': 'image-dashboard-punta'" class=""></mat-icon> Sitios
+                        </mat-option>
+                        <mat-option [value]="2">
+                            <mat-icon [ngClass]="(isDark) ?  'image-dashboard-interface-blanco': 'image-dashboard-interface'" class=""></mat-icon> Servicios
+                        </mat-option>
+                    </mat-select> -->
+                    <mat-select formControlName="tipo" id="tipo" name="tipo" disableOptionCentering (selectionChange)="changeType()">
+                        <mat-option *ngFor="let dispositivo of tiposDispositivos" [value]="dispositivo?.value">
+                            <mat-icon [ngClass]="(isDark) ?  dispositivo.claseDark: dispositivo.clase" class=""></mat-icon> {{dispositivo.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </div>
+            </form>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center start"
+        [ngStyle]="{'padding-right': full ? '100px' : '10px'}"
+        [fxLayoutGap]="full ? '20px':'0px'">
+            <div
+            [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#292D3F', 'font-size': full ? '30px' : '12px'}">
+                Total de {{ this.form.get('tipo').value == 1 ? 'enlaces' : this.form.get('tipo'). value == 2 ? 'servicios' : 'sitios'}}
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" [fxLayoutGap]="full ? '20px':'10px'"
+            [ngStyle]="{'padding-left': full ? '40px' : '0px'}">
+                <ng-container *ngIf="full">
+                    <mat-icon class="image-dashboard-new-enlace" style="width: 45px; height: 45px;" *ngIf="this.form.get('tipo'). value == 1"></mat-icon>
+                    <mat-icon class="image-dashboard-punta" style="width: 45px; height: 45px;" *ngIf="this.form.get('tipo'). value == 3"></mat-icon>
+                    <mat-icon class="image-dashboard-interface" style="width: 45px; height: 45px;" *ngIf="this.form.get('tipo'). value == 2"></mat-icon>
+                </ng-container>
+                <ng-container *ngIf="!full">
+                    <mat-icon class="image-dashboard-new-enlace" style="width: 25px; height: 25px;" *ngIf="this.form.get('tipo'). value == 1"></mat-icon>
+                    <mat-icon class="image-dashboard-punta" style="width: 25px; height: 25px;" *ngIf="this.form.get('tipo'). value == 3"></mat-icon>
+                    <mat-icon class="image-dashboard-interface" style="width: 25px; height: 25px;" *ngIf="this.form.get('tipo'). value == 2"></mat-icon>
+                </ng-container>
+                <div style="font-weight: 700;"
+                [ngStyle]="{'color':  (isDark) ? '#3B4559;' : '#292D3F', 'font-size': full ? '50px' : '32px'}">
+                    {{ vistaGeneral ? vistaGeneral.total : 0 }}
+                    <!-- {{ this.form.get('tipo').value == 3 ? 21 : 17}} -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="55" fxLayout="column" fxLayoutAlign="center center">
+        <ng-container *ngIf="!full">
+            <ng-container *ngIf="!errorCarga">
+                <ng-container *ngIf="(isDark) ? true : false">
+                    <div *ngIf="this.viewGraph == 1 && typeGraph == 1">
+                        <app-speedometer [sizex]="410" [sizey]="230" color="#285CED" secondary="#22273d" color-label="#D0D0CE" [value]="speedValue"></app-speedometer>
+                    </div>
+                    <div *ngIf="this.viewGraph == 4 && typeGraph == 1">                    
+                        <app-ticketline [sizex]="width > 1440 ? 480 : 350" [sizey]="230" [data]="datesValue" 
+                            [colors]="['#285CED']" [showGradient]="true" [margin]="{top: 10, right: 0, bottom: 5, left: 50}" 
+                            [showDomain]="true" [gridx]="true"  [isDynamicRange]="false" [metric]="100" [dark]="true" [scale]="scale" unit="%"></app-ticketline>
+                        <!-- <app-area [data]="datesValue" [areaType]="'average'" [sizey]="200" [sizex]="width > 1440 ? 610 : 520" [showXLabels]="true" [showDomain]="true" color="#3b68ed" linear-gradient="#3b68ed" gradient-stop="#3b68ed"  tooltip-color="rgba(151,175,243, 0.2)" [showDomain]="true" [showYLabels]="true" [isDynamicRange]="false" [range]="[0, 100]"></app-area> -->
+                    </div>
+                    <div *ngIf="this.viewGraph == 5 && typeGraph == 1">
+                        <app-bar-chart [sizex]="430" [sizey]="230" [data]="datesValue" color="#285CED" [xposition]="10" [showDomain]="true" [barWidth]="30" [showLimits]="false" [showXLabels]="true" [showYLabels]="true" [border]="true" [margin]="marginBarChart" [general]="true" [isDynamicRange]="false" unit="%" [scale]="scale"></app-bar-chart>
+                        <!--
+                            <app-bar-chart [rx]="0" [showSLA]="true" [slaMean]="false" [unit]="unit"  [isDynamicRange]="true" [range]="[0, 90]" [grid]="true" [sla]="87%" [scale]="scale"></app-bar-chart>
+                        -->
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="(isDark) ? false : true">
+                    <div *ngIf="this.viewGraph == 1 && typeGraph == 1">
+                        <app-speedometer [sizex]="410" [sizey]="230" color="#285CED" secondary="#EEF1F8" color-label="#000000" [value]="speedValue"></app-speedometer>
+                    </div>
+                    <div *ngIf="this.viewGraph == 4 && typeGraph == 1">                    
+                        <app-ticketline [sizex]="width > 1440 ? 480 : 350" [sizey]="230" [data]="datesValue"
+                             [colors]="['#285CED']" [showGradient]="true" [margin]="{top: 10, right: 0, bottom: 5, left: 50}" [showDomain]="true" [gridx]="true"  [isDynamicRange]="false" [metric]="100"  [scale]="scale" unit="%"></app-ticketline>
+                        <!-- <app-area [data]="datesValue" [areaType]="'average'" [sizey]="200" [sizex]="width > 1440 ? 610 : 520" [showXLabels]="true" [showDomain]="true" color="#3b68ed" linear-gradient="#3b68ed" gradient-stop="#3b68ed"  tooltip-color="rgba(151,175,243, 0.2)" [showDomain]="true" [showYLabels]="true" [isDynamicRange]="false" [range]="[0, 100]"></app-area> -->
+                    </div>
+                    <div *ngIf="this.viewGraph == 5 && typeGraph == 1">
+                        <app-bar-chart [sizex]="430" [sizey]="230" [data]="datesValue" color="#EEF1F8" [xposition]="10" [showDomain]="true" [barWidth]="30" [showLimits]="false" [showXLabels]="true" [showYLabels]="true" [border]="true" [margin]="marginBarChart" [general]="true" [isDynamicRange]="false" unit="%" [scale]="scale"></app-bar-chart>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="errorCarga">
+                <app-service-error-dashboard [full]="full" [height]="full ? 'auto' : '140px'" [typeError]="errorCarga"></app-service-error-dashboard>
+              </ng-container>
+        </ng-container>
+        <ng-container *ngIf="full">
+            <ng-container *ngIf="!errorCarga">
+                <ng-container *ngIf="(isDark) ? true : false">
+                    <div *ngIf="this.viewGraph == 1 && typeGraph == 1">
+                        <app-speedometer [sizex]="970" [size]="960" [sizey]="580" [ringWidth]="160" [proportion]="1.2" [pointerLengthPercent]="0.07" [positionText]="[830, 500, 96, 500]" fontSize="23px" color="#285CED" secondary="#22273d" color-label="#D0D0CE" [value]="speedValue"></app-speedometer>
+                    </div>
+                    <div *ngIf="this.viewGraph == 4 && typeGraph == 1">
+                        <app-ticketline [sizex]="width -150" [sizey]="650" [data]="datatickets" [colors]="['#285CED']" [showGradient]="true" [showDomain]="true" [gridx]="true" [isFull]="true" [full]="true" [margin]="{top: 20, right: 0, bottom: 30, left: 50}" [isDynamicRange]="false" [metric]="100" [dark]="true" [scale]="scale" unit="%"></app-ticketline>
+                    </div>
+                    <div *ngIf="this.viewGraph == 5 && typeGraph == 1">
+                        <app-bar-chart [sizex]="width -100" [sizey]="550" [data]="datesValue"  color="#285CED" [showDomain]="true" [barWidth]="30" [rx]="0" [showLimits]="false" [showXLabels]="true" [showYLabels]="true" [showSLA]="false" [slaMean]="false" [border]="true" unit="%" [scale]="scale" [full]="true" [margin]="{top: 10, right: 10, bottom: 40, left: 70}"  [isDynamicRange]="false" [range]="[0, 1000]" [measure]="100" [general]="true"></app-bar-chart>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="(isDark) ? false : true">
+                    <div *ngIf="this.viewGraph == 1 && typeGraph == 1">
+                        <app-speedometer [sizex]="970" [size]="960" [sizey]="580" [ringWidth]="160" [proportion]="1.2" [pointerLengthPercent]="0.07" [positionText]="[830, 500, 96, 500]" fontSize="23px" color="#285CED" secondary="#EEF1F8" color-label="#000000" [value]="speedValue"></app-speedometer>
+                    </div>
+                    <div *ngIf="this.viewGraph == 4 && typeGraph == 1">
+                        <app-ticketline [sizex]="width -150" [sizey]="650" [data]="datatickets" [colors]="['#285CED']" [showGradient]="true" [showDomain]="true" [gridx]="true" [isFull]="true" [full]="true" [margin]="{top: 20, right: 0, bottom: 30, left: 52}" [showYLabels]="true"  [isDynamicRange]="false" [metric]="100" [scale]="scale" unit="%"></app-ticketline>
+                    </div>
+                    <div *ngIf="this.viewGraph == 5 && typeGraph == 1">
+                        <app-bar-chart [sizex]="width -100" [sizey]="550" [data]="datesValue"  color="#EEF1F8" [showDomain]="true" [barWidth]="30" [rx]="0" [showLimits]="false" [showXLabels]="true" [showYLabels]="true" [showSLA]="false" [slaMean]="false" [border]="true" unit="%" [scale]="scale" [full]="true" [margin]="{top: 10, right: 10, bottom: 40, left: 70}" [isDynamicRange]="false" [range]="[0, 1000]" [measure]="100" [general]="true"></app-bar-chart>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="errorCarga">
+                <app-service-error-dashboard [full]="full" [height]="full ? 'auto' : '140px'" [typeError]="errorCarga"></app-service-error-dashboard>
+              </ng-container>
+        </ng-container>
+    </div>
+    <mat-divider *ngIf="!full"></mat-divider>
+    <div *ngIf="!full" style="margin-top: -10px; padding: 0; text-align: left; padding-left: 10px; padding-top: 3px; font-weight: 600; font-size: 15px; color: #7B8AA0;">
+        Estatus de los sitios - Tiempo real
+    </div>
+    <div fxFlex="20" fxLayout="row" fxLayoutAlign="space-evenly center">
+        <div fxLayout="row" [fxFlex]="full ? 10 : 15" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+            <div fxLayout="column" fxLayoutAlign="center center" [fxLayoutGap]="full ? '20px':'0px'">
+                <div style="border-radius: 7px; padding-left: 11px; padding-top: 10px;"
+                [ngStyle]="{ 'background-color': (isDark) ? '#21273d' : '#EEF1F8',
+                'width': full ? '82px' : '39.82px', 'height': full ? '80px' : '39.82px',
+                'padding-top': full ? '19px' : '10px', 'padding-left': full ? '19px' : '11px'}">
+                    <ng-container *ngIf="full">
+                        <div class="image-vista-arrow-up" style="width: 45px; height: 45px;"></div>
+                    </ng-container>
+                    <ng-container *ngIf="!full">
+                        <div class="image-vista-arrow-up" style="width: 18px; height: 18px;"></div>
+                    </ng-container>
+                </div>
+                <div style="color: #2c8eff"
+                [ngStyle]="{ 'font-size': full ? '25px' : '11px'}">Activos</div>
+            </div>
+            <div style="color: #2c8eff; font-weight: 600" [ngStyle]="{ 'font-size': full ? '30px' : '20px'}">
+                {{ vistaGeneral ? vistaGeneral.activos : 0 }}
+                <!-- {{ this.form.get('tipo').value == 3 ? 20 : 13}} -->
+            </div>
+        </div>
+        <div fxLayout="row" [fxFlex]="full ? 10 : 15" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+            <div fxLayout="column" fxLayoutAlign="center center" [fxLayoutGap]="full ? '20px':'0px'">
+                <div style=" width: 41px; height: 39.82px; border-radius: 7px; padding-left: 10px; padding-top: 9px;"
+                [ngStyle]="{ 'background-color': (isDark) ? '#21273d' : '#FCEAEC',
+                'width': full ? '82px' : '39.82px', 'height': full ? '80px' : '39.82px',
+                'padding-top': full ? '19px' : '11px', 'padding-left': full ? '19px' : '11px'}">
+                    <ng-container *ngIf="full">
+                        <div class="image-vista-arrow-down-red" style="width: 45px; height: 45px;"></div>
+                    </ng-container>
+                    <ng-container *ngIf="!full">
+                        <div class="image-vista-arrow-down-red" style="width: 18px; height: 18px;"></div>
+                    </ng-container>
+                </div>
+                <div style="color: #da5263"
+                [ngStyle]="{ 'font-size': full ? '25px' : '11px'}">Inactivos</div>
+            </div>
+            <div style="color: #da5263; font-weight: 600"
+            [ngStyle]="{ 'font-size': full ? '30px' : '20px'}">
+                {{ vistaGeneral ? vistaGeneral.inactivos : 0 }}
+                <!-- {{ this.form.get('tipo').value == 3 ? 1 : 3}} -->
+            </div>
+        </div>
+        <div fxLayout="row" [fxFlex]="full ? 10 : 15" fxLayoutAlign="space-evenly center" fxLayoutGap="0px">
+            <div fxLayout="column" fxLayoutAlign="center center" [fxLayoutGap]="full ? '20px':'0px'">
+                <div style=" width: 41px; height: 39.82px; border-radius: 7px; padding-left: 10px; padding-top: 9px;"
+                [ngStyle]="{ 'background-color': (isDark) ? '#21273d' : '#DBDBDB',
+                'width': full ? '82px' : '39.82px', 'height': full ? '80px' : '39.82px',
+                'padding-top': full ? '19px' : '10px', 'padding-left': full ? '19px' : '9px'}">
+                <ng-container *ngIf="full">
+                    <mat-icon class="image-dashboard-enlace" style="width: 45px; height: 45px;" *ngIf="this.form.get('tipo'). value == 1"></mat-icon>
+                    <mat-icon class="image-dashboard-punta-llave" style="width: 45px; height: 45px;" *ngIf="this.form.get('tipo'). value == 3"></mat-icon>
+                    <mat-icon class="image-dashboard-interface-llave" style="width: 45px; height: 45px;" *ngIf="this.form.get('tipo'). value == 2"></mat-icon>
+                </ng-container>
+                <ng-container *ngIf="!full">
+                    <mat-icon class="image-dashboard-enlace" style="width: 22px; height: 22px;" *ngIf="this.form.get('tipo'). value == 1"></mat-icon>
+                    <mat-icon class="image-dashboard-punta-llave" style="width: 22px; height: 22px;" *ngIf="this.form.get('tipo'). value == 3"></mat-icon>
+                    <mat-icon class="image-dashboard-interface-llave" style="width: 22px; height: 22px;" *ngIf="this.form.get('tipo'). value == 2"></mat-icon>
+                </ng-container>
+                </div>
+                <div style="color: #838383;"
+                [ngStyle]="{ 'font-size': full ? '25px' : '11px'}">Mantenimiento</div>
+            </div>
+            <div style="color: #838383; font-weight: 600;"
+            [ngStyle]="{ 'font-size': full ? '30px' : '20px'}">
+                {{ vistaGeneral ? vistaGeneral.mantenimiento : 0 }}
+                <!-- {{ this.form.get('tipo').value == 3 ? 0 : 1}} -->
+            </div>
+        </div>
+    </div>
+</div>
+<ng-container *ngIf="spinnerLoading">
+    <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+</ng-container>

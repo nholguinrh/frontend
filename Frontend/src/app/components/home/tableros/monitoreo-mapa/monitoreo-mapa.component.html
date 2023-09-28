@@ -1,0 +1,207 @@
+<div style="
+    width: 100%;
+    min-height: 815px;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+  " fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  <alert></alert>
+  <div class="cuadrante1" fxLayout="column" fxLayoutGap="20px" fxFlexAlign="stretch">
+    <div class="dashboard-card" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="10px"
+      [ngStyle]="{
+        'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+      }">
+      <ng-container *ngIf="!spinnerLoading">
+        <div fxFlex="30" fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" style="    padding-left: 10px;">
+          <div fxFlex="20" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="30px"
+            class="justify-content-end">
+            <!-- <div fxFlex="30" fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="center center">
+              <app-progress-bar *ngIf="(isDarkTheme | async) ? true : false" [data]="progressChartdataDark" [width]="width > 1440 ? 85 : 75" [icon]="true" (typeChanged)="update()" [typeService]="typeService">
+              </app-progress-bar>
+              <app-progress-bar *ngIf="(isDarkTheme | async) ? false : true" [data]="progressChartdata" [width]="width > 1440 ? 85 : 75" [icon]="true" (typeChanged)="update()" [typeService]="typeService">
+              </app-progress-bar>
+            </div> -->
+            <div fxFlex="30" fxLayoutAlign="center center" style="padding-left: 10px"
+            *ngIf="(isDarkTheme | async) ? true : false" [ngStyle]="{ 'margin-rigth': width > 1440 ? '-30px' : '-40px' }">
+            <app-progress-bar [data]="progressChartdata" [width]="width > 1440 ? 75 : 60" [icon]="true" [typeService]="typeService" (typeChanged)="update()">
+            </app-progress-bar>
+          </div>
+          <div fxFlex="30" fxLayoutAlign="center center" *ngIf="!(isDarkTheme | async) ? true : false"
+            [ngStyle]="{ 'margin-rigth': width > 1440 ? '-30px' : '-40px' }">
+            <app-progress-bar [data]="progressChartdataDark" [width]="width > 1440 ? 75 : 60" [icon]="true" [typeService]="typeService" (typeChanged)="update()">
+            </app-progress-bar>
+          </div>
+            <div fxFlex="30" fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="center center">
+              <ng-container *ngIf="(isDarkTheme | async) ? true : false">
+                <span class="text-title">{{totalDispositivos}}</span>
+              </ng-container>
+              <ng-container *ngIf="(isDarkTheme | async) ? false : true">
+                <span class="text-title">{{totalDispositivos}}</span>
+              </ng-container>
+            </div>
+          </div>
+          <div fxFlex="20" fxLayout="row" fxLayoutAlign="space-evenly center">
+            <div style="
+                color: #848B91;
+                margin-top: 40px;
+                font-size: 14px;
+                line-height: 17px;
+                font-weight: 500;
+              ">
+              Total de {{ typeService }}
+            </div>
+          </div>
+        </div>
+        <div fxFlex="20" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div style="
+                width: 46px;
+                height: 44.82px;
+                border-radius: 7px;
+                padding-left: 10px;
+                padding-top: 10px;
+              " [ngStyle]="{
+                'background-color': (isDarkTheme | async) ? '#21273d' : '#EEF1F8'
+              }">
+              <mat-icon class="image-vista-arrow-up"></mat-icon>
+            </div>
+            <div style="font-size: 11px; color: #2c8eff">Activos</div>
+          </div>
+          <div style="font-size: 20px; color: #2c8eff; font-weight: 600">          
+            {{this.totalDispositivosActivos}}
+          </div>
+        </div>
+        <div fxFlex="20" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="10px">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div style="
+                width: 46px;
+                height: 44.82px;
+                border-radius: 7px;
+                padding-left: 10px;
+                padding-top: 10px;
+              " [ngStyle]="{
+                'background-color': (isDarkTheme | async) ? '#21273d' : '#FCEAEC'
+              }">
+              <mat-icon class="image-vista-arrow-down-red"></mat-icon>
+            </div>
+            <div style="font-size: 11px; color: #da5263">Inactivo</div>
+          </div>
+          <div style="font-size: 20px; color: #da5263; font-weight: 600">
+            {{this.totalDispositivosInactivos}}
+          </div>
+        </div>
+        <div fxFlex="20" fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div fxLayout="column" fxLayoutAlign="center center" class="align-items-start">
+            <div style="
+                width: 46px;
+                height: 44.82px;
+                border-radius: 7px;
+                padding-left: 10px;
+                padding-top: 10px;
+              " [ngStyle]="{
+                'background-color': (isDarkTheme | async) ? '#21273d' : '#DBDBDB'
+              }">
+              <mat-icon class="image-vista-config"></mat-icon>
+            </div>
+            <div style="font-size: 11px; color: #838383">Mantenimiento</div>
+          </div>
+          <div style="
+              font-size: 20px;
+              color: #838383;
+              font-weight: 600;
+              margin-left: -30px;
+            ">
+            {{this.totalDispositivosMantenimiento}}
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="spinnerLoading">
+        <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 150px;"></mat-spinner>
+      </ng-container>
+    </div>
+
+    <div class="dashboard-card" fxFlex="80" [ngStyle]="{
+        'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+      }">
+      <smc-title-dashboard title="{{ typeService }} inactivos {{totalSitios ? '('+totalSitios+')' : ''}} - Tiempo real" [menu]="false" fullType="MAPA_ENLACES_INALCANZABLES">
+      </smc-title-dashboard>
+      <div style="margin: 10px">
+        <div *ngIf="isDarkTheme | async">
+          <app-services-map [sizex]="width > 1440 ? 600 : 450" [sizey]="width > 1440 ? 290 : 300"
+            [scale]="width > 1440 ? 660 : 600" mapColor="#5e728b" mapLine="#8199a4" [dark]="true"
+            [dispositivo]="typeService"></app-services-map>
+        </div>
+        <div *ngIf="!(isDarkTheme | async)">
+          <app-services-map [sizex]="width > 1440 ? 600 : 450" [sizey]="width > 1440 ? 290 : 300"
+            [scale]="width > 1440 ? 660 : 600" mapColor="#c8def0" mapLine="#f3fdff" [dark]="false"
+            [dispositivo]="typeService"></app-services-map>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cuadrante2 dashboard-card" fxFlexAlign="stretch" [ngStyle]="{
+      'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+    }">
+    <smc-title-dashboard title="{{typeService}} inactivos {{totalSitios ? '('+totalSitios+')' : ''}} - Tiempo real" [menu]="false" fullType="ENLACES_AFECTACIONES" numFullTtype="2"></smc-title-dashboard>
+    <smc-afectacion-mapa-simple-bar></smc-afectacion-mapa-simple-bar>
+  </div>
+  <div class="cuadrante3" fxLayout="column"  fxLayoutGap="20px"  fxFlexAlign="stretch">
+    <div class="dashboard-card" fxFlex="55" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+        <smc-title-dashboard title="Métricas por {{typeService}} - {{escalaTiempo}}" [menu]="true" 
+        [viewGraph]="objectGraph[2]?.cuadranteActivo.idCuadranteGrafica" [typeGraph]="21"  
+        fullType="ENLACES_METRICAS"></smc-title-dashboard>
+        <smc-servicios-enlaces-boxplot [viewGraph]="objectGraph[2].cuadranteActivo.idCuadranteGrafica" 
+        [dispositivo]="typeService"></smc-servicios-enlaces-boxplot>
+    </div>
+
+    <div class="dashboard-card" fxFlex="45" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+        <smc-title-dashboard title="Tickets de incidentes por {{typeService}} - Mes en curso" [menu]="true" 
+        [viewGraph]="objectGraph[0].cuadranteActivo.idCuadranteGrafica" [typeGraph]="10" 
+        fullType="ENLACES_TICKETS"></smc-title-dashboard>
+        <div *ngIf="objectGraph[0].cuadranteActivo.idCuadranteGrafica == 20">
+            <smc-tickets-mapa-barras [tamano]="340"  [dispositivo]="typeService"></smc-tickets-mapa-barras>
+        </div>
+        <div *ngIf="objectGraph[0].cuadranteActivo.idCuadranteGrafica == 21">
+            <smc-tickets-enlaces-lineas [dispositivo]="typeService"></smc-tickets-enlaces-lineas>
+        </div>
+        <div *ngIf="objectGraph[0].cuadranteActivo.idCuadranteGrafica == 22">
+            <smc-tickets-incidentes-area [sizeY]="170" [sizeX]="440" [sizeXLarge]="565" [dispositivo]="typeService"></smc-tickets-incidentes-area>
+        </div>
+    </div>
+
+
+
+  </div>
+  <!--
+  <div class="cuadrante3" fxLayout="column" fxLayoutGap="20px" fxFlexAlign="stretch">
+    <div class="dashboard-card" fxFlex="55" [ngStyle]="{
+        'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+      }">
+      <smc-title-dashboard title="Tickets de incidentes por {{ typeService }}" [menu]="true"
+        [viewGraph]="objectGraph[0].cuadranteActivo.idCuadranteGrafica" [typeGraph]="10" fullType="ENLACES_TICKETS">
+      </smc-title-dashboard>
+      <div *ngIf="objectGraph[0].cuadranteActivo.idCuadranteGrafica == 20">
+        <smc-tickets-mapa-barras [tamano]="390" [dispositivo]="typeService"></smc-tickets-mapa-barras>
+      </div>
+      <div *ngIf="objectGraph[0].cuadranteActivo.idCuadranteGrafica == 21">
+        <smc-tickets-enlaces-lineas [dispositivo]="typeService"></smc-tickets-enlaces-lineas>
+      </div>
+      <div *ngIf="objectGraph[0].cuadranteActivo.idCuadranteGrafica == 22" style="margin-top: 40px;">
+        <smc-tickets-incidentes-area [sizeY]="190" [sizeX]="440" [sizeXLarge]="540" [dispositivo]="typeService">
+        </smc-tickets-incidentes-area>
+      </div>
+    </div>
+    <div class="dashboard-card" fxFlex="45" [ngStyle]="{
+        'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+      }">
+      <smc-title-dashboard title="Promedio de resolución" [menu]="true"
+        [viewGraph]="objectGraph[1].cuadranteActivo.idCuadranteGrafica" [typeGraph]="11"
+        [fullType]="'RESOLUCION_INTERFACES'"></smc-title-dashboard>
+      <smc-promedios-mapa-barras [dispositivo]="typeService" [sizeX]="400" [sizeXLarge]="500" [sizeY]="140"
+        [viewGraph]="objectGraph[1].cuadranteActivo.idCuadranteGrafica"></smc-promedios-mapa-barras>
+    </div>
+  </div>
+  -->
+
+  
+</div>

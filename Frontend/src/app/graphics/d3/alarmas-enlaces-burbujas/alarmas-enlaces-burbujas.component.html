@@ -1,0 +1,95 @@
+<ng-container *ngIf="!spinnerLoading">
+    <ng-container *ngIf="!errorCarga">
+        <div style="width: 100%; margin: 0; padding: 0; min-height: 320px;">
+            <div style="margin-bottom: -65px;" *ngIf="indicadores">
+                <ng-container *ngFor="let indi of indicadores">
+                    <div fxFlexAlign="stretch" fxLayout="row" fxLayoutAlign="end center" [ngStyle]="{
+                        'font-size': full ? '30px' : '10px' , 'padding-right': full ? '50px':'20px', 'margin-top' : full ? '10px' : '0px'
+                      }" style="
+                        text-align: right;
+                        font-size: 10px;
+                        padding-right: 20px;
+                        font-weight: 400;
+                      ">
+                      <!-- <div>{{EsteMes}}</div> -->
+                      <div> {{indi.title}} </div>
+                      <div style="
+                      margin-left: 5px;
+                          width: 15px;
+                          height: 5px;
+                          border-radius: 6px;
+                        "
+                        [ngStyle]="{
+                            'width': full ? '35px' : '15px',
+                            'height': full ? '15px' : '5px',
+                            'background-color': indi ? indi.color : indi.color
+                          }"></div>
+                    </div>
+                </ng-container>
+            </div>
+            <div *ngIf="!full">
+                <ng-container *ngIf="(isDarkTheme | async)">
+                    <smc-bubble [valores]="data" [dark]="true" [maxRadio]="100" [sizex]="500" [sizey]="320" [offsetLeft]="width > 1600 ? 30 : 80" [totalA]="totalAlarmas"></smc-bubble>
+                </ng-container>
+                <ng-container *ngIf="!(isDarkTheme | async)">
+                    <smc-bubble [valores]="data" [maxRadio]="100" [sizex]="500" [sizey]="320" [offsetLeft]="width > 1600 ? 30 : 80" [totalA]="totalAlarmas"></smc-bubble>
+                </ng-container>
+            </div>
+            <div *ngIf="full">
+                <ng-container *ngIf="(isDarkTheme | async)">
+                    <smc-bubble [valores]="data" [dark]="true" [maxRadio]="300" [sizex]="width > 1440 ? 2000 : width < 1440 ? 1350 : 1350" [sizey]="width > 1440 ? 900 : width < 1440 ? 400 : 600" [offsetLeft]="width > 1440 ? 300 : width < 1440 ? 90 : 150" [offsetBottom]="width > 1440 ? 150 : width < 1440 ? 40 : 60" [totalA]="totalAlarmas"></smc-bubble>
+                </ng-container>
+                <ng-container *ngIf="!(isDarkTheme | async)">
+                    <smc-bubble [valores]="data" [maxRadio]="300"               [sizex]="width > 1440 ? 2000 : width < 1440 ? 1350 : 1350" [sizey]="width > 1440 ? 900 : width < 1440 ? 400 : 600" [offsetLeft]="width > 1440 ? 300 : width < 1440 ? 90 : 150" [offsetBottom]="width > 1440 ? 150 : width < 1440 ? 40 : 60" [totalA]="totalAlarmas"></smc-bubble>
+                </ng-container>
+            </div>
+            <div style="position: relative;
+            width: 140px; height: 80px; border-radius: 10px; margin-top: -80px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"
+            [ngStyle]="{'color': (isDarkTheme | async) ? '#7B8AA0':'#0B112A', 
+            'background-color': (isDarkTheme | async) ? '#21273d' : 'transparent',
+            'left': full == true ? width > 1440 ? '1400px' : '900px' : width > 1440 ? '300px' : '250px', 
+            'top': full == true ? width > 1440 ? '-150px' : '-100px': width > 1440 ? '-15px' : '40px',
+            'width': full == true ? '472.89px': '140px', 'height': full == true ? '250px': '80px'}"
+            fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+                <div *ngIf="!full">
+                    <div style="font-weight: 600; font-size: 16px; 
+                    line-height: 17px; text-align: center; padding-top: 15px; margin-bottom: 15px;">
+                        Total de alarmas
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" style="    padding: 0 30px;">
+                        <div fxFlex="50" style=" display: flex; justify-content: center;">
+                            <mat-icon class="image-alarma1" 
+                            style="background-size: 23px 23px!important;"></mat-icon>
+                        </div>
+                        <div style="font-size: 18px; font-weight: 600; color: #5052FC; padding-top: 3px; display: flex; justify-content: center;" fxFlex="50">
+                            {{totalAlarmas}}
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="full">
+                    <div style="font-weight: 700; font-size: 32px; 
+                    line-height: 44px; text-align: center; padding-top: 15px; margin-bottom: 40px;">
+                        Total de alarmas
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="50px">
+                        <div style="padding-top: 40px;" fxFlex="50" style=" display: flex; justify-content: center;">
+                            <mat-icon class="image-alarma1" 
+                            style="width: 75px; height: 75px;background-size: 75px;"></mat-icon>
+                        </div>
+                        <div style="font-size: 36px; font-weight: 700; color: #5052FC; padding-top: 40px; display: flex; justify-content: center;" fxFlex="50">
+                            {{totalAlarmas}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="errorCarga">
+        <app-service-error-dashboard [full]="full" [typeError]="errorCarga"></app-service-error-dashboard>
+      </ng-container>
+</ng-container>
+<ng-container *ngIf="spinnerLoading">
+    <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+</ng-container>
+ 

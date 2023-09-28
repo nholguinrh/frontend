@@ -1,0 +1,18 @@
+.configuracion-paquete-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 20px;
+}
+
+::ng-deep .configuracion-paquete-container .mat-form-field-wrapper{
+  margin-bottom: -1.25em!important;
+}
+
+.contenido-paquete ::ng-deep .mat-checkbox {
+  margin-right: 8px;
+}
+
+.expansion-panel-opciones .mat-expansion-panel{
+  box-shadow: none !important;
+  background-color: #ffffff00;
+}

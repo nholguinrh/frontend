@@ -1,0 +1,53 @@
+<div class="home-container" style="margin-top: 30px;">
+    <alert></alert>
+    <div class="row w100m0p0">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <div class="row w100m0p0">
+                <div class="col-1" style="width: 22px; margin: 0; padding: 0;">
+                    <div class="image-administrator-workspace">&nbsp;</div>
+                </div>
+                <div class="col" style="margin: 0; padding: 0; padding-top: 1px; padding-left: 5px; font-size: 18px;">
+                    ESPACIO DE TRABAJO
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="text-align: right; font-weight: 600;"><p>¡Buen día, {{user.nombreCompleto | titlecase}}!</p></div>
+        <div class="col-1"></div>
+    </div>
+</div>
+<div class="home-container" style="margin-top: 20px;">
+    <div class="row w100m0p0">
+        <div class="col-1"></div>
+        <div class="col-10 worskpace-tab">
+            <mat-tab-group [disableRipple]="true" [selectedIndex]="selected.value" (selectedIndexChange)="tabChange($event)">
+                <mat-tab label="Clientes">
+                    <ng-template matTabContent >
+                        <div style="width: 100%; background-color: #FFFFFF; min-height: 565px;">
+                            <!-- Content 1 - Loaded: {{getTimeLoaded(1) | date:'medium'}} Content 1 - Loaded: {{getTimeLoaded(1) | date:'medium'}} Content 1 - Loaded: {{getTimeLoaded(1) | date:'medium'}} -->
+                            <app-administrator-clientes></app-administrator-clientes>
+                        </div>
+                    </ng-template>
+                </mat-tab>
+                <mat-tab label="Equipos" *ngIf="!isBackOffice">
+                    <ng-template matTabContent>
+                        <div style="width: 100%; background-color: #FFFFFF; min-height: 450px;">
+                            <app-administrator-equipos></app-administrator-equipos>
+                        </div>
+                            <!-- Content 2 - Loaded: {{getTimeLoaded(2) | date:'medium'}} -->
+                    </ng-template>
+                </mat-tab>
+                <mat-tab label="Configuración">
+                    <ng-template matTabContent>
+                        <div style="width: 100%; background-color: #FFFFFF; min-height: 200px;">
+                            <app-administrator-configuraciones></app-administrator-configuraciones>
+                            <!--  Content 3 - Loaded: {{getTimeLoaded(3) | date:'medium'}} -->
+                        </div>
+                    </ng-template>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div class="col-1">
+        </div>
+    </div>
+</div>

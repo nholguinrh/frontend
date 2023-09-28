@@ -1,0 +1,688 @@
+<div class="autorization-container">
+  <!-- <app-donut></app-donut> -->
+  <div class="tablero-wrapper">
+      <div class="top">
+          <div class="scroll-container">
+              <div class="scrollmenu">
+                  <div class="estadistica" *ngFor="let item of estadisticaList"
+                  [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+                        <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                            <div class="col-6" style="margin: 0; padding: 0; text-align: center; height: 51px; display: flex; align-items: center; justify-content: center;">
+                                {{item.name}}
+                            </div>
+                            <div class="col-3" style="margin: 0; padding: 0; padding-left: 10px;">
+                                <div class="row" style="width: 100%; margin: 0; padding: 0; text-align: left;">
+                                    <div class="col-12" style="margin: 0; padding: 0; margin-top: 5px;">
+                                        {{item.value}}
+                                    </div>
+                                    <div class="col-12" style="margin: 0; padding: 0; margin-top: -5px;"
+                                    [ngStyle]="{'color': item.estatus == 0 ? '#2C8EFF': item.estatus == 1 ? '#64D261' : '#EC7080'}"  >
+                                    {{item.change}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3" style="margin: 0; padding: 0; height: 51px; line-height: 51px; padding-right: 5px;">
+                                <div [ngClass]="item.estatus == 0 ? 'image-g1': item.estatus == 1 ? 'image-g3' : 'image-g2'">&nbsp;</div>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="dashboard">
+          <div class="vista-general" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+              <div class="tittle" style="width: 100%; margin: 0; padding: 0;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-6" style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 16px;">
+                          Vista Genereal
+                      </div>
+                      <div class="col-6" style="margin: 0; padding: 0;">
+                          <button mat-button style="float: right;" [matMenuTriggerFor]="vista">
+                              <mat-icon class="image-dots"></mat-icon>
+                          </button>
+                          <mat-menu #vista="matMenu" xPosition="before">
+                              <button mat-menu-item style="font-size: 14px; font-weight: 600;">
+                                  <mat-icon class="image-expand"></mat-icon>
+                                  <span>Expandir</span>
+                              </button>
+                              <button mat-menu-item style="font-size: 14px; font-weight: 600; text-align: left;">
+                                  <mat-icon class="image-edit"></mat-icon>
+                                  <span>Editar</span>
+                              </button>
+                          </mat-menu>
+                      </div>
+                  </div>
+              </div>
+              <div class="functions" style="height: 55px; padding-top: 0px;"
+              [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+                  <div style="width: 143px; height: 38px; background-color: white; margin-top: 15px; margin-left: 20px; border-radius: 7.99373px; box-shadow: 0px 10px 20px rgba(98, 60, 231, 0.35);" *ngIf="!vistaGeneralSlider">
+                      <div class="row" style="width: 100%; margin: 0; padding: 0; margin-left: 5px;">
+                          <div class="col-6" style="margin: 0; text-align: center; font-size: 10px; background-color: #3969ED; color: white; border-radius: 5px; height: 26px; margin-top: 6px; padding: 3px 0px 0px; cursor: pointer;" (click)="sliderChange()">
+                              Enlaces
+                          </div>
+                          <div class="col-6" style="margin: 0; text-align: center; font-size: 10px; padding: 10px 5px 0px 0px; color: #9698AB;">
+                              Interfaces
+                          </div>
+                      </div>
+                  </div>
+                  <div style="width: 143px; height: 38px; background-color: white; margin-top: 15px; margin-left: 20px; border-radius: 7.99373px; box-shadow: 0px 10px 20px rgba(98, 60, 231, 0.35);" *ngIf="vistaGeneralSlider">
+                      <div class="row" style="width: 100%; margin: 0; padding: 0; margin-left: 5px;">
+                          <div class="col-6" style="margin: 0; padding: 10px 0px 0px; text-align: center; font-size: 10px; color: #9698AB;">
+                              Enlaces
+                          </div>
+                          <div class="col-6" style="margin: 0; padding: 10px 0px 0px; text-align: center; font-size: 10px; background-color: #3969ED;  color: white;  border-radius: 5px; height: 26px; margin-top: 6px; cursor: pointer; margin-left: -10px;" (click)="sliderChange()">
+                              Interfaces
+                          </div>
+                      </div>
+                  </div>
+                  <div style="width: 120px; float: right; position: relative; margin-top: -40px; margin-right: 30px;">
+                      <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                          <div class="col-12" style="margin: 0; padding: 0; text-align: left; font-size: 12px; color: #B8BACC;">
+                              Total de enlaces
+                          </div>
+                      </div>
+                      <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                          <div class="col-2" style="margin: 0; padding: 0;">
+                              <mat-icon class="image-vista-home"></mat-icon>
+                          </div>
+                          <div class="col-8" style="margin: 0; padding: 0; text-align: center; color: #324886; font-weight: 800; font-size: 30px;">
+                              1411
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="grafica" style="width: 100%; height: 230px;">
+                  <div style="width: 70px; height: 70px; background-color: #EEF1F8; margin-bottom: -210px; border-radius: 50%; margin-left: 194px; margin-top: 120px;"></div>
+                  <app-speedometer [estilo]="'width: 100%; height: 230px; text-align: center; padding-top: 30px;'"></app-speedometer>
+              </div>
+              <div class="informacion" style="width: 100%; padding: 0; margin: 0; margin-top: -120px;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-4" style="margin: 0; padding: 0;">
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-6" style="margin: 0; padding: 0;">
+                                  <div style="width: 46px; height: 44.82px; background-color: #EEF1F8; border-radius: 7px; margin-left: 20px; padding-left: 10px; padding-top: 10px;">
+                                      <mat-icon class="image-vista-arrow-up"></mat-icon>
+                                  </div>
+                              </div>
+                              <div class="col-6" style="margin: 0; padding: 0; font-size: 18px; padding-top: 15px; font-weight: 600; color: #2C8EFF;">
+                                  834
+                              </div>
+                          </div>
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-6" style="margin: 0; padding: 0; color: #2C8EFF; font-size: 12px; margin-left: 20px;">
+                                  Activos
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0;">
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-6" style="margin: 0; padding: 0;">
+                                  <div style="width: 46px; height: 44.82px; background-color: #FCEAEC; border-radius: 7px; margin-left: 20px; padding-left: 10px; padding-top: 10px;">
+                                      <mat-icon class="image-vista-arrow-down"></mat-icon>
+                                  </div>
+                              </div>
+                              <div class="col-6" style="margin: 0; padding: 0; font-size: 18px; padding-top: 15px; font-weight: 600; color: #DA5263;">
+                                  256
+                              </div>
+                          </div>
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-6" style="margin: 0; padding: 0; color: #DA5263; font-size: 12px; margin-left: 20px;">
+                                  Inactivos
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0;">
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-6" style="margin: 0; padding: 0;">
+                                  <div style="width: 46px; height: 44.82px; background-color: #DBDBDB; border-radius: 7px; margin-left: 20px; padding-left: 12px; padding-top: 10px;">
+                                      <mat-icon class="image-vista-config"></mat-icon>
+                                  </div>
+                              </div>
+                              <div class="col-6" style="margin: 0; padding: 0; font-size: 18px; padding-top: 15px; font-weight: 600; color: #838383;">
+                                  321
+                              </div>
+                          </div>
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-6" style="margin: 0; padding: 0; color: #838383; font-size: 12px; margin-left: 20px;">
+                                  Mantenimiento
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="alarmas" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+              <div class="tittle" style="width: 100%; margin: 0; padding: 0;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-6" style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 16px;">
+                          Alarmas
+                      </div>
+                      <div class="col-6" style="margin: 0; padding: 0;">
+                          <button mat-button style="float: right;" [matMenuTriggerFor]="alarma">
+                              <mat-icon class="image-dots"></mat-icon>
+                          </button>
+                          <mat-menu #alarma="matMenu" xPosition="before">
+                              <button mat-menu-item style="font-size: 14px; font-weight: 600;">
+                                  <mat-icon class="image-expand"></mat-icon>
+                                  <span>Expandir</span>
+                              </button>
+                              <button mat-menu-item style="font-size: 14px; font-weight: 600; text-align: left;">
+                                  <mat-icon class="image-edit"></mat-icon>
+                                  <span>Editar</span>
+                              </button>
+                          </mat-menu>
+                      </div>
+                  </div>
+              </div>
+              <div class="informacion" style="width: 100%; padding: 0; margin: 0; margin-top: 25px;"
+              [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-6" style="margin: 0; padding: 0; padding-left: 20px;">
+                          <div style="height: 290px; width: 230px; margin-left: -5px;">
+                              <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 17px;">
+                                  <div class="col-6" style="margin: 0; padding: 0;">
+                                      <div style="width: 100px; height: 72px; background: #F5F4F9; border-radius: 4.3846px;">
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                              <div style="font-size: 10px; line-height: 12px; font-weight: 400; padding-top: 10px;">
+                                                  Enlaces Inalcanzables
+                                              </div>
+                                          </div>
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 8px;">
+                                              <div class="col-6" style="margin: 0; padding: 0; padding-left: 10px; margin-top: -2px;">
+                                                  <mat-icon class="image-alarma1"></mat-icon>
+                                              </div>
+                                              <div class="col-6" style="margin: 0; padding: 0; font-size: 17px; font-weight: 600; color: #5052FC; padding-top: 2px;">
+                                                  369
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-6" style="margin: 0; padding: 0;">
+                                      <div style="width: 100px; height: 72px; background: #F5F4F9; border-radius: 4.3846px;">
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                              <div style="font-size: 10px; line-height: 12px; font-weight: 400; padding-top: 10px;">
+                                                  Interfaces Inalcanzables
+                                              </div>
+                                          </div>
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 8px;">
+                                              <div class="col-6" style="margin: 0; padding: 0; padding-left: 10px; margin-top: -2px;">
+                                                  <mat-icon class="image-alarma1"></mat-icon>
+                                              </div>
+                                              <div class="col-6" style="margin: 0; padding: 0; font-size: 17px; font-weight: 600; color: #5052FC; padding-top: 2px;">
+                                                  208
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 20px;">
+                                  <div class="col-6" style="margin: 0; padding: 0;">
+                                      <div style="width: 100px; height: 72px; background: #FFFFFF; border-radius: 4.3846px; border: 1.16923px solid #5052FC;">
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                              <div style="font-size: 10px; line-height: 12px; font-weight: 400; padding-top: 10px;">
+                                                  Enlaces <br> Sin gestión
+                                              </div>
+                                          </div>
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 8px;">
+                                              <div class="col-6" style="margin: 0; padding: 0; padding-left: 10px; margin-top: -2px;">
+                                                  <mat-icon class="image-alarma2"></mat-icon>
+                                              </div>
+                                              <div class="col-6" style="margin: 0; padding: 0; font-size: 17px; font-weight: 600; color: #FB3E08; padding-top: 2px;">
+                                                  51
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-6" style="margin: 0; padding: 0;">
+                                      <div style="width: 100px; height: 72px; background: #FFFFFF; border-radius: 4.3846px; border: 1.16923px solid #5052FC;">
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                              <div style="font-size: 10px; line-height: 12px; font-weight: 400; padding-top: 10px;">
+                                                  Interfaces <br> Sin gestión
+                                              </div>
+                                          </div>
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 8px;">
+                                              <div class="col-6" style="margin: 0; padding: 0; padding-left: 10px; margin-top: -2px;">
+                                                  <mat-icon class="image-alarma2"></mat-icon>
+                                              </div>
+                                              <div class="col-6" style="margin: 0; padding: 0; font-size: 17px; font-weight: 600; color: #FB3E08; padding-top: 2px;">
+                                                  21
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 20px;">
+                                  <div class="col-6" style="margin: 0; padding: 0;">
+                                      <div style="width: 100px; height: 72px; background: #5052FC; border-radius: 4.3846px;">
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                              <div style="font-size: 10px; line-height: 12px; font-weight: 400; padding-top: 10px; color: #FFFFFF;">
+                                                  Incremento <br> de memoria
+                                              </div>
+                                          </div>
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 8px;">
+                                              <div class="col-6" style="margin: 0; padding: 0; padding-left: 10px; margin-top: -2px;">
+                                                  <mat-icon class="image-alarma3"></mat-icon>
+                                              </div>
+                                              <div class="col-6" style="margin: 0; padding: 0; font-size: 17px; font-weight: 600; color: #FFFFFF; padding-top: 2px;">
+                                                  0
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-6" style="margin: 0; padding: 0;">
+                                      <div style="width: 100px; height: 72px; background: #5052FC; border-radius: 4.3846px;">
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                              <div style="font-size: 10px; line-height: 12px; font-weight: 400; padding-top: 10px; color: #FFFFFF;">
+                                                  Incremento <br> de voltaje
+                                              </div>
+                                          </div>
+                                          <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 8px;">
+                                              <div class="col-6" style="margin: 0; padding: 0; padding-left: 10px; margin-top: -2px;">
+                                                  <mat-icon class="image-alarma3"></mat-icon>
+                                              </div>
+                                              <div class="col-6" style="margin: 0; padding: 0; font-size: 17px; font-weight: 600; color: #FFFFFF; padding-top: 2px;">
+                                                  0
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-6" style="margin: 0; padding: 0; padding-left: 25px;">
+                          <div style="height: 290px; width: 190px; background-color: #5251FA; border-radius: 4.69147px;">
+                              <div style="width: 190px; height: 90px; text-align: center; color: #FFFFFF; padding-top: 20px; font-size: 13px;">
+                                  Total de alarmas
+                                  <br>
+                                  <span style="font-size: 18px; font-weight: 600; padding-top: 5px;">2,450</span>
+                                  <br>
+                                  Comparación con el<br> mes pasado
+                              </div>
+                              <div style="width: 190px; height: 200px; text-align: center; color: #FFFFFF;">
+                                  <app-comparative-twolinear [xLabels]="lineChartLabels" [showDots]="true" [data]="lineChartdata"></app-comparative-twolinear>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="afectaciones"
+          [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+              <div class="tittle" style="width: 100%; margin: 0; padding: 0;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-8" style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 16px;">
+                          Afectaciones recientes
+                      </div>
+                      <div class="col-4 expanded" style="margin: 0; padding: 0;">
+                          <div style="float: right; width: 30px!important; padding-top: 5px; cursor: pointer;" >
+                              <mat-icon class="image-expand" style="margin: 0; padding: 0;"></mat-icon>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="filters" style="margin: 0; padding: 0; padding-top: 10px;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0; padding-left: 10px;">
+                      <div class="col-12" style="margin: 0; padding: 0; text-align: left;">
+                          Aplicar filtro:
+                      </div>
+                  </div>
+                  <div class="row" style="width: 100%; margin: 0; padding: 0; padding-left: 10px; padding-right: 10px;">
+                      <div class="col-4" style="margin: 0; padding: 0; padding-right: 5px;">
+                          <mat-form-field appearance="outline" style="width: 100%!important; font-size: 10px;">
+                              <mat-label>Servicio</mat-label>
+                              <mat-select>
+                                  <mat-option value="option">Option</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0; padding-right: 5px;">
+                          <mat-form-field appearance="outline" style="width: 100%!important; font-size: 10px;">
+                              <mat-label>Sitio</mat-label>
+                              <mat-select>
+                                  <mat-option value="option">Option</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0;">
+                          <mat-form-field appearance="outline" style="width: 100%!important; font-size: 10px;">
+                              <mat-label>24 hrs</mat-label>
+                              <mat-select>
+                                  <mat-option value="option">Option</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </div>
+                  </div>
+              </div>
+              <div class="svn-card-afectacion"
+              style="margin: 0; padding: 0; margin-left: 11px; box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+              width: 275px; height: 120px; border: 1px solid #F2F2F2; border-radius: 7px;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-7" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 500; padding-top: 10px; padding-left: 10px;">
+                          Gran Patio Pachuca
+                      </div>
+                      <div class="col-3" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px; color: #FF0D0D;">
+                          -9.12%
+                      </div>
+                      <div class="col-2" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px;">
+                          65%
+                      </div>
+                  </div>
+                  <div class="row" style="width: 100%; height: 80px; margin: 0; padding: 0;">
+                      <div class="col-8" style="margin: 0; padding: 0;">
+                          <span style="font-size: 11px; color: #A0A5A8; font-weight: 400; position: relative; left: 10px;">
+                              Alcanzabilidad
+                          </span>
+
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0; text-align: center; padding-top: 30px; margin-left: -5px;">
+                          <button mat-stroked-button>Detalle</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="svn-card-afectacion"
+              style="margin: 0; padding: 0; margin-left: 11px; box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+              width: 275px; height: 120px; border: 1px solid #F2F2F2; border-radius: 7px; margin-top: 20px;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-7" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 500; padding-top: 10px; padding-left: 10px;">
+                          Gran Patio Pachuca
+                      </div>
+                      <div class="col-3" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px; color: #FF0D0D;">
+                          -9.12%
+                      </div>
+                      <div class="col-2" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px;">
+                          65%
+                      </div>
+                  </div>
+                  <div class="row" style="width: 100%; height: 80px; margin: 0; padding: 0;">
+                      <div class="col-8" style="margin: 0; padding: 0;">
+                          <span style="font-size: 11px; color: #A0A5A8; font-weight: 400; position: relative; left: 10px;">
+                              Alcanzabilidad
+                          </span>
+
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0; text-align: center; padding-top: 30px; margin-left: -5px;">
+                          <button mat-stroked-button>Detalle</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="svn-card-afectacion"
+              style="margin: 0; padding: 0; margin-left: 11px; box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+              width: 275px; height: 120px; border: 1px solid #F2F2F2; border-radius: 7px; margin-top: 20px;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-7" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 500; padding-top: 10px; padding-left: 10px;">
+                          Gran Patio Pachuca
+                      </div>
+                      <div class="col-3" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px; color: #FF0D0D;">
+                          -9.12%
+                      </div>
+                      <div class="col-2" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px;">
+                          65%
+                      </div>
+                  </div>
+                  <div class="row" style="width: 100%; height: 80px; margin: 0; padding: 0;">
+                      <div class="col-8" style="margin: 0; padding: 0;">
+                          <span style="font-size: 11px; color: #A0A5A8; font-weight: 400; position: relative; left: 10px;">
+                              Alcanzabilidad
+                          </span>
+
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0; text-align: center; padding-top: 30px; margin-left: -5px;">
+                          <button mat-stroked-button>Detalle</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="svn-card-afectacion"
+              style="margin: 0; padding: 0; margin-left: 11px; box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+              width: 275px; height: 120px; border: 1px solid #F2F2F2; border-radius: 7px; margin-top: 20px;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-7" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 500; padding-top: 10px; padding-left: 10px;">
+                          Gran Patio Pachuca
+                      </div>
+                      <div class="col-3" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px; color: #FF0D0D;">
+                          -9.12%
+                      </div>
+                      <div class="col-2" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px;">
+                          65%
+                      </div>
+                  </div>
+                  <div class="row" style="width: 100%; height: 80px; margin: 0; padding: 0;">
+                      <div class="col-8" style="margin: 0; padding: 0;">
+                          <span style="font-size: 11px; color: #A0A5A8; font-weight: 400; position: relative; left: 10px;">
+                              Alcanzabilidad
+                          </span>
+
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0; text-align: center; padding-top: 30px; margin-left: -5px;">
+                          <button mat-stroked-button>Detalle</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="svn-card-afectacion"
+              style="margin: 0; padding: 0; margin-left: 11px; box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+              width: 275px; height: 120px; border: 1px solid #F2F2F2; border-radius: 7px; margin-top: 20px;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-7" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 500; padding-top: 10px; padding-left: 10px;">
+                          Gran Patio Pachuca
+                      </div>
+                      <div class="col-3" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px; color: #FF0D0D;">
+                          -9.12%
+                      </div>
+                      <div class="col-2" style="margin: 0; padding: 0; text-align: left; font-size: 11px; font-weight: 600; padding-top: 10px; padding-left: 10px;">
+                          65%
+                      </div>
+                  </div>
+                  <div class="row" style="width: 100%; height: 80px; margin: 0; padding: 0;">
+                      <div class="col-8" style="margin: 0; padding: 0;">
+                          <span style="font-size: 11px; color: #A0A5A8; font-weight: 400; position: relative; left: 10px;">
+                              Alcanzabilidad
+                          </span>
+
+                      </div>
+                      <div class="col-4" style="margin: 0; padding: 0; text-align: center; padding-top: 30px; margin-left: -5px;">
+                          <button mat-stroked-button>Detalle</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="servicios" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+              <div class="tittle" style="width: 100%; margin: 0; padding: 0;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-6" style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 16px;">
+                          Servicios1
+                      </div>
+                      <div class="col-6" style="margin: 0; padding: 0;">
+                          <button mat-button style="float: right;" [matMenuTriggerFor]="servicios">
+                              <mat-icon class="image-dots"></mat-icon>
+                          </button>
+                          <mat-menu #servicios="matMenu" xPosition="before">
+                              <button mat-menu-item style="font-size: 14px; font-weight: 600;" (click)="expand()">
+                                  <mat-icon class="image-expand"></mat-icon>
+                                  <span>Expandir</span>
+                              </button>
+                              <button mat-menu-item style="font-size: 14px; font-weight: 600; text-align: left;">
+                                  <mat-icon class="image-edit"></mat-icon>
+                                  <span>Editar</span>
+                              </button>
+                          </mat-menu>
+                      </div>
+                  </div>
+              </div>
+              <div class="disponibilidad" style="width: 100%; margin: 0; padding: 0;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-6 filters" style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 16px;">
+                          <div style="width: 160px; height: 38px; background-color: white; margin-top: 0px; margin-left: 10px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer;">
+                              <div class="row" style="width: 100%; margin: 0; padding: 0; margin-left: 5px;">
+                                  <div class="col-10" style="margin: 0; padding: 0; text-align: left; font-size: 13px; padding-top: 10px; padding-left: 10px;">
+                                      Disponibilidad
+                                  </div>
+                                  <div class="col-2" style="margin: 0; padding: 0; margin-left: -12px; padding-top: 9px;">
+                                      <mat-icon class="image-service-arrow" style="margin: 0; padding: 0;"></mat-icon>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-6" style="margin: 0; padding: 0; margin-top: 10px;">
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-4" style="margin: 0; padding: 0;">
+                              </div>
+                              <div class="col-8" style="margin: 0; padding: 0;">
+                                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                      <div class="col-4" style="margin: 0; padding: 0;">
+                                          <div style="width: 40px; height: 38px; background-color: white; margin-top: 0px; margin-left: 10px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer;" *ngIf="this.tablero != 1" (click)="changeTablero(1)">
+                                              <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                                  <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 13px; padding-top: 10px; font-weight: 600;">
+                                                      1H
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div style="width: 40px; height: 38px; background-color: #356AF0; color: white; margin-top: 0px; margin-left: 10px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer;" *ngIf="this.tablero == 1">
+                                              <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                                  <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 13px; padding-top: 10px; font-weight: 600;">
+                                                      1H
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-4" style="margin: 0; padding: 0;">
+                                          <div style="width: 60px; height: 38px; background-color: white; margin-top: 0px; margin-left: -5px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer;" *ngIf="this.tablero != 2" (click)="changeTablero(2)">
+                                              <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                                  <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 13px; padding-top: 10px; padding-left: 5px; font-weight: 600;">
+                                                      24H
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div style="width: 60px; height: 38px; background-color: #356AF0; color: white; margin-top: 0px; margin-left: -5px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer;" *ngIf="this.tablero == 2">
+                                              <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                                  <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 13px; padding-top: 10px; padding-left: 5px; font-weight: 600;">
+                                                      24H
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-4" style="margin: 0; padding: 0;">
+                                          <div style="width: 40px; height: 38px; background-color: white; margin-top: 0px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer;" *ngIf="this.tablero != 3" (click)="changeTablero(3)">
+                                              <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                                  <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 13px; padding-top: 10px; font-weight: 600;">
+                                                      1S
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div style="width: 40px; height: 38px; background-color: #356AF0; color: white; margin-top: 0px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer;" *ngIf="this.tablero == 3">
+                                              <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                                                  <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 13px; padding-top: 10px; font-weight: 600;">
+                                                      1S
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="boxdot" style="margin: 0; padding: 0; width: 530px; height: 300px; margin-left: 20px; margin-top: 20px;">
+                <!-- <app-ticketline [sizex]="300" [sizey]="200" [data]="datatickets" [showTips]="false" [curve]="false" [margin]="margin" [colors]="['#00CF99', '#F7B500']" [showLast]="true"></app-ticketline> -->
+
+          </div>
+          <div class="tickets" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" *ngIf="false">
+                <div class="tittle" style="width: 100%; margin: 0; padding: 0;">
+                    <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                        <div class="col-6" style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 16px;">
+                            Tickets de incidentes
+                        </div>
+                        <div class="col-6" style="margin: 0; padding: 0;">
+                            <button mat-button style="float: right;" [matMenuTriggerFor]="tickets">
+                                <mat-icon class="image-dots"></mat-icon>
+                            </button>
+                            <mat-menu #tickets="matMenu" xPosition="before">
+                                <button mat-menu-item style="font-size: 14px; font-weight: 600;">
+                                    <mat-icon class="image-expand"></mat-icon>
+                                    <span>Expandir</span>
+                                </button>
+                                <button mat-menu-item style="font-size: 14px; font-weight: 600; text-align: left;">
+                                    <mat-icon class="image-edit"></mat-icon>
+                                    <span>Editar</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </div>
+              <div class="filters" style="width: 100%; margin: 0; padding: 0;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-7" style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 16px;">
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-6" style="margin: 0; padding: 0; text-align: left; padding-left: 5px; padding-top: 10px; font-size: 12px; color: #8F92A1;">
+                                  En curso vs Resueltos
+                              </div>
+                              <div class="col-6" style="margin: 0; padding: 0; text-align: right;">
+                                  <mat-form-field appearance="outline" style="width: 80%!important; font-size: 10px;">
+                                      <mat-label>2022</mat-label>
+                                      <mat-select>
+                                          <mat-option value="option">Option</mat-option>
+                                      </mat-select>
+                                  </mat-form-field>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-5" style="margin: 0; padding: 0;">
+
+                      </div>
+                  </div>
+              </div>
+              <div class="data" style="width: 100%; margin: 0; padding: 0;">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                      <div class="col-7" style="margin: 0; padding: 0; height: 260px;">
+
+                      </div>
+                      <div class="col-5" style="margin: 0; padding: 0; height: 260px; padding-top: 10px;">
+                          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                              <div class="col-6" style="margin: 0; padding: 0;">
+                                  <div style="width: 80px; height: 80px; background-color: #ECE9FF; border-radius: 11.2px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); margin-left: 30px;">
+                                      <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 15px;">
+                                          <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 18px; color: #51459E; font-weight: 600;">
+                                              560
+                                          </div>
+                                      </div>
+                                      <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 15px;">
+                                          <div class="col-5" style="margin: 0; padding: 0; margin-top: -7px; padding-left: 8px;">
+                                              <mat-icon class="image-ticket-ico1"></mat-icon>
+                                          </div>
+                                          <div class="col-7" style="margin: 0; padding: 0; font-size: 8px!important; line-height: 10px; font-weight: 600;">
+                                              En curso
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-6" style="margin: 0; padding: 0;">
+                                  <div style="width: 80px; height: 80px; background-color: #E8FCFF; border-radius: 11.2px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); margin-left: 10px;">
+                                      <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 15px;">
+                                          <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 18px; color: #84E8F4; font-weight: 600;">
+                                              345
+                                          </div>
+                                      </div>
+                                      <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 15px;">
+                                          <div class="col-5" style="margin: 0; padding: 0; margin-top: -7px; padding-left: 8px;">
+                                              <mat-icon class="image-ticket-ico2"></mat-icon>
+                                          </div>
+                                          <div class="col-7" style="margin: 0; padding: 0; font-size: 8px!important; line-height: 10px; font-weight: 600;">
+                                              Resueltos
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 30px;">
+                              <app-simple-bar color="#F9A400" [max]="100" [value]="53" titulo="Pendientes por el cliente"></app-simple-bar>
+                          </div>
+                          <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 10px;">
+                              <app-simple-bar color="#697181" [max]="100" [value]="21" titulo="Cerrados"></app-simple-bar>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+

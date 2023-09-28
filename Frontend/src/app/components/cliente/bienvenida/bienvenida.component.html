@@ -1,0 +1,112 @@
+<div class="welcome-container">
+    <div class="principal">
+        <alert></alert>
+        <div class="pr1" style="color: #7B8AA0">
+            <p style="padding-bottom: 10px;"><span class="bienvenida">BIENVENIDO,</span></p>
+            <p>Elige una de las siguientes opciones y disfruta <br> 
+            de todos los beneficios que tenemos para ti.</p>
+        </div>
+        <div class="boxes-container">
+            <div class="card-function">
+                <div class="card-function-main">
+                    <div class="card-function-image image-tutorial"></div>
+                    <div class="card-main-tittle">Ver tutorial</div>
+                    <!-- <button class="btn-totalplay card-function-btn" (click)="openVideoModal()" style="height: 45px; font-size: 14px; line-height: 25px; margin-top: 0px;">Ver</button>-->
+                    <button class="btn-totalplay card-function-btn" style="height: 45px; font-size: 14px; line-height: 25px; margin-top: 0px;">Ver</button>
+                </div>
+            </div>
+            <div class="card-function">
+                <div class="card-function-main">
+                    <div class="card-function-image image-iniciar-smc"></div>
+                    <div class="card-main-tittle">Iniciar en el SMC</div>
+                    <button class="btn-totalplay card-function-btn" (click)="mostrarEspecificacione ? goToPerfil() : goToDashboards()" style="height: 45px; font-size: 14px; line-height: 25px; margin-top: 0px;">Comenzar</button>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="side" *ngIf="mostrarEspecificacione">
+        <div style="min-height: 100%;">
+            <div class="renovacion">
+                <div class="row" style="margin: 0; padding: 0;">
+                    <div class="col-sm-6 resumen" style="padding: 30px 20px 0px; text-align: left; font-size: 15px;">
+                        <span>RESUMEN</span><br>
+                    </div>
+                    <div class="col-sm-6" style="padding: 20px;">
+                        Siguiente renovación <br> <b style="font-size: 13px;"> {{resumen ? (resumen.renovacion | date: 'dd/MM/yyyy') : 'Sin información'}}</b>
+                    </div>
+                </div>   
+                <div style="background-color: #E6EDF6;  margin-left: 20px; margin-right: 20px; text-align: left; padding: 10px;">
+                    <div class="row" style="margin: 0; padding: 0;">
+                        <div class="col-sm-6" style="padding: 20px;">
+                            <span>No. de Contrato</span><br>
+                            <p><span><b>{{resumen ? (resumen.noContrato) : 'Sin información'}}</b></span></p>
+                        </div>
+                        <div class="col-sm-6" style="padding: 20px;">
+                            <span>Suscripci&oacute;n</span><br>
+                            <p><span><b>{{resumen ? (resumen?.paquete?.descripcion) : 'Sin información'}}</b></span></p>
+                            <span>Pago mensual x 1 año</span><br>
+                        </div>
+                    </div>    
+                </div>
+                <div class="beneficios">
+                    <div class="general-text" style="padding-left: 20px;">            
+                        <span>Beneficios</span>                
+                    </div>
+                    <div class="general-text" style="padding-left: 20px;">   
+                        <ng-container *ngIf="resumen">
+                            <div class="row" style="margin: 0; padding: 0; max-width: 100%;">
+                                <div class="col-sm-4" style="margin: 0; padding: 0px 10px 10px; font-size: 11px;" *ngFor="let beneficio of resumen.beneficios">
+                                    <mat-icon class="image-benefits"></mat-icon>
+                                    <span>{{beneficio}}</span>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-secondary" *ngIf="!mostrarEspecificacione">
+        <div style="min-height: 100%;">
+            <div class="renovacion">
+                <div class="beneficios">
+                    <div class="general-text" style="font-weight: 400; font-size: 22px; text-transform: uppercase; color: #1D2640;padding-left: 20px;">            
+                        <span>Beneficios</span>                
+                    </div>
+                    <div class="general-text" style="padding-left: 20px; max-height: 100%; margin-top: 20px;">   
+                        <ng-container *ngIf="resumen">
+                            <div class="row" style="margin: 0; padding: 0; max-width: 100%;">
+                                <div class="col-sm-4 row" style="margin: 0; padding: 10px; font-size: 11px; padding-top: 0;" *ngFor="let beneficio of resumen.beneficios">
+                                    <div class="col-3" style="padding: 0;">
+                                        <mat-icon class="image-benefits" style="background-size: 15px 15px; width: 16px !important; height: 16px !important;"></mat-icon>
+                                    </div>
+                                    <div class="col-9" style="padding: 0;">
+                                        <span style="font-weight: 400; font-size: 12px;">{{beneficio}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal alerta -->
+<div class="modal hide-modal" #videoModal>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: white; height: 30px; border-bottom: 0;">
+                <button mat-icon-button style="position: absolute; right: 15px; top: 5px; z-index: 400; color: white;" (click)="closeAlertaModal()">
+                    <mat-icon>
+                        close
+                    </mat-icon>
+                </button>              
+            </div>
+            <div class="modal-body row" style="width: 100%; padding: 5px!important; margin-top: -30px 0px 0px;">
+                <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/1ozGKlOzEVc" frameborder="0" allowfullscreen></iframe> -->
+            </div>
+        </div>
+    </div>
+</div>

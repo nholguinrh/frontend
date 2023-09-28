@@ -1,0 +1,7 @@
+::ng-deep .dark-menu-theme {
+    background: #22273d;
+}
+
+::ng-deep .menu-theme {
+    background: white;
+}

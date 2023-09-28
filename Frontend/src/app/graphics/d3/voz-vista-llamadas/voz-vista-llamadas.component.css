@@ -1,0 +1,91 @@
+.cuadro-llamadas{
+  border-radius: 11.2px;
+  text-align: center;
+  color: #0B112A;
+  width: 75px;
+  height: 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  margin-right: 14px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cuadro-llamadas-full{
+  width: 115px;
+  height: 70px;
+  margin-right: 20px;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-inner {
+  top: 12px !important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-start-wrapper {
+  position: static !important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-inner{
+  font-size: 12px !important;
+  margin-top: 8px !important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-separator{
+  margin-top: 6px !important;
+}
+::ng-deep .select-monitoreo-voz .mat-form-field-appearance-outline .mat-form-field-infix {
+  margin-top: -18px!important;
+  font-size: 12px!important;
+  font-weight: 600!important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-select-arrow {
+  border: 0;
+}
+
+::ng-deep .select-monitoreo-voz .mat-form-field-suffix {
+  top: 0.75em !important;
+}
+
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-appearance-outline .mat-form-field-outline {
+  background: #F8FDFF;
+  opacity: 0.05;
+  border-radius: 7px;
+  color: #D0D0CE !important
+}
+
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-flex:hover .mat-form-field-outline-thick {
+  opacity: 0.1 !important;
+}
+
+::ng-deep .mat-select-panel:has(.dark-theme){
+  background: #22273d;
+}
+
+
+::ng-deep .mat-select-panel:has(.dark-theme) .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: rgba(255, 255, 255, 0.12);
+}
+::ng-deep  .mat-primary:has(.dark-theme) .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #7b8aa0;
+}
+
+::ng-deep .mat-select-panel:has(.dark-theme) .mat-option{
+  color: #D0D0CE;
+}
+
+::ng-deep .mat-menu-panel:has(.dark-theme),
+::ng-deep .mat-menu-panel:has(.dark-theme) {
+  background: #22273d;
+}
+
+.img-calendar{
+  background-image: url("src\assets\img\calendar-voz.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}

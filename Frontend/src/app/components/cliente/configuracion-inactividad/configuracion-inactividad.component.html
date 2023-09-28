@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-4 cuadro-izquierdo">
+    <div class="row">
+      <div class="col-12" style="height: 10vh;"></div>
+      <div class="col-12" style="height: 10vh;">
+        <span style="font-weight: 600; font-size: 42px; color: #0B112A;">
+          Configuración
+        </span>
+      </div>
+      <div class="col-12" style="height: 10vh;">
+        <span style="font-weight: 600; font-size: 24px; color: #0B112A;">
+          <mat-icon class="img-user"></mat-icon>
+          Preferencias de la cuenta
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-8" style="padding-top: 50px;">
+    <div class="cliente-container">
+      <div class="row cuadro-central">
+        <div class="col-12">
+          <div style="font-weight: 600; font-size: 24px; color: #0B112A; margin-bottom: 15px;">
+            Opciones de sesión
+          </div>
+          <br>
+          <div style="font-weight: 400; font-size: 16px; color: #7B8AA0; margin-bottom: 30px;">
+            Las opciones de sesión te ayudan a personalizar tu experiencia de monitoreo dentro del SMC, puedes
+            <br>
+            configurar tu tipo de cierre de sesión seleccionando una opción.
+          </div>
+        </div>
+        
+        <mat-divider></mat-divider>
+        <div class="col-12">
+          <div style="font-weight: 600; font-size: 24px; color: #3B4559;  margin-top: 15px;">
+            Cierre de Sesión
+          </div>
+        </div>
+        <div class="col-12" style="margin-top: 15px;">
+          <mat-radio-group [(ngModel)]="labelPosition">
+            <ul style="margin: 1rem 0px;">
+              <mat-radio-button class="configuracion-radio" value="1" (click)="incatividad(1)">
+                Monitoreo constante (No hay cierre de sesión automático)
+              </mat-radio-button>
+            </ul>
+            <ul style="margin: 1rem 0px;">
+              <mat-radio-button class="configuracion-radio" value="2" (click)="incatividad(2)">
+                Monitoreo estándar (Existe un cierre de sesión por inactividad después de 30 min)
+              </mat-radio-button>
+            </ul>
+          </mat-radio-group>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

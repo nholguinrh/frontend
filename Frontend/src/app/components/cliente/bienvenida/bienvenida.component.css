@@ -1,0 +1,244 @@
+.welcome-container{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40vw;
+    flex-wrap: wrap;
+}
+
+.welcome-container .box{
+    width: 100%;
+}
+
+.principal{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* background-color: #FFFFFF; */
+    padding: 0;
+    margin: 0;
+}
+
+.principal div {
+    width: 100%;    
+    height: 30%;
+}
+
+.principal p {
+    margin: 0;
+    padding: 0;
+}
+
+.pr1{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.boxes-container{
+    min-height: 400px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;    
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: -50px;
+}
+
+.boxes-container div{
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    height: 70%;
+}
+
+.card-function{
+    text-align: center;
+    min-height: 250px;
+    max-height: 350px;
+    max-width: 350px!important;
+    /* min-width: 210px; */
+    padding: 10px;
+}
+
+.card-function-main{
+    background-color: white;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+    min-width: 90%;
+    min-height: 100%;
+    border-radius: 4px;
+}
+
+.card-function-image{
+    position: relative;
+    top: 0;
+    min-width: 100%;
+    /* background-color: green; */
+    margin: auto;
+    max-height: 50%;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.card-main-tittle{
+    position: relative;
+    top: 10%;
+    min-width: 100%;
+    margin: auto;
+    max-height: 10%;
+    font-weight: 600;
+    font-size: .9rem;    
+    margin-bottom: 40px;
+}
+
+.card-function-btn{
+    margin-top: 10px;
+    width: 60%;
+}
+
+.bienvenida{
+    font-size: 25px;
+    font-weight: 500;
+    color: #E6EDF6;
+}
+
+.side{
+    flex-grow: 1;
+    min-height: 380px;
+    max-height: 450px;
+    max-width: 520px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+
+.side-secondary{
+    margin-top: 100px;
+    flex-grow: 1;
+    min-height: 100px;
+    max-height: 220px;
+    max-width: 520px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+
+
+.renovacion{
+    height: 50px;
+    text-align: right;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.general-text{    
+    text-align: left;
+    padding: 10px;
+    font-weight: 300;
+    margin: 0;
+    overflow: hidden;
+    word-wrap: break-word;
+    max-height: 95px;
+}
+
+.beneficios{
+    max-height: 250px!important;
+}
+
+.general-text p{    
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+.general-text li{    
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+@media(max-width: 1100px){
+    .principal{
+        width: 500px;
+    }
+}
+
+@media(max-width: 900px){
+    .welcome-container{
+        align-content: center;
+        justify-content: space-between;
+        min-height:unset!important;
+        margin: 0;
+        padding: 0;
+    }
+    .side{
+        flex: 0 0 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .side-secondary{
+        flex: 0 0 100%;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .boxes-container div{
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .card-function{
+        margin-bottom: 20px;
+    }
+
+    .card-function-image{
+        width: 50%;
+        margin: auto;
+    }
+
+    .pr1{
+        margin-top: 0;
+    }
+
+    .principal{
+        min-width: fit-content;
+        max-width: fit-content;
+    }
+}
+
+@media(max-width: 574px){
+    .resumen{
+        display: none;
+    }
+
+    .side{
+        min-height: 500px;
+    }
+
+    .side-secondary{
+        min-height: 300px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .welcome-container{
+        max-width: 100%!important;
+        margin: auto;
+    }
+}

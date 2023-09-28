@@ -1,0 +1,109 @@
+<div style="margin-top: -10%;">
+  <smc-stteper [initial]="initialStep" [steps]="steps"></smc-stteper>
+<div class="d-flex justify-content-center">
+  <mat-card class="totalplay-card margin-top">
+    <mat-card-content class="totalplay-card-container">
+      <div class="img-preload" *ngIf="!imgLoad">&nbsp;</div>
+      <img mat-card-image (load)="loadImage()" [hidden]="imgLoad === false" alt="Onboarding"
+      src="assets/img/paso3.png" style="border-radius: 3px 0px 0px 3px;">
+      <div class="totalplay-card-content">
+        <mat-card class="card-content">
+          <mat-card-title class="text-left mt-2" style="width: 120%; font-size: 22px;">
+            {{ title }}
+          </mat-card-title>
+          <mat-card-subtitle class="text-left mt-2" style="font-size: 15px;">
+            Introduce una contraseña para sustituir la anterior
+          </mat-card-subtitle>
+          <mat-card-content class="mt-4">
+            <form [formGroup]="form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-12" style="margin-top: -10px;">
+                  <mat-form-field appearance="outline" style="width:100%;" (keydown.enter)="$event.preventDefault()"  (keydown.enter)="enterPassword()">
+                    <mat-icon matPrefix class="ico-password"></mat-icon>
+                    <mat-label>Contraseña</mat-label>
+                    <input (paste)="paste($event)" (keypress)="blockSpace($event);" 
+                    matInput formControlName="password" id="password" name="password" maxlength="40"
+                    [type]="hideMainPassword ? 'password' : 'text'" #password="matInput" style="font-size: 15px!important;"/>
+                    <button mat-icon-button for="password" matSuffix (click)="hideMainPassword = !hideMainPassword" [autofocus]="false">
+                      <mat-icon>{{ hideMainPassword ? "visibility_off" : "visibility" }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="!form.controls['password'].valid && form.controls['password'].touched">
+                      {{ getErrorPassword() }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-12 fields-container" style="margin-top: 10px;">
+                  <mat-form-field appearance="outline" style="width:100%;">
+                    <mat-icon matPrefix class="ico-password"></mat-icon>
+                    <mat-label>Confirmar contraseña</mat-label>
+                    <input (paste)="paste($event)" (keypress)="blockSpace($event);" 
+                    formControlName="confirmPassword" matInput id="confirmPassword" name="confirmPassword" maxlength="40"
+                    [type]="hideConfPassword ? 'password' : 'text'" (keydown.enter)="$event.preventDefault()" (keydown.enter)="enterConfirm()" #confirmPassword="matInput"
+                    style="font-size: 15px!important;"/>
+                    <button mat-icon-button for="confirmPassword" matSuffix (click)="hideConfPassword = !hideConfPassword" [autofocus]="false">
+                      <mat-icon>{{ hideConfPassword ? "visibility_off" : "visibility" }}</mat-icon>
+                    </button>
+                    <mat-error
+                      *ngIf="!form.controls['confirmPassword'].valid && form.controls['confirmPassword'].touched">
+                      {{ getErrorPasswordConf() }}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row mt-2 d-flex justify-content-center mb-3">
+                <div class="col-md-7 d-flex align-items-end">
+                  
+                </div>
+                <div class="col-md-5 d-flex justify-content-end">
+                  <button class="btn-totalplay"
+                    id="btnsend" style="height: 45px; font-size: 14px; line-height: 25px;"    
+                    (click)="send()"
+                    [disabled]="!form.valid">
+                    Continuar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+</div>
+
+<!-- Modal alerta -->
+<div class="modal hide-modal" #alertaModal>
+  <div class="modal-dialog modal-dialog-centered modal800">
+      <div class="modal-content" style="min-height:  200px; min-width: 350px;">
+          <div class="modal-header" style="background-color: white; height: 50px; border-bottom: 0;">
+            <button mat-icon-button style="position: absolute; right: 10px;" (click)="closeAlertaModal()">
+              <mat-icon>
+                  close
+              </mat-icon>
+            </button>    
+            <div style="position: absolute; left: 25px; top: 20px; background-color: #81D871; border-radius: 5px; width: 30px; padding-left: 4px; padding-top: 3px; height: 30px;" disabled>
+              <mat-icon class="image-check"></mat-icon>
+            </div>       
+          </div>
+          <div class="modal-body row" style="padding-top: 10px; text-align: left; width: 100%; margin: 0;">
+              <div>
+                <span style="font-weight: 800; font-size: 15px;">Contraseña actualizada</span>
+              </div>
+              <div>
+                <span style="font-weight: 600; color: rgb(90, 90, 90);">¡Recuerda!</span>, <span>tu nueva contraseña te permitirá accesar cuando lo necesites.</span>                
+            </div>
+            <div style="width: 100%;">
+              <div style="width: 100px; float: right; ">
+                <button class="btn-totalplay" (click)="closeAlertaModal()" style="border-radius: 0px; font-size: 13px;">Entendido</button>
+              </div>
+            </div>            
+          </div>
+      </div>
+  </div>
+</div>

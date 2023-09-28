@@ -1,0 +1,170 @@
+<div class="massive-notification">
+    <mat-dialog-content>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                <div class="col-6"  style="margin: 0; padding: 0;">
+                    <div style="font-size: 15px; font-weight: 600; margin-top: 10px;">Enviar notificación</div>
+                </div>
+                <div class="col-6">
+                    <button mat-flat-button style="float: right; position: relative; top: -10px; right: -12px; width: 10px!important;  min-width: unset!important;" (click)="closeDialog()">
+                        <mat-icon style="margin-left: -12px!important; margin-top: 6px;">
+                            close
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container disable-scrollbars" style="width: 100%; margin: 0; padding: 0; min-height: 100px; max-height: 360px; overflow-y: scroll;">
+            <form [formGroup]="form" style="margin: 0; padding: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;"
+            [ngStyle]="{'margin-top': (form.get('clientes').value == null && selectedClients.length == 0) || (form.get('clientes').value == '' && selectedClients.length == 0) ? '0px':'40px'}"  >
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <div style="position: relative; top: 55px; left: 420px; width: fit-content; font-size: 12px; color:#7B8AA0; text-decoration: underline; cursor: pointer; z-index: 4;" 
+                    *ngIf="(form.get('clientes').value == null && selectedClients.length == 0) || (form.get('clientes').value == '' && selectedClients.length == 0)"
+                    (click)="agregaTodos()">Todos</div>
+                    <div style="position: relative; top: 35px; left: 470px; width: fit-content; font-size: 12px; color:#7B8AA0; text-decoration: underline; cursor: pointer; z-index: 4;" 
+                    *ngIf="(form.get('clientes').value == null && selectedClients.length == 0) || (form.get('clientes').value == '' && selectedClients.length == 0)"
+                    (click)="agregaFavoritos()">Favoritos</div>
+                    <mat-form-field appearance="outline" style="width: 100%; font-size: 12px; min-height: 80px;">
+                        <mat-label>CLIENTES</mat-label>
+                        <mat-chip-list #clientesList aria-label="Fruit selection">
+                            <div  *ngIf="todos == false && favoritos == false">
+                                <ng-container *ngFor="let c of selectedClients">
+                                    <mat-chip *ngIf="c.indicadorFavorito != 0 || c.indicadorFavorito != null" style="font-size: 12px!important;"
+                                (removed)="remove(c)" >
+                                {{c.razonSocial}}
+                                <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                                </button>
+                                </mat-chip>
+                                </ng-container>
+                            </div>
+                            <div *ngIf="todos == true">
+                                <mat-chip style="font-size: 12px!important;" 
+                                (removed)="removeAll()">
+                                {{todosName[0].nombre}}
+                                <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                                </button>
+                                </mat-chip>
+                            </div>
+                            <div *ngIf="favoritos == true">
+                                <mat-chip style="font-size: 12px!important;"
+                                (removed)="removeAll()" >
+                                {{favoritosName[0].nombre}}
+                                <button matChipRemove>
+                                <mat-icon>cancel</mat-icon>
+                                </button>
+                                </mat-chip>
+                            </div>
+                            <input matInput formControlName="clientes" #clientsInput
+                            style="font-weight: 400; font-size: 12px!important;" 
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            [matChipInputFor]="clientesList" [matAutocomplete]="auto"
+                            (matChipInputTokenEnd)="add($event)" 
+                            (keydown.Enter)="$event.stopPropagation()"/>
+                            
+                            <mat-autocomplete #auto="matAutocomplete" (keydown.Enter)="$event.stopPropagation()" style="overflow-y: scroll!important;">
+                                <ng-container *ngIf="this.form.controls['clientes'].value?.length > 0">
+                                    <mat-option *ngFor="let client of filteredClients | async" [value]="client"
+                                    (onSelectionChange)="selected(client)" style="font-size: 12px!important;"
+                                    [disabled]="disabledOption(client)"
+                                    [ngClass]="disabledOption(client) ? 'option-selected-chip':'option-not-selected-chip'">
+                                    {{client.razonSocial}}
+                                    <mat-icon class="img-chip-selected" style="margin-top: 12px; width: 25px; height: 25px; float: right; margin-right: 0; padding-right: 0;" *ngIf="disabledOption(client)"></mat-icon>
+                                    </mat-option>
+                                </ng-container>
+                            </mat-autocomplete>
+                            
+                        </mat-chip-list>
+                    </mat-form-field>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 0px;">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <mat-form-field appearance="outline" style="width: 100%; font-size: 12px; min-height: 80px;">
+                        <mat-label>TÍTULO DE LA NOTIFICACIÓN</mat-label>
+                        <input matInput formControlName="titulo" id="titulo" name="titulo" maxlength="60" style="font-weight: 400;
+                        font-size: 12px!important;"/>
+                        <mat-error *ngIf="!form.controls['titulo'].valid && form.controls['titulo'].touched">
+                            {{ 'Este campo es requerido' }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 0px;">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                        <mat-label>ESCRIBE UN MENSAJE</mat-label>
+                        <textarea matInput formControlName="mensaje" id="mensaje" name="mensaje" maxlength="1000" style="min-height: 100px; resize: none;"></textarea>
+                        <mat-error *ngIf="!form.controls['mensaje'].valid && form.controls['mensaje'].touched">
+                            {{ 'Este campo es requerido' }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            </form>
+        </div>
+        
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; margin-top: 10px; padding-right: 20px;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                
+                    
+                    <div class="col-6"  style="margin: 0; padding: 0;">
+                    </div>
+                    
+                    <div class="col-6"  style="margin: 0; padding: 0;">
+                        <div class="row">
+                            <div class="col-6"  style="margin: 0; padding: 0;">
+                                <button type="button" style="height: 45px; font-size: 14px; line-height: 25px;"
+                                class="btn-totalplay-secondary"
+                                (click)="closeDialog()">
+                                Cancelar
+                        </button>
+                            </div>
+                            <div class="col-6"  style="margin: 0; padding: 0;">
+                               <!--  <button type="button" [disabled]="this.selectedClients.length == 0 ||
+                                    this.form.controls['titulo'].invalid ||
+                                    this.form.controls['mensaje'].invalid"
+                                    class="btn-totalplay"
+                                    style="float: right; width: 150px; height: 45px; font-size: 14px; line-height: 25px;"
+                                    (click)="confirmDialog()">
+                                    Enviar
+                                </button> -->
+
+                                <button class="btn-totalplay" (click)="enviarNotificacion()"
+                                    style="width: 100px; height: 45px; font-size: 14px; line-height: 25px; margin-left: 10px;">
+                                    Enviar
+                                </button>
+                                <!-- <button mat-icon-button [matMenuTriggerFor]="menu"
+                                    class="btn-totalplay"
+                                    style="float: right; width: 150px; height: 45px; font-size: 14px; line-height: 25px;">
+                                    Enviar
+                                    <mat-icon class="image-send-massive-notification"></mat-icon>
+                                </button> -->
+                                <button mat-icon-button [matMenuTriggerFor]="menu" class="btn-totalplay"
+                                style="width: 24px; height: 45px; font-size: 14px; line-height: 25px;">
+                                    <mat-icon class="image-service-arrow"></mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item (click)="notificacionGeneral()">
+                                        <mat-icon>history</mat-icon>
+                                      <span>Notificar Actualización</span>
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</div>

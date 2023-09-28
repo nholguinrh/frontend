@@ -1,0 +1,242 @@
+<alert></alert>
+<div class="cliente-servicio-container" style="margin-top: 30px;">
+  <div class="row w100m0p0">
+      <div class="col-1" style="margin: 0; padding: 0;">
+          <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goToBack()"></div>
+      </div>
+      <div class="col-5">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 21px; font-weight: 400;">
+                Búsqueda personalizada
+              </div>
+          </div>
+      </div>
+      <div class="col-5" style="text-align: right; font-weight: 600;"></div>
+      <div class="col-1"></div>
+  </div>
+</div>
+<div class="home-container" style="margin-top: 30px;">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="background-color: #FFFFFF; min-height: 350px;">
+        <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="row" style="margin-top: 20px; display: flex;     align-items: center;">
+            <div class="col-6" style="font-weight: 500; font-size: 14px; color: #3B4559; padding-bottom: 1.34375em;">
+              Se encontraron {{ listaResultadoContador }} resultados
+            </div>
+            <div class="col-2" >
+              <!--
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                  <mat-label>Ordenar por</mat-label>
+                  <mat-select id="sector" name="sector">
+                    <mat-option value="Afectaciones más recientes">
+                      <mat-icon class="img-dispositivo-afectaciones"></mat-icon>
+                      Afectaciones más recientes
+                    </mat-option>
+                    <mat-option value="Enlaces">
+                      <mat-icon class="img-dispositivo-enlace"></mat-icon>
+                      Enlaces
+                    </mat-option>
+                    <mat-option value="Sitios">
+                      <mat-icon class="img-dispositivo-sitio"></mat-icon>
+                        Sitios
+                    </mat-option>
+                    <mat-option value="Servicios">
+                      <mat-icon class="img-dispositivo-servicio"></mat-icon>
+                        Servicios
+                    </mat-option>
+                    <mat-option value="Rendimiento más bajo">
+                      <mat-icon class="img-dispositivo-rendimiento-bajo"></mat-icon>
+                      Rendimiento más bajo
+                    </mat-option>
+                    <mat-option value="Rendimiento más alto">
+                      <mat-icon class="img-dispositivo-rendimiento-alto"></mat-icon>
+                      Rendimiento más alto
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              -->
+            </div>
+            <div class="col-1"></div>
+            <div class="col-3" style="padding: 0 20px;">
+              <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                  <mat-label>Buscar</mat-label>
+                  <input matInput formControlName="busqueda" (keyup)="onKeyDownEvent($event)"/>
+                  <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important;"></mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+        <ng-container *ngIf="!spinnerLoading">
+          <div class="row busqueda-personalizada disable-scrollbars" style="margin-left: 0; min-height: 600px; overflow: scroll;" *ngIf="listaResultado?.length> 0">
+            <!--
+              <div class="col-3" style="margin: 10px 0;" *ngFor="let card of listaResultado">
+                <div class="cuadro-servicio">
+                  <div class="row">
+                    <div class="col-1" style="padding: 0;"><mat-icon [ngClass]="iconoDispositivo(card.tipo)" class=""></mat-icon></div>
+                    <div class="col-10" style="font-weight: 700; font-size: 13px; color: #3B4559;">
+                      {{ card.sitio | slice:0:23 }} <ng-container *ngIf="card.sitio?.length > 23">...</ng-container>
+                    </div>
+                    <div class="col-1" style="padding: 0; cursor: pointer" (click)="openDialogDispositivo(card)">
+                        <mat-icon class="img-servicio-expand"></mat-icon>
+                    </div>
+                  </div>
+                  <div class="row py-3">
+                    <div class="col-12 d-flex justify-content-center" style="font-weight: 400; font-size: 11px; color: #000000;">
+                      <mat-icon class="img-servicio-paginator" style="transform: rotate(180deg); cursor: pointer;" (click)="cambiarMetrica(card, 'back')"></mat-icon>
+                      <span style="width: 115px; text-align: center;"> {{card.metricaSelecionada.metrica}} </span>
+                      <mat-icon class="img-servicio-paginator" style="cursor: pointer;" (click)="cambiarMetrica(card, 'next')"></mat-icon>
+                    </div>
+                  </div>
+                  <div class="row justify-content-md-center">
+                    <div class="col-4" style="font-weight: 600; font-size: 15px; color: #FF0D0D;">
+                      <mat-icon class="img-servicio-arrow"></mat-icon>
+                      {{ card.metricaSelecionada.porcentajeAyer }}
+                      <br>
+                      <span  style="font-weight: 500; font-size: 9px; color: #9399B2; margin-left: 10px;">Ayer</span >
+                    </div>
+                    <div class="col-4" style="font-weight: 600; font-size: 15px; color: #000000;">
+                      {{ card.metricaSelecionada.porcentajeActual }}
+                      <br>
+                      <span  style="font-weight: 500; font-size: 9px; color: #9399B2;">Actual</span >
+                    </div>
+                    <div class="col-4" style="font-weight: 600; font-size: 15px; color: #000000;">
+                      {{ card.metricaSelecionada.porcentajeSla }}
+                      <br>
+                      <span  style="font-weight: 500; font-size: 9px; color: #9399B2;">SLA</span >
+                    </div>
+    
+                  </div>
+                  <div class="row" style="display: flex; align-items: center; text-align: center;" *ngIf="card.metricaSelecionada" >
+                    <app-line-graph *ngIf="card.metricaSelecionada.idMetrica == 1" [color]="card.linegraph[0].color" [data]="card.metricaSelecionada" [sizex]="width > 1440 ? 380 : 260" [sizey]="width > 1440 ? 220 : 160 "></app-line-graph>
+                    <app-line-graph *ngIf="card.metricaSelecionada.idMetrica == 2" [color]="card.linegraph[1].color" [data]="card.metricaSelecionada" [sizex]="width > 1440 ? 380 : 260" [sizey]="width > 1440 ? 220 : 160 "></app-line-graph>
+                    <app-line-graph *ngIf="card.metricaSelecionada.idMetrica == 3" [color]="card.linegraph[2].color" [data]="card.metricaSelecionada" [sizex]="width > 1440 ? 380 : 260" [sizey]="width > 1440 ? 220 : 160 "></app-line-graph>
+                    <app-line-graph *ngIf="card.metricaSelecionada.idMetrica == 4" [color]="card.linegraph[3].color" [data]="card.metricaSelecionada" [sizex]="width > 1440 ? 380 : 260" [sizey]="width > 1440 ? 220 : 160 "></app-line-graph>
+                    <app-line-graph *ngIf="card.metricaSelecionada.idMetrica == 5" [color]="card.linegraph[4].color" [data]="card.metricaSelecionada" [sizex]="width > 1440 ? 380 : 260" [sizey]="width > 1440 ? 220 : 160 "></app-line-graph>
+                  </div>
+                  <div class="row d-flex">
+                    <div class="col-8 texto-ticket">
+                      <mat-icon class="img-servicio-ticket"></mat-icon>
+                      <span style="text-decoration-line: underline; margin: 5px; cursor: pointer;" (click)="card.ticketEstatus ? detalleIncidente(card) : ''">{{ card.ticketEstatus ? card.ticketNumero : ''}}</span>
+                    </div>
+                    <div class="col-2" style="padding: 0;">
+                      <button  mat-button (click)="detalleHistorico(card)" style="padding: 0; display: flex; justify-content: center; min-width: 0;" matTooltip="Histórico">
+                        <mat-icon class="img-servicio-historico"></mat-icon>
+                      </button>
+                    </div>
+                    <div class="col-2" style="padding: 0;">
+                      <button matTooltip="Métricas" mat-button (click)="detalleMetrica(card)" style="padding: 0; display: flex; justify-content: center; min-width: 0;" >
+                        <mat-icon class="img-servicio-metrica"></mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            -->
+  
+            <div class="col-3" style="margin: 10px 0; padding: 0 20px;" *ngFor="let card of listaResultado">
+              <div class="cuadro-servicio">
+                <div class="row">
+                  <div class="col-1" style="padding: 0;">
+                    <mat-icon [ngClass]="card.tipo == 'sitio' ? 'img-dispositivo-sitio' : card.tipo == 'enlace' ? 'img-dispositivo-enlace' : 'img-dispositivo-servicio'" class=""></mat-icon>
+                  </div>
+                  <ng-container *ngIf="!card?.aliasDispositivo">
+                    <div class="col-11" style="font-weight: 700; font-size: 13px; color: #3B4559">
+                      <p style="margin-top: -10px;" *ngIf="widths > 1440">
+                        {{ card?.sitio  | slice:0:30}}
+                      </p>
+                      <p style="margin-top: -10px;" *ngIf="1440 >= widths">
+                        {{ card?.sitio  | slice:0:25}}
+                      </p>
+                      <p style="margin-top: -10px;margin-bottom: -10px;" *ngIf="widths > 1440">
+                        {{ card?.sitio  | slice:30:60}} {{ card?.sitio.length > 60 ? '...' : ''}}
+                      </p>
+                      <p style="margin-top: -10px;margin-bottom: -10px;" *ngIf="1440 >= widths">
+                        {{ card?.sitio  | slice:25:40}} {{ card?.sitio.length > 40 ? '...' : ''}}
+                      </p>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="card?.aliasDispositivo">
+                    <div class="col-11" style="font-weight: 700; font-size: 13px; color: #3B4559">
+                      <p style="margin-top: -10px;" *ngIf="widths > 1440">
+                        {{ card?.aliasDispositivo  | slice:0:30}}
+                      </p>
+                      <p style="margin-top: -10px;" *ngIf="1440 >= widths">
+                        {{ card?.aliasDispositivo  | slice:0:25}}
+                      </p>
+                      <p style="margin-top: -10px;margin-bottom: -10px;" *ngIf="widths > 1440">
+                        {{ card?.aliasDispositivo  | slice:30:60}} {{ card?.aliasDispositivo.length > 60 ? '...' : ''}}
+                      </p>
+                      <p style="margin-top: -10px;margin-bottom: -10px;" *ngIf="1440 >= widths">
+                        {{ card?.aliasDispositivo  | slice:25:40}} {{ card?.aliasDispositivo.length > 40 ? '...' : ''}}
+                      </p>
+                    </div>
+                  </ng-container>
+                </div>
+                <hr>
+                <div class="row">
+                </div>
+                <div fxLayout="row" style="font-size: 12px; color: #3B4559; display: flex; align-items: center; justify-content: space-between;"> 
+                  <div class="col-12" style="padding-top: 5px;">
+                      <b>TIPO:</b> {{ card?.tipoDispositivo == 'P' ? 'Sitio' : card?.tipoDispositivo == 'I' ? 'Servicio' : 'Enlace'}}
+                  </div>
+                </div>
+                <div fxLayout="row" style="font-size: 12px; color: #3B4559; display: flex; align-items: center; justify-content: space-between;"> 
+                  <div class="col-12" style="padding-top: 10px;">
+                      <b>IP/NS:</b> {{ card?.ipSitio }}
+                  </div>
+                </div>
+                <div fxLayout="row" style="font-size: 12px; margin-top: 20px; margin-bottom: 10px; color: #3B4559; display: flex; align-items: center; justify-content: space-between;">   
+                  <ng-container *ngIf="false">
+                    <div class="col-4 texto-ticket">
+                      <mat-icon class="img-servicio-ticket"></mat-icon>
+                      <span style="text-decoration-line: underline; margin: 5px; cursor: pointer;" (click)="card.ticketEstatus ? detalleIncidente(card) : ''">{{ card.ticketEstatus ? card.ticketNumero : ''}}</span>
+                    </div>
+                    <div class="col-2 texto-ticket" style="padding: 0;">
+                      <button  mat-button (click)="detalleHistorico(card)" style="padding: 0; display: flex; justify-content: center; min-width: 0;" matTooltip="Histórico">
+                        <mat-icon class="img-servicio-historico"></mat-icon>
+                      </button>
+                    </div>
+                  </ng-container>
+                  <div class="col-2 texto-ticket" style="padding: 0;">
+                    <button matTooltip="Métricas" mat-button (click)="detalleMetrica(card)" style="padding: 0; display: flex; justify-content: center; min-width: 0;" >
+                      <mat-icon class="img-servicio-metrica"></mat-icon>
+                    </button>
+                  </div>       
+                  <div class="col-6"></div>
+  
+                  <div class="col-4">
+                      <button *ngIf="card?.estatus != 'Sin gestión' || card?.group != 'B'" mat-stroked-button
+                      style="border: solid 1px #0B112A!important; border-radius: 8px!important;" 
+                      (click)="openDialogDispositivo(card)">Detalle</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+          <div class="row w100m0p0" style="margin-top: 30px!important; min-height: 50px;" *ngIf="listaResultado?.length> 0">
+            <div class="col-6"
+              style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px;">
+              Mostrando pág {{ this.pager?.current }} de {{ this.pager?.total }} de
+              {{ this.pager?.data.length }} resultados
+            </div>
+  
+            <div class="col-6" style="margin: 0; padding: 0;" >
+              <app-paginator [pageModel]="pager" (paged)="onPaged($event)" style="float: right;"></app-paginator>
+            </div>
+          </div>
+          <div class="row" style="display: flex; padding: 0 40px; min-height: 500px; align-items: center;" *ngIf="listaResultado?.length == 0">
+            <app-filter-error (clickReturn)="returnFilter()"></app-filter-error>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="spinnerLoading">
+          <div class="row busqueda-personalizada disable-scrollbars" style="margin-left: 0; display: flex; align-items: center; justify-content: center; min-height: 600px;" >
+            <mat-spinner [diameter]="80"></mat-spinner>
+          </div>
+        </ng-container>
+        
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

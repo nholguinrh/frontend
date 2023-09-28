@@ -1,0 +1,100 @@
+<div class="confirm">
+  <mat-dialog-content>
+      <div class="container" style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
+          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+              <div class="col-10"  style="padding: 0; display: flex; align-items: center;">
+                <span style="font-weight: 600; font-size: 18px; color: #1D2640; margin: 10px;">Detalles del incidente</span> 
+              </div>
+              <div class="col-2">
+                  <button mat-flat-button style="float: right; position: relative; top: -10px; right: -12px; width: 10px!important;  min-width: unset!important;" (click)="closeDialog()">
+                      <mat-icon style="margin-left: -12px!important;">
+                          close
+                      </mat-icon>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+      <div class="container" style="width: 900px; margin: 0; padding: 0;">
+        <div class="row w100m0p0 encabezado-panel" style="padding: 0 10px !important;">
+            <div class="col-3">
+                <span>SOLICITANTE</span>
+                  <p>{{incidenteDetalle.solicitante}}</p>
+            </div>
+            <div class="col-3">
+                <span>SITIO</span>
+                <p>{{incidenteDetalle.sitio}}</p>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-4">
+                <span>CATEGORÏA</span>
+                <p>{{incidenteDetalle.categotia}}</p>
+            </div>
+            <div class="col-6" style="padding-right: 40px;">
+                <span>DESCRIPCIÓN</span>
+                <p>{{incidenteDetalle.descripcion}}</p>
+            </div>
+            <div class="col-6 row">
+                <div class="col-4"></div>
+                <div class="col-8">
+                    <span>NÚMERO DE INCIDENTE</span>
+                    <p>{{incidenteDetalle.numeroIncidente}}</p>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-10">
+                    <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                        <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                            <mat-label>TICKET SISTEMA EXTERNO</mat-label>
+                            <input matInput formControlName="ticketExterno"/>
+                        </mat-form-field>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div style="font-weight: 600; font-size: 20px; color: #1D2640; margin: 10px 0;">
+            Información del incidente
+        </div>
+        <div class="row encabezado-panel" style="padding: 0 10px !important;">
+            <div class="col-6">
+                <span>Resumen</span>
+                  <p>{{incidenteDetalle.resumen}}</p>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-4">
+                <span>ESTATUS</span>
+                  <p>{{incidenteDetalle.estatus}}</p>
+            </div>
+            <div class="col-6">
+                <span>DIAGNÓSTICO FINAL</span>
+                  <p>{{incidenteDetalle.diagnosticoFinal}}</p>
+            </div>
+            <div class="col-2"></div>
+            <!-- <div class="col-4">
+                <span>FECHA/HORA DE SOLUCIÓN</span>
+                  <p>{{incidenteDetalle.fechaSolucion}}</p>
+            </div> -->
+        </div>
+        <div class="row" style="margin: 40px 0px 0px !important; width: 100%; padding: 0;">
+            <div class="col-8"  style="margin: 0; padding: 0;"></div>
+            <div class="col-4"  style="margin: 0;">
+                <button type="button" 
+                        class="btn-totalplay-secondary"
+                        style="width: 100px; height: 45px; font-size: 14px; line-height: 25px;"
+                        (click)="closeDialog()">
+                        Cancelar
+                </button>
+                <button type="button" 
+                        class="btn-totalplay"
+                        style="float: right; width: 150px;  height: 45px; font-size: 14px; line-height: 25px;"
+                        (click)="actualizarTicket()">
+                        Aplicar cambios
+                </button>
+            </div>
+            
+        
+    </div>
+      </div>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,115 @@
+<div class="home-container-accesos" style="margin-top: 30px;">
+    <div class="row w100m0p0">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <div class="row w100m0p0">
+                <div class="col-1" style="width: 22px; margin: 0; padding: 0;">
+                    <div class="img-inicio-home">&nbsp;</div>
+                </div>
+                <div class="col" style="margin: 0; padding: 0; padding-top: 1px; padding-left: 5px; font-weight: 500; font-size: 22px; color: #0B112A;">
+                    INICIO
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="text-align: right; font-weight: 600; font-size: 18px; color: #3B4559;"><p>¡Buen día, {{user.nombreCompleto | titlecase}}!</p></div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row w100m0p0">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <div class="row w100m0p0">
+                <div class="col" style="margin: 0; padding: 0; color: #7B8AA0; font-weight: 400;">
+                    Tus accesos directos
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="text-align: right; font-weight: 600;">
+            <button mat-button class="btn-totalplay" style="max-width: 170px; font-size: 14px; line-height: 40px;" (click)="openAccesosModal()">
+                    <mat-icon class="img-inicio-acceso"></mat-icon>
+                    Agregar acceso
+            </button>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+<div class="home-container-accesos" style="margin-top: 50px;">
+    <div class="row w100m0p0">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div class="row gx-3 gy-4">
+                <div class="col-4" *ngFor="let item of accesosUsuario" (click)="goToAccesoDirecto(item.path)">
+                    <div class="p-1 home-acceso-card"> 
+                        <div class="acceso-ico"
+                        [ngClass]="item.icono"></div>
+                        <div class="acceso-arrow image-arrow"></div>
+                        <div class="acceso-tittle">{{item.descripcion}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+
+
+<!-- Modal agregar acceso -->
+<div class="modal hide-modal" #accesosModal>
+    <div class="modal-dialog modal-dialog-centered" style="min-width: 80%;">
+        <div class="modal-content" style="min-height:  200px; min-width: 350px;">
+            <div class="modal-header" style="border-bottom: 0;  padding: 0;">
+                <div class="row" style="margin: 0; padding: 0; width: 100%; padding-top: 10px;">
+                    <div class="col-6" style="padding-top: 10px; padding-left: 20px;">
+                        <div class="row w100m0p0" style="font-weight: 600;">
+                            Agregar acceso
+                        </div>
+                        <div class="row" style="padding-top: 10px; padding-left: 10px; font-weight: 400; color: #7B8AA0;">
+                            Selecciona y ordena tus accesos directos
+                        </div>
+                    </div>
+                    <div class="col-6" style="text-align: right; font-weight: 600;">
+                        <button mat-icon-button (click)="limpiarAccesos()">
+                            <mat-icon>
+                                close
+                            </mat-icon>
+                        </button>     
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body" style="text-align: left; width: 100%; margin: 0;">
+                <div class="row" style="padding: 20px;">
+                    <div class="col-12">
+                        <div class="row gx-3 gy-4">
+                            <div class="col-4" *ngFor="let item of accesosDirectos" (click)="modificaAcceso(item)">
+                                <div class="p-1 home-acceso-card" style="height: 100px;"> 
+                                    <div class="acceso-arrow" 
+                                    [ngClass]="isAccesoActivo(item.descripcion) ? 'image-acceso-option-check':'image-acceso-option-plus'"
+                                    [ngStyle]="{'background-color': isAccesoActivo(item.descripcion) ? '#285CED':'#D0D0CE'}"  
+                                    style="top: 10px;"></div>
+                                    <div class="acceso-tittle">{{item.descripcion}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding: 20px;">
+                    <div class="col-6"></div>
+                    <div class="col-6" style="text-align: right; font-weight: 600;">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <button class="btn-totalplay-secondary" (click)="limpiarAccesos()" style="height: 45px; font-size: 14px; line-height: 25px;">
+                                    Cancelar
+                                </button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn-totalplay" (click)="actualizarAccesos()" style="height: 45px; font-size: 14px; line-height: 25px;">
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

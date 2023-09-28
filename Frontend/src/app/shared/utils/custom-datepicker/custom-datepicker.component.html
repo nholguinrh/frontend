@@ -1,0 +1,18 @@
+<mat-form-field class="custom-datepicker" (click)="picker.open()">
+  <input style="cursor: pointer;"
+    matInput
+    [matDatepicker]="picker"
+    placeholder=""
+    readonly
+    [max]="fechaActual"
+    [formControl]="dateControl"
+  />
+  <mat-icon matSuffix>expand_more</mat-icon>
+  <mat-datepicker
+    #picker #dp
+    [startView]="startView"
+    (yearSelected)="chosenYearHandler($event)"
+    (monthSelected)="chosenMonthHandler($event, picker)"
+  >
+  </mat-datepicker>
+</mat-form-field>

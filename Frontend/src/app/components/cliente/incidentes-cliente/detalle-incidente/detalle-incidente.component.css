@@ -1,0 +1,39 @@
+::ng-deep .confirm .mat-dialog-content{
+  max-width: 890px!important;
+  width: 870px;
+}
+
+/*
+.confirm{
+  border: 1px solid #27509B;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+*/
+
+::ng-deep .confirm .mat-tab-label {
+  padding: 0px 25px 0px 10px;
+  min-width: 110px;
+}
+
+::ng-deep .confirm .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  width: 110px !important;
+}
+
+.encabezado-panel span{
+  font-weight: 600;
+  font-size: 9px;
+  color: #7B8AA0;
+  letter-spacing: 0.2em;
+}
+
+.encabezado-panel p{
+  margin: 0!important;
+  font-weight: 400;
+  font-size: 12px;
+  color: #000000;
+}
+
+.encabezado-panel div{
+  margin-top: 10px;
+}

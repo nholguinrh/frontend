@@ -1,0 +1,77 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <div style="height: 63px;">
+            <div class="container" style="padding: 0; margin: 0; padding-top: 5px;">
+                <div class="row" style="padding: 0; margin: 0; height: 60px;">
+                    <div class="col-9 image-totalplay"></div>
+                    <div class="col-3" style="padding: 0; margin: 0; padding-top: 7px;">
+                        <button mat-icon-button (click)="sidenav.toggle()" *ngIf="sidenav.mode === 'over'">
+                            <mat-icon>
+                                menu
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 20px;">
+            <button mat-button class="menu-button">
+                <mat-icon class="image-inicio"></mat-icon>                
+                <span>Inicio</span>
+            </button>
+            <button mat-button class="menu-button">
+                <mat-icon class="image-workspace"></mat-icon>
+                <span>Espacio de trabajo</span>
+            </button>
+            <button mat-button class="menu-button">
+                <mat-icon class="image-notification"></mat-icon>
+                <span>Notificaciones</span>
+            </button>
+        </div>
+        
+            
+
+        <button mat-flat-button class="menu-help sidebar-footer">            
+            <mat-icon class="image-help"></mat-icon>
+            <span>Ayuda y puesta en marcha</span>            
+        </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8" style="overflow: auto;">
+            <mat-toolbar>
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon *ngIf="!sidenav.opened">
+                        menu
+                    </mat-icon>
+                    <mat-icon *ngIf="sidenav.opened">
+                        menu
+                    </mat-icon>
+                </button>
+                
+                <div style="width: 100%;">  
+                    <div style="width: 200px; float: right;">
+                        <div class="container" style="padding: 0; margin: 0; padding-top: 5px;">
+                            <div class="row" style="padding: 0; margin: 0; height: 50px;">
+                                <div class="col-3"></div>
+                                <div class="col-2" style="padding: 0; margin: 0; text-align: center;">
+                                    <button mat-icon-button class="header-button">
+                                        <mat-icon>help</mat-icon>                                    
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button mat-icon-button class="header-button">
+                                        <mat-icon>settings</mat-icon>                                    
+                                    </button>
+                                </div>
+                                <div class="col-5" style="text-align: center;">
+                                    <div class="avatar image-avatar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </mat-toolbar>
+            <router-outlet name="home"></router-outlet>
+        </div>        
+    </mat-sidenav-content>
+</mat-sidenav-container>

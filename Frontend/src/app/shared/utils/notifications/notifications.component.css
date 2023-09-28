@@ -1,0 +1,52 @@
+/* .disable-scrollbars::-webkit-scrollbar {
+    background: transparent;
+    width: 0px;
+}
+
+.disable-scrollbars {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+} */
+
+.disable-scrollbars::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.disable-scrollbars::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #eee !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+.disable-scrollbars-dark::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.disable-scrollbars-dark::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #7b8aa0 !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+.disable-scrollbars-dark::-webkit-resize,
+.mat-drawer-inner-container::-webkit-resize {
+    background: #000000 !important;
+    resize: none;
+}
+
+.enlace-notificacion{
+    width: 100%; margin: 0; padding: 0;
+    color: #285CED!important; 
+    line-height: 25px!important; 
+    text-decoration: underline!important;
+}
+
+.notification-item:not(:hover) .image-close-notification {
+    display: none;
+}

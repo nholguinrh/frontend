@@ -1,0 +1,271 @@
+<alert></alert>
+<div class="admin-equipo-container" style="margin-top: 30px;">
+  <div class="row w100m0p0">
+      <div class="col-1" style="margin: 0; padding: 0;">
+          <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goToEquipos()"></div>
+      </div>
+      <div class="col-5">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 21px; font-weight: 400;">
+                  {{ pageTitle }} 
+              </div>
+          </div>
+      </div>
+      <div class="col-6"></div>
+  </div>
+  <div class="row w100m0p0" style="margin: 10px 0px !important;">
+      <div class="col-1"></div>
+      <div class="col-10">
+          <div class="row w100m0p0">
+              <div class="col" style="margin-top: 10px; padding: 0; color: #7B8AA0; font-weight: 400;">
+                Dale acceso a esta aplicación y asignarles roles. 
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>
+
+<div class="home-container">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="background-color: #FFFFFF; min-height: 350px;">
+          <form [formGroup]="form" style="margin: 0; padding: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <!--Invitar persona-->
+            <div class="row" style="margin-top: 20px; margin-left: 15px; margin-right: 15px; font-weight: 600;" *ngIf="!data">
+              <div class="col-4" style="font-size: 18px; line-height: 28px; font-weight: 600;">
+                Email
+                <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 14px; color: #7B8AA0; line-height: 20px;">
+                  Agrega el Email del invitado
+                </div>
+              </div>
+              <div class="col-3" style="margin: 0; padding: 0;">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                    <mat-label>EMAIL</mat-label>
+                    <input matInput formControlName="correo" name="correo" id="correo" email/>
+                    <mat-error *ngIf="!form.controls['correo'].valid && form.controls['correo'].touched">
+                      {{ getError() }}
+                    </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-5"></div>
+            </div>
+            <!--Cambiar rol-->
+            <div class="row" style="margin-top: 20px; margin-left: 15px; margin-right: 15px; font-weight: 600;" *ngIf="data">
+              <div class="col-8" style="font-size: 14px; line-height: 24px; font-weight: 600;">
+                <div class="row">
+                  <div class="col-md-auto d-flex">
+                    <div class="equipo-ico img-equipo-option-user"></div>
+                    <div class="align-self-center ps-2">
+                      {{  data?.nombreCompleto | slice:0:25}} <span *ngIf="data?.nombreCompleto.length > 25">...</span>
+                      
+                    </div>
+                  </div>
+                  <div class="col-md-auto d-flex">
+                    <mat-divider vertical></mat-divider>
+                    <div class="align-self-center px-3" style="font-size: 9px; color: #7B8AA0; line-height: 16px; letter-spacing: 0.2em; text-transform: uppercase;">
+                      {{ nombrePerfil }}
+                    </div>
+                    <mat-divider vertical></mat-divider>
+                  </div>
+                  <div class="col-md-auto align-self-center">
+                    <a style="font-size: 14px; color: #285CED; line-height: 24px; font-weight: 400; text-decoration: underline;">
+                      {{ data?.email | slice:0:25}} <span *ngIf="data?.email.length > 25">...</span>
+                    </a>
+                  </div>
+                  <div class="col-md-auto align-self-center" style="border-left: 1.3px solid #D0D0CE; line-height: 45px;">
+                    <ng-container *ngIf="!pendiente">
+                      <div class="border-success badge text-success" style="background-color: #FFFFFF!important;">Activo</div>
+                    </ng-container>
+                    <ng-container *ngIf="pendiente">
+                      <div class="border-warning badge text-warning" style="font-size: 10px;">PENDIENTE</div>  
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-3" style="margin-left: auto; display: flex; justify-content: flex-end;">
+                
+                <button mat-button class="btn-totalplay-danger" style="height: 45px; font-size: 14px; font-weight: 600;" (click)="deleteMiembro()" *ngIf="!pendiente">
+                  <mat-icon class="image-trash-can"></mat-icon>
+                  Eliminar miembro
+                </button>  
+
+                <span *ngIf="pendiente">
+                  <div  [matMenuTriggerFor]="plantillasMenu" class="menu-edit">
+                    <mat-icon class="img-editar"></mat-icon>
+                  </div>
+                  <mat-menu class="header-menu" #plantillasMenu="matMenu" xPosition="before" style="padding-top: 0px; padding-bottom: 0px;">
+                  <button mat-menu-item style="font-size: 14px; color: #0B112A; font-weight: 400; height: 34px; display: flex; justify-content: flex-start; align-items: center;" (click)="reenviarInvitacion()" >
+                      <mat-icon class="img-reenviar"></mat-icon>
+                      <span>Reenviar invitación</span> 
+                  </button>
+                  <button mat-menu-item style="font-size: 14px; color: #0B112A; font-weight: 400; height: 34px; display: flex; justify-content: flex-start; align-items: center;" (click)="deleteMiembro()">
+                      <mat-icon class="img-borrar"></mat-icon>
+                      <span>Eliminar</span> 
+                  </button>
+                  </mat-menu>
+                </span>
+
+              </div>
+            </div>
+            <!--Division-->
+            <mat-divider style="margin-top: 16px !important;" ></mat-divider>
+            <div class="row" style="margin-top: 20px; margin-left: 15px; margin-right: 15px; font-weight: 600;">
+              <div class="col-4" style="font-size: 18px; line-height: 28px; font-weight: 600;">
+                Roles
+                <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 14px; color: #7B8AA0; line-height: 20px;">
+                  Selecciona un rol a tu invitado
+                </div>
+              </div>
+              <div class="col-8"></div>
+            </div>
+
+            <div class="row" style="margin-top: 40px; margin-left: 15px; margin-right: 15px; font-weight: 600;" *ngIf="!pendiente && data">
+              <div class="col-5 row">
+                <div class="col-12" *ngFor="let item of perfiles; let i = index;" style="padding-right: 50px;     margin-bottom: 25px;">
+                  <div class="option-button" (click)="seleccionaCuadrante(item)" [ngClass]="{'option-selected': item.idCatPerfil == perfilRol?.idCatPerfil, 'fullbutton' :  i == 2}" style="box-shadow: 8px 16px 32px #EDEDED;" [style.border]="item.idCatPerfil == perfilRol?.idCatPerfil ? '2px solid #7B8AA0' : '2px solid #E6EDF6'">
+                        <div class="button-main">
+                            <div class="row button-image">
+                              <div class="col-2">
+                                <div [ngClass]="item.descripcion == 'Ejecutivo' ? 'img-ejecutivo' : 'img-operador'" style="min-width: 40px; min-height: 40px; border-radius: 7px;" [style.background-color]="item.idCatPerfil == perfilRol?.idCatPerfil ? '#FFFFFF' : '#E6EDF6'">&nbsp;</div>
+                              </div>
+                              <div class="col-8">
+                                <div style="flex-grow: 5; padding-left: 20px;" >
+                                  <div style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; color: #000000; font-weight: 600;" >
+                                    {{ item.descripcion }}
+                                  </div>
+                                  <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 12px; color: #7B8AA0; line-height: 24px;">
+                                    {{ item.informacion }}
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-2" style="padding: 0;">
+                                <div class="image-dash-check" style="width: 40px; height: 40px; background-color: #285CED; color: white; border-radius: 2px 0px 0px 2px; float: right;" *ngIf="item.idCatPerfil == perfilRol?.idCatPerfil"></div>
+                              </div>
+                            </div>                          
+                        </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-7">
+                <div class="row">
+                    <div class="col-12" style="margin: 0; padding: 0; padding-right: 20px;" *ngIf="dashboard">
+                        <div class="option-button" style="box-shadow: 0px 0px 4px 0px #a3b4cd; border: 2px solid #7B8AA0;">
+                            <div class="button-main">
+                                <div class="row button-image">
+                                    <div class="col-12">
+                                        <div class="row" style="padding-left: 20px;" >
+                                            <div style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; color: #000000; font-weight: 600;" >
+                                              {{ dashboard.tbDashboard.descripcion }}
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin: 0; padding: 0;">
+                                            <div class="col-6" style="margin: 0; padding: 0!important; display: flex; align-items: center;">
+                                              <ng-container *ngIf="dashboard.tbDashboard.idDashboard == 5">
+                                                <div class="preview-dashboard-enlaces" style="width: 100%; height: 80%; margin: 0; padding: 0;"></div>
+                                            </ng-container>
+                                            <ng-container *ngIf="dashboard.tbDashboard.idDashboard == 6">
+                                                <div class="preview-dashboard-mapa" style="width: 100%; height: 80%; margin: 0; padding: 0;"></div>
+                                            </ng-container>
+                                            <ng-container *ngIf="dashboard.tbDashboard.idDashboard == 4">
+                                                <div class="preview-dashboard-ejecutivo" style="width: 100%; height: 80%; margin: 0; padding: 0;"></div>
+                                            </ng-container>
+                                            <ng-container *ngIf="dashboard.tbDashboard.idDashboard == 7">
+                                              <div class="preview-dashboard-voz" style="width: 100%; height: 80%; margin: 0; padding: 0;"></div>
+                                            </ng-container>
+                                            </div> 
+                                            <div class="col-1"></div>
+                                            <div class="col-5" style="min-height: 250px; display: flex; align-items: center;">                                                
+                                                {{ dashboard.tbDashboard.informacion }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12" style="margin: 0; padding: 0; padding-right: 20px;" *ngIf="!dashboard">
+                    <div class="option-button" style="box-shadow: 0px 0px 4px 0px #a3b4cd; border: 2px solid #7B8AA0;">
+                        <div class="button-main">
+                            <div class="row button-image">
+                                <div class="col-12">
+                                    <div class="row" style="padding-left: 20px;" >
+                                        <div style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; color: #000000; font-weight: 600;" >
+                                          MONITOREO GLOBAL DE SERVICIOS                                    
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin: 0; padding: 0;">
+                                        <div class="col-6" style="margin: 0; padding: 0!important; display: flex; align-items: center;">
+                                          <div class="preview-dashboard-enlaces" style="width: 100%; height: 80%; margin: 0; padding: 0;"></div>
+                                        </div> 
+                                        <div class="col-1"></div>
+                                        <div class="col-5" style="min-height: 250px; display: flex; align-items: center;">
+                                          Dashboard de Monitoreo de enlaces con 8 cuadrantes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 40px; margin-left: 15px; margin-right: 15px; font-weight: 600;" *ngIf="pendiente || !data">
+              <div class="col-4" *ngFor="let item of perfiles; let i = index;" style=" margin-bottom: 25px;">
+                <div class="option-button" (click)="seleccionaCuadrante(item)" [ngClass]="{'option-selected': item.idCatPerfil == perfilRol?.idCatPerfil, 'fullbutton' :  i == 2}" style="box-shadow: 8px 16px 32px #EDEDED;" [style.border]="item.idCatPerfil == perfilRol?.idCatPerfil ? '2px solid #7B8AA0' : '2px solid #E6EDF6'">
+                      <div class="button-main">
+                          <div class="row button-image">
+                            <div class="col-2">
+                              <div [ngClass]="item.descripcion == 'Ejecutivo' ? 'img-ejecutivo' : 'img-operador'" style="min-width: 40px; min-height: 40px; border-radius: 7px;" [style.background-color]="item.idCatPerfil == perfilRol?.idCatPerfil ? '#FFFFFF' : '#E6EDF6'">&nbsp;</div>
+                            </div>
+                            <div class="col-8">
+                              <div style="flex-grow: 5; padding-left: 20px;" >
+                                <div style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; color: #000000; font-weight: 600;" >
+                                  {{ item.descripcion }}
+                                </div>
+                                <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 12px; color: #7B8AA0; line-height: 24px;">
+                                  {{ item.informacion }}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2" style="padding: 0;">
+                              <div class="image-dash-check" style="width: 40px; height: 40px; background-color: #285CED; color: white; border-radius: 2px 0px 0px 2px; float: right;" *ngIf="item.idCatPerfil == perfilRol?.idCatPerfil"></div>
+                            </div>
+                          </div>                          
+                      </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin: 40px 15px 20px 15px; font-weight: 600;">
+                <div class="col-7"></div>
+                <div class="col-5">
+                  <div class="row" style="margin: 0; padding: 0;">
+                    <div class="col-4" *ngIf="data"></div>
+                    <div class="col-4" style="padding-right: 0; margin-top: 5px;">
+                        <button class="btn-totalplay-secondary" style="height: 45px; font-size: 14px; font-weight: 600;" (click)="goToEquipos()">
+                            Cancelar
+                        </button>  
+                    </div>
+                    <div class="col-7" style="padding-right: 0; margin-top: 5px;" *ngIf="!data">
+                      <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" (click)="enviarInvitacion()">
+                        Enviar invitación
+                      </button>
+                    </div>
+                    <div class="col-4" style="padding-right: 0; margin-top: 5px;" *ngIf="data">
+                      <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" (click)="modificarEquipoCliente()">
+                        Guardar
+                      </button>
+                    </div>
+                      
+                  </div>
+                </div>
+            </div>
+          </form>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

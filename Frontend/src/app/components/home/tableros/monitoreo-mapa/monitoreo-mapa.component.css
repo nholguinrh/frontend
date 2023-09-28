@@ -1,0 +1,88 @@
+.dashboard-card{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.cuadrante1{
+    min-width: 448px;
+    max-height: 810px;
+}
+
+.cuadrante2{
+    min-width: 279px;
+    max-height: 815px;
+}
+
+.cuadrante3{
+    min-width: 436px;
+    max-height: 815px;
+}
+
+.mapa-max{
+    display: none;
+}
+
+.text-title {
+    font-size: 20px; 
+    font-weight: 600; 
+    color: #848B91;
+    margin-top: 40px !important;
+}
+
+
+@media (min-width:1441px){
+    .cuadrante1{
+        min-width: 538px;
+    }
+    
+    .cuadrante2{
+        min-width: 369px;
+    }
+    
+    .cuadrante3{
+        min-width: 526px;
+    }
+
+    .mapa-min{
+        display: none;
+    }
+
+    .mapa-max{
+        display: initial;
+    }
+    
+    .text-title {
+        font-size: 24px; 
+        font-weight: 600; 
+        color: #3B4559;
+        margin-top: 40px !important;
+    }
+}
+
+@media (min-width:1441px){
+    .cuadrante1{
+        min-width: 538px;
+    }
+    
+    .cuadrante2{
+        min-width: 369px;
+    }
+    
+    .cuadrante3{
+        min-width: 526px;
+    }
+
+    .mapa-min{
+        display: none;
+    }
+
+    .mapa-max{
+        display: initial;
+    }
+
+    .text-title {
+        font-size: 24px !important; 
+    }
+    
+}

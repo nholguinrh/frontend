@@ -1,0 +1,67 @@
+<ng-container *ngIf="!spinnerLoading">
+  <ng-container *ngIf="!errorCarga">    
+      <div style="width: 100%; margin: 0; padding: 0; padding: 10px; padding-top: 0px; margin-top: -10px;"> 
+          <mat-card-content *ngFor="let item of metricasAfectaciones">
+              <div class="row">
+                <div class="card-html">
+                  <div class="row">
+                    <div [ngClass]="(isDarkTheme | async) ? 'custom-card-dark' : 'custom-card-claro'">
+                      <div>
+                        <img src="assets/img/home-vista.svg" alt="home" class="icon-home ic-color-light" />
+                        <ng-container *ngIf="!item?.alias">
+                          <p class="card-title" *ngIf="widths > 1600">
+                            {{ item?.sitio  | slice:0:25}} {{ item?.sitio.length > 25 ? '...' : ''}}
+                          </p>
+                          <p class="card-title" *ngIf="1600 >= widths">
+                            {{ item?.sitio  | slice:0:20}} {{ item?.sitio.length > 20 ? '...' : ''}}
+                          </p>
+                        </ng-container>
+                        <ng-container *ngIf="item?.alias">
+                          <p class="card-title" *ngIf="widths > 1600">
+                            {{ item?.alias  | slice:0:25}} {{ item?.alias.length > 25 ? '...' : ''}}
+                          </p>
+                          <p class="card-title" *ngIf="1600 >= widths">
+                            {{ item?.alias  | slice:0:20}} {{ item?.alias.length > 20 ? '...' : ''}}
+                          </p>
+                        </ng-container>
+                      </div>
+                      <div class="card-content">
+                        <div>
+                          <img *ngIf="item?.estatus != 'Sin gestión' || item?.group != 'B'" src="assets/img/document.svg" alt="doc" class="icon-home-r" [ngClass]="(isDarkTheme | async) ? 'ic-color-light' : 'ic-color-dark'" (click)="openDetalle(item)"/>
+                        </div>
+                        <div>
+                          TIPO:
+                          <strong>{{ item?.tipoDispositivo == 'P' ? 'Sitio' : item?.tipoDispositivo == 'I' ? 'Servicio' : 'Enlace'}}</strong>
+                        </div>
+                        <div>
+                          IP/NS:
+                          <strong>{{item?.ip}}</strong>
+                        </div>
+                        <div>
+                          ESTATUS:
+                          <strong>{{ item?.estatus | titlecase }}</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+      </div>
+  </ng-container>
+
+  <ng-container *ngIf="message">
+      <div style="margin: 70px 0px 0px 90px">
+          Sin sitios inactivos
+      </div>
+  </ng-container>
+
+  <ng-container *ngIf="errorCarga">
+      <div style="margin: 60px 0px;">
+          <app-service-error-dashboard width="220px" [typeError]="errorCarga"></app-service-error-dashboard>
+      </div>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="spinnerLoading">
+  <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 150px;"></mat-spinner>
+</ng-container>

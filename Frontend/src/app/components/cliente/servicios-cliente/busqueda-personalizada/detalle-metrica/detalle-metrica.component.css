@@ -1,0 +1,115 @@
+.cliente-servicio-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 20px;
+}
+
+::ng-deep .content-wrapper:has(.cliente-servicio-container){
+  background-color: rgb(244, 244, 244) !important; 
+}
+
+::ng-deep .cliente-servicio-container .mat-form-field-wrapper{
+  margin-bottom: -1.25em!important;
+}
+
+.cuadro-estatus{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  display: flex;
+  flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+  width: 100%; height: 80px
+}
+
+.estatus-todos p{
+  color: #285CED;
+}
+.estatus-todos:focus{
+  border: 1px solid #285CED;
+}
+.estatus-todos:focus p{
+  font-weight: 600 !important;
+  color: #285CED !important;
+}
+
+.estatus-curso p{
+  color: #DDBC00;
+}
+.estatus-curso:focus{
+  border: 1px solid #DDBC00;
+}
+.estatus-curso:focus p{
+  font-weight: 600 !important;
+  color: #DDBC00 !important;
+}
+
+.estatus-pendientes p{
+  color: #F95A36;
+}
+.estatus-pendientes:focus{
+  border: 1px solid #F95A36;
+}
+.estatus-pendientes:focus p{
+  font-weight: 600 !important;
+  color: #F95A36 !important;
+}
+
+.estatus-resueltos p{
+  color: #1A7F1C;
+}
+.estatus-resueltos:focus{
+  border: 1px solid #1A7F1C;
+}
+.estatus-resueltos:focus p{
+  font-weight: 600 !important;
+  color: #1A7F1C !important;
+}
+
+.radio-group-detalle {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 15px;
+  margin: 10px 0;
+  align-items: flex-start;
+}
+
+.radio-button {
+  margin: 10px 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0B112A;
+}
+
+::ng-deep .radio-group-detalle .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #285CED;
+  background: #285CED;
+}
+
+::ng-deep .radio-group-detalle .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple{
+  border-radius: 50%;
+  background: white;
+}
+
+.lista-interfaz::-webkit-scrollbar {
+  width: 7px;               /* width of the entire scrollbar */
+}
+
+.lista-interfaz::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+  border-radius: 10px;
+}
+
+
+.img-ticket{
+  background-image: url("src\assets\img\ticket-ico1-blue.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 20px;
+}

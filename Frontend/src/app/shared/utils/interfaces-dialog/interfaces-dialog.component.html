@@ -1,0 +1,194 @@
+<div class="notification">
+    <mat-dialog-content>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                <div class="col-6"  style="margin: 0; padding: 0;">
+                    <div style="font-size: 15px; font-weight: 600; margin-top: 10px;">Detalle del sitio</div>
+                </div>
+                <div class="col-6">
+                    <button mat-flat-button style="float: right; position: relative; top: -10px; right: -12px; width: 10px!important;  min-width: unset!important;" (click)="closeDialog()">
+                        <mat-icon style="margin-left: -12px!important; margin-top: 6px;">
+                            close
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; min-height: 100px;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 20px;">
+                <div class="col-3" style="margin: 0; padding: 0;">
+                    <div class="row" class="punta-tittle" style="line-height: 5px;">
+                        SITIO
+                    </div>
+                    <div class="row" style="margin: 0; padding: 0; margin-top: 10px;">
+                        {{detallePunta.punta.sitio}}
+                    </div>
+                </div>
+                <div class="col-3" style="margin: 0; padding: 0;">
+                    <div class="row" class="punta-tittle" style="line-height: 5px;">
+                        SLA DEL SITIO
+                    </div>
+                    <div class="row" style="margin: 0; padding: 0; margin-top: 10px;">
+                        {{detallePunta.punta.tbConfiguracionSLA ? detallePunta.punta.tbConfiguracionSLA.tituloSLA : 'Sin configuración'}}
+                    </div>
+                </div>
+                <div class="col-4" style="margin: 0; padding: 0;">
+                    
+                </div>
+                <div class="col-2" style="margin: 0; padding: 0;">
+                    <div class="row" class="punta-tittle" style="line-height: normal;">
+                        ASIGNAR SLA<br> A SITIO
+                    </div>
+                    <div class="row" style="margin: 0; padding: 0; margin-top: 15px; margin-left: -5px;">
+                        <ng-container *ngIf="detallePunta.punta.tbConfiguracionSLA">
+                            <div class="image-puntas-togle-enabled" style="width: 60px; height: 25px; cursor: pointer;" (click)="asignarConfiguracionPunta(false)"></div>
+                        </ng-container>
+                        <ng-container *ngIf="!detallePunta.punta.tbConfiguracionSLA">
+                            <div class="image-puntas-togle-disabled" style="width: 60px; height: 25px; cursor: pointer;" (click)="asignarConfiguracionPunta(true)"></div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 20px;">
+                <div class="col-3" style="margin: 0; padding: 0;">
+                    <div class="row" class="punta-tittle" style="line-height: 5px;">
+                        IP/NS:
+                    </div>
+                    <div class="row" style="margin: 0; padding: 0; margin-top: 10px;">
+                        {{detallePunta.punta.ipns}}
+                    </div>
+                </div>
+                <div class="col-3" style="margin: 0; padding: 0;">
+                    <div class="row" class="punta-tittle" style="line-height: 5px;">
+                        TIPO
+                    </div>
+                    <div class="row" style="margin: 0; padding: 0; margin-top: 10px;">
+                        {{detallePunta.punta.tipoPunta}}
+                    </div>
+                </div>
+                <div class="col-3" style="margin: 0; padding: 0;">
+                </div>
+                <div class="col-3" style="margin: 0; padding: 0;">
+                </div>
+            </div>
+            <mat-divider style="margin-top: 15px;"></mat-divider>
+            <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 20px;">
+                <div class="col-8" style="margin: 0; padding: 0; font-weight: 600; color: black;">
+                    Servicios
+                </div>
+                <div class="col-4" style="margin-top: 10px;">
+                    <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                        <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                            <mat-label>Buscar</mat-label>
+                            <!-- <input matInput [matAutocomplete]="auto"/> -->
+                            <input matInput (keyup)="onKeyDownEvent($event)" />
+                            <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important;"></mat-icon>
+                            <!-- <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option value="ONT">
+                                    <mat-icon class="image-puntas-ont"></mat-icon>
+                                    ONT
+                                </mat-option>
+                            </mat-autocomplete> -->
+                        </mat-form-field>
+                    </form>
+                </div>
+            </div> 
+            <div class="row" style="width: 800px; margin: 0; padding: 0;" *ngIf="!tablePuntas">
+                Sin servicios activados (antes activa servicios para asignar alguna configuración)
+            </div>
+            <div class="row" style="width: 100%; margin: 0; padding: 0;" *ngIf="tablePuntas?.length > 0">
+                <table aria-describedby="tabla" class="table table-bordered table-striped" style="border: solid 1px #ffffff; table-layout:fixed; padding: 0; margin: 0;">
+                    <thead>
+                        <tr>
+                            <th class="punta-tittle" style="text-align: left; width: 90px;">
+                                <span style="cursor:default!important;">
+                                    ESTATUS
+                                </span>
+                            </th>
+                            <th class="punta-tittle" style="text-align: center;">
+                                <span style="cursor:default!important;">
+                                    SERVICIO
+                                </span>
+                            </th>
+                            <th class="punta-tittle" style="text-align: center;">
+                                <span style="cursor:default!important;">
+                                    ALIAS
+                                </span>
+                            </th>
+                            <th class="punta-tittle" style="text-align: center;">
+                                <span style="cursor:default!important;">
+                                    SLA CONFIGURADO
+                                </span>
+                            </th>
+                            <th style="width: 70px;">
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody style="border: solid 1px #ffffff;">
+                        <tr *ngFor="let interface of puntasActivas(tablePuntas)" style="vertical-align: middle;">
+                            <td style="padding: 0;">
+                                <div style="text-align: center;">
+                                    <ng-container *ngIf="interface.tbConfiguracionSLA">
+                                        Activa
+                                    </ng-container>
+                                    <ng-container *ngIf="!interface.tbConfiguracionSLA">
+                                        Inactiva
+                                    </ng-container> 
+                                </div>
+                            </td>
+                            <td>
+                                {{interface.interfaz}}
+                            </td>
+                            <td>
+                                {{interface.alias}}
+                            </td>
+                            <td>
+                                {{interface.tbConfiguracionSLA ? interface.tbConfiguracionSLA.tituloSLA : 'Sin configuración'}}
+                            </td>
+                            <td [ngClass]="{'puntas-disabled': !detallePunta.punta.tbConfiguracionSLA}">
+                                <ng-container *ngIf="interface.tbConfiguracionSLA">
+                                    <div class="image-puntas-togle-enabled" style="width: 60px; height: 25px; cursor: pointer;" (click)="interface.tbConfiguracionSLA = null"></div>
+                                </ng-container>
+                                <ng-container *ngIf="!interface.tbConfiguracionSLA">
+                                    <div class="image-puntas-togle-disabled" style="width: 60px; height: 25px; cursor: pointer;" (click)="interface.tbConfiguracionSLA = sla"></div>
+                                </ng-container>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row" style="margin: 0; padding: 0; margin-top: 10px!important; min-height: 50px;">
+                <div class="col-6" style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px;">
+                    MOSTRANDO PÁG {{ pager.current }} DE {{ pager.total }} DE {{ pager.data.length }} RESULTADOS
+                </div>
+                <div class="col-6" style="margin: 0; padding: 0;">
+                    <app-paginator [pageModel]="pager" (paged)="onPaged($event)" style="float: right;"></app-paginator>
+                </div>
+            </div>
+        </div>
+        
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; margin-top: 10px; padding-right: 20px;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                <div class="col-7" style="margin: 0; padding: 0;"></div>
+                <div class="col-2">
+                    <button type="button" style="height: 45px; font-size: 14px; line-height: 25px;"
+                        class="btn-totalplay-secondary" (click)="closeDialog()">
+                    Cancelar
+                    </button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn-totalplay"
+                        style="max-width: 170px; height: 45px; font-size: 14px; line-height: 25px;"
+                        (click)="modificarDetallePunta()">
+                        Guardar cambios
+                    </button>
+                </div>
+            
+            </div>
+        </div>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,75 @@
+<div class="row" style="margin-left: 0px;" [ngStyle]="{'padding': isFull ? '10px 45px' : ''}" *ngIf="!errorCarga">
+  <div class="col-6" style="font-weight: 400;" 
+  [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A',
+    'font-size': isFull ? '20px' : '12px;'}">
+      <div>Completadas vs Simultáneas</div>
+  </div>
+  <div class="col-6 select-monitoreo-voz" [ngClass]="{'filtros-afectaciones-full-dark': (isDarkTheme | async), 'dark-theme': (isDarkTheme | async) }" style="display: flex; justify-content: flex-end;">
+      <mat-form-field [formGroup]="form" appearance="outline" style="width: 160px; height: 38px; border-radius: 7.99373px; font-size: 10px; margin-right: 30px;">
+          <mat-select formControlName="tiempo">
+              <mat-option [ngClass]="{'dark-theme': (isDarkTheme | async) }" disabled>Selecciona una escala</mat-option>
+              <mat-option value="Última hora" (click)="alertTiempo(1,'Última hora')">Última hora</mat-option>
+              <mat-option value="Últimas 12 horas" (click)="alertTiempo(12,'Últimas 12 hras')">Últimas 12 horas</mat-option>
+              <mat-option value="Últimas 24 horas" (click)="alertTiempo(24,'Últimas 24 hras')">Últimas 24 horas</mat-option>
+              <mat-option value="Última semana" (click)="alertTiempo(7,'Última semana')">Última semana</mat-option>
+          </mat-select>
+          <mat-icon matSuffix class="img-calendar" [ngStyle]="{filter: (isDarkTheme | async) ? 'invert(90%)' : '' }"></mat-icon>
+
+      </mat-form-field>
+  </div>
+  <ng-container *ngIf="!spinnerLoading">
+      <div class="col-12" style=" display: flex; justify-content: flex-start;">
+        <ng-container *ngFor="let llamada of llamadas">
+            <div class="cuadro-llamadas" [ngClass]="{'cuadro-llamadas-full': isFull}" (click)="llamada.estatus = !llamada.estatus; cambiarData();"
+            [ngStyle]="{'background': (isDarkTheme | async) 
+            ? llamada.name == 'Llamadas Completadas' ? llamada.estatus ? '#1F3BB3' : '#18224d' : llamada.estatus ? '#75787D' : '#292e42'
+            : llamada.name == 'Llamadas Completadas' ? llamada.estatus ? '#1F3BB3' : '#d2d8f0' : llamada.estatus ? '#75787D' : '#e3e4e5',
+              'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A'}">
+                <div style="font-weight: 500; line-height: 12px;" [ngStyle]="{'font-size': isFull ? '12px' : '9px'}">
+                    {{ llamada.name }}
+                </div>
+                <div style="font-weight: 600; line-height: 24px;" [ngStyle]="{'font-size': isFull ? '20px' : '12px'}">
+                    {{ llamada.total }}
+                </div>
+          </div>
+        </ng-container>
+        <!--
+            <div class="cuadro-llamadas" [ngClass]="{'cuadro-llamadas-full': isFull}" (click)="llamadasCompletadas = !llamadasCompletadas; cambiarData();"
+            [ngStyle]="{'background': (isDarkTheme | async) ? llamadasCompletadas ? '#1F3BB3' : '#18224d' : llamadasCompletadas ? '#1F3BB3' : '#d2d8f0',
+                'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A'}">
+                <div style="font-weight: 500; line-height: 12px;" [ngStyle]="{'font-size': isFull ? '12px' : '9px'}">Llamadas Completadas</div>
+                <div style="font-weight: 600; line-height: 24px;" [ngStyle]="{'font-size': isFull ? '20px' : '12px'}">22</div>
+            </div>
+            <div class="cuadro-llamadas" [ngClass]="{'cuadro-llamadas-full': isFull}" (click)="llamadasSimultaneas = !llamadasSimultaneas; cambiarData();" 
+            [ngStyle]="{'background': (isDarkTheme | async) ? llamadasSimultaneas ? '#75787D' : '#292e42' : llamadasSimultaneas ? '#75787D' : '#e3e4e5',
+            'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A'}">
+                <div style="font-weight: 500; line-height: 12px;" [ngStyle]="{'font-size': isFull ? '12px' : '9px'}">Llamadas Simultaneas</div>
+                <div style="font-weight: 600; line-height: 24px;" [ngStyle]="{'font-size': isFull ? '20px' : '12px'}">13</div>
+            </div>
+        -->
+      </div>
+      <div class="col-12">
+          <smc-density-voz
+              [data]="datesValue" [margin]="margin"  [scale]="scale"
+              [sizey]="isFull ? widths > 1440 ? 750 : 700 : widths > 1440 ? 280 : 250" 
+              [sizex]="isFull ? widths > 1440 ? 1800 : 1300 : widths > 1440 ? 1050 : 780"
+              [isDoubleArea]="doubleArea" [color]="colorArea" [unit]="''">
+          </smc-density-voz>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <ng-container style="margin: 5px 0 0 80px;">
+            <span style="font-size: 12px;">Tiempo de Resolucion {{ scale == 'week' ? '1 dia' : scale == 'minute' ? '5 minutos' : '1 hora'}}</span>
+        </ng-container>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="spinnerLoading">
+    <div class="col-12" style=" display: flex; align-items: center; justify-content: center; min-height: 250px;">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+  </ng-container>
+
+</div>
+<ng-container *ngIf="errorCarga">
+    <app-service-error-dashboard height="140px"></app-service-error-dashboard>
+</ng-container>

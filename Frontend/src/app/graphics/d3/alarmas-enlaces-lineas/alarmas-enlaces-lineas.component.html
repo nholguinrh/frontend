@@ -1,0 +1,341 @@
+<ng-container *ngIf="!spinnerLoading">
+  <ng-container *ngIf="!errorCarga">
+    <div style="width: 100%; margin: 0; min-height: 250px; padding: 15px"
+      [ngStyle]="{ width: full ? width - 100 + 'px' : '100%' }" fxLayout="row" fxLayoutAlign="center stretch"
+      [fxLayoutGap]="full ? '30px' : '10px'">
+      <!-- Se cambio el fxFlex de 50 a 100 -->
+      <div fxFlex="100" fxLayout="column" [fxLayoutAlign]="full ? 'space-between' : 'space-between'">
+        <!-- Se cambia el fxLayoutAlign de space-between a space-evenly -->
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" [fxLayoutGap]="full ? '20px' : '10px'"
+          [ngStyle]="{ 'margin-top': full ? '20px' : '0' }" style="margin-bottom: 20px">
+          <!--Cambien el tamaño width de 130px a 210px-->
+          <div style="
+              background-color: #ffffff;
+              border-radius: 10px;
+              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+              width: 250px;
+              height: 120px;
+            " fxLayout="column" fxLayoutAlign="space-between" [ngStyle]="{
+              'background-color': (isDarkTheme | async) ? '#32374a' : '#FFFFFF',
+              width: full ? (width > 1440 ? '1000px' : '300px') : '210px',
+              height: full
+                ? width > 1440
+                  ? '270px'
+                  : width < 1440
+                  ? '150px'
+                  : '210px'
+                : '120px',
+              'margin-right': full ? '30px !important' : '',
+              'justify-content': full ? 'space-evenly' : 'space-between'
+            }">
+            <div fxFlex="30" fxLayout="column" fxLayoutAlign="end" fxLayoutGap="10px">
+              <div style="font-size: 14px; font-weight: 400; text-align: center" [ngStyle]="{
+                  color: (isDarkTheme | async) ? '#7B8AA0;' : '#0B112A',
+                  'font-size': full ? '24px' : '10px',
+                  'line-height': full ? '24px' : '13px'
+                }" >{{typeDispositivo}} inalcanzables</div>
+            </div>
+            <ng-container>
+              <div [fxFlex]="full ? (width > 1440 ? 75 : 30) : 30" fxLayout="row" fxLayoutAlign="space-around center">
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center end">
+                  <mat-icon class="image-alarma1" [ngStyle]="{
+                      'background-size': full ? '70px' : '20px',
+                      width: full ? '100px' : '20px',
+                      height: full ? '100px' : '20px'
+                    }">
+                  </mat-icon>
+                </div>
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center start" style="margin-left: -20px">
+                  <div style="font-size: 17px; font-weight: 700; line-height: 21px" [ngStyle]="{
+                      color: (isDarkTheme | async) ? '#FB3E08;' : '#FB3E08',
+                      'font-size': full ? '40px' : '17px'
+                    }">
+                    {{valueInalcanzables}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div fxLayout="column" fxLayoutAlign="space-between center" *ngIf="!full">
+              <div style="font-size: 10px; color: #285ced; cursor: pointer;" (click)="false ? redirigir() : '' "></div>
+              <div style="
+                  width: 51px;
+                  height: 5px;
+                  background-color: #285ced;
+                  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                  border-radius: 4px;
+                "></div>
+            </div>
+          </div>
+          <div style="
+              background-color: #ffffff;
+              border-radius: 10px;
+              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+              width: 250px;
+              height: 120px;
+            " fxLayout="column" fxLayoutAlign="space-between" [ngStyle]="{
+              'background-color': (isDarkTheme | async) ? '#32374a' : '#FFFFFF',
+              width: full ? (width > 1440 ? '1000px' : '300px') : '210px',
+              height: full
+                ? width > 1440
+                  ? '270px'
+                  : width < 1440
+                  ? '150px'
+                  : '210px'
+                : '120px',
+              'margin-right': full ? '30px !important' : '',
+              'justify-content': full ? 'space-evenly' : 'space-between'
+            }">
+            <div fxFlex="30" fxLayout="column" fxLayoutAlign="end" fxLayoutGap="10px">
+              <div style="font-size: 14px; font-weight: 400; text-align: center" [ngStyle]="{
+                  color: (isDarkTheme | async) ? '#7B8AA0;' : '#0B112A',
+                  'font-size': full ? '24px' : '10px',
+                  'line-height': full ? '24px' : '13px'
+                }" >{{typeDispositivo}} sin gestion</div>
+            </div>
+            <ng-container>
+              <div [fxFlex]="full ? (width > 1440 ? 75 : 30) : 30" fxLayout="row" fxLayoutAlign="space-around center">
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center end">
+                  <mat-icon class="image-alarma1" [ngStyle]="{
+                      'background-size': full ? '70px' : '20px',
+                      width: full ? '100px' : '20px',
+                      height: full ? '100px' : '20px'
+                    }">
+                  </mat-icon>
+                </div>
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center start" style="margin-left: -20px">
+                  <div style="font-size: 17px; font-weight: 700; line-height: 21px" [ngStyle]="{
+                      color: (isDarkTheme | async) ? '#FB3E08;' : '#FB3E08',
+                      'font-size': full ? '40px' : '17px'
+                    }">
+                    {{valueGestion}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div fxLayout="column" fxLayoutAlign="space-between center" *ngIf="!full">
+              <div style="font-size: 10px; color: #285ced; cursor: pointer;" (click)="false ? redirigir() : '' "></div>
+              <div style="
+                  width: 51px;
+                  height: 5px;
+                  background-color: #285ced;
+                  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                  border-radius: 4px;
+                "></div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Se cambia el fxLayoutAlign de space-between a space-evenly -->
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" [fxLayoutGap]="full ? '20px' : '10px'"
+          [ngStyle]="{ 'margin-top': full ? '20px' : '0' }" style="margin-bottom: 20px">
+          <!--Cambien el tamaño width de 130px a 210px-->
+          <div style="
+              background-color: #ffffff;
+              border-radius: 10px;
+              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+              width: 250px;
+              height: 120px;
+            " fxLayout="column" fxLayoutAlign="space-between" [ngStyle]="{
+              'background-color': (isDarkTheme | async) ? '#32374a' : '#FFFFFF',
+              width: full ? (width > 1440 ? '1000px' : '300px') : '210px',
+              height: full
+                ? width > 1440
+                  ? '270px'
+                  : width < 1440
+                  ? '150px'
+                  : '210px'
+                : '120px',
+              'margin-right': full ? '30px !important' : '',
+              'justify-content': full ? 'space-evenly' : 'space-between'
+            }">
+            <div fxFlex="30" fxLayout="column" fxLayoutAlign="end" fxLayoutGap="10px">
+              <div style="font-size: 14px; font-weight: 400; text-align: center" [ngStyle]="{
+                  color: (isDarkTheme | async) ? '#7B8AA0;' : '#0B112A',
+                  'font-size': full ? '24px' : '10px',
+                  'line-height': full ? '24px' : '13px'
+                }" >Incremento de Memoria</div>
+            </div>
+            <ng-container>
+              <div [fxFlex]="full ? (width > 1440 ? 75 : 30) : 30" fxLayout="row" fxLayoutAlign="space-around center">
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center end">
+                  <mat-icon class="image-alarma1" [ngStyle]="{
+                      'background-size': full ? '70px' : '20px',
+                      width: full ? '100px' : '20px',
+                      height: full ? '100px' : '20px'
+                    }">
+                  </mat-icon>
+                </div>
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center start" style="margin-left: -20px">
+                  <div style="font-size: 17px; font-weight: 700; line-height: 21px" [ngStyle]="{
+                      color: (isDarkTheme | async) ? '#FB3E08;' : '#FB3E08',
+                      'font-size': full ? '40px' : '17px'
+                    }">
+                    {{valueMemoria}}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div fxLayout="column" fxLayoutAlign="space-between center" *ngIf="!full">
+              <div style="font-size: 10px; color: #285ced; cursor: pointer;" (click)="false ? redirigir() : '' "></div>
+              <div style="
+                  width: 51px;
+                  height: 5px;
+                  background-color: #285ced;
+                  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                  border-radius: 4px;
+                "></div>
+            </div>
+          </div>
+          <div style="
+              background-color: #ffffff;
+              border-radius: 10px;
+              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+              width: 250px;
+              height: 120px;
+            " fxLayout="column" fxLayoutAlign="space-between" [ngStyle]="{
+              'background-color': (isDarkTheme | async) ? '#32374a' : '#FFFFFF',
+              width: full ? (width > 1440 ? '1000px' : '300px') : '210px',
+              height: full
+                ? width > 1440
+                  ? '270px'
+                  : width < 1440
+                  ? '150px'
+                  : '210px'
+                : '120px',
+              'margin-right': full ? '30px !important' : '',
+              'justify-content': full ? 'space-evenly' : 'space-between'
+            }">
+            <div fxFlex="30" fxLayout="column" fxLayoutAlign="end" fxLayoutGap="10px">
+              <div style="font-size: 14px; font-weight: 400; text-align: center" [ngStyle]="{
+                  color: (isDarkTheme | async) ? '#7B8AA0;' : '#0B112A',
+                  'font-size': full ? '24px' : '10px',
+                  'line-height': full ? '24px' : '13px'
+                }" >Incremento CPU</div>
+            </div>
+            <ng-container>
+              <div [fxFlex]="full ? (width > 1440 ? 75 : 30) : 30" fxLayout="row" fxLayoutAlign="space-around center">
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center end">
+                  <mat-icon class="image-alarma1" [ngStyle]="{
+                      'background-size': full ? '70px' : '20px',
+                      width: full ? '100px' : '20px',
+                      height: full ? '100px' : '20px'
+                    }">
+                  </mat-icon>
+                </div>
+                <div fxFlex="40" fxLayout="column" fxLayoutAlign="center start" style="margin-left: -20px">
+                  <div style="font-size: 17px; font-weight: 700; line-height: 21px" [ngStyle]="{
+                      color: (isDarkTheme | async) ? '#FB3E08;' : '#FB3E08',
+                      'font-size': full ? '40px' : '17px'
+                    }">
+                     {{ valueCPU }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <div fxLayout="column" fxLayoutAlign="space-between center" *ngIf="!full">
+              <div style="font-size: 10px; color: #285ced; cursor: pointer;" (click)="false ? redirigir() : '' "></div>
+              <div style="
+                  width: 51px;
+                  height: 5px;
+                  background-color: #285ced;
+                  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                  border-radius: 4px;
+                "></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div fxFlex style="
+          background-color: #285ced;
+          border-radius: 4px;
+          text-align: center;
+          color: #ffffff;
+        " fxLayout="column" fxLayoutAlign="center center">
+        <div style="padding-top: 0px; font-size: 13px" [ngStyle]="{ 'font-size': full ? '30px' : '13px',
+          'margin-top': full ? (width > 1440 ? '55px' : '30px') : '' }">
+          Total de alarmas hoy
+        </div>
+        <div style="font-size: 18px; font-weight: 600; padding-top: 5px" [ngStyle]="{
+            'font-size': full ? '40px' : '13px',
+            'margin-top': full ? (width > 1440 ? '55px' : '30px') : ''
+          }">
+          {{TotalAlarmas}}
+        </div>
+        <div style="padding-top: 5px; font-size: 13px; line-height: 13px" [ngStyle]="{
+            'font-size': full ? '30px' : '13px',
+            'margin-top': full ? (width > 1440 ? '55px' : '30px') : '',
+            'line-height': full ? '43px' : '13px'
+          }">
+          Comparación con el<br />
+          mes pasado
+        </div>
+        <div fxFlexAlign="stretch" style="height: 110px" [ngStyle]="{
+            height: full
+              ? width > 1440
+                ? '430px'
+                : width < 1440
+                ? '180px'
+                : '300px'
+              : '110px'
+          }">
+          <app-ticketline [sizex]="full ? (width > 1440 ? 700 : width < 1440 ? 400 : 500) : 130"
+            [sizey]="full ? (width > 1440 ? 350 : width < 1440 ? 200 : 250) 
+            : 130" [data]="datatickets" [showTips]="true"
+            [curve]="true" [margin]="margin" [colors]="['#F7B500', '#00CF99']" [showLast]="false" [showDomain]="true"
+            [showYLabels]="false" [showXLabels]="false" [strokeWidth]="full ? 4 : 2" [isFull]="full"></app-ticketline>
+        </div>
+        <div fxFlexAlign="stretch" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px"  [ngStyle]="{
+            'font-size': full ? '30px' : '17px',
+            'margin-bottom': full ? (width > 1440 ? '30px' : '20px') : ''
+          }" style="
+            text-align: left;
+            color: #ffffff;
+            font-size: 17px;
+            padding-left: 20px;
+            font-weight: 400;
+          ">
+          <div [ngStyle]="{
+              width: full ? '40px' : '15px',
+              height: full ? '15px' : '6px',
+              margin: full ? '0 30px !important' : ''
+            }" style="
+              width: 15px;
+              height: 6px;
+              border-radius: 6px;
+              background-color: #f7b500;
+            "></div>
+          <div>Este mes, 346</div>
+        </div>
+        <div fxFlexAlign="stretch" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" [ngStyle]="{
+            'font-size': full ? '30px' : '17px',
+            'margin-bottom': full ? (width > 1440 ? '30px' : '20px') : ''
+          }" style="
+            text-align: left;
+            color: #ffffff;
+            font-size: 17px;
+            padding-left: 20px;
+            font-weight: 400;
+            padding-top: 5px;
+          ">
+          <div [ngStyle]="{
+              width: full ? '40px' : '15px',
+              height: full ? '15px' : '6px',
+              margin: full ? '0 30px !important' : ''
+            }" style="
+              width: 15px;
+              height: 6px;
+              border-radius: 6px;
+              background-color: #00cf99;
+            "></div>
+          <div>Mes anterior, 94</div>
+        </div>
+      </div> -->
+    </div>
+  </ng-container>
+  <ng-container *ngIf="errorCarga">
+    <app-service-error-dashboard [full]="full" [typeError]="errorCarga"></app-service-error-dashboard>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="spinnerLoading">
+  <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+</ng-container>

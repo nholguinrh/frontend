@@ -1,0 +1,42 @@
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config(
+    /* $font-family: 'Roboto'!important */
+    $font-family: 'Montserrat'!important
+);
+
+@include angular-material-typography($custom-typography);
+
+@import "palette.scss";
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$my-app-primary: mat-palette($md-primary-palette, 500);
+$my-app-accent: mat-palette($md-accent-palette, 500);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent);
+
+$custom-background-color: #f4f4f4;
+$background: map-get($my-app-theme, background);
+$background: map_merge($background, (background: $custom-background-color));
+$my-app-theme: map_merge($my-app-theme, (background: $background));
+
+@include angular-material-theme($my-app-theme);
+
+.dark-theme {
+    $my-dark-app-theme: mat-dark-theme($my-app-primary, $my-app-accent);
+    $custom-background-color: #0B112A;
+    $background: map-get($my-dark-app-theme, background);
+    $background: map_merge($background, (background: $custom-background-color));
+    $my-dark-app-theme: map_merge($my-dark-app-theme, (background: $background));
+
+    $custom-background-color: #0B112A;
+    $background: map-get($my-dark-app-theme, background);
+    $background: map_merge($background, (background: $custom-background-color));
+    $my-dark-app-theme: map_merge($my-dark-app-theme, (background: $background));
+    
+    @include angular-material-theme($my-dark-app-theme);
+}
+
+
+/* $my-app-theme: mat-dark-theme($my-app-primary, $my-app-accent);
+@include angular-material-theme($my-app-theme); */

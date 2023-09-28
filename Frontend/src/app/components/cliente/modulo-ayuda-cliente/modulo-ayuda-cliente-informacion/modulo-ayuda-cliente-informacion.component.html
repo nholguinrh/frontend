@@ -1,0 +1,286 @@
+<div class="modulo-informacion-container" style="margin-top: 30px; margin-bottom: 20px;">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; font-weight: 400; font-size: 9px; display: flex; align-items: center;">
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPage()">Centro de ayuda</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #3B4559;">{{ informacionPantalla?.titulo }}</span>
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>
+
+<div class="home-container">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="min-height: 350px;">
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-2">
+            <div class="cuadro-icono">
+              <mat-icon [class]="informacionPantalla?.icono"></mat-icon>
+            </div>
+          </div>
+          <div class="col-10"></div>
+        </div>
+        <div class="row">
+          <div class="col-12" style="font-weight: 600; font-size: 28px; color: #0B112A; margin-top: 30px;">
+            {{ informacionPantalla?.titulo }}
+          </div>
+          <div class="col-12" style="font-weight: 500; font-size: 20px; color: #0B112A; margin-top: 25px;">
+            {{ informacionPantalla?.descripcion }}
+          </div>
+        </div>
+
+
+        <ng-container *ngIf="moduloInformacion == 1">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Primeros pasos</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(1)">
+                    <span>¿A qué tipos de Dashboads tengo acceso?</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(2)">
+                    <span>Tipos de Dashboards</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(3)">
+                    <span>Tipos de Dispositivos</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(4)">
+                    <span>Especificaciones técnicas de visualización de Dashboards</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(1)">
+                    <span>No puedo visualizar información en mi Dashboard</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(2)">
+                    <span>Tengo problemas para visualizar mis métricas</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 2">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Cambia el aspecto de tus Dashboards</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(5)">
+                    <span>Dashboards Modo Oscuro</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(6)">
+                    <span>Selección de Dashboards</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(7)">
+                    <span>Personalización de Gráficos</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(8)">
+                    <span>Fullsize</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(18)">
+                    <span>Opciones de Monitoreo</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(3)">
+                    <span>No puedo visualizar todos los tipos de Dashboard</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 3">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Búsqueda Avanzada</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(9)">
+                    <span>Filtros de búsqueda</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(10)">
+                    <span>Previsualizaciones</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(11)">
+                    <span>Accesos directos</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(12)">
+                    <span>Dispositivos (Detalles de Métricas)</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(13)">
+                    <span>Dispositivos (Histórico)</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(4)">
+                    <span>No encuentro resultados en mi búsqueda</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 4">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Administra tus tickets</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(14)">
+                    <span>Tickets de incidentes</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(5)">
+                    <span>No puedo visualizar mis tickets de incidentes</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 5">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Recibe notificaciones</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(15)">
+                    <span>Visualizar notificaciones y Bandeja de entrada</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(6)">
+                    <span>No puedo recibir notificaciones</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(7)">
+                    <span>No puedo visualizar una notificación</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 6">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Ver más</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(16)">
+                    <span>Crear equipo (Agregar o eliminar personas)</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(17)">
+                    <span>Cambio de roles y permisos</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(8)">
+                    <span>Quiero incrementar mi número de integrantes</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(9)">
+                    <span>Quiero recuperar a integrantes del equipo</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(10)">
+                    <span>Mi equipo no ha recibido la invitación para colaborar</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

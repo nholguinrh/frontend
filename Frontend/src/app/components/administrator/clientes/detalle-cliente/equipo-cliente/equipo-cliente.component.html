@@ -1,0 +1,47 @@
+<div style="width: 100%!important; margin: 0; padding: 0;">
+    <div class="row w100m0p0">
+        <div class="col-12" style="margin: 0; padding: 0; padding: 20px;">
+            <div class="row">
+                <div class="col-12 pe-1" style="font-size: 14px; line-height: 28px; font-weight: 600;">
+                    Equipo de trabajo
+                    <p class="equipo-title-subtitle">
+                        Consulta el equipo de trabajo, sus roles y tipos <br> de dashboards. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-3" style="margin: 0px; padding-left: 20px; padding-right: 20px;">
+        <div class="col-12">
+            <div class="row gx-3 gy-4">
+                <div class="col-4" *ngFor="let user of this.pageResponse.content">
+                    <div  class="equipo-card"> 
+                        <div class="equipo-ico img-equipo-option-user"></div>
+                        <div class="equipo-title">
+                            <ng-container *ngIf="user?.tbCatEstatus?.idCatEstatus == 3"> {{ user.nombreCompleto | slice:0:10 }}<span *ngIf="user.nombreCompleto.length > 10">..</span><div class="border-warning badge text-warning warning-text" *ngIf="user?.tbCatEstatus?.idCatEstatus == 3">PENDIENTE</div></ng-container>
+                            <ng-container *ngIf="user?.tbCatEstatus?.idCatEstatus != 3">{{ user.nombreCompleto | slice:0:20 }}<span *ngIf="user.nombreCompleto.length > 20">...</span></ng-container>
+                            <p class="equipo-subtitle">
+                                {{ user?.tbCatPerfil?.descripcion | slice:0:30 }}
+                            </p>
+                            <span style="color: #285CED; line-height: 24px;">
+                                {{ user.email | slice:0:28 }}<span *ngIf="user.email.length > 25">...</span>
+                            </span>
+                        </div>
+                        <div class="equipo-detail img-equipo-option-document" (click)="cambiarRol(user.idUsuario)" style="cursor: pointer;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row w100m0p0" style="margin-top: 30px!important; min-height: 50px;">
+        <div class="col-6" style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px; padding-left: 20px;">
+            MOSTRANDO PÁG {{ this.pageResponse.number + 1 }} DE {{ this.pageResponse.totalOfPages }} DE {{ this.pageResponse.totalElements }} RESULTADOS
+        </div>
+        <div class="col-6" style="margin: 0; padding: 0; padding-right: 20px;">
+            <app-pager [pageModel]="pageResponse" (paged)="onPaged($event + 1)" style="float: right;" [variant]="true"></app-pager>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px; margin-left: 0; margin-right: 0; height: 50px;">
+        
+    </div>
+</div>

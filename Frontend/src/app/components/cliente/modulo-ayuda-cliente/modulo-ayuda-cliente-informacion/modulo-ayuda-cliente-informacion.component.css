@@ -1,0 +1,103 @@
+.modulo-informacion-container-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 0px;
+}
+
+.home-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 0;
+}
+
+.img-servicio-paginator{
+  background-image: url("src\assets\img\paginator-servicio-azul.svg");
+  background-size: 9px 9px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cuadro-icono{
+  background: #285CED;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.img-modulo-dashboards{
+  background-image: url("src\assets\img\modulo-ayuda-dashboards.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-personalizacion{
+  background-image: url("src\assets\img\modulo-ayuda-personalizacion.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-busqueda{
+  background-image: url("src\assets\img\modulo-ayuda-busqueda.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-incidentes{
+  background-image: url("src\assets\img\modulo-ayuda-incidentes.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-notificaciones{
+  background-image: url("src\assets\img\modulo-ayuda-notificaciones.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-equipos{
+  background-image: url("src\assets\img\modulo-ayuda-equipos.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+ul{
+  padding-left: 0;
+  list-style: none;
+}
+
+ul.a {
+  padding-left: 1rem;
+  list-style-type: decimal;
+}
+
+ul.b {
+  padding-left: 1rem;
+  list-style-type: lower-alpha;
+}
+
+ul.c {
+  padding-left: 0;
+  list-style: none;
+}
+
+ul.c li {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+

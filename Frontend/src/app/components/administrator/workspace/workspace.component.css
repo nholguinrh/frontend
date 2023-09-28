@@ -1,0 +1,80 @@
+.home-container{
+    width: 100%!important;
+    margin: 0;
+    padding: 0;
+}
+
+::ng-deep .worskpace-tab .mat-tab-label-active {
+    border-style: solid;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px 8px 0px 0px;
+    font-weight: bold!important;
+    color: #000000!important;
+    /* margin-left: 10px!important; */
+}
+
+
+::ng-deep .worskpace-tab .mat-tab-label-container{
+    padding: 0px 20px;
+  }
+  
+
+  
+
+::ng-deep .worskpace-tab .mat-ripple-container-active{
+    background-color: none!important;
+}
+
+::ng-deep .worskpace-tab .mat-tab-label-active{
+    opacity: 1 !important;
+    color: #0B112A !important;
+    font-weight: 600 !important;
+  }
+
+::ng-deep .worskpace-tab .mat-tab-label{
+    color: #7B8AA0;
+    font-weight: bold!important;
+}
+
+::ng-deep .worskpace-tab .mat-ink-bar{
+    display: none!important;
+}
+
+::ng-deep .worskpace-tab .mat-tab-link {
+    border-style: solid;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px 8px 0px 0px;
+    font-weight: bold!important;
+}
+
+.mat-ripple.mat-tab-label.mat-focus-indicator.mat-tab-label.ng-star-inserted {
+    opacity: 1;
+}
+
+/* ::ng-deep .worskpace-tab .mat-tab-label-content {
+    border: none;
+    background-color: #3aafa9;
+}
+
+::ng-deep .worskpace-tab .mat-tab-label-container {
+    border: none;
+    background-color: #3aafa9;
+} */
+
+::ng-deep .mat-tab-header {
+    margin-bottom: -2px;
+}
+
+::ng-deep .mat-tab-label-active{
+    color: #000000;
+    font-style: normal;
+    font-weight: 800 !important;
+    font-size: 18px !important;
+}
+
+::ng-deep .mat-tab-label{
+    font-style: normal;
+    font-size: 18px !important;
+}

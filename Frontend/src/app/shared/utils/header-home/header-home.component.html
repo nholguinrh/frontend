@@ -1,0 +1,88 @@
+<mat-toolbar [ngStyle]="{'background-color': color}">
+    <div style="width: 140px; margin: 0; padding: 0; float: left;">  
+        <div [ngClass]="logo"></div>
+    </div>
+    <div class="row" style="max-width: 850px; margin: 0; padding: 0; margin-top: 10px;">  
+        <div class="home-menu" [ngClass]="this.router.url === '/administrator' ? 'menu-active':''" style="width: 125px; cursor: pointer;" (click)="changeMenu(1)">
+            <div class="menu-ico" 
+            [ngStyle]="{'background-color': this.router.url === '/administrator' ? '#7B8AA0':'#3B4559'}" 
+            [ngClass]="this.router.url === '/administrator' ? 'img-header-home':'img-header-home-active'" style="margin-left: 5px;"></div>
+            <div [ngClass]="this.router.url === '/administrator' ? 'menu-title-active':'menu-title'" style="margin-left: 10px;">
+                Inicio
+            </div>
+        </div>
+        <div class="home-menu" [ngClass]="this.router.url != '/administrator' ? 'menu-active':''" style="width: 210px; cursor: pointer; margin-left: 50px;" (click)="changeMenu(2)">
+            <div class="menu-ico"
+            [ngStyle]="{'background-color': this.router.url != '/administrator' ? '#7B8AA0':'#3B4559'}" 
+            [ngClass]="this.router.url != '/administrator' ? 'img-header-work-active':'img-header-work'" style="margin-left: 5px;"></div>
+            <div [ngClass]="this.router.url != '/administrator' ? 'menu-title-active':'menu-title'"  style="margin-left: 10px;">
+                Espacio de trabajo
+            </div>
+        </div>
+
+        <div class="menu-user" [matMenuTriggerFor]="userMenu" style="margin-left: 60px; margin-right: 40px;">
+            <div class="container" style="width: 100%; margin: 0; padding: 0;">
+                <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                    <div class="img-header-user" style="margin: 0; padding: 0; background-color: #E6EDF6; width: 40px; height: 40px; margin-top: 10px; border-radius: 50%;">
+
+                    </div>
+                    <div class="menu-user-container">
+                        <div class="row" style="margin: 0; padding: 0; line-height: 22px; font-size: 14px; color: #FFFFFF; font-weight: 600; width: fit-content; text-align: left;">
+                            <div class="col" style="padding: 0; margin: 0;">
+                                {{ (username.length>15) ? (username | slice:0:15 | titlecase) + '...' : username | titlecase }}
+                            </div>
+                            <div class="col img-header-select" style="margin-left: 5px;"></div>
+                        </div>
+                        <div class="row" style="margin: 0; padding: 0; line-height: 18px; font-size: 9px; color: #7B8AA0; font-weight: 600; width: fit-content; letter-spacing: 2px">
+                            {{ (role | uppercase) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mat-menu class="header-menu" #userMenu="matMenu" xPosition="before">
+                <button mat-menu-item style="font-size: 14px; font-weight: 400;" (click)="logout()">
+                    <mat-icon class="img-header-logout"></mat-icon>
+                    <span>CERRAR SESIÓN</span>
+                </button>
+                <button mat-menu-item style="font-size: 14px; font-weight: 400; text-align: left;" disabled>
+                    <mat-icon class="img-header-version"></mat-icon>
+                    <span>VERSIÓN {{version}}</span>
+                </button>
+            </mat-menu>
+        </div>
+
+        <div class="img-header-notification" style="margin-top: 1px; margin-left: 20px; width: 40px; height: 40px; cursor: pointer;" #menuTriggerNotification="matMenuTrigger" [matMenuTriggerFor]="notificacion" (click)="openMenu()"><div class="badged-notification" *ngIf="numNotificaciones != '0'"><span style="margin-top: -2px;margin-left: 10px;" [ngStyle]="{'margin-left' : numNotificaciones?.length > 1 ? '3px' : '10px'}">{{ numNotificaciones }}</span></div></div>
+        
+        <mat-menu class="notification-menu" #notificacion="matMenu" xPosition="before">
+            <div class="notificacion-menu-contenido" style="margin: 0!important; padding: 0!important; font-size: 14px; font-weight: 600; min-width: 400px; min-height: 400px;" (click) = "$event.stopPropagation()">
+                <div class="row" style="width:100%; margin:0; padding: 20px; text-transform: uppercase; line-height: 18px; font-size: 18px;">
+                    <div class="col-6" style="padding-top: 0px;">
+                        NOTIFICACIONES
+                    </div>
+                    <div class="col-6">
+                        <button mat-flat-button style="float: right; position: relative; top: -10px; right: -12px; width: 10px!important;  min-width: unset!important;" (click)="menuTriggerNotification.closeMenu()">
+                            <mat-icon style="margin-left: -12px!important; margin-top: 0px;">
+                                close
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="row" style="width:100%; margin:0; padding: 20px; padding-top: 10px; margin-top: -15px;">
+                    <mat-tab-group [disableRipple]="true" [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" dynamicHeight>
+                        <mat-tab label="No leídas">
+                            <ng-template matTabContent>
+                                <app-notifications [typeUser]="0" [leidas]="true" (close)="menuTriggerNotification.closeMenu();"></app-notifications>
+                            </ng-template>
+                        </mat-tab>
+                        <mat-tab label="Leídas">
+                            <ng-template matTabContent >
+                                <app-notifications [typeUser]="0" [leidas]="false" (close)="menuTriggerNotification.closeMenu();"></app-notifications>
+                            </ng-template>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </mat-menu>
+        <div class="img-header-support" style="margin-top: 1px; margin-left: 30px; width: 40px; height: 40px; margin-right: 30px; cursor: pointer;" (click)="openModuloAyuda()"></div>
+    </div>
+</mat-toolbar>

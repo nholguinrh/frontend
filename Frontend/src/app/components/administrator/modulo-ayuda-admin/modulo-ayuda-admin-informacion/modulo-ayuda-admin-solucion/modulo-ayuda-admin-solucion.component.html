@@ -1,0 +1,278 @@
+<div class="modulo-informacion-container" style="margin-top: 30px; margin-bottom: 20px;">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; font-weight: 400; font-size: 9px; display: flex; align-items: center;">
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPage()">Centro de ayuda</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPageInformacion()">{{ informacionPantalla?.titulo }}</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #3B4559;">{{ solucionPantalla?.titulo }}</span>
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>
+
+<div class="home-container disable-scrollbars">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="min-height: 350px; padding-bottom: 50px;">
+        <ng-container *ngIf="moduloSolucion == 1 || moduloSolucion == 12">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">No encuentro un cliente</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>El proceso de alta de un nuevo cliente está asociado a otros procesos dentro del negocio, por ello es importante coordinar con tu área interna si un cliente está listo para usar el SMC.  Si el sistema no muestra coincidencias es necesario que te comuniques con el área encargada del proceso de el alta de la empresa.</li>
+                  <li>Recuerda que el primer paso es ingresar el nombre de la empresa, este campo funciona como un buscador por coincidencia, de modo que tendrás que escribir cuatro caracteres para que el sistema te muestre si el nuevo cliente está listo para usar el SMC.</li>   
+                </ul>
+              </ul>
+
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/solucion-page1-img1.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 2 || moduloSolucion == 13">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Tengo problemas para configurar o activar dispositivos </span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tienes problemas en el proceso de activación o configuración de dispositivos es necesario que recuerdes las limitaciones y reglas del proceso, con la finalidad de validar que el proceso es efectuado correctamente:</li>
+                <ul class="a">
+                  <li>El cliente puede tener diferentes tipos de dispositivos (Enlaces, Sitios, Servicios).</li>
+                  <li>Para activar correctamente un Servicio, es necesario activar primero el Sitio, posterior a ello será posible activar los Servicios asociados.</li>
+                  <li>Los dispositivos que puedes ver en el proceso de Configuración de SLA son únicamente los activos.</li>
+                  <li>Si presentas intermitencias en tu señal de internet es recomendable suspender el proceso y retomarlo más tarde.</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 3 || moduloSolucion == 14">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Tengo problemas para configurar los SLA de un cliente</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tienes problemas en el proceso de configuración de SLAs es necesario que recuerdes las limitaciones y reglas del proceso, con la finalidad de validar que el proceso es efectuado correctamente:</li>
+                <ul class="a">
+                  <li>Los dispositivos que puedes ver en el proceso de Configuración de SLA son únicamente los activos.</li>
+                  <li>Cada uno de los dispositivos del cliente puede tener una configuración de SLA:</li>
+                  <ul class="b">
+                    <li>Para el caso específico de Sitios, sabemos que puede tener Servicios asociados. Sin embargo, es posible asignar una configuración de SLA al Sitio y una configuración de SLA diferente a cada servicio.</li>
+                  </ul>
+                  <li>Para asignar una configuración de SLA es necesario ingresar al menos un valor diferente de cero en alguna de las métricas.</li>
+                  <li>No es posible editar las métricas de una plantilla de SLA en proceso de asignación, para ello tendrás que ir a tu módulo de configuración de plantillas de SLA.</li>
+                  <li>Si presentas intermitencias en tu señal de internet es recomendable suspender el proceso y retomarlo más tarde.</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 4">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">El cliente no ha recibido el email de invitación</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tienes problemas para el envío del email de invitación de tu cliente, es posible reenviarlo:</li>
+                <ul class="a">
+                  <li>Dirígete a tu Espacio de Trabajo.</li>
+                  <li>Identifica al cliente dentro de tabla general y haz clic sobre detalle.</li>
+                  <li>El sistema abrirá la información general del cliente, deberás localizar el botón de <span><mat-icon class="img-menu-opciones" style="height: 18px;width: 25px;"></mat-icon></span> ver más, que se encuentra a un costado de Enviar notificación.</li>
+                  <li>Haz clic sobre el botón de Reenviar invitación.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/solucion-page4-img1.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 5">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Quiero recuperar a integrantes del equipo</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Cuando eliminas a una persona de tu equipo perderá acceso por completo al SMC. Recuerda que solo los usuarios administradores pueden eliminar y gestionar al equipo de trabajo.</li>
+                <li>Si deseas recuperar a un integrante eliminado deberás realizar de nuevo el proceso de alta:</li>
+              </ul>
+
+              <p class="detalle-subtitulo">Invitar a personas a unirse a tu equipo</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Localiza el botón de <span><mat-icon class="img-nuevo-cliente" style="height: 18px;width: 28px;"></mat-icon>Invitar persona,</span> que se encuentra en la esquina superior derecha.</li>
+                  <li>Introduce su correo electrónico.</li>
+                  <li>Selecciona el rol que desempeñará.</li>
+                  <li>Haz clic en Enviar invitación.</li>
+                </ul>
+                <li>Le mandaremos un enlace de invitación por correo, que solo puede usar una vez. Si los enlaces no funcionan, puedes reenviarle la invitación y ver el detalle del miembro invitado, a continuación para saber cómo hacerlo.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 6">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Mi equipo no ha recibido la invitación para colaborar</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tu invitado no ha recibido la invitación para colaborar dentro de tu equipo, puedes hacer el reenvío:</li>
+              </ul>
+
+              <p class="detalle-subtitulo">Reenviar invitación</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Localiza a tu invitado y haz clic sobre su botón de <span><mat-icon class="img-detalle" style="height: 18px;width: 25px;"></mat-icon></span> detalle.</li>
+                  <li>El sistema abrirá la información general de tu invitado.</li>
+                  <li>Localiza el botón de <span><mat-icon class="img-menu-opciones" style="height: 18px;width: 25px;"></mat-icon></span> ver más para desplegar la opción de reenviar invitación.</li>
+                  <li>Haz clic en <span>Reenviar invitación.</span></li>
+                </ul>
+                <li>Le mandaremos un enlace de invitación por correo, que solo puede usar una vez. Si los enlaces no funcionan, puedes reenviarle la invitación varias veces.</li>
+              </ul>
+
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/solucion-page6-img1.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 7">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">No encuentro datos en la consulta</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tienes problemas en el proceso de descarga de bitácora es necesario que recuerdes las limitaciones y reglas del proceso, con la finalidad de validar que el proceso es efectuado correctamente:</li>
+                <ul class="a">
+                  <li>No es posible ingresar una fecha de consulta inicial mayor a la fecha de consulta final.</li>
+                  <li>La cantidad de datos puede variar en función de las actividades de tu equipo, es posible encontrar periodos de consulta con menores datos.</li>
+                  <li>El SMC únicamente realiza la descarga del archivo xls, para visualizarlo deberás realizarlo con herramientas externas.</li>
+                  <li>Si presentas intermitencias en tu señal de internet es recomendable suspender el proceso y retomarlo más tarde.</li> 
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        
+
+        <ng-container *ngIf="moduloSolucion == 8">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">La notificación no fue recibida por el cliente</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tienes problemas con el envío de notificaciones, es necesario que recuerdes las limitaciones y reglas del proceso, con la finalidad de validar que el proceso es efectuado correctamente:</li>
+                <ul class="a">
+                  <li>Para el correcto envío de notificaciones, es necesario que ingreses los campos requeridos, de lo contrario el botón de Enviar permanecerá deshabilitado:</li>
+                  <ul class="b">
+                    <li>Clientes</li>
+                    <li>Título de notificación</li>
+                    <li>Escribe un mensaje</li>
+                  </ul>
+                  <li>Para el campo de Clientes, es necesario seleccionar al menos uno.</li>
+                  <li>Los campos dentro de la ventana de envío tienen  un número limitado de caracteres, por lo que deberás ser específico en la información que deseas comunicar al cliente.</li>
+                  <li>El creado de notificaciones está limitado a la aceptación de texto, por lo cual no podrás ingresar archivos o elementos de ningún otro tipo.</li>
+                  <li>Si no cuentas con clientes favoritos, el botón de Favoritos estará deshabilitado, es decir no mostrará información.</li>
+                  <li>Si un cliente se encuentra en estatus Onboarding, no podrá recibir notificaciones hasta que complete su proceso de registro.</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 9">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">No puedo visualizar la notificación </span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tienes problemas para visualizar tus notificaciones, es necesario que recuerdes las limitaciones y reglas del proceso, con la finalidad de validar que el proceso es efectuado correctamente:</li>
+                <ul class="a">
+                  <li>Las notificaciones  para el Administrador Totalplay son ejecutadas únicamente para la funcionalidad de <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 2, 5)">Continuar más tarde.</span></li>
+                  <li>Todo el equipo de trabajo de Toltalplay puede visualizar estas notificaciones, por lo que la gestión de la ejecución del alta del cliente es independiente.</li>
+                  <li>Las notificaciones que has eliminado en el menú de notificaciones o en tu bandeja de entrada no podrán ser recuperadas.</li>
+                  <li>Si la notificación ya fue leída pasará al apartado de Leídas, que se encuentra dentro del menú de notificaciones. Para visualizar las notificaciones leídas deberás hacer clic a la sección de Leídas de modo que podrías desplazarte entre uno u otro menú a través de las tabs.</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 10">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">¿Puedo tener un cliente sin un paquete asociado?</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Actualmente, la asociación de un paquete es un elemento requerido para el alta de un nuevo cliente, sin embargo pueden ocurrir diferentes escenarios:</li>
+                <ul class="a">
+                  <li>Si elimino un paquete, ¿El cliente pierde las características del paquete?</li>
+                </ul>
+                <li>La funcionalidad de eliminar paquete no implica la configuración del cliente, es decir el cliente seguirá teniendo las características del paquete. Si deseas cambiarlas, es necesario que le asocies otro paquete.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 11">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Mis clientes se quedaron sin configuración de SLA</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Actualmente, la única posibilidad de eliminar la configuración de SLA asociada a un cliente es de la siguiente forma:</li>
+                <li>Asociar un nueva configuración</li>
+                <li>Eliminar una configuración de SLA den tro del detalle de cliente</li>
+                <li>Limitaciones de Eliminar un SLA:</li>
+                <li>Recuerda que solo estarás eliminando la plantilla y no podrá ser utilizada más adelante, sin embargo si deseas eliminar o modificar la configuración de un cliente deberás hacerlo en el Detalle del cliente asignado nuevas configuraciones.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+
+        <ng-container *ngIf="moduloSolucion == 15">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">No se ha guardado la configuración de un cliente</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Guardado en automático:</li>
+                <p class="detalle-subtitulo">Invitar a personas a unirse a tu equipo</p>
+                <li>El guardado en automático se aplica únicamente para los procesos de Activación de Dispositivos y Configuración de SLAs. Esto significa que en el momento en que realices cualquier acción se quedará grabado el cambio.</li>
+              </ul>
+
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Para la Activación de Servicios y su configuración de SLA es necesario hacer clic en el botón de ¨Guardar Cambios¨, </span>
+                    <span style="font-weight: 500">de lo contrario no podrás visualizar las modificaciones de sus dispositivos. Por este motivo, es importante que identifiques cuando el sistema requiere de hacer clic sobre un botón de guardado.</span>  
+                  </div>
+                </div>
+              </div>
+
+              
+
+
+              
+              <p class="detalle-subtitulo">Guardado Manual:</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Este tipo de guardado aplica para todos los demás procesos dentro del SMC, en donde tendrás que confirmar que deseas guardar los cambios realizados.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

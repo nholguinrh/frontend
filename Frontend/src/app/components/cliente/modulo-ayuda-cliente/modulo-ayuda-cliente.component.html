@@ -1,0 +1,37 @@
+<div class="home-container-ayuda" style="margin-top: 50px;">
+  <div class="row w100m0p0">
+      <div class="col-12">
+        <div class="card-modulo-ayuda">
+          <div class="row">
+            <div class="col-3" style="display: flex; justify-content: center; padding: 0;">
+              <img src="assets/img/modulo-ayuda-admin-izquierda.png" alt="" />
+            </div>
+            <div class="col-6" style="display: flex; flex-wrap: wrap; justify-content: center;">
+              <span class="card-modulo-ayuda-title">AYUDA Y PUESTA EN MARCHA</span>
+              <p class="card-modulo-ayuda-subtitle">Obtén consejos rápidos en estos breves tutoriales para ayudarte a ti y a tu equipo a tener éxito dentro del SMC Totalplay</p>
+            </div>
+            <div class="col-3" style="display: flex; justify-content: center; padding: 0;">
+              <img src="assets/img/modulo-ayuda-admin-derecha.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row w100m0p0" style="margin-top: 50px !important;">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-3" *ngFor="let acceso of listadoAccesos; let i = index;" style="margin-bottom: 30px; display: flex; justify-content: center;">
+          <div class="modulo-ayuda-acceso" (click)="moduloInformacion(i+1)">
+            <div style="width: 100%; display: flex; justify-content: center;">
+              <div class="cuadro-icono">
+                <mat-icon [class]="acceso.icono"></mat-icon>
+              </div>
+            </div>
+            <span>{{acceso.titulo}}</span>
+            <p>{{acceso.descripcion}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

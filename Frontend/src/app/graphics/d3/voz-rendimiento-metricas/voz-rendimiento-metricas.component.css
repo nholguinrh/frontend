@@ -1,0 +1,112 @@
+
+.title-promedio-rendimiento{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #838383;
+}
+
+.title-number{
+  padding-top: 2px;
+  padding-left: 20px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 32px;
+  color: #0B112A;
+}
+
+.title-number-text{
+  padding-top: 2px;
+  padding-left: 5px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 20px;
+  color: #0B112A;
+}
+
+
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-start-wrapper {
+  position: static !important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-inner{
+  font-size: 12px !important;
+  margin-top: 8px !important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-separator{
+  margin-top: 6px !important;
+}
+::ng-deep .select-monitoreo-voz .mat-form-field-appearance-outline .mat-form-field-infix {
+  margin-top: -18px!important;
+  font-size: 12px!important;
+  font-weight: 600!important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-select-arrow {
+  border: 0;
+}
+
+::ng-deep .select-monitoreo-voz .mat-form-field-suffix {
+  top: 0.75em !important;
+}
+
+
+.img-calendar{
+  background-image: url("src\assets\img\calendar-voz.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-metricas-voz{
+  background-image: url("src\assets\img\metricas-voz.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-appearance-outline .mat-form-field-outline {
+  background: #F8FDFF;
+  opacity: 0.05;
+  border-radius: 7px;
+  color: #D0D0CE !important
+}
+
+::ng-deep .filtros-afectaciones-full-dark .mat-date-range-input-container {
+  color: white !important;
+}
+
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-flex:hover .mat-form-field-outline-thick {
+  opacity: 0.1 !important;
+}
+
+::ng-deep .mat-select-panel:has(.dark-theme){
+  background: #22273d;
+}
+
+
+::ng-deep .mat-select-panel:has(.dark-theme) .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: rgba(255, 255, 255, 0.12);
+}
+::ng-deep  .mat-primary:has(.dark-theme) .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #7b8aa0;
+}
+
+::ng-deep .mat-select-panel:has(.dark-theme) .mat-option{
+  color: #D0D0CE;
+}
+
+::ng-deep .mat-menu-panel:has(.dark-theme),
+::ng-deep .mat-menu-panel:has(.dark-theme) {
+  background: #22273d;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-start-wrapper .mat-date-range-input-inner {
+  top: 12px !important;
+}

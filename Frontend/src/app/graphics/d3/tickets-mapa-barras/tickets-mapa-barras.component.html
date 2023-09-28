@@ -1,0 +1,45 @@
+<ng-container *ngIf="!spinnerLoading">
+  <ng-container *ngIf="!errorCarga">
+    <div style="width: 100%; margin: 0; padding: 0;" fxLayout="column" fxLayoutAlign="space-evenly stretch"
+      fxLayoutGap="10px" [ngStyle]="{'height.px': tamano}">
+      <div fxLayout="row" fxLayoutAlign="space-evenly stretch" *ngFor="let item of options">
+        <div>
+          <div style="width: 50px; height: 50px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 50px;"
+            [ngStyle]="{'width': width > 1440 ? '50px':'40px', 'height': width > 1440 ? '50px':'40px',
+                'background-color': (isDark) ? '#161c33' : '#FFFFFF'}" [ngClass]="item.ico">
+          </div>
+        </div>
+    
+        <div fxFlex="10" style="font-weight: 700; font-size: 17px; display: flex; align-items: center;"
+          [ngStyle]="{'color': item.selected ? '#3B4559': '#838383'}">
+          {{ item.value }} <span style="font-size: 10px;line-height: 17px;font-weight: 700; margin-left: 2px;">Hoy</span>
+        </div>
+    
+        <div [fxFlex]="width > 1440 ? 15 : 20"
+          style="font-weight: 400; font-size: 15px; display: flex; align-items: center;"
+          [ngStyle]="{'color': item.selected ? '#3B4559': '#838383'}">
+          {{item.name}}
+        </div>
+    
+        <div>
+          <app-bar-chart [sizex]="width > 1440 ? sizeX : 130" [sizey]="width > 1440 ? 65 : 55" [data]="item.data"
+            [margin]="margin" [color]="item.color" [rx]="2" [showDomain]="false" [barWidth]="1" [showLimits]="false"
+            [showXLabels]="false" [showYLabels]="false" [tooltipLabel]="item.name" [tickets]="true" unit=" "></app-bar-chart>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <div class="img-option-detalle" style="width: 20px; height: 20px; cursor: pointer;" (click)="redirigir(item.name)"></div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="errorCarga">
+    <div>
+      <app-service-error-dashboard [typeError]="errorCarga"></app-service-error-dashboard>
+    </div>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="spinnerLoading">
+  <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+</ng-container>

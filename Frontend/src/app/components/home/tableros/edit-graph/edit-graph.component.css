@@ -1,0 +1,50 @@
+::ng-deep .dark-modalbox > mat-dialog-container {
+       background-color: #161c33;
+       color:#D0D0CE;
+       
+}
+
+::ng-deep .ligth-modalbox > mat-dialog-container {
+    background-color: #FFFFFF;
+    color:#161c33;
+}
+
+.button-check{
+    border: none;
+    width: 50px;
+    height: 28px;
+    background: #285CED !important;
+    cursor: pointer;
+    border-radius: 2px 0 0 2px;
+}
+
+.button-notcheck{
+    border: none;
+    width: 50px;
+    height: 28px;
+    cursor: pointer;
+    border-radius: 2px 0 0 2px;
+}
+
+mat-card{
+    padding: 0px;
+    margin-bottom: 50px !important;
+}
+
+.button-color{
+    font-weight: bold;
+    border-radius: 2px;
+    border: 2px solid #285CED;
+    color: #285CED;
+    cursor: pointer;
+    background: white;
+}
+
+button:focus:not(:focus-visible){
+    background: #285CED;
+    color: white;
+}
+
+::ng-deep .dark-theme .mat-dialog-container{
+    background: #161c33;
+}

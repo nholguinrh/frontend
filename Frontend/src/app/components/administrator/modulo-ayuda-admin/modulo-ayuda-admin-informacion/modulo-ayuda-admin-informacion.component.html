@@ -1,0 +1,364 @@
+<div class="modulo-informacion-container" style="margin-top: 30px; margin-bottom: 20px;">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; font-weight: 400; font-size: 9px; display: flex; align-items: center;">
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPage()">Centro de ayuda</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #3B4559;">{{ informacionPantalla?.titulo }}</span>
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>
+
+<div class="home-container">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="min-height: 350px;">
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-2">
+            <div class="cuadro-icono">
+              <mat-icon [class]="informacionPantalla?.icono"></mat-icon>
+            </div>
+          </div>
+          <div class="col-10"></div>
+        </div>
+        <div class="row">
+          <div class="col-12" style="font-weight: 600; font-size: 28px; color: #0B112A; margin-top: 30px;">
+            {{ informacionPantalla?.titulo }}
+          </div>
+          <div class="col-12" style="font-weight: 500; font-size: 20px; color: #0B112A; margin-top: 25px;">
+            {{ informacionPantalla?.descripcion }}
+          </div>
+        </div>
+
+        <ng-container *ngIf="moduloInformacion == 1">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-12" style="font-weight: 600; font-size: 14px; color: #0B112A; line-height: 40px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li>Para agregar o editar tus accesos directos deberás ubicar el botón <span style="font-weight: 700;">Accesos directos</span> en el panel lateral de la página de inicio. A continuación, podrás visualizar las opciones de accesos que aparezcan en la ventana emergente.</li>
+                <ul class="a">
+                  <li>Encontrarás todas los accesos directos a los que puedes acceder.</li>
+                  <li>Haz clic sobre cada acceso directo que deses tener en tu página de inicio.</li>
+                  <li>Por default tendrás siempre en tu configuración los siguientes accesos:</li>
+                  <ul class="b">
+                    <li>Añadir nuevo cliente</li>
+                    <li>Ver paquetes</li>
+                  </ul>
+                  <li>Los accesos directos seleccionados conservarán un color azul, a diferencia de los no seleccionados que se muestran en color gris.</li>
+                  <li>Haz clic en el botón de guardar si deseas conservar la configuración.</li>
+                  <li>Espera a que la página se actualice. Se te redirigirá a la página de inicio en donde podrás encontrar tu configuración de accesos directos.</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 2">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Primeros pasos</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(1)">
+                    <span>Crear y configurar un nuevo cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(2)">
+                    <span>Configuración masiva</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(3)">
+                    <span>Configuración de SLA y plantillas</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(4)">
+                    <span>Geolocalización de Sitios</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(5)">
+                    <span>Funcionalidad de Continuar más tarde</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(6)">
+                    <span>Filtros de búsqueda avanzada</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(1)">
+                    <span>No encuentro un cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(2)">
+                    <span>Tengo problemas para configurar o activar dispositivos</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(3)">
+                    <span>Tengo problemas para configurar los SLA de un cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(4)">
+                    <span>El cliente no ha recibido el email de invitación</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 3">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Crear y administrar equipos</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(7)">
+                    <span>Crear equipo (Agregar o eliminar personas)</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(8)">
+                    <span>Cambio de roles y permisos</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(5)">
+                    <span>Quiero recuperar a integrantes del equipo</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(6)">
+                    <span>Mi equipo no ha recibido la invitación para colaborar</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 4">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Consulta por períodos</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(9)">
+                    <span>Consulta de bitácora</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(7)">
+                    <span>No encuentro datos en la consulta</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 5">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Crear y envía notificaciones</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(10)">
+                    <span>Crear notificaciones uno a uno</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(11)">
+                    <span>Crear notificaciones masivas</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(12)">
+                    <span>Notificaciones automáticas equipo Totalplay</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(13)">
+                    <span>Visualizar notificaciones y Bandeja de entrada</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(8)">
+                    <span>La notificación no fue recibida por el cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(9)">
+                    <span>No puedo visualizar la notificación</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 6">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Crear y administrar tus paquetes</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(14)">
+                    <span>Crear un nuevo paquete</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(15)">
+                    <span>Editar y eliminar mis paquetes</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(10)">
+                    <span>¿Puedo tener un cliente sin un paquete asociado?</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 7">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Crear y administrar tus plantillas</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(16)">
+                    <span>Crear un nueva plantilla de SLA</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(17)">
+                    <span>Editar y eliminar mis plantillas</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(11)">
+                    <span>Mis clientes se quedaron sin configuración de SLA</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloInformacion == 8">
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Visualiza y administra a tus clientes</li>
+                <ul class="c">
+                  <li (click)="moduloDetalle(18)">
+                    <span>Edita y administra un cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(19)">
+                    <span>Edición de métricas y SLAs</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(20)">
+                    <span>Cambio de estatus de un Sitio</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloDetalle(21)">
+                    <span>Eliminar un cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-5" style="font-weight: 500; font-size: 14px; color: #0B112A; line-height: 25px;">
+              <mat-divider></mat-divider>
+              <ul class="list-unstyled" style="margin-top: 35px;">
+                <li style="font-weight: 600; font-size: 16px;">Soluciona un problema</li>
+                <ul class="c">
+                  <li (click)="moduloSolucion(12)">
+                    <span>No encuentro un cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(13)">
+                    <span>Tengo problemas para configurar o activar dispositivos</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(14)">
+                    <span>Tengo problemas para configurar los SLA de un cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                  <li (click)="moduloSolucion(15)">
+                    <span>No se han guardado las configuraciones de un cliente</span>
+                    <mat-icon class="img-servicio-paginator"></mat-icon>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+
+
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

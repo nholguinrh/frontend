@@ -1,0 +1,152 @@
+.servicio-acceso-directo{
+  min-height: 38px;
+  background: #FEFEFF;
+  box-shadow: 0px 20px 13px rgba(41, 72, 152, 0.025), 0px 8.14815px 6.51852px rgba(41, 72, 152, 0.0196296), 0px 1.85185px 3.14815px rgba(41, 72, 152, 0.012037);
+  border-radius: 10px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.servicio-acceso-directo-afectaciones{
+  min-height: auto;
+  align-items: center;
+  margin: 10px 0;
+}
+
+
+.carruselDirecto button{
+  background: #D9D9D9;
+  width: 13px !important;
+  height: 13px !important;
+  box-shadow: none !important;
+}
+
+.boton-accionado{
+  background: #285CED !important;
+}
+
+.graph1{
+  background-image: url("src\assets\img\graph1.svg");
+  background-size: 30px 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 30px;
+}
+
+.graph2{
+  background-image: url("src\assets\img\graph2.svg");
+  background-size: 30px 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 30px;
+}
+
+.img-delete{
+  background-image: url("src\assets\img\trash-can.svg");
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 18px;
+  width: 18px;
+  visibility: hidden;
+}
+
+.accesos-directos:hover .img-delete{
+  visibility: visible;
+}
+
+.accesos-directos:hover{
+  background: #E6EDF6;
+}
+
+.img-arrow-red{
+  background-image: url("src\assets\img\arrow-red.svg");
+  background-size: 9px 9px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 9px;
+  width: 9px;
+}
+
+.img-arrow-gray{
+  background-image: url("src\assets\img\arrow-gray.svg");
+  background-size: 9px 9px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 9px;
+  width: 9px;
+}
+
+.scroll-accesos{
+  max-height: 220px;
+  overflow-x: hidden; 
+  overflow-y: scroll;
+}
+
+.scroll-accesos::-webkit-scrollbar {
+  width: 7px;               /* width of the entire scrollbar */
+}
+
+.scroll-accesos::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+  border-radius: 10px;
+}
+
+.img-plus{
+  background-image: url("src\assets\img\plus-blue.svg");
+  background-size: 21px 21px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 21px;
+  width: 21px;
+}
+
+.home-container-accesos{
+  width: 100%!important;
+  margin: 0;
+  padding: 0;
+}
+
+.home-acceso-card{
+  background-color: #FFFFFF; 
+  height: 130px; 
+  border: 2px solid #E6EDF6; 
+  box-shadow: 4px 8px 16px #E6EDF6;
+  cursor: pointer;
+}
+
+.acceso-ico{
+  width: 30px; 
+  height: 30px; 
+  background-color: #E6EDF6; 
+  border-radius: 8px; 
+  position: relative; 
+  top: 10px; 
+  left: 10px;
+}
+
+.acceso-tittle{
+  font-weight: 600;
+  word-wrap: break-word;
+  position: relative; 
+  top: 0px; 
+  left: 10px;
+  font-size: 18px;
+  color: #0B112A;
+  max-width: 255px;
+  /* max-width: 50%; */
+}
+
+.acceso-arrow{
+  height: 40px;
+  width: 70px;
+  margin-left: auto;
+  background-color: #285CED;
+  position: relative; 
+  border-radius: 2px 0px 0px 2px;
+  top: 0px;
+  left: 4px;
+  right: 0px;
+}

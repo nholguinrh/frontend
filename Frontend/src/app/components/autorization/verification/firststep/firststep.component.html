@@ -1,0 +1,57 @@
+<div style="margin-top: -10%;">
+<smc-stteper [initial]="initialStep" [steps]="steps"></smc-stteper>
+<div class="d-flex justify-content-center">
+  <mat-card class="totalplay-card">
+    <mat-card-content class="totalplay-card-container" *ngIf="!enabledPswCapture">
+      <div class="img-preload" *ngIf="!imgLoad">&nbsp;</div>
+      <img mat-card-image  (load)="loadImage()" [hidden]="imgLoad === false" alt="Onboarding"
+      src="assets/img/paso1.png" style="border-radius: 3px 0px 0px 3px;">
+      <div class="totalplay-card-content">
+        <mat-card class="card-content">
+          <mat-card-title class="text-left mt-2" style="width: 120%; font-size: 24px;">
+            VALIDA TU IDENTIDAD
+          </mat-card-title>
+          <mat-card-subtitle class="text-left mt-2" style="font-size: 16px;">
+            <strong>{{ radioUsername }}</strong>, selecciona el medio para recibir el código.
+          </mat-card-subtitle>
+          <mat-card-content class="mt-4">
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-12">
+                  
+                  <mat-radio-group class="radio-sel" [(ngModel)]="optionSelected">
+                    <div class="col-sm-12 mt-1">
+                      <mat-radio-button value="1" color="primary">
+                        Correo <br><strong>{{ emailPartial }}</strong>
+                      </mat-radio-button>
+                    </div>
+                    <div class="col-sm-12">
+                      <mat-radio-button class="mt-4" value="2" color="primary">
+                        Tel&eacute;fono <br><strong>{{ phonePartial }}</strong>
+                      </mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                  
+                </div>
+              </div>
+
+              <div class="row mt-4 d-flex justify-content-center mb-3">
+                <div class="col-md-6 d-flex align-items-end">
+                  
+                </div>
+                <div class="col-md-6 d-flex justify-content-center  mt-4">
+                  <div>
+                    <button class="btn-totalplay" 
+                    [disabled]="optionSelected == null"
+                    (click)="sendValidationCode()">
+                      Enviar código
+                    </button>
+                  </div>
+                </div>
+              </div>            
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+</div>

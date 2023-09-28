@@ -1,0 +1,15 @@
+.admin-clientes-container{
+    width: 100%!important;
+    margin: 0;
+    padding: 20px;
+}
+
+::ng-deep .admin-clientes-container .mat-form-field-wrapper{
+    margin-bottom: -1.25em!important;
+}
+
+.home-container{
+    width: 100%!important;
+    margin: 0;
+    padding: 0;
+}

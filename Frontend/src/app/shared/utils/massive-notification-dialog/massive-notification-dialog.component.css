@@ -1,0 +1,47 @@
+::ng-deep .massive-notification .mat-dialog-content{
+    width: 680px!important;
+}
+
+
+.disable-scrollbars::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.disable-scrollbars::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #ccc !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #ccc !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+.mat-standard-chip {
+    border-radius: 4px !important;
+    min-height: 28px !important;
+    background-color: #E6EDF6 !important;
+}
+
+.option-selected-chip{
+    margin: 5px;
+    background-color: #E1E1E1!important;
+}
+
+.option-not-selected-chip{
+    background-color: white!important;
+}
+

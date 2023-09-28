@@ -1,0 +1,187 @@
+.puntas-card{
+    background-color: #FFFFFF; 
+    min-height: 210px;
+    border: 2px solid #D3E3FE; 
+    border-radius: 4px;
+}
+
+.punta-tittle{
+    margin: 0; 
+    padding: 0;
+    letter-spacing: 2px;
+    color: #7B8AA0;
+    font-weight: 600;
+    font-size: 9px;
+}
+
+.img-settings{
+    background-image: url("src\assets\img\settings.svg");
+    background-size: 19px 19px;
+    margin-top: 0px!important;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-puntas-enlaces{
+    background-image: url("src\assets\img\dash-enlace.svg");
+    background-size: 22px 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-puntas-sitios{
+    background-image: url("src\assets\img\dash-punta.svg");
+    background-size: 22px 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-puntas-servicios{
+    background-image: url("src\assets\img\dash-interface.svg");
+    background-size: 22px 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-base-active {
+    background-image: url('src\assets\img\dispositivo-base-active.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-enlace-active {
+    background-image: url('src\assets\img\dispositivo-enlace-active.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-estatus-active {
+    background-image: url('src\assets\img\dispositivo-estatus-active.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-servicio-active {
+    background-image: url('src\assets\img\dispositivo-servicio-active.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-sitio-active {
+    background-image: url('src\assets\img\dispositivo-sitio-active.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-base {
+    background-image: url('src\assets\img\dispositivo-base.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-enlace {
+    background-image: url('src\assets\img\dispositivo-enlace.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-estatus {
+    background-image: url('src\assets\img\dispositivo-estatus.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-servicio {
+    background-image: url('src\assets\img\dispositivo-servicio.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-dispositivo-sitio {
+    background-image: url('src\assets\img\dispositivo-sitio.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-guardar-cambios {
+    background-image: url('src\assets\img\guardar-cambios.svg');
+    background-size: 25px 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-sincronizar-cambios {
+    background-image: url('src\assets\img\sincronizar-cambios.svg');
+    background-size: 25px 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.checkboxBusqueda{
+    background: #FFFFFF;
+    box-shadow: 0px 0.08px 4px rgba(38, 28, 21, 0.12);
+    border-radius: 2px;
+}
+
+::ng-deep .activacion-puntas .mat-menu-content{
+    max-height: 450px !important; 
+    box-shadow: 0px 0px 10px rgba(31, 31, 31, 0.1); 
+    border-radius: 8px;
+    padding: 15px;
+}
+
+::ng-deep .activacion-puntas .mat-menu-panel {
+    max-width:fit-content !important;
+    max-height: fit-content!important;
+}
+
+::ng-deep .activacion-puntas .mat-form-field-wrapper{
+    margin-bottom: -1.25em!important;
+}
+
+
+::ng-deep .checknone .mat-pseudo-checkbox{ 
+    display: none!important; 
+}
+
+::ng-deep .mat-select-panel:has(.filtroTipoDispositivos){
+    margin-top: 35px !important;
+    width: 150px !important;
+    min-width: 0px !important;
+    margin-left: 209px;
+  }
+
+.mat-standard-chip {
+    border-radius: 4px !important;
+    min-height: 28px !important;
+    background-color: #E6EDF6 !important;
+}
+
+.option-selected-chip{
+    margin: 5px;
+    background-color: #E1E1E1!important;
+}
+
+.option-not-selected-chip{
+    background-color: white!important;
+}
+
+.hide-autocomplete {
+    display: none;
+  }
+
+  ::ng-deep .custom-tooltip-blue{
+    margin: 0 0 0 10px !important;
+    background-color: #3B4559;
+    color: #ffffff;
+}

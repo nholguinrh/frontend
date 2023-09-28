@@ -1,0 +1,53 @@
+.puntas-card{
+    background-color: #FFFFFF; 
+    min-height: 210px;
+    border: 2px solid #D3E3FE; 
+    border-radius: 4px;
+}
+
+.punta-tittle{
+    margin: 0; 
+    padding: 0;
+    letter-spacing: 2px;
+    color: #7B8AA0;
+    font-weight: 600;
+    font-size: 9px;
+}
+
+::ng-deep .modalBusqueda .mat-menu-content{
+    max-width: 360px !important; 
+    max-height: 450px !important; 
+    box-shadow: 0px 0px 10px rgba(31, 31, 31, 0.1); 
+    border-radius: 8px;
+    padding: 15px;
+}
+
+/* ::ng-deep .checknone .mat-pseudo-checkbox {
+    border: none;
+}
+ */
+ ::ng-deep .mat-select-panel:has(.filtroTipoDispositivos){
+    margin-top: 35px !important;
+    width: 150px !important;
+    min-width: 0px !important;
+    margin-left: 209px;
+  }
+
+ ::ng-deep .checknone .mat-select-panel:not([class*=mat-elevation-z]) {
+    margin-top: 35px !important;
+    width: 150px !important;
+    min-width: 0px !important;
+    margin-left: 209px;
+}
+
+::ng-deep .checknone .mat-pseudo-checkbox{ display: none; }
+
+.hide-autocomplete {
+    display: none;
+  }
+
+  ::ng-deep .custom-tooltip-blue{
+    margin: 0 0 0 10px !important;
+    background-color: #3B4559;
+    color: #ffffff;
+}

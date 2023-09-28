@@ -1,0 +1,31 @@
+<div class="row">
+  <span class="title-promedio">
+    Promedio - Última hora
+  </span>
+  <p>
+    <span class="title-number" [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A' }">{{ duracionLlamada?.total }}</span>
+    <span class="title-number-text" [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A' }">{{ duracionLlamada?.unidad }}</span>
+    <span style="color: #7B8AA0" [ngStyle]="{'color': duracionLlamada?.color}">({{ duracionLlamada?.promedioComparativo }})</span>
+  </p>
+</div>
+<ng-container *ngIf="!errorCarga">
+  <ng-container *ngIf="!spinnerLoading">
+    <div class="row">
+      <app-area-voz [data]="duracionLlamada?.data" [areaType]="'tickets'" 
+      [sizey]="isFull ? widths > 1440 ? 800 : 700 : widths > 1440 ? 250 : 180" [sizex]="isFull ? widths > 1440 ? 1600 : 1400 : widths > 1440 ? 500 : 380" [color]="duracionLlamada?.color" 
+      [linear-gradient]="'#FFFFFF'" [gradient-stop]="'#FFFFFF'" 
+      [gradient-start]="duracionLlamada?.color"  [tooltip-color]="tooltipColor" 
+      [margin]="{top: 20, right: 10, bottom: 20, left: 30}" tick-last-color="#797C8C" [showYLabels]="true" [unit]="'s'"
+      [showXLabels]="true" [showDomain]="true" [isDynamicRange]="false" [specialFormat]="false" [full]="false" [scale]="'minute'"
+      [showSLA]="false"></app-area-voz>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="spinnerLoading">
+    <div class="col-12" style=" display: flex; align-items: center; justify-content: center; min-height: 200px;">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="errorCarga">
+  <app-service-error-dashboard height="140px"></app-service-error-dashboard>
+</ng-container>

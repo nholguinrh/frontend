@@ -1,0 +1,9 @@
+.configuracion-paquete-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 20px;
+}
+
+::ng-deep .sla-cofig .mat-form-field-wrapper{
+  margin-bottom: -1.25em!important;
+}

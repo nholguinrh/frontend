@@ -1,0 +1,166 @@
+<div class="configuracion-paquete-container" style="margin-top: 30px;">
+  <alert></alert>
+  <div class="row w100m0p0">
+    <div class="col-1" style="margin: 0; padding: 0;">
+      <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goBack()"></div>
+    </div> 
+    <div class="col-5">
+      <div class="row w100m0p0">
+        <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 18px; font-weight: 400;">
+          {{ tituloPaquete }}
+          <div style="margin-top: 5px; font-weight: 400; font-size: 14px; line-height: 20px; color: #7B8AA0;">
+            Selecciona las características de tu paquete
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6"></div>
+  </div>
+</div>
+
+
+<div class="home-container contenido-paquete">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10 px-3 p-3" style="padding: 0;">
+      </div>
+      <div class="col-1"></div>
+  </div>
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-10 px-4 p-4 alta-cliente" style="background-color: #FFFFFF; min-height: 350px;">
+        <div class="row">
+          <div class="col-7">
+            <span style="font-weight: 400; line-height: 20px; font-size: 18px; color: #0B112A;">
+              {{ subtituloPaquete }}
+            </span>
+          </div>
+          <div class="col-3" style="display: flex; justify-content: flex-end;" *ngIf="!isBackOffice">
+            <button mat-button class="btn-totalplay-danger" style="height: 45px; font-size: 14px; font-weight: 600;     width: 200px;" (click)="eliminarPaquete()" *ngIf="dataPaquete">
+              <mat-icon class="image-trash-can"></mat-icon>
+              Eliminar paquete
+            </button>
+          </div>
+          <div class="col-2" *ngIf="!isBackOffice">
+            <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" id="btnsend" (click)="dataPaquete ? validarPaquete('editar') : validarPaquete('crear')">
+              Guardar
+            </button>
+          </div>
+        </div>
+        <form [formGroup]="form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-12" style="margin: 0px 0px 10px;" *ngIf="!dataPaquete">
+              <span style="font-weight: 600; line-height: 24px; font-size: 16px; color: #0B112A;">
+                Detalles del paquete
+              </span>
+            </div>
+            <div class="col-4">
+              <mat-form-field appearance="outline" style="width: 100%; font-size: 11px; height: 80px;">
+                <mat-label>TÍTULO DEL PAQUETE</mat-label>
+                <input matInput [disabled]="true"  formControlName="tituloPaquete" id="tituloPaquete" name="tituloPaquete" maxlength="100" (paste)="paste($event)" />
+                <mat-error *ngIf="!form.controls['tituloPaquete'].valid && form.controls['tituloPaquete'].touched">
+                  {{ getError() }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" style="width: 100%; font-size: 11px; height: 80px;">
+                <mat-label>NÚMERO DE USUARIOS</mat-label>
+                <input matInput [disabled]="true" formControlName="numeroUsuarios" id="numeroUsuarios" name="numeroUsuarios" maxlength="10" (paste)="paste($event)" (keypress)="onlyNumbers($event);" (keyup)="keyShowAutocomplete($event)"/>
+                <mat-error *ngIf="!form.controls['numeroUsuarios'].valid && form.controls['numeroUsuarios'].touched">
+                  <ng-container *ngIf="form.controls['numeroUsuarios'].errors.required">
+                    Este campo es requerido
+                  </ng-container>
+                  <ng-container *ngIf="form.controls['numeroUsuarios'].errors.incorrect && !form.controls['numeroUsuarios'].errors.required">
+                    El número de usuarios debe ser mayor a 0
+                  </ng-container>
+                  <ng-container *ngIf="form.controls['numeroUsuarios'].errors.incorrectText && !form.controls['numeroUsuarios'].errors.required">
+                    Este campo solo es llenado con números
+                  </ng-container>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6">
+              <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                <mat-label>DESCRIPCIÓN*</mat-label>
+                <textarea matInput formControlName="descripcion" id="descripcion" name="descripcion" rows="5" maxlength="350" style="font-size: 16px!important; max-height: 80px!important; resize: none;"></textarea>
+                <mat-error *ngIf="!form.controls['descripcion'].valid && form.controls['descripcion'].touched">
+                  {{ 'Este campo es requerido' }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+        
+        <mat-divider></mat-divider>
+        <div class="" style=" margin-top: 20px; font-weight: 600; line-height: 26px; font-size: 16px; color: #0B112A;">
+          Permisos y características 
+        </div>
+        <p class="" style="font-weight: 400; line-height: 26px; font-size: 14px; color: #7B8AA0;">
+          Selecciona que características tendrá tu nuevo paquete. 
+        </p>
+        <mat-divider></mat-divider>
+        <mat-accordion multi class="expansion-panel-opciones">
+          <mat-expansion-panel style="width: 100%; margin: 0; padding: 0;" [disabled]="false" [expanded]="true" (opened)="false" hideToggle="false">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-size: 13px!important; font-weight: 600!important;">
+                Tipos de Dashboards
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
+            <section style="margin-top: 20px;     margin-left: 20px;">
+              <div *ngFor="let lista of listadoDashboards">
+                <p><mat-checkbox [disabled]="isBackOffice" [(ngModel)]="lista.selected" (change)="validarCheckbox(1, lista.selected)"></mat-checkbox>{{lista.descripcion}}</p>
+              </div>
+              <mat-error *ngIf="!form.controls['listaDashboard'].valid && form.controls['listaDashboard'].touched">
+                {{ 'Se requiere seleccionar una opcion' }}
+              </mat-error>
+            </section>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel style="width: 100%; margin: 0; padding: 0;" [disabled]="false" [expanded]="true" (opened)="false" hideToggle="false">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-size: 13px!important; font-weight: 600!important;">
+                Métricas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
+            <section style="margin-top: 20px; margin-left: 20px;">
+              <p><mat-checkbox [disabled]="isBackOffice" [checked]="metricasEstatus" (change)="setAllMetricas($event.checked); validarCheckbox(2, metricasEstatus);"></mat-checkbox>Elegir todo</p>
+              <div *ngFor="let lista of listadoMetricas">
+                <p><mat-checkbox [disabled]="isBackOffice" [(ngModel)]="lista.selected" (ngModelChange)="updateAllCompleteMetricas()" (change)="validarCheckbox(2, lista.selected)"></mat-checkbox>{{lista.metrica}}</p>
+              </div>
+              <mat-error *ngIf="!form.controls['listaMetrica'].valid && form.controls['listaMetrica'].touched">
+                {{ 'Se requiere seleccionar una opcion' }}
+              </mat-error>
+            </section>
+          </mat-expansion-panel>
+
+          
+         
+
+          <mat-expansion-panel style="width: 100%; margin: 0; padding: 0;" [disabled]="false" [expanded]="true" (opened)="false" hideToggle="false">
+            <mat-expansion-panel-header style="border: none!important;">
+              <mat-panel-title style="font-size: 13px!important; font-weight: 600!important;">
+                Servicios
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
+            <section style="margin-top: 20px;     margin-left: 20px;">
+              <p><mat-checkbox [disabled]="isBackOffice" [checked]="serviciosEstatus"  (change)="setAllServicios($event.checked); validarCheckbox(3, serviciosEstatus);"></mat-checkbox>Elegir todo</p>
+              <div *ngFor="let lista of listadoServicios">
+                <p><mat-checkbox [disabled]="isBackOffice" [(ngModel)]="lista.selected" (ngModelChange)="updateAllCompleteServicios()" (change)="validarCheckbox(3, lista.selected)"></mat-checkbox>{{lista.descripcion}}</p>
+              </div>
+              <mat-error *ngIf="!form.controls['listaServicio'].valid && form.controls['listaServicio'].touched">
+                {{ 'Se requiere seleccionar una opcion' }}
+              </mat-error>
+            </section>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+      
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+

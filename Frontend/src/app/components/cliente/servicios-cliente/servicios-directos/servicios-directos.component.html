@@ -1,0 +1,223 @@
+
+<mat-card-content style="height: 330px; overflow-x:hidden;" [ngSwitch]="accesoDirecto">
+  <div class="row w100m0p0" *ngSwitchCase="1">
+    <ng-container *ngIf="!spinnerLoading">
+      <ng-container *ngIf="!errorCarga">
+        <div class="col-6" style="font-weight: 600; font-size: 12px; color: #3B4559; padding: 0px; margin-bottom: 20px;">
+          Promedio de métricas
+        </div>
+        <div class="col-6"></div>
+        <div class="col-12" style="padding: 0;">
+          <div class="row servicio-acceso-directo">
+            <div class="col-6" style="font-weight: 600; font-size: 13px; color: #3B4559;">Métrica</div>
+            <div class="col-2" style="font-weight: 600; font-size: 11px;">Diferencia SLA</div>
+            <div class="col-2" style="font-weight: 600; font-size: 11px; color: #3B4559;">Porcentaje</div> 
+            <div class="col-2">
+              <!-- <div  [ngClass]="metrica.color == 'primary' ? 'graph1' : 'graph2'" alt=""></div> -->
+            </div> 
+          </div>
+        </div>
+        <div class="col-12" style="padding: 0;cursor: pointer;" *ngFor="let metrica of promedioMetricas" (click)="busquedaPersonalizada(1,metrica.name)">
+          <div class="row servicio-acceso-directo">
+            <div class="col-6" style="font-weight: 400; font-size: 13px; color: #3B4559;">{{metrica.name | titlecase}}</div>
+            <div class="col-2 text-{{metrica.color}}" style="font-weight: 400; font-size: 11px;">{{metrica.name == 'Consumo' ? '' : metrica.change + '%'}}</div>
+            <ng-container *ngIf="metrica.name != 'Consumo'">
+              <div class="col-2" style="font-weight: 500; font-size: 11px; color: #3B4559;">{{metrica.value}}<span>{{ metrica.value == 'latencia' ? 'mls' : metrica.value == 'ocupacion' ? 'mps' : '%'}}</span></div> 
+            </ng-container>
+            <ng-container *ngIf="metrica.name == 'Consumo'">
+              <div class="col-2" style="font-weight: 500; font-size: 11px; color: #3B4559;">
+                <div class="row" style="width: 100%; margin: 0; padding: 0; text-align: left;">
+                  <div class="col-12" style="margin-top: 5px;padding: 0;">
+                    {{metrica.maximo}} <span style="font-size: 10px;">Mb max</span>
+                </div>
+                <div class="col-12" style="margin: 0; padding: 0; margin-top: -5px;">
+                    {{metrica.minimo}} <span style="font-size: 10px;">Mb min</span>
+                </div>
+                </div>
+              </div> 
+            </ng-container>
+            <div class="col-2">
+              <div  [ngClass]="metrica.color == 'primary' ? 'graph1' : 'graph2'" alt=""></div>
+            </div> 
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="errorCarga">
+        <app-service-error-dashboard [themeDark]="false" [typeError]="errorCarga"></app-service-error-dashboard>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="spinnerLoading">
+      <div class="col-12" style="display: flex; align-items: center; justify-content: center; min-height: 320px">
+        <mat-spinner [diameter]="50"></mat-spinner>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="row w100m0p0" *ngSwitchCase="2">
+    <div class="col-9" style="font-weight: 600; font-size: 12px; color: #3B4559; padding: 0px; margin-bottom: 20px;">
+      Tus accesos directos
+    </div>
+    <div class="col-3">
+      <a  class="alert-link" style="font-weight: 500; font-size: 13px; cursor: pointer;" (click)="openAccesosModal()">
+        Nuevo acceso
+      </a>
+    </div>
+
+    <div class="scroll-accesos">
+      <div class="col-12" style="padding: 0;" *ngFor="let directos of accesosUsuario">
+        <div class="row servicio-acceso-directo accesos-directos" style="cursor: pointer;" (click)="busquedaPersonalizada(2,directos.path)">
+          <div class="col-10" style="font-weight: 500; font-size: 13px; color: #1F3B58;">{{directos.descripcion}}</div> 
+          <div class="col-2" *ngIf="directos.predeterminado != 1">
+            <button mat-icon-button (click)="deleteAccesoDirecto(directos, $event)">
+              <mat-icon class="img-delete"></mat-icon>
+            </button>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <div class="col-12" style=" display: flex; justify-content: center; margin-top: 20px;">
+      <button mat-icon-button (click)="openAccesosModal()">
+        <mat-icon class="img-plus"></mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="row w100m0p0" *ngSwitchCase="3">
+    <div class="col-10" style="font-weight: 600; font-size: 12px; color: #3B4559; padding: 0px; margin-bottom: 20px;">
+      TOP 5 - Mal rendimiento
+    </div>
+    <div class="col-2">
+      <a  class="alert-link" style="font-weight: 500; font-size: 13px; cursor: pointer;" (click)="busquedaPersonalizada(3,'inactivo')" *ngIf="malRendimiento.length >= 5">
+        Ver más
+      </a>
+    </div>
+    <div class="col-12" style="padding: 0;">
+      <div class="row servicio-acceso-directo">
+        <div class="col-4" style="font-weight: 600; font-size: 13px; color: #3B4559;">Sitio</div>
+        <div class="col-4" style="font-weight: 600; padding-left: 0px; font-size: 13px; color: #3B4559;">IP/ID</div> 
+        <div class="col-2" style="font-weight: 600; font-size: 11px;">Diferencia SLA</div>
+        <div class="col-2" style="font-weight: 600; font-size: 11px; color: #1F3B58;">Promedio</div>
+      </div>
+    </div>
+    <div class="scroll-accesos" style="max-height: 230px !important;">
+      <div class="col-12" style="padding: 0;" *ngFor="let rendimiento of malRendimiento.slice(0, 5)">
+        <div class="row servicio-acceso-directo">
+          <div class="col-4" style="font-weight: 400; font-size: 13px; color: #3B4559;">{{rendimiento.titulo}}</div>
+          <div class="col-4" style="padding-left: 0px;">
+            <div class="row">
+              ID: {{rendimiento.idDispositivo | slice:0:20}}
+            </div>
+            <div class="row">
+              IP: {{rendimiento.ipSitio}}
+            </div>
+          </div> 
+          <div class="col-2 text-{{rendimiento.color}}" style="font-weight: 400; font-size: 11px;">{{rendimiento.promedio}}</div>
+          <div class="col-2" style="font-weight: 500; font-size: 11px; color: #1F3B58;">{{rendimiento.actual}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!--  <div class="row w100m0p0" *ngSwitchCase="4">
+    <div class="col-10" style="font-weight: 600; font-size: 12px; color: #3B4559; padding: 0px; margin-bottom: 30px;">
+      Afectaciones más recientes
+    </div>
+    <div class="col-2">
+      <a  class="alert-link" style="font-weight: 500; font-size: 13px; cursor: pointer;" (click)="busquedaPersonalizada()">
+        Ver más
+      </a>
+    </div>
+    <div class="col-12" style="padding: 0;" *ngFor="let afectaciones of afectacionesRecientes">
+      <div class="row servicio-acceso-directo-afectaciones" style="margin: 0px;">
+        <div class="col-4" style="font-weight: 700; font-size: 10px; color: #717086;">{{afectaciones.titulo}}</div>
+        <div class="col-8" style="font-weight: 700; font-size: 10px; color: #717086;">{{afectaciones.graficaNombre}}</div>
+        <div class="col-4">
+          <div class="d-flex flex-column">
+            <div class="p-2" style="font-weight: 500; font-size: 23px; color: #000000; ">{{afectaciones.actual}}</div>
+            <div class="p-2 text-{{afectaciones.color}}" style="font-weight: 500; font-size: 9px;">
+              <mat-icon [ngClass]="afectaciones.color == 'danger' ? 'img-arrow-red' : 'img-arrow-gray'" class=""></mat-icon>
+              {{afectaciones.promedio}}
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          <app-bar-chart [sizex]="width > 1440 ? 430 : 290" [sizey]="65" [data]="datesValue" [margin]="margin" color="#A2A1A5" [rx]="2" [showDomain]="false" [barWidth]="2" [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [secondary]="true" secondary-color="#F9896B"></app-bar-chart>
+         
+            <img src="assets\img\servicio-grafica-2.png" alt="" style=" width: 100%; height: 50px;">
+         
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</mat-card-content>
+<mat-card-actions>
+  <div class="col-12 d-flex justify-content-center carruselDirecto">
+    <button mat-mini-fab [ngClass]="botton == 1 ? 'boton-accionado' : ''" class="ms-3" (click)="cambiarContenido(1)"></button>
+    <button mat-mini-fab [ngClass]="botton == 2 ? 'boton-accionado' : ''" class="ms-3" (click)="cambiarContenido(2)"></button>
+    <button mat-mini-fab [ngClass]="botton == 3 ? 'boton-accionado' : ''" class="ms-3" (click)="cambiarContenido(3)"></button>
+  </div>
+</mat-card-actions>
+
+
+<!-- Modal agregar acceso -->
+<div class="modal hide-modal" #accesosModal>
+  <div class="modal-dialog modal-dialog-centered" style="min-width: 80%;">
+      <div class="modal-content" style="min-height:  200px; min-width: 350px;">
+          <div class="modal-header" style="border-bottom: 0;  padding: 0;">
+              <div class="row" style="margin: 0; padding: 0; width: 100%; padding-top: 10px;">
+                  <div class="col-6" style="padding-top: 10px; padding-left: 20px;">
+                      <div class="row w100m0p0" style="font-weight: 600;">
+                          Agregar acceso
+                      </div>
+                      <div class="row" style="padding-top: 10px; padding-left: 10px; font-weight: 400; color: #7B8AA0;">
+                          Selecciona y ordena tus accesos directos
+                      </div>
+                  </div>
+                  <div class="col-6" style="text-align: right; font-weight: 600;">
+                      <button mat-icon-button (click)="limpiarAccesos()">
+                          <mat-icon>
+                              close
+                          </mat-icon>
+                      </button>     
+                  </div>
+              </div>
+          </div>
+          <div class="modal-body" style="text-align: left; width: 100%; margin: 0;">
+              <div class="row" style="padding: 20px;">
+                  <div class="col-12">
+                      <div class="row gx-3 gy-4">
+                          <div class="col-4" *ngFor="let item of accesosDirectos" (click)="modificaAcceso(item)">
+                              <div class="p-1 home-acceso-card" style="height: 100px;"> 
+                                  <div class="acceso-arrow" 
+                                  [ngClass]="isAccesoActivo(item.descripcion) ? 'image-acceso-option-check':'image-acceso-option-plus'"
+                                  [ngStyle]="{'background-color': isAccesoActivo(item.descripcion) ? '#285CED':'#D0D0CE'}"  
+                                  style="top: 10px;"></div>
+                                  <div class="acceso-tittle">{{item.descripcion}}</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row" style="padding: 20px;">
+                  <div class="col-6"></div>
+                  <div class="col-6" style="text-align: right; font-weight: 600;">
+                      <div class="row">
+                          <div class="col-4"></div>
+                          <div class="col-4">
+                              <button class="btn-totalplay-secondary" (click)="limpiarAccesos()" style="height: 45px; font-size: 14px; line-height: 25px;">
+                                  Cancelar
+                              </button>
+                          </div>
+                          <div class="col-4">
+                              <button class="btn-totalplay" (click)="actualizarAccesos()" style="height: 45px; font-size: 14px; line-height: 25px;">
+                                  Guardar
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

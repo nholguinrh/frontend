@@ -1,0 +1,321 @@
+<div class="home-container-accesos mat-app-background" style="margin-top: 30px"
+  [ngClass]="{ 'dark-theme': isDarkTheme | async }">
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-5">
+      <div class="row w100m0p0">
+        <div class="col-1" style="width: 22px; margin: 0; padding: 0; margin-right: 10px">
+          <div class="img-inicio-home">&nbsp;</div>
+        </div>
+        <div class="col" style="
+            margin: 0;
+            padding: 0;
+            padding-top: 1px;
+            padding-left: 5px;
+            font-size: 18px;
+            border-left: 1px solid #838383;
+          ">
+          <ng-container *ngIf="menu == 5">MONITOREO GLOBAL</ng-container>
+          <ng-container *ngIf="menu == 6">MONITOREO CON MAPA</ng-container>
+          <ng-container *ngIf="menu == 4">MONITOREO EJECUTIVO</ng-container>
+          <ng-container *ngIf="menu == 7">MONITOREO VOZ</ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-5 select-monitoreo-voz"
+      [ngClass]="{'filtros-afectaciones-full-dark': (isDarkTheme | async), 'dark-theme': (isDarkTheme | async) }"
+      style="text-align: right; font-weight: 600">
+      <!--
+        <button mat-button [matMenuTriggerFor]="tiempo" style="background-color: #ffffff;margin-right: 20px;padding: 3px;" *ngIf="menu == 5"><mat-icon class="image-calendar-date-picker"></mat-icon> {{textoSeleccionado}} </button>
+        <mat-menu #tiempo="matMenu">
+          <button mat-menu-item (click)="alertTiempo(1,'Última hora')" >Última hora</button>
+          <button mat-menu-item (click)="alertTiempo(12,'Últimas 12 hras')">Últimas 12 hras</button>
+          <button mat-menu-item (click)="alertTiempo(24,'Últimas 24 hrs')">Últimas 24 hrs</button>
+          <button mat-menu-item (click)="alertTiempo(7,'Última semana')">Última semana</button>
+        </mat-menu>
+      -->
+
+      <mat-form-field [formGroup]="form" appearance="outline"
+        style="width: 160px; height: 38px; border-radius: 7.99373px; font-size: 10px; margin-right: 30px;"
+        *ngIf="menu == 5">
+        <mat-icon matPrefix class="img-calendar" [ngStyle]="{filter: (isDarkTheme | async) ? 'invert(90%)' : '' }">
+        </mat-icon>
+        <mat-label>ESCALA DASHBOARD</mat-label>
+        <mat-select formControlName="tiempo">
+          <mat-option [ngClass]="{'dark-theme': (isDarkTheme | async) }" disabled>Selecciona una escala</mat-option>
+          <mat-option value="Última hora" (click)="alertTiempo(1,'Última hora')">Última hora</mat-option>
+          <mat-option value="Últimas 12 horas" (click)="alertTiempo(12,'Últimas 12 hras')">Últimas 12 horas</mat-option>
+          <mat-option value="Últimas 24 horas" (click)="alertTiempo(24,'Últimas 24 hrs')">Últimas 24 horas</mat-option>
+          <mat-option value="Última semana" (click)="alertTiempo(7,'Última semana')">Última semana</mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
+      <button mat-button class="btn-totalplay" style="
+          max-width: 170px;
+          font-size: 14px;
+          line-height: 40px;
+          color: #ffffff;
+        " [matMenuTriggerFor]="personaliza" [ngStyle]="{ border: (isDarkTheme | async) ? '1px solid #285CED' : '' }">
+        <mat-icon class="img-cliente-personalizar"></mat-icon>
+        Personalizar
+      </button>
+      <mat-menu [class]="(isDarkTheme | async) ? 'dark-theme scrollmenu' : 'scrollmenu'" #personaliza="matMenu"
+        xPosition="before">
+        <div style="
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 470px;
+            min-height: 400px;
+            height: 600px;
+            width: 470px;
+          " (click)="$event.stopPropagation()">
+          <div class="row" style="
+              width: 100%;
+              margin: 0;
+              padding: 20px;
+              text-transform: uppercase;
+              line-height: 18px;
+              font-size: 18px;
+            " [ngStyle]="{ color: (isDarkTheme | async) ? '#D0D0CE' : '#000000' }">
+            Personalización de <br />
+            dashboard
+          </div>
+          <div class="row" style="width: 100%; margin: 0; padding: 20px">
+            <div class="row" style="
+                width: 100%;
+                margin: 0;
+                padding: 0px;
+                font-size: 12px !important;
+              " [ngStyle]="{
+                color: (isDarkTheme | async) ? '#D0D0CE' : '#000000'
+              }">
+              ASPECTO
+            </div>
+            <div class="row" style="
+                width: 100%;
+                margin: 0;
+                padding: 0px;
+                font-size: 12px !important;
+                background-color: #f5f0ff;
+                border-radius: 8px;
+                height: 150px !important;
+                margin-top: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+              ">
+              <div style="width: 150px; height: 120px">
+                <div style="
+                    width: 80;
+                    height: 70px;
+                    display: flex;
+                    justify-content: center;
+                  ">
+                  <div style="
+                      width: 70px;
+                      height: 65px;
+                      background-color: #ffffff;
+                      border-radius: 5px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    ">
+                    <div class="image-personaliza-tablero-claro" style="width: 50px; height: 50px"></div>
+                  </div>
+                </div>
+                <div style="width: 80; height: 20px; text-align: center">
+                  Claro
+                </div>
+                <div style="
+                    width: 80;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  ">
+                  <div [ngClass]="
+                      (isDarkTheme | async)
+                        ? 'image-personaliza-button-oscuro'
+                        : 'image-personaliza-button-claro'
+                    " style="width: 20px; height: 20px; cursor: pointer" (click)="setDarkTheme(false)"></div>
+                </div>
+              </div>
+              <div style="width: 150px; height: 120px">
+                <div style="
+                    width: 80;
+                    height: 70px;
+                    display: flex;
+                    justify-content: center;
+                  ">
+                  <div style="
+                      width: 70px;
+                      height: 65px;
+                      background-color: #000000;
+                      border-radius: 5px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    ">
+                    <div class="image-personaliza-tablero-oscuro" style="width: 50px; height: 50px"></div>
+                  </div>
+                </div>
+                <div style="width: 80; height: 20px; text-align: center">
+                  Oscuro
+                </div>
+                <div style="
+                    width: 80;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  ">
+                  <div [ngClass]="
+                      (isDarkTheme | async)
+                        ? 'image-personaliza-button-claro'
+                        : 'image-personaliza-button-oscuro'
+                    " style="width: 20px; height: 20px; cursor: pointer" (click)="setDarkTheme(true)"></div>
+                </div>
+              </div>
+            </div>
+            <hr style="margin-top: 25px" />
+            <div class="row" style="
+                width: 100%;
+                margin: 0;
+                padding: 0px;
+                margin-top: -10px;
+                padding-top: 0;
+                font-size: 12px !important;
+              " [ngStyle]="{
+                color: (isDarkTheme | async) ? '#D0D0CE' : '#000000'
+              }">
+              DASHBOARDS
+            </div>
+            <div class="row" style="
+                width: 100%;
+                margin: 0;
+                padding: 0px;
+                font-size: 11px !important;
+                font-weight: 400;
+                line-height: 15px;
+              " [ngStyle]="{
+                color: (isDarkTheme | async) ? '#D0D0CE' : '#000000'
+              }">
+              Selecciona el tipo de Dashboard que deseas visualizar en tu página
+              de inicio.
+              <br />¡Puedes cambiarlo las veces que creas necesarias!
+            </div>
+            <div class="row" *ngFor="let t of this.dashboardList" (click)="changeMenu(t.idDashboard)"
+              [ngClass]="t.image" style="
+                width: 100%;
+                margin: 0;
+                padding: 0px;
+                font-size: 13px !important;
+                background-color: #ffffff;
+                border-radius: 8px;
+                height: 150px !important;
+                margin-top: 15px;
+                border: 1px solid #3b4559;
+                cursor: pointer;
+              ">
+              <div class="row" style="margin: 0; height: 80px; padding: 0"></div>
+              <div style="
+                  width: 450px;
+                  margin: 0;
+                  padding: 0;
+                  height: 68px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background-color: rgba(0, 0, 0, 0.6);
+                  border-radius: 0px 0px 8px 8px;
+                ">
+                <div class="col-9" style="
+                    display: flex;
+                    align-items: center;
+                    color: #ffffff;
+                    font-weight: 400;
+                    font-size: 14px;
+                  ">
+                  <div [ngClass]="t.icono" style="
+                      width: 35px;
+                      height: 35px;
+                      cursor: pointer;
+                      margin-right: 20px;
+                      background-color: #e6edf6;
+                      border-radius: 8px;
+                    "></div>
+                  {{ t.descripcion }}
+                </div>
+                <div class="col-2" style="
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: right;
+                  ">
+                  <div *ngIf="menu == t.idDashboard" class="image-personaliza-dash-check" style="
+                      width: 40px;
+                      height: 40px;
+                      float: right;
+                      margin-right: -17px;
+                    "></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-5">
+      <div class="row w100m0p0">
+        <div class="col" style="
+            margin: 0;
+            padding: 0;
+            color: #838383;
+            font-weight: 600;
+            margin-left: 40px;
+            margin-top: -10px;
+          ">
+          Última actualización:
+          {{ update  | date: 'd MMM h:mm aaaaa' | lowercase }}
+        </div>
+      </div>
+    </div>
+    <div class="col-5" style="text-align: right; font-weight: 600"></div>
+    <div class="col-1"></div>
+  </div>
+</div>
+<div class="home-container-accesos mat-app-background" style="margin-top: 20px"
+  [ngClass]="{ 'dark-theme': isDarkTheme | async }">
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-10" *ngIf="menu == 5 ? true : menu == 6 ? true : false">
+      <smc-metricas [estadisticas]="estadisticaList" [periodo]="periodoActual" [spinner]="spinnerLoading">
+      </smc-metricas>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <ng-container *ngIf="menu == 5">
+        <smc-monitoreo-enlaces></smc-monitoreo-enlaces>
+      </ng-container>
+      <ng-container *ngIf="menu == 6">
+        <smc-monitoreo-mapa></smc-monitoreo-mapa>
+      </ng-container>
+      <ng-container *ngIf="menu == 4">
+        <smc-monitoreo-ejecutivo></smc-monitoreo-ejecutivo>
+      </ng-container>
+      <ng-container *ngIf="menu == 7">
+        <smc-monitoreo-voz></smc-monitoreo-voz>
+      </ng-container>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

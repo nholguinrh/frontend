@@ -1,0 +1,1346 @@
+<div class="modulo-informacion-container" style="margin-top: 30px; margin-bottom: 20px;">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; font-weight: 400; font-size: 9px; display: flex; align-items: center;">
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPage()">Centro de ayuda</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPageInformacion()">{{ informacionPantalla?.titulo }}</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #3B4559;">{{ detallePantalla?.titulo }}</span>
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>
+
+<div class="home-container disable-scrollbars">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="min-height: 350px; padding-bottom: 50px;">
+        <ng-container *ngIf="moduloDetalle == 1">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Crear y configurar un nuevo cliente</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Accede a tu Espacio de trabajo, haz clic en <span><mat-icon class="img-espacio-trabajo" style="height: 16px;width: 25px;"></mat-icon>Espacio de trabajo.</span></li>
+                  <li>En la esquina superior derecha de la tabla de clientes, haz clic en <span><mat-icon class="img-nuevo-cliente" style="height: 18px;width: 25px;"></mat-icon>Nuevo cliente.</span></li>
+                  <li>Comenzarás el proceso de alta de un nuevo cliente, conformado por 3 pasos:</li>
+                  <ul class="b">
+                    <li>Información</li>
+                    <li>Activación</li>
+                    <li>Configuración</li>
+                  </ul>
+                </ul>
+              </ul>
+              <div class="detalle-cuadro-boton" style="width: 750px; padding: 10px 25px; height: 130px;">
+                <div class="row">
+                  <div class="col-7">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Para acceder rápidamente desde tú menú inicial puedes configurar un acceso directo.</p>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="col-4" style="display: flex; align-items: center;">
+                    <button mat-raised-button color="primary" (click)="redireccion('menu', 1)">Ir a accesos directos</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-12">
+              <span class="detalle-titulo">Paso 1: Información general</span>
+              <p class="detalle-subtitulo">Información general</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Este primer paso tiene el objetivo de ingresar la información general del cliente que deseas dar de alta en el SMC.</li>
+                <ul class="a">
+                  <li>Ingresa el nombre de la empresa, este campo funciona como un buscador por coincidencia, de modo que tendrás que escribir cuatro caracteres para que el sistema te muestre si el nuevo cliente está listo para usar el SMC.</li>
+                  <li>Ingresa el nombre del representante de la cuenta, como recomendación ingresa el nombre del cliente que viene en el contrato.</li>
+                  <li>Ingresa el correo electrónico del cliente, como recomendación ingresa el correo asociado al representante de la cuenta.</li>
+                  <li>Ingresa el número celular del cliente, como recomendación el número deberá cumplir la nomenclatura nacional, es decir, a 10 dígitos.</li>
+                  <li>Ingresa el sector del cliente.</li>
+                  <li>Si deseas convertir a este cliente en Favorito, haz clic sobre el ícono <span><mat-icon class="img-favorito" style="height: 18px;width: 28px;"></mat-icon>Favorito.</span></li>
+                </ul>
+              </ul>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Solo puedes dar de alta empresas que no han sido registradas previamente.</span>
+                    <span style="font-weight: 500"> Si intentas ingresar manualmente el nombre de una empresa no podrás hacerlo. Necesitas buscar dentro del campo Nombre de empresa aquellas empresas que se encuentren listas para ser registradas dentro del SMC.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="detalle-subtitulo">Datos del contrato</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Deberás ingresar los datos del contrato del cliente.</li>
+                <ul class="a">
+                  <li>Ingresa el número o ID de contrato.</li>
+                  <li>Selecciona en que bandeja de service desk serán atendidos sus tickets de incidencias.</li>
+                  <li>Selecciona el origen nombre del cliente.</li>
+                  <li>Selecciona el tipo de tickets que el cliente contrató.</li>
+                  <li>Selecciona el histórico performance que el cliente contrató, es decir, los días de histórico que podrá visualizar dentro del SMC.</li>
+                </ul>
+              </ul>
+              <p class="detalle-subtitulo">Servicios contratados</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Deberás ingresar los servicios y dispositivos contratados por el cliente.</li>
+                <ul class="a">
+                  <li>Selecciona el paquete contratado, si quieres ver más información sobre los paquetes de tus clientes consulta <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('menu', 6)">este artículo.</span> </li>
+                  <li>Selecciona los tipos de servicios que el cliente contrató.</li>
+                  <li>Ingresa el número de dispositivos (Enlaces, Sitios y Servicios) que el cliente contrató. </li>
+                </ul>
+              </ul>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Si de momento no tienes toda la información general puedes utilizar el botón de <span>Continuar más tarde,</span> así podrás guardar a tu nuevo cliente con la información mínima requerida y retomar más tarde su proceso de alta.</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 2, 5)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+              <p class="detalle-subtitulo">Limitaciones del formulario</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Es necesario que ingreses información en los campos requeridos para acceder al paso número dos o a la funcionalidad de continuar más tarde.</li>
+                <li>Los únicos <span>campos que no son requeridos</span> son:</li>
+                <ul class="c">
+                  <li>Número celular</li>
+                  <li>Observaciones</li>
+                </ul>
+                <li><span>Si los campos cambian a color rojo,</span> significa que los valores que has ingresado no están permitidos. Debajo de cada campo se indicará el motivo por el cual no permite el ingreso del dato.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-12">
+              <span class="detalle-titulo">Paso 2: Activación</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Este segundo paso tiene el objetivo de activar aquellos dispositivos que el cliente contrató para monitoreo dentro del SMC.</li>                
+                <ul class="a">
+                  <li>Localiza los dispositivos que deseas activar</li>
+                  <li>Haz clic en el switch para activar el dispositivo, el sistema automáticamente resalta en color verde los dispositivos que han sido activados.</li>
+                </ul>
+              </ul>
+              <div class="row" style="margin-bottom: 40px;">
+                <div class="col-6">
+                  <p class="detalle-subtitulo">Dispositivo inactivo</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page1-img1.png" alt="" />
+                </div>
+                <div class="col-6">
+                  <p class="detalle-subtitulo">Dispositivo activo</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page1-img2.png" alt="" />
+                </div>
+              </div>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 50px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Puedes activar o inactivar todos los dispositivos rápidamente con la funcionalidad de <span>Configuración masiva,</span> para acceder a esta función debes localizar el botón que se encuentra a un lado del buscador</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 2, 2)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+              <p class="detalle-subtitulo">Activación de servicios</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si deseas activar servicios, es necesario comprender que <span>los servicios se encuentran asociados a un Sitio,</span> es decir, cada sitio puede contener un número diferente de servicios asociados.</li>
+                <ul class="a">
+                  <li>En la esquina inferior derecha de las tarjetas de Sitios, selecciona <mat-icon class="img-servicios"></mat-icon> el ícono de servicios. </li>
+                  <li>Se abrirá una modal con el detalle del sitio y sus servicios asociados, desplázate hacia abajo y selecciona <mat-icon class="img-vector-doble-invertido"></mat-icon> sobre el servicio que deseas activar.</li>
+                  <li>Cambia el estatus del servicio a activo y confirma para terminar.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page1-img3.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 30px; margin-top: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Solo puedes activar servicios de Sitios ya activos.</span>
+                    <span style="font-weight: 500"> Si intentas activar servicios de los sitios inactivos no podrás, es necesario comenzar por la activación del Sitio como paso número uno, posterior a ello podrás comenzar la activación de servicios. Adicionalmente, si inactivas un Sitio por consecuente todos los servicios se inactivarán automáticamente</span>
+                  </div>
+                </div>
+              </div>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 40px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Puedes activar o inactivar todos los dispositivos rápidamente utilizando los <span>filtros de búsqueda avanzada,</span> para acceder a esta función debes localizar el ícono de filtro que se encuentra dentro del buscador.</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 2, 6)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Una vez activados los dispositivos que deseas, puedes continuar al paso número tres haciendo clic al botón de Siguiente que se encuentra en la esquina inferior derecha.</li>                
+              </ul>
+              <p class="detalle-subtitulo">Tipos de dispositivos</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Los clientes del SMC pueden tener distintos tipos de dispositivos, con el objetivo de una localización ágil, cada tarjeta cuenta con ícono en la esquina superior derecha que tipifica al dispositivo:</li>
+              </ul>
+              <div class="row">
+                <div class="col-2">
+                  <ul class="list-unstyled detalle-lista d">
+                    <li><mat-icon class="img-dispositivo-enlace"></mat-icon>Enlace</li>
+                    <li><mat-icon class="img-dispositivo-servicio"></mat-icon>Switch</li> 
+                    <li><mat-icon class="img-dispositivo-cpe"></mat-icon>ONT</li>                   
+                  </ul>
+                </div>
+                <div class="col-2">
+                  <ul class="list-unstyled detalle-lista d">
+                    <li><mat-icon class="img-dispositivo-ont"></mat-icon>CPE</li>
+                    <li><mat-icon class="img-dispositivo-estatus"></mat-icon>Firewall</li> 
+                    <li><mat-icon class="img-dispositivo-sitio"></mat-icon>Router</li>                   
+                  </ul>
+                </div>
+                <div class="col-8"></div>
+              </div>
+              <p class="detalle-subtitulo">Limitaciones de activación</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Es necesario que actives al menos un dispositivo para acceder al paso número tres (Configuración), de lo contrario no podrás asignar o configurar un SLA al cliente.</li>
+                <li><span>Solo puedes activar servicios de Sitios ya activos.</span> Si intentas activar servicios de los sitios inactivos no podrás, es necesario comenzar por la activación del Sitio como paso número uno, posterior a ello podrás comenzar la activación de servicios. Adicionalmente, si inactivas un Sitio por consecuente todos los servicios se inactivarán automáticamente.</li>
+                <li>El tipo de dispositivos que puedas visualizar en la activación (paso número dos) dependerá de la contratación del cliente, es decir, habrá clientes con distintos tipos de dispositivos.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-12">
+              <span class="detalle-titulo">Paso 3: Configuración</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>El tercer y último paso tiene el objetivo de configurar las métricas y SLA a los dispositivos que el cliente contrató.</li>                
+                <ul class="a">
+                  <li>Localiza el card de Métricas básicas.</li>
+                  <li>Haz clic sobre el campo de ¨Nombre de la configuración¨, ingresa un nombre para la nueva configuración.</li>
+                  <li>Haz clic sobre el ícono <mat-icon class="img-vector-abajo" style="height: 8px;width: 25px;"></mat-icon> para que el card muestre las métricas a las que puedes configurar un SLA.</li>
+                  <li>Ingresa un valor sobre el campo de la métrica que deseas configurar, recuerda que existen métricas con unidades de medida diferentes.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page1-img4.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 40px; margin-top: 40px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p><span>Puedes crear diferentes configuraciones de SLA</span> y asignarlas a diferentes dispositivos. Si un cliente requiere de más de una configuración puedes hacer clic sobre Nueva configuración para crear una nueva</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 2, 3)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Una vez configuradas las métricas con su unidad de medida correspondiente, puedes proceder a Asignar esa configuración a los dispositivos que previamente activaste del cliente.</li>                
+                <ul class="a">
+                  <li>Haz clic sobre el botón de Asignar que se encuentra a un costado del nombre de la configuración.</li>
+                  <li>Posteriormente, el sistema abrirá una página con los dispositivos que pueden ser configurados con un SLA.</li>
+                  <li>Localiza los dispositivos que deseas asignar a tu configuración.</li>
+                  <li>Haz clic en el botón de Asignar SLA para asignar a un dispositivo, el sistema automáticamente resalta en color verde los dispositivos que han sido asignados.</li>
+                </ul>
+              </ul>
+              <div class="row" style="margin-bottom: 40px;">
+                <div class="col-6">
+                  <p class="detalle-subtitulo">Dispositivo sin SLA</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page1-img5.png" alt="" />
+                </div>
+                <div class="col-6">
+                  <p class="detalle-subtitulo">Dispositivo con SLA asignado</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page1-img6.png" alt="" />
+                </div>
+              </div>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 40px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Puedes asignar todos los dispositivos rápidamente con la funcionalidad de <span>Configuración masiva,</span> para acceder a esta función debes localizar el botón que se encuentra a un lado del buscador</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 2, 2)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+              <p class="detalle-subtitulo">Configuración de servicios</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si deseas asignar SLAs a servicios, es necesario comprender que <span>los servicios se encuentran asociados a un Sitio,</span> es decir, cada sitio puede contener un número diferente de servicios asociados.</li>                
+                <ul class="a">
+                  <li>En la esquina inferior derecha de las tarjetas de Sitios, selecciona <mat-icon class="img-personalizar" style="height: 16px;width: 25px;"></mat-icon> el ícono de personalizar.</li>
+                  <li>Se abrirá una modal con el detalle del sitio y sus servicios asociados, desplázate hacia abajo y haz clic sobre el switch del servicio que deseas asignar.</li>
+                  <li>Cambia el estatus del servicio a asignado y confirma para terminar.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page1-img7.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Limitaciones de configuración</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Es necesario que asignes SLAs a tus dispositivos, de lo contrario será complejo determinar el rendimiento de los dispositivos.</li>
+                <li><span>Solo puedes asignar una configuración de SLA a la vez.</span> Si necesitas asociar más de una configuración al cliente, tendrás que crear una nueva.</li>
+                <li>Para crear una nueva configuración de SLAs es necesario que al menos exista un dispositivo asociado a tu configuración anterior, de lo contrario el botón de Nueva configuración permanecerá deshabilitado.</li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-12">
+              <span class="detalle-titulo">Finalizar alta de cliente</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Una vez hayas concluido los tres pasos para el alta de un nuevo cliente, podrás hacer clic sobre el botón de Finalizar que se encuentra en la esquina inferior derecha de la pantalla de Configuración.</li>                
+                <li>Es importante tener en cuenta que <span>al hacer clic sobre el botón de Finalizar, estarás ejecutando un envío de email al cliente registrado.</span> Este email es una bienvenida y el comienzo de la experiencia dentro del SMC de tu cliente.</li>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page1-img8.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 2">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Configuración masiva</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>La funcionalidad te permite configurar rápidamente todos tus dispositivos, es posible encontrarla en dos momentos diferentes:</li>
+              </ul>
+              <p class="detalle-subtitulo">1. Activación de dispositivos</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Deberás estar posicionado dentro de la pantalla de Activación de dispositivos.</li>
+                <ul class="a">
+                  <li>A un costado del buscador, selecciona el botón de Configuración masiva.</li>
+                  <li>Se abrirá una modal con las opciones de configuración masiva que tienes.</li>
+                  <ul class="b">
+                    <li>Activar todo: Activa todos los dispositivos del cliente.</li>
+                    <li>Desactiva todo: Desactiva todos los dispositivos del cliente.</li>
+                  </ul>
+                  <li>Una vez seleccionada la acción que deseas realizar, deberás confirmar para que se vea reflejado dentro de la configuración del cliente.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page2-img1.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">2. Configuración de dispositivos</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;"> 
+                <li>Deberás estar posicionado dentro de la pantalla de Configuración de dispositivos.</li>
+                <ul class="a">
+                  <li>A un costado del buscador, selecciona el botón de Configuración masiva.</li>
+                  <li>Se abrirá una modal con las opciones de configuración masiva que tienes.</li>
+                  <ul class="b">
+                    <li>Asignar a todo: Asigna el SLA seleccionado a todos los dispositivos del cliente.</li>
+                    <li>Eliminar SLA a todo: Elimina el SLA seleccionado a todos los dispositivos del cliente.</li>
+                  </ul>
+                  <li>Una vez seleccionada la acción que deseas realizar, deberás confirmar para que se vea reflejado dentro de la configuración del cliente.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page2-img2.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 3">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Configuración de SLA y plantillas</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>La configuración de SLA tiene el objetivo de configurar las métricas y SLA a los dispositivos que el cliente contrató. Es fundamental para el proceso de alta de un nuevo cliente  ya que indica el nivel de rendimiento pactado para cada uno de los dispositivos y métricas asociadas del cliente.</li>
+              </ul>
+              <p class="detalle-subtitulo">¿Cuántas configuraciones de SLA puedo asignar a un cliente?</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Puedes crear todas las configuraciones de SLA que necesites y asociarlas a los dispositivos del cliente, sin embargo, debes recordar que <span>solo es posible asignar una configuración de SLA por dispositivo.</span> Dicho esto, podrás configurar a un cliente con muchos SLA.</li>
+              </ul>
+              <p class="detalle-subtitulo">Eliminar configuración de SLA</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si deseas <span>eliminar una configuración de SLA dentro del proceso de alta de un cliente o en la edición del cliente,</span> debes tomar en cuenta que, por consecuente vas a eliminar la asociación que este tenga dentro de los dispositivos. Es decir, no solo eliminarás la configuración sino también eliminarás la asignación de esta configuración a los dispositivos, siendo necesario asignarles alguna otra.</li>
+                <ul class="a">
+                  <li>Localiza el ícono de <span><mat-icon class="img-eliminar" style="height: 18px;width: 28px;"></mat-icon>eliminar SLA,</span> que se encuentra a un lado del botón de Asignar de tu configuración.</li>
+                  <li>Confirma la acción para eliminar. </li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page3-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; margin-top: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                    
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Es importante que configures al menos un dispositivo con SLA, </span>
+                    <span style="font-weight: 500">de lo contrario el cliente no podrá visualizar correctamente el rendimiento de sus dispositivos en los Dashboards del SMC. Por este motivo, no podrás finalizar la configuración sin antes haber configurado al menos un dispositivo a una configuración de SLA.</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="detalle-subtitulo">Limitaciones de configuraciones de SLA</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Es necesario que asignes SLAs a tus dispositivos, de lo contrario será complejo determinar el rendimiento de los dispositivos.</li>
+                <li><span>Solo puedes asignar una configuración de SLA a la vez.</span> Si necesitas asociar más de una configuración al cliente, tendrás que crear una nueva:</li>              
+                <ul class="c">
+                  <li>Haz clic sobre el botón de <span>nueva configuración<mat-icon class="img-nuevo-cliente" style="height: 18px;width: 28px;"></mat-icon></span> que se encuentra a un costado del título de Métricas básicas.</li>
+                  <li>El sistema abrirá automáticamente una nueva configuración lista para ser llenada y asignada a los dispositivos que desees.</li>
+                </ul>
+              </ul>
+
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page3-img2.png" alt="" />
+              </div>
+
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                 <li>Para crear una nueva configuración de SLAs es necesario que al menos exista un dispositivo asociado a tu configuración anterior, de lo contrario el botón de Nueva configuración permanecerá deshabilitado.</li>
+                 <li>Debes validar que la información ingresada en cada una de las métricas sea la correcta, ya que el sistema no valida si la unidad ingresada excede algún límite. Recuerda que este parámetro afectará la información dentro del Dashboard de tu cliente.</li>        
+              </ul>
+
+ 
+            </div>
+          </div>
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-12">
+              <span class="detalle-titulo">Plantillas de SLA</span>
+              <p class="detalle-subtitulo">Crear plantilla de SLA</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Las plantillas pueden ayudarte a asignar configuraciones frecuentes a tus clientes.</li>
+                <ul class="a">
+                  <li>Ingresa a tu <span><mat-icon class="img-espacio-trabajo" style="height: 18px;width: 28px;"></mat-icon>Espacio de trabajo.</span></li>
+                  <li>Haz clic sobre tu apartado de configuración y localiza <span>Tus plantillas de SLA</span> que se encuentran debajo de tus paquetes.</li>
+                  <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+                    <img src="assets/img/modulo-ayuda/detalle-page3-img3.png" alt="" />
+                  </div>
+                  <li>Hac clic sobre el botón de Nuevo SLA.</li>
+                  <li>El sistema abrirá una nueva página en donde podrás crear una nueva configuración. </li>
+                  <li>Ingresa un valor sobre el campo de la métrica que deseas configurar, recuerda que existen métricas con unidades de medida diferentes.</li>
+                  <li>Haz clic en guardar.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <img src="assets/img/modulo-ayuda/detalle-page3-img4.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Utilizar una plantilla de SLA</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Puedes encontrar tus configuraciones de SLA en las pantallas de Configuración de nuevo cliente, de esta forma puedes asignar tus configuraciones favoritas rápidamente:</li>
+                <ul class="a">
+                  <li>Haz clic sobre el botón de <span>nueva configuración<mat-icon class="img-nuevo-cliente" style="height: 18px;width: 28px;"></mat-icon></span> que se encuentra a un costado del título de Métricas básicas.</li>
+                  <li>Localiza el campo <span>Usar plantilla,</span> que se encuentra debajo del título de Configuración de Métricas y SLA´s por Dispositivos.</li>
+                  <li>Haz clic sobre el campo para desplegar la lista de las plantillas que tienes disponible.</li>
+                  <li>Selecciona la plantilla de SLA que deseas utilizar.</li>
+                  <li>El sistema ingresará automáticamente la información de las métricas, acorde a la plantilla seleccionada.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <img src="assets/img/modulo-ayuda/detalle-page3-img5.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Limitaciones de plantillas de SLA </p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Si utilizas plantillas de SLA para la configuración de un nuevo cliente, tienes que tener en cuenta que no es posible editar las métricas de esta plantilla.</li>
+                <li>Si deseas modificar la configuración de métricas de una plantilla de SLA, únicamente es posible desde el apartado de configuración de la misma:</li>
+                <ul class="c">
+                  <li>Ingresa a tu <span><mat-icon class="img-espacio-trabajo" style="height: 18px;width: 28px;"></mat-icon>Espacio de trabajo.</span></li>
+                  <li>Haz clic sobre tu apartado de configuración y localiza <span>Tus plantillas de SLA</span> que se encuentran debajo de tus paquetes.</li>
+                  <li>Selecciona el ícono de <span><mat-icon class="img-detalle" style="height: 18px;width: 28px;"></mat-icon>detalle</span> sobre la plantilla de SLA que deseas modificar.</li>
+                  <li>El sistema te mostrará la configuración de SLA con los campos habilitados para su edición.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <img src="assets/img/modulo-ayuda/detalle-page3-img6.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 4">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Geolocalización de sitios</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Con la geolocalización, conoce la ubicación exacta de los dispositivos de tus clientes. Obtén más información sobre la Geolocalización para empezar a usarlo.</li>
+              </ul>
+              <p class="detalle-subtitulo">¿Qué es la geolocalización?</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>La geolocalización es una ventaja que ofrecemos para que conozcas la ubicación exacta de cada uno de los sitios del cliente. Esta herramienta funciona como complemento de algunos Dashboards, por ello es importante realizar su registro.</li>
+              </ul>
+              <p class="detalle-subtitulo">¿Cómo puedo ingresar la geolocalización de un sitio?</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Localiza la tarjeta asociada al sitio que deseas ingresar su geolocalización.</li>
+                <ul class="a">
+                  <li>En la esquina inferior derecha de las tarjetas de Sitios, selecciona <mat-icon class="img-servicios" style="height: 18px;width: 28px;"></mat-icon> el ícono de servicios.</li>
+                  <li>Se abrirá una modal con el detalle del sitio y sus servicios asociados, desplázate hacia el ícono de <span><mat-icon class="img-geolocalizacion" style="height: 18px;width: 28px;"></mat-icon>Geolocalización</span> y haz clic sobre él.</li>
+                  <li>Ingresa la Latitud del sitio.</li>
+                  <li>Ingresa la Longitud del sitio.</li>
+                  <li>Selecciona el estado de la República Mexicana donde se encuentra el sitio.</li>
+                  <li>Deberás confirmar para que se vea reflejado dentro de la configuración del cliente.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page4-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; margin-top: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                   
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Recuerda que los parámetros ingresados se verán reflejados en los Dashboards del cliente, </span>
+                    <span style="font-weight: 500">por ello es importante que valides la veracidad de la información. De lo contrario, podría verse afectada la visualización de la información del cliente. Recuerda que podrás modificar las veces que consideres necesario esta información.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 5">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Funcionalidad de Continuar más tarde</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;"> 
+                <li>Si de momento no cuentas con toda la información para dar de alta un nuevo cliente, puede iniciar el proceso y continuarlo más tarde.</li>
+              </ul>
+              <p class="detalle-subtitulo">¿Qué es la Funcionalidad de Continuar más tarde?</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>La funcionalidad de Continuar más tarde es una ventaja que ofrecemos para que puedas concluir el proceso de un nuevo cliente cuando lo desees. Si de momento no cuentas con toda la información o el tiempo necesario para concluir este proceso, te ayuda a guardar toda información que hayas ingresado en alguno de los pasos y retomarlo donde te quedaste.</li>
+              </ul>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; margin-top: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>                    
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Solo puedes utilizar esta funcionalidad si has ingresado los campos mínimos requeridos, </span>
+                    <span style="font-weight: 500">de lo contrario puedes perder tu avance si intentas salir sin concluir algún paso. Para evitar estos inconvenientes es importante que conozcas cuales son los campos mínimos de cada paso del proceso de alta de un nuevo cliente.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 6">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Filtros de búsqueda avanzada</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Localiza los dispositivos de tus clientes rápidamente y crea búsquedas personalizadas, el filtro de búsqueda avanzada podrás encontrarlo en las pantallas de Activación de dispositivos y Asignación de SLA.</li>
+                <ul class="a">
+                  <li>Localiza el ícono de <span><mat-icon class="img-busqueda-avanzada" style="height: 18px;width: 28px;"></mat-icon>Búsqueda avanzada</span> (que se encuentra dentro del buscador de la pantalla).</li>
+                  <li>Selecciona los dispositivos que deseas buscar.</li>
+                  <li>Selecciona los tipos de dispositivos que deseas visualizar.</li>
+                  <li>Una vez seleccionada las preferencias de tu búsqueda, deberás hacer clic sobre <span>Buscar.</span></li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;">
+                <img src="assets/img/modulo-ayuda/detalle-page6-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #D4DDEF; padding: 10px 0; margin-bottom: 40px; margin-top: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-informacion"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>El filtro de búsqueda puede cambiar en función de la pantalla en la que te encuentres. </span>
+                    <span style="font-weight: 500">Por ejemplo, si te encuentras en la pantalla de Activación de dispositivos el filtro tendrá opciones sobre Activos/Inactivos, a diferencia si te encuentras en la pantalla de Configuración en donde podrás encontrar opciones como  SLA sin asignar/ SLA asignado.</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 7">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Crear equipo (Agregar o eliminar personas)</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Crea equipos de trabajo para administrar y crear clientes, para que el trabajo en equipo sea simple, invita a otras personas a colaborar contigo en un equipo de SMC Totalplay.</li>
+                <li>Todos los administradores de Totalplay pueden añadir personas a un equipo o administrarlas. Obtén más información sobre los distintos <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 3, 8)">roles y permisos para equipos.</span></li>
+              </ul>
+              <p class="detalle-subtitulo">Invitar a personas a unirse a tu equipo</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Localiza el botón de <span><mat-icon class="img-nuevo-cliente" style="height: 18px;width: 28px;"></mat-icon>Invitar persona,</span> que se encuentra en la esquina superior derecha.</li>
+                  <li>Introduce su correo electrónico.</li>
+                  <li>Selecciona el rol que desempeñará.</li>
+                  <li>Haz clic en Enviar invitación.</li>
+                </ul>
+                <li>Le mandaremos un enlace de invitación por correo, que solo puede usar una vez. Si los enlaces no funcionan, puedes reenviarle la invitación y ver el detalle del miembro invitado, ver el punto siguiente para saber cómo hacerlo.</li>
+              </ul>
+              <p class="detalle-subtitulo">Reenviar invitación a un invitado </p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Localiza al usuario al que deseas reenviarle la invitación, puedes notar que los usuarios que no han aceptado una invitación tienen un etiqueta de Pendiente.</li>
+                  <li>Haz clic sobre el usuario para ver el detalle.</li>
+                  <li>Selecciona el ícono de <mat-icon class="img-menu-opciones" style="height: 18px;width: 28px;"></mat-icon> para desplegar las opciones de reenvío de invitación.</li>
+                  <li>Haz clic en <span><mat-icon class="img-reenviar-correo" style="height: 18px;width: 28px;"></mat-icon>Reenviar invitación.</span></li>
+                </ul>
+                <li>Le reenviaremos un enlace de invitación por correo, que solo puede usar una vez.</li>
+              </ul>
+              <p class="detalle-subtitulo">Eliminar personas dentro de tu equipo de trabajo </p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Localiza al usuario al que deseas eliminar.</li>
+                  <li>Haz clic sobre el usuario para ver el detalle.</li>
+                  <li>Selecciona el botón de <span>Eliminar miembro.</span></li>
+                </ul>
+                <li>Si el usuario aún no ha aceptado la invitación para unirse a tu equipo y deseas eliminarlo, haz clic sobre el ícono de <mat-icon class="img-menu-opciones" style="height: 18px;width: 28px;"></mat-icon> para desplegar las opciones de eliminar.</li>
+              </ul>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p><span>Cuando eliminas a una persona de tu equipo perderá acceso por completo al SMC.</span> Recuerda que solo los usuarios administradores pueden eliminar y gestionar al equipo de trabajo.</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 3, 7)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 8">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Cambio de roles y permisos</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Los administradores Totalplay pueden asignar roles de equipo o clase y cambiarlos cuando quieran. Desde Equipos, podrás ver los roles de todas las personas que forman parte del equipo. Consulta más detalles a continuación.</li>
+              </ul>
+              <p class="detalle-subtitulo">Administrador</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Este rol cuenta con todas las funcionalidades, los administradores cuentan con los permisos para acceder a funcionalidades tan importantes como lo es la comunicación en tiempo real con el cliente.</li>
+                <ul class="c">
+                  <li>Tiene acceso completo a la administración de los integrantes del equipo, así como a la gestión del mismo.</li>
+                  <li>Puede configurar y editar clientes.</li>
+                  <li>Puede gestionar y administrar notificaciones.</li>
+                  <li>Puede configurar y editar paquetes.</li>
+                  <li>Puede configurar y crear plantillas de SLA.</li>
+                </ul>
+              </ul>
+              <p class="detalle-subtitulo">Back office</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Este rol no cuenta con todas las funcionalidades, los back office pueden administrar y dar mantenimiento a los clientes del SMC, pero no pueden acceder a funcionalidades de contacto directo con el cliente o a configuraciones de paquetes y equipo de trabajo.</li>
+                <ul class="c">
+                  <li>Puede crear clientes nuevos.</li>
+                  <li>Puede configurar y editar clientes.</li>
+                  <li>Puede configurar y crear plantillas de SLA.</li>
+                </ul>
+              </ul>
+              <p class="detalle-subtitulo">Cambio de rol a un integrante de mi equipo</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Haz clic sobre el integrante al que modificarás el rol.</li>
+                  <li>Selecciona el rol que desempeñará.</li>
+                  <li>Haz clic en guardar.</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 9">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Consulta de bitácora</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Ahora puedes hacer consultas sobre las actividades que desempeña tu equipo de trabajo, así como descargar un registro de sus labores desempeñadas dentro del SMC. Las actividades descargadas son en formato xls con la finalidad de brindarte una mejor visión y trato sobre los datos.</li> 
+                <li>Para consultar y descargar la bitácora realiza los siguientes pasos:</li>
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Haz clic sobre el botón <span>Descargar,</span> que se encuentra al costado derecho del buscador.</li>
+                  <li>El sistema abrirá la pantalla de <span>Descarga de Actividades,</span> en donde tendrás que seleccionar una fecha de consulta inicial y una fecha de consulta final.</li>
+                  <li>Haz clic sobre el botón <span>Descarga de Actividades.</span></li>
+                </ul>
+                <li>Se descargará el archivo xls con las actividades registradas dentro del periodo de consulta.</li>
+              </ul>
+              <p class="detalle-subtitulo">Limitaciones de Consulta de bitácora</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>No es posible ingresar una fecha de consulta inicial mayor a la fecha de consulta final.</li>
+                <li>La cantidad de datos puede variar en función de las actividades de tu equipo, es posible encontrar periodos de consulta con menores datos.</li>
+                <li>El SMC únicamente realiza la descarga del archivo xls, para visualizarlo deberás realizarlo con herramientas externas.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 10">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Crear notificaciones uno a uno</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Ahora es posible mantener una comunicación directa y en tiempo real con cada uno de tus clientes, con el envío de notificaciones podrás enviar mensajes al SMC de tus clientes.</li>
+              </ul>
+              <p class="detalle-subtitulo">Crea una notificación </p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Las notificaciones uno a uno son mensajes que un administrador de Totalplay puede crear con la finalidad de comunicarse con un cliente en específico, estas notificaciones son directas, de modo que las recibe el cliente seleccionado y su equipo de trabajo. Para crear una notificación uno a uno realiza lo siguiente:</li>
+                <ul class="a">
+                  <li>Ve a tu espacio de trabajo, de modo que visualices la tabla de clientes.</li>
+                  <li>Localiza al cliente que deseas enviar una notificación.</li>
+                  <li>Haz clic sobre el ícono de <span><mat-icon class="img-detalle" style="height: 20px;width: 25px;"></mat-icon>Detalle</span> dentro de la fila del cliente al que deseas enviarle una notificación.</li>
+                  <li>El sistema abrirá automáticamente el detalle e información general del cliente seleccionado.</li>
+                  <div style="display: flex; justify-content: center; margin: 30px 0px;">
+                    <img src="assets/img/modulo-ayuda/detalle-page10-img1.png" alt="" />
+                  </div>
+                  <li>Haz clic sobre el botón de <span><mat-icon class="img-notificacion" style="height: 20px;width: 25px;"></mat-icon>Enviar notificación.</span></li>
+                  <li>El sistema abrirá una ventana para la creación de la notificación, escribe el título de la notificación.</li>
+                  <li>Escribe el mensaje que deseas comunicar al cliente.</li>
+                  <li>Haz clic sobre el botón de <span>Enviar.</span></li>
+                </ul>
+                <li>El cliente recibirá inmediatamente la notificación con el mensaje que has redactado para él, recuerda que todo el equipo asociado a este cliente recibirán una notificación con el mismo mensaje.</li>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page10-img2.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Limitaciones de Notificaciones uno a uno</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Para el correcto envío de notificaciones, es necesario que ingreses los campos requeridos, de lo contrario el botón de Enviar permanecerá deshabilitado:</li>
+                <ul class="c">
+                  <li>Título de notificación</li>
+                  <li>Escribe un mensaje</li>
+                </ul>
+                <li>Los campos dentro de la ventana de envío tienen  un número limitado de caracteres, por lo que deberás ser específico en la información que deseas comunicar al cliente.</li>
+                <li>El creado de notificaciones está limitado a la aceptación de texto, por lo cual, no podrás ingresar archivos o elementos de ningún otro tipo.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 11">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Crear notificaciones masivas</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Ahora es posible mantener una comunicación directa y en tiempo real con todos tus clientes, con el envío de notificaciones masivas podrás enviar mensajes al SMC de tus clientes.</li>
+              </ul>
+              <p class="detalle-subtitulo">Crea una notificación masiva</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Las notificaciones masivas son mensajes que un administrador de Totalplay puede crear con la finalidad de comunicarse con varios clientes al mismo tiempo, estas notificaciones son directas, de modo que las reciben los clientes seleccionados y su equipo de trabajo. Para crear una notificación masiva realiza lo siguiente:</li>
+                <ul class="a">
+                  <li>Ve a tu espacio de trabajo, de modo que visualices la tabla de clientes.</li>
+                  <li>Localiza el botón de <span><mat-icon class="img-notificacion-masiva" style="height: 20px;width: 25px;"></mat-icon>Envío de notificaciones masivas,</span> que se encuentra al costado derecho del botón de Nuevo cliente.</li>
+                  <div style="display: flex; justify-content: center; margin: 30px 0px;">
+                    <img src="assets/img/modulo-ayuda/detalle-page11-img1.png" alt="" />
+                  </div>
+                  <li>El sistema abrirá una ventana para la creación de la notificación masiva.</li>
+                  <li>Selecciona a los clientes que deseas que reciban la notificación.</li>
+                  <li>Escribe el título de la notificación.</li>
+                  <li>Escribe el mensaje que deseas comunicar al cliente.</li>
+                  <li>Haz clic sobre el botón de <span>Enviar.</span></li>
+                </ul>
+                <li>Los clientes recibirán inmediatamente la notificación con el mensaje que has redactado, recuerda que todo el equipo asociado a estos clientes de igual manera recibirán una notificación con el mismo mensaje.</li>
+              </ul>
+
+              <div class="detalle-cuadro-boton" style="background: #D4DDEF; padding: 10px 0; margin-bottom: 40px; margin-top: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-informacion"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;"> 
+                    <span>El campo de Cliente funciona como un buscador por coincidencia </span>
+                    <span style="font-weight: 500">de modo que deberás escribir los 4 primeros caracteres que coincidan con el nombre del cliente al que deseas seleccionar. Por ejemplo, si quieres seleccionar al cliente Banco del Sur, será necesario escribir dentro del campo Banco para que el sistema te muestre en modo de lista las coincidencias que puedes seleccionar.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page11-img2.png" alt="" />
+              </div>
+
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 40px;">
+                <div class="row">
+                  <div class="col-12">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p><span>Puedes utilizar los botones de Todos y Favoritos dentro del campo de Clientes para seleccionar a tus destinatarios rápidamente. </span>Si utilizas estos botones estarás seleccionando automáticamente la lista de destinatarios de la notificación, sin embargo, puedes modificarla las veces que sea necesario antes del envío de la notificación.</p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="detalle-subtitulo">Limitaciones de Notificaciones masivas</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Para el correcto envío de notificaciones, es necesario que ingreses los campos requeridos, de lo contrario el botón de Enviar permanecerá deshabilitado:</li>
+                <ul class="c">
+                  <li>Clientes</li>
+                  <li>Título de notificación</li>
+                  <li>Escribe un mensaje</li>
+                </ul>
+                <li>Para el campo de Clientes, es necesario seleccionar al menos uno.</li>
+                <li>Los campos dentro de la ventana de envío tienen  un número limitado de caracteres, por lo que deberás ser específico en la información que deseas comunicar al cliente.</li>
+                <li>El creado de notificaciones está limitado a la aceptación de texto, por lo cual, no podrás ingresar archivos o elementos de ningún otro tipo.</li>
+                <li>Si no cuentas con clientes favoritos, el botón de Favoritos estará deshabilitado, es decir, no mostrará información.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 12">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Notificaciones automáticas equipo Totalplay</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Ahora es posible mantener una comunicación directa y en tiempo real con cada uno de los integrantes de tu equipo de trabajo Totalplay, con el envío de notificaciones automáticas podrás administrar y brindar un mejor servicio a tus clientes.</li>
+              </ul>
+              <p class="detalle-subtitulo">¿Qué son las notificaciones automáticas?</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Las notificaciones automáticas son una herramienta para mejorar la administración de los clientes dentro del SMC, estas notificaciones se derivan del proceso de creación de un nuevo cliente. Es decir, si un integrante del equipo de Totalplay está en el proceso de alta puede detonar dos tipos de notificaciones automáticas:</li>
+                <ul class="a">
+                  <li>Notificaciones automáticas dentro de Información general (Paso 1).</li>
+                  <li>Notificaciones automáticas dentro de Activación de dispositivos (Paso 2).</li>
+                </ul>
+              </ul>
+
+              <ul class="list-unstyled detalle-lista a" style="margin-top: 25px;">
+                <li><span>Notificaciones automáticas dentro de Información general (Paso 1):</span></li>
+                <ul class="list-unstyled detalle-lista">
+                  <li>Estas notificaciones se generan si el usuario hace uso de la <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 2, 5)">Funcionalidad de Continuar más tarde</span> de forma correcta. El sistema guardará la información del alta de cliente en proceso y notificará al equipo de Totalplay que está pendiente el Alta de un nuevo cliente.</li>
+                </ul>
+                <li><span>Notificaciones automáticas dentro de Activación de dispositivos (Paso 2):</span></li>
+                <ul class="list-unstyled detalle-lista">
+                  <li>Estas notificaciones se generan si el usuario hace uso de la <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 2, 5)">Funcionalidad de Continuar más tarde</span> de forma correcta. El sistema guardará la información del alta de cliente en proceso y notificará al equipo de Totalplay que está pendiente el Alta de un nuevo cliente.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page12-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p><span>Puedes hacer clic sobre el link dentro de las notificaciones automáticas para ir a la configuración pendiente del cliente. </span>Recuerda que debes ponerte de acuerdo con los otros integrantes de tu equipo para no retrabajar</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 2, 5)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+              <p class="detalle-subtitulo">Limitaciones de Notificaciones automáticas</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Las notificaciones son ejecutadas únicamente para las funcionalidades descritas anteriormente.</li>
+                <li>Todo el equipo de trabajo de Toltalplay puede visualizar estas notificaciones, por lo que la gestión de la ejecución del alta del cliente es independiente.</li>
+                <li>Si el usuario desea visualizar con mayor detalle la notificación, puede hacerlo desde su bandeja de entrada.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 13">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Visualizar notificaciones y Bandeja de entrada</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Con las notificaciones te mantienes al día sobre los estatus de tus actividades y propicia una mejor gestión para tus equipos de trabajo.</li>
+              </ul>
+              <p class="detalle-subtitulo">Visualización de notificaciones</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Las notificaciones que recibe el equipo de trabajo de Totalplay pueden ser visualizadas en una primera instancia mediante el ícono de notificaciones que se encuentra en la parte superior derecha, a un lado del nombre de usuario del sistema.</li>
+                <li>El ícono de notificaciones nos mostrará la cantidad de notificaciones no leídas que tenemos en ese momento.</li>
+                <ul class="a">
+                  <li>Haz clic sobre el ícono de notificaciones</li>
+                  <li>Se desplegará un menú, en el que podrás visualizar primeramente las notificaciones no leídas.</li>
+                  <li>Haz clic sobre la notificación que deseas visualizar.</li>
+                  <li>El sistema abrirá la bandeja de entrada junto con el mensaje que seleccionaste.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page13-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #D4DDEF; padding: 10px 0; margin-bottom: 40px; margin-top: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-informacion"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;"> 
+                    <span>Si la notificación ya fue leída pasará al apartado de Leídas, </span>
+                    <span style="font-weight: 500">que se encuentra dentro del menú de notificaciones. Para visualizar las notificaciones leídas deberás hacer clic a la sección de Leídas de modo que podrías desplazarte entre uno u otro menú a través de las tabs.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="detalle-subtitulo">Bandeja de entrada</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>La bandeja de entrada es el punto central donde recibes las actualizaciones y notificaciones relevantes para tu trabajo, puedes visualizar con mayor detalle cada una de ellas. Puedes desplazarte por cada uno de los mensajes haciendo clic sobre ellos.</li>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page13-img2.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Las notificaciones que recibe el equipo de trabajo de Totalplay son de momento todas automáticas, </span>
+                    <span style="font-weight: 500">estas notificaciones se derivan del proceso de creación de un nuevo cliente. Para conocer más sobre el tipo de notificaciones automáticas, <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 5, 12)">ve al siguiente enlace.</span></span>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 14">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Crear un nuevo paquete</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Los paquetes te ayudan a configurar las funcionalidades a las que puede acceder un cliente dentro del SMC, crea distintas configuraciones y asígnarlas a tus clientes.</li>
+                <ul class="a">
+                  <li>Ingresa a la pantalla de <span>Configuración,</span> que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Haz clic el botón de <span><mat-icon class="img-nuevo-cliente" style="height: 18px;width: 25px;"></mat-icon>Nuevo paquete,</span> que se encuentra en la esquina superior derecha del módulo de paquetes.</li>
+                  <li>Se abrirá la pantalla para la captura de la configuración de un nuevo paquete.</li>
+                  <li>Escribe el nombre para identificar el paquete.</li>
+                  <li>Escribe una descripción.</li>
+                  <li>Ingresa el número de usuario que podrá disponer este paquete.</li>
+                  <li>Selecciona las características que tendrá tu nuevo paquete mediante los check box.</li>
+                  <li>Haz clic en <span>Guardar</span> para dar de alta tu nuevo paquete.</li>
+                </ul>
+                <li style="margin-top: 25px;">Ahora puedes asociar este nuevo paquete a tus usuarios, siempre podrás visualizar tu nuevo paquete dentro del apartado de configuración.</li>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page14-img1.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Limitaciones de Crear nuevo paquete</p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Para la correcta creación de paquetes, es necesario que ingreses los campos requeridos, de lo contrario el botón de Guardar permanecerá deshabilitado:</li>
+                <ul class="c">
+                  <li>Título del paquete</li>
+                  <li>Número de usuarios</li>
+                  <li>Descripción</li>
+                  <li>1 tipo de Dashboard</li>
+                  <li>1 tipo de métrica</li>
+                </ul>
+                <li>Los campos dentro de la descripción tienen  un número limitado de caracteres, por lo que deberás ser específico en la información que deseas comunicar.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 15">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Editar y eliminar mis paquetes</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Puedes editar las configuraciones de tus paquetes rápidamente.</li>
+                <ul class="a">
+                  <li>Ingresa a la pantalla de <span>Configuración,</span> que encontrarás dentro del espacio de trabajo. </li>
+                  <li>Dentro del módulo de paquetes, localiza el paquete que deseas editar.</li>
+                  <li>Haz clic sobre el ícono de <span><mat-icon class="img-detalle" style="height: 20px;width: 25px;"></mat-icon>Detalle</span> dentro de la card del paquete.</li>
+                  <li>Se abrirá la pantalla con la configuración del paquete que seleccionaste.</li>
+                  <li>En su caso, edita los campos que deseas modificar.</li>
+                  <li>En su caso, selecciona las características que deseas editar mediante los check box.</li>
+                  <li>Haz clic en <span>Guardar</span> para actualizar los cambios de tu paquete.</li>
+                </ul>
+                <li style="margin-top: 25px;">Recuerda que si editas las características de un paquete ya asociado a clientes, las funcionalidades y características a las que tienen acceso dentro del SMC se verán actualizadas acorde al cambio que hayas realizado.</li>
+                <li>Ahora puedes asociar este paquete a tus usuarios, siempre podrás visualizar tus paquetes dentro del apartado de configuración.</li>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page15-img1.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Eliminar paquete</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Puedes eliminar paquetes que ya no son funcionales para ti y tus clientes dentro del SMC.</li>
+                <ul class="a">
+                  <li>Ingresa a la pantalla de <span>Configuración,</span> que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Dentro del módulo de paquetes, localiza el paquete que deseas eliminar.</li>
+                  <li>Haz clic sobre el ícono de <span><mat-icon class="img-detalle" style="height: 20px;width: 25px;"></mat-icon>Detalle</span> dentro de la card del paquete.</li>
+                  <li>Se abrirá la pantalla con la configuración del paquete que seleccionaste.</li>
+                  <li>Haz clic sobre el botón de Eliminar, que se encuentra en la esquina superior derecha de la pantalla.</li>
+                  <li>El sistema te mostrará una modal de confirmación, para validar que realmente quieres eliminar ese paquete.</li>
+                  <li>Confirma la eliminación del paquete.</li>
+                </ul>
+              </ul>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-top: 30px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>La funcionalidad de eliminar paquetes puede ser ejecutada siempre y cuando no existan clientes asociados a dicho paquete. </span>
+                    <span style="font-weight: 500">De lo contrario, no podrás hacer uso de la funcionalidad. Te recomendamos que antes de eliminar un paquete puedas configurar un nuevo paquete a los clientes asociados al paquete que deseas eliminar.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 16">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Crea una nueva plantilla de SLA</span>
+              <p class="detalle-subtitulo">Crear plantilla de SLA</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Las plantillas pueden ayudarte a asignar configuraciones frecuentes a tus clientes.</li>  
+                <ul class="a">
+                  <li>Ingresa a tu <span><mat-icon class="img-espacio-trabajo" style="height: 18px;width: 25px;"></mat-icon>Espacio de trabajo.</span></li>
+                  <li>Haz clic sobre tu apartado de configuración y localiza <span>Tus plantillas de SLA</span> que se encuentran debajo de tus paquetes.</li>
+                  <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                    <img src="assets/img/modulo-ayuda/detalle-page16-img1.png" alt="" />
+                  </div>
+                  <li>Hac clic sobre el botón de <span><mat-icon class="img-nuevo-cliente" style="height: 18px;width: 25px;"></mat-icon>Nuevo SLA.</span></li>
+                  <li>El sistema abrirá una nueva página en donde podrás crear una nueva configuración.</li>
+                  <li>Ingresa un valor sobre el campo de la métrica que deseas configurar, recuerda que existen métricas con unidades de medida diferentes.</li>
+                  <ul class="c">
+                    <li>Existen 5 tipos de métricas con las cuales puedes configurar un SLA.</li>
+                    <li>Para que el botón de guardado de una configuración SLA esté habilitado, deberás ingresar al menos un un valor a alguna métrica.</li>
+                  </ul>
+                  <li>Haz clic en guardar.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page16-img2.png" alt="" />
+              </div>
+              
+              <p class="detalle-subtitulo">Utilizar una plantilla de SLA</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Puedes encontrar tus configuraciones de SLA en las pantallas de Configuración de nuevo cliente, de esta forma puedes asignar tus configuraciones favoritas rápidamente:</li>  
+                <ul class="a">
+                  <li>Haz clic sobre el botón de <span>nueva configuración<mat-icon class="img-nuevo-cliente" style="height: 18px;width: 25px;"></mat-icon></span> que se encuentra a un costado del título de Métricas básicas.</li>
+                  <li>Localiza el campo <span>Usar plantilla,</span> que se encuentra debajo del título de Configuración de Métricas y SLA´s por Dispositivos.</li>
+                  <li>Haz clic sobre el campo para desplegar la lista de las plantillas que tienes disponible.</li>
+                  <li>Selecciona la plantilla de SLA que deseas utilizar.</li>
+                  <li>El sistema ingresará automáticamente la información de las métricas, acorde a la plantilla seleccionada.</li>
+                </ul>
+              </ul>
+
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page16-img3.png" alt="" />
+              </div>
+
+              <p class="detalle-subtitulo">Limitaciones de plantillas de SLA </p>
+              <ul class="list-unstyled detalle-lista c" style="margin-top: 25px;">
+                <li>Si utilizas plantillas de SLA para la configuración de un nuevo cliente, tienes que tener en cuenta que no es posible editar las métricas de esta plantilla.</li>
+                <li><span>Si deseas modificar la configuración de métricas de una plantilla de SLA,</span> únicamente es posible desde el apartado de configuración de la misma, para conocer más sobre la edición y eliminado de plantillas, <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 7, 17)">ve al siguiente enlace.</span></li>
+              </ul>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 17">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Editar y eliminar mis plantillas</span>
+              <p class="detalle-subtitulo">Editar una plantilla de SLA</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li><span>Si deseas modificar la configuración de métricas de una plantilla de SLA,</span> únicamente es posible desde el apartado de configuración de la misma:</li>
+                <ul class="c">
+                  <li>Ingresa a tu <span><mat-icon class="img-espacio-trabajo" style="height: 18px;width: 25px;"></mat-icon>Espacio de trabajo.</span></li>
+                  <li>Haz clic sobre tu apartado de configuración y localiza <span>Tus plantillas de SLA</span> que se encuentran debajo de tus paquetes.</li>
+                  <li>Selecciona el ícono de <span><mat-icon class="img-detalle" style="height: 18px;width: 25px;"></mat-icon>detalle</span> sobre la plantilla de SLA que deseas modificar.</li>
+                  <li>El sistema te mostrará la configuración de SLA con los campos habilitados para su edición.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page17-img1.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Eliminar una plantilla de SLA</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si deseas eliminar una plantilla de SLA:</li>
+                <ul class="c">
+                  <li>Ingresa a tu <span><mat-icon class="img-espacio-trabajo" style="height: 18px;width: 25px;"></mat-icon>Espacio de trabajo.</span></li>
+                  <li>Haz clic sobre tu apartado de configuración y localiza <span>Tus plantillas de SLA</span> que se encuentran debajo de tus paquetes.</li>
+                  <li>Selecciona el ícono de <span><mat-icon class="img-eliminar" style="height: 20px;width: 25px;"></mat-icon>Eliminar</span> sobre la plantilla de SLA que deseas eliminar.</li>
+                  <li>El sistema procederá a su eliminación.</li>
+                </ul>
+              </ul>
+
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                     
+                    <span>La eliminación de una plantilla de SLA no elimina la configuración a los clientes asociados. </span>
+                    <span style="font-weight: 500">Recuerda que solo estarás eliminando la plantilla y no podrá ser utilizada más adelante, sin embargo, si deseas eliminar o modificar la configuración de un cliente deberás hacerlo en el Detalle del cliente asignado nuevas configuraciones.</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 18">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Edita y administra un cliente</span>
+              <p class="detalle-subtitulo">Información general</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Es posible editar la información general de tus clientes, modificar el estatus de sus dispositivos, asignarles o modificar SLA´s  y darles mantenimiento en general.</li>
+                <ul class="a">
+                  <li>Ingresa a tu Espacio de Trabajo con la finalidad de localizar dentro de la tabla general de clientes al usuario que deseas editar.</li>
+                  <li>Una vez identificado al usuario, deberás hacer clic sobre el ícono <span><mat-icon class="img-detalle" style="height: 18px;width: 25px;"></mat-icon></span> Detalle.</li>
+                  <li>El sistema abrirá el detalle del cliente, posicionándose sobre la información general del mismo.</li>
+                  <li>Para editar la información general haz clic sobre el botón de <span><mat-icon class="img-menu-opciones" style="height: 18px;width: 25px;"></mat-icon></span> ver más para desplegar la opción Editar.</li>
+                  <li>El sistema habilitará los campos para su edición.</li>
+                </ul>
+              </ul>
+
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>El único campo que no tiene la opción de editar es el nombre de la empresa. </span>
+                    <span style="font-weight: 500">Este campo permanecerá deshabilitado en todo momento, sin embargo podrás modificar la demás información del cliente.</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="detalle-subtitulo">Dispositivos</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Es posible administrar los dispositivos, activarlos, desactivarlos y darles mantenimiento en general. Deberás ingresar a la sección de Dispositivos del cliente, en donde encontrarás todos los dispositivos del cliente (Activos e Inactivos).</li>
+                <li>¡Recuerda! el objetivo de esta pantalla es activar aquellos dispositivos que el cliente contrató para monitoreo dentro del SMC.</li>
+                <ul class="a">
+                  <li>Localiza los dispositivos que deseas activar</li>
+                  <li>Haz clic en el switch para activar el dispositivo, el sistema automáticamente resalta en color verde los dispositivos que han sido activados.</li>
+                </ul>
+              </ul>
+
+
+
+              <p class="detalle-subtitulo">Servicios contratados</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Deberás ingresar los servicios y dispositivos contratados por el cliente.</li>
+                <ul class="a">
+                  <li>Selecciona el paquete contratado, si quieres ver más información sobre los paquetes de tus clientes consulta este articulo.</li>
+                  <li>Selecciona los tipos de servicios que el cliente contrató.</li>
+                  <li>Ingresa el número de dispositivos (Enlaces, Sitios y Servicios) que el cliente contrató.</li>
+                </ul>
+              </ul>
+
+              <div class="row" style="margin-bottom: 40px;">
+                <div class="col-6">
+                  <p class="detalle-subtitulo">Dispositivo inactivo</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page18-img1.png" alt="" />
+                </div>
+                <div class="col-6">
+                  <p class="detalle-subtitulo">Dispositivo activo</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page18-img2.png" alt="" />
+                </div>
+              </div>
+
+            
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Puedes activar o inactivar todos los dispositivos rápidamente con la funcionalidad de  <span>Configuración masiva,</span> para acceder a esta función debes localizar el botón que se encuentra a un lado del buscador</p>    
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 2, 2)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Para identificar los diferentes tipos de dispositivos que tiene un cliente puedes hacerlo de la siguiente manera:</li>
+              </ul>
+
+              <div class="row" style="margin-bottom: 40px;">
+                <div class="col-4">
+                  <p class="detalle-subtitulo">Enlace</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page18-img3.png" alt="" style="width: 350px;" />
+                </div>
+                <div class="col-4">
+                  <p class="detalle-subtitulo">Sitio</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page18-img4.png" alt="" style="width: 350px;"/>
+                </div>
+                <div class="col-4">
+                  <p class="detalle-subtitulo">Sitio sin servicios asociados</p>
+                  <img src="assets/img/modulo-ayuda/detalle-page18-img5.png" alt="" style="width: 350px;"/>
+                </div>
+              </div>
+
+              <p class="detalle-subtitulo">Configuración de SLA</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Esta pantalla tiene el objetivo de configurar las métricas y SLA a los dispositivos que el cliente contrató.</li>
+                <ul class="a">
+                  <li>Localiza el card de Métricas básicas.</li>
+                  <li>Haz clic sobre el campo de ¨Nombre de la configuración¨, ingresa un nombre para la nueva configuración.</li>
+                  <li>Haz clic sobre el ícono <span><mat-icon class="img-vector-abajo" style="height: 18px;width: 25px;"></mat-icon></span> para que el card muestre las métricas a las que puedes configurar un SLA.</li>
+                  <li>Ingresa un valor sobre el campo de la métrica que deseas configurar, recuerda que existen métricas con unidades de medida diferentes.</li>  
+                </ul>
+              </ul>
+
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page18-img6.png" alt="" />
+              </div>
+
+              <p class="detalle-subtitulo">Equipo de Trabajo</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Es posible visualizar el equipo de trabajo de tus clientes, conocer las preferencias de Dashboards así como sus roles.</li>
+                <ul class="a">
+                  <li>Ingresa a tu Espacio de Trabajo con la finalidad de localizar dentro de la tabla general de clientes al usuario que deseas editar.</li>
+                  <li>Una vez identificado al usuario, deberás hacer clic sobre el ícono <span><mat-icon class="img-detalle" style="height: 18px;width: 25px;"></mat-icon></span> Detalle.</li>
+                  <li>El sistema abrirá el detalle del cliente, posicionándose sobre la información general del mismo.</li>
+                  <li>Para visualizar el equipo de trabajo, posiciónate en la sección Equipo de trabajo.</li>
+                  <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                    <img src="assets/img/modulo-ayuda/detalle-page18-img7.png" alt="" />
+                  </div>
+                </ul>
+                <li>Si deseas visualizar el detalle de cada miembro, es necesario hacer clic sobre uno para abrir la información completa. </li>
+              </ul>
+
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page18-img8.png" alt="" />
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 19">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Edición de métricas y SLAs</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Puedes cambiar y agregar nuevas configuraciones las veces que sean necesarias, para ello dirígete a Configuración de SLA y realiza lo siguiente: </li>
+                <li>Esta pantalla tiene el objetivo de configurar las métricas y SLA a los dispositivos que el cliente contrató.</li>
+                <ul class="a">
+                  <li>Localiza el card de Métricas básicas.</li>
+                  <li>Haz clic sobre el campo de ¨Nombre de la configuración¨, ingresa un nombre para la nueva configuración.</li>
+                  <li>Haz clic sobre el ícono          para que el card muestre las métricas a las que puedes configurar un SLA.</li>
+                  <li>Ingresa un valor sobre el campo de la métrica que deseas configurar, recuerda que existen métricas con unidades de medida diferentes.</li>
+                </ul>
+              </ul>
+              
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page19-img1.png" alt="" />
+              </div>
+
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px;">
+                <div class="row">
+                  <div class="col-12">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Recuerda que al utilizar una plantilla de SLA dentro de la configuración de un cliente no es posible modificar los datos dentro de las métricas. Adicional, si eliminas la configuración de SLA dentro de está pantalla solo estas eliminando la asociación de está configuración para el cliente, en ningún momento se elimina la plantilla, para ello deberás ir a tu módulo de configuración. </p>    
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-12">
+              <span class="detalle-titulo">Configurar más de un SLA a un dispositivo</span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Es posible configurar un tipo de SLA a tu dispositivo (Sitio) y configurar diferentes SLAs para cada uno de sus Servicios, revisa la imagen debajo para identificar la asociación de diferentes SLAs. </li>
+                <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                  <img src="assets/img/modulo-ayuda/detalle-page19-img2.png" alt="" />
+                </div>
+                <li>Para ello deberás crear una configuración y hacer clic en asignar, con este proceso podrás asignar varias configuraciones de SLA. </li>
+              </ul>
+            </div>
+          </div>
+
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 20">
+          <div class="row">
+            <div class="col-12">
+              <span class="detalle-titulo">Cambio de estatus (Sitios En mantenimiento) </span>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Dentro de las funcionalidades del SMC es posible cambiar el estatus de los Sitios del cliente, para modificar un dispositivo de estatus En mantenimiento es necesario realizar los siguientes pasos:</li>
+                <ul class="a">
+                  <li>Localiza los dispositivos que deseas modificar (dentro de la sección de Dispositivos o el paso dos de Alta de nuevo cliente).</li>
+                  <li>En la esquina inferior derecha de las tarjetas de Sitios, selecciona <span><mat-icon class="img-servicios" style="height: 18px;width: 25px;"></mat-icon></span> el ícono de servicios.</li>
+                  
+                  <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                    <img src="assets/img/modulo-ayuda/detalle-page20-img1.png" alt="" />
+                  </div>
+    
+                  <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px;">
+                    <div class="row">
+                      <div class="col-12">
+                        <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                        <p>Para esta primera fase del SMC el estatus de mantenimiento es únicamente para los Sitios y Servicios, si intentas configurar un enlace en mantenimiento por el momento no será posible. Espera las siguientes actualizaciones del SMC.</p>    
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <li>Se abrirá una modal con el detalle del Sitio y sus servicios asociados, desplázate hacia el botón de estatus para modificarlo.</li>
+                  <li>Cambia el estatus del servicio a En mantenimiento y confirma para terminar.</li>
+                  <li>Recuerda que al modificar el estatus a En mantenimiento los Servicios asociados al Sitios serán desactivados.</li>
+
+                  <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                    <img src="assets/img/modulo-ayuda/detalle-page20-img2.png" alt="" />
+                  </div>
+
+                </ul>
+              </ul>
+
+              <p class="detalle-subtitulo">Servicios en Mantenimiento</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si deseas modificar el estatus de servicios, es necesario comprender que los servicios se encuentran asociados a un Sitio, es decir cada sitio puede contener un número diferente de servicios asociados.</li>
+                <ul class="a">
+                  <li>En la esquina inferior derecha de las tarjetas de Sitios, selecciona <span><mat-icon class="img-servicios" style="height: 18px;width: 25px;"></mat-icon></span> el ícono de servicios.</li>
+                  <li>Se abrirá una modal con el detalle del sitio y sus servicios asociados, desplázate hacia abajo y selecciona <span><mat-icon class="img-vector-doble-invertido" style="height: 18px;width: 25px;"></mat-icon></span> sobre el servicio que deseas modificar.</li>
+                  <li>Cambia el estatus del servicio a En mantenimiento para terminar.</li>
+                </ul>
+              </ul>
+               
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-page20-img3.png" alt="" />
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 21">
+          <span class="detalle-titulo">Eliminar un cliente</span>
+            <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+              <li>Es posible eliminar clientes dentro del SMC, para ello deberás de realizar los siguientes pasos:</li>
+              <ul class="a">
+                <li>Ingresa a tu Espacio de Trabajo con la finalidad de localizar dentro de la tabla general de clientes al usuario que deseas eliminar.</li>
+                <li>Una vez identificado al usuario, deberás hacer clic sobre el ícono <span><mat-icon class="img-detalle" style="height: 18px;width: 25px;"></mat-icon></span> Detalle.</li>
+                <li>El sistema abrirá el detalle del cliente, posicionándose sobre la información general del mismo.</li>
+                <li>Para editar la información general haz clic sobre el botón de <span><mat-icon class="img-menu-opciones" style="height: 18px;width: 25px;"></mat-icon></span> ver más para desplegar la opción Editar.</li>
+                <li>El sistema habilitará el botón de Eliminar cliente.</li>
+                <li>Confirma la acción para eliminar al cliente. </li>
+              </ul>
+            </ul>
+
+            <div style="display: flex; justify-content: center;margin: 30px 0px;">
+              <img src="assets/img/modulo-ayuda/detalle-page21-img1.png" alt="" />
+            </div>
+
+            <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+              <div class="row">
+                <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                  <mat-icon class="img-advertencia"></mat-icon>
+                </div>
+                <div class="col-11" style="padding-right: 70px;">
+                  <span>Eliminar un cliente implica eliminar el acceso inmediato a un cliente y todos sus usuarios. </span>
+                  <span style="font-weight: 500">Del lado del administrador implica un cambio de estatus dentro de la tabla general de clientes, podrás ver aún configuraciones y demás información, sin embargo el cliente no tendrá acceso al sistema.</span>
+                </div>
+              </div>
+            </div>
+        </ng-container>
+
+
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

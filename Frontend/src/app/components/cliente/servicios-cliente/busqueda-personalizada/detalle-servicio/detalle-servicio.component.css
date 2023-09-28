@@ -1,0 +1,368 @@
+::ng-deep .detalle-servicio .mat-dialog-content{
+  max-width: 930px!important;
+  width: 900px;
+}
+
+::ng-deep .mat-dialog-container:has(.detalle-servicio){
+  border: 2px solid #0000;
+border-radius: 10px;
+}
+
+::ng-deep .detalle-servicio .mat-tab-label {
+  padding: 0px 25px 0px 10px;
+  min-width: 110px;
+}
+
+::ng-deep .detalle-servicio .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  width: 110px !important;
+}
+
+.servicio-mat-tab-content{
+  width: 100%; 
+  background-color: #FFFFFF; 
+  min-height: 200px; 
+  padding: 15px 10px;
+}
+
+.boton-dialogo{
+  width: 300px;
+  min-height: 50px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  margin-top: 10px;
+  white-space: normal;
+  line-height: 17px;
+}
+
+
+.cuadro-metrica{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 390px;
+  max-height: 40px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  color: #3B4559;
+  margin: 10px 0;
+}
+
+.metrica-activo{
+  background: #E6EDF6 !important;
+}
+
+.porcentaje{
+  margin: 0;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.metrica-activo .porcentaje{
+  font-weight: 700;
+}
+
+.servicio-grafica{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  min-width: 320px;
+  min-height: 200px;
+}
+
+.texto-ticket{
+  font-weight: 700; 
+  font-size: 11px; 
+  color: #9399B2;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.estatus-activo{
+  background: #F0FDCF;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  color: #043C19;
+  min-width: 58px;
+  height: 36px;
+}
+
+.estatus-inactivo{
+  background: #F4F4F4;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  color: #0B112A;
+  min-width: 58px;
+  height: 36px;
+}
+
+.alias-cuadro{
+  background: #FFFFFF;
+  border: 1px solid #7B8AA0;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 12px;
+  color: #0B112A;
+  min-width: 200px;
+  height: 36px;
+  justify-content: flex-start !important;
+  padding-left: 10px;
+}
+
+.cuadro-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-activo{
+  background: #285CED;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #FFFFFF;
+  min-width: 145px;
+  height: 36px;
+}
+
+.ticket-inactivo{
+  background: #F0F0F0;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #7B8AA0;
+  min-width: 145px;
+  height: 36px;
+}
+
+.listado-dispositivos ::ng-deep .mat-list-item-content{
+  align-items: flex-start!important;
+}
+
+.lista-detalle{
+  font-weight: 700; 
+  font-size: 16px; 
+  color: #000000;
+  min-height: 48px!important;
+  height: auto!important;
+}
+
+.lista-detalle-informacion{
+  font-weight: 500; 
+  font-size: 14px; 
+  color: #000000;
+}
+
+.servicio-porcentaje{
+  font-weight: 600; 
+  font-size: 15px; 
+  color: #000000; 
+  padding: 0px 30px;
+}
+
+.servicio-porcentaje-titulo{
+  font-weight: 500; 
+  font-size: 9px; 
+  color: #9399B2;
+}
+
+.img-servicio{
+  background-image: url("src\assets\img\home-vista.svg");
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.img-servicio-tablaClip{
+  background-image: url("src\assets\img\tablaClip.svg");
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.img-servicio-document{
+  background-image: url("src\assets\img\document-servicio.svg");
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.img-servicio-layers{
+  background-image: url("src\assets\img\layers.svg");
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.img-servicio-historico{
+  background-image: url("src\assets\img\historico.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 28px;
+}
+
+.img-servicio-metrica{
+  background-image: url("src\assets\img\metrica.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 28px;
+}
+
+.img-servicio-ticket{
+  background-image: url("src\assets\img\ticket-ico3-blanco.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 28px;
+}
+
+.img-servicio-arrow{
+  background-image: url("src\assets\img\arrow-servicio.svg");
+  background-size: 10px 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 10px;
+  width: 14px;
+}
+
+.img-editar{
+  background-image: url("src\assets\img\editar-configuracion-azul.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px; 
+  height: 50px; 
+  cursor: pointer;
+  float: right;
+}
+
+.img-servicio-ticket{
+  background-image: url("src\assets\img\ticket-ico3-blanco.svg");
+  background-size: 20px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 18px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.img-servicio-ticket-inactivo{
+  background-image: url("src\assets\img\ticket-ico3-inactivo.svg");
+  background-size: 20px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 18px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.img-editar:focus{
+  background-image: url("src\assets\img\editar-configuracion-activo.svg");
+}
+
+.img-edit-alias{
+  background-image: url("src\assets\img\edit-alias.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+::ng-deep .mat-dialog-container:has(.detalle-servicio-dark), .detalle-servicio-dark .mat-tab-group, .detalle-servicio-dark .servicio-mat-tab-content{
+  background-color: rgb(11, 17, 42) !important;
+  
+}
+::ng-deep .mat-dialog-container:has(.detalle-servicio-dark){
+  box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
+}
+
+.detalle-servicio-dark .servicio-grafica, .detalle-servicio-dark .cuadro-metrica {
+  
+  background-color: rgb(22, 28, 51) !important;
+  box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
+}
+
+.detalle-servicio-dark .worskpace-tab .mat-tab-label-active{
+  /*background: rgb(33, 39, 61) !important;
+  border: 1px solid rgb(33, 39, 61) !important;
+  box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;*/
+}
+
+.detalle-servicio-dark .metrica-activo{
+  background-color: rgb(33, 39, 61) !important;
+  box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
+}
+
+.detalle-servicio-dark .cuadro-metrica, 
+.detalle-servicio-dark .metrica-activo, 
+.detalle-servicio-dark .texto-ticket, 
+.detalle-servicio-dark .lista-detalle-informacion,
+.detalle-servicio-dark .servicio-porcentaje-titulo{
+  color: #D0D0CE;
+}
+
+.detalle-servicio-dark .porcentaje, 
+.detalle-servicio-dark .lista-detalle,
+.detalle-servicio-dark .servicio-porcentaje{
+  color: #fff;
+}
+
+
+.servicio-porcentaje{
+  font-weight: 600; 
+  font-size: 15px; 
+  color: #000000; 
+  padding: 0px 30px;
+}
+
+.servicio-porcentaje-titulo{
+  font-weight: 500; 
+  font-size: 9px; 
+  color: #9399B2;
+}
+.detalle-servicio-dark .alias-cuadro{
+  background-color: rgb(22, 28, 51) !important;
+  box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px;
+  color: #D0D0CE;
+  border: 1px solid #0000;
+}
+
+.img-dispositivo-sitio{
+  background-image: url('src\assets\img\dash-punta.svg');
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-dispositivo-enlace{
+  background-image: url('src\assets\img\dash-enlace.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-dispositivo-servicio{
+  background-image: url('src\assets\img\dash-interface.svg');
+    background-size: 19px 19px;
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,127 @@
+<ng-container *ngIf="!spinnerLoading">
+  <div class="container-carousel">
+  
+    <ng-container *ngIf="!errorCarga">
+      <div style="margin: 25px 0;">
+        <!-- <mat-card-content class="carousel-main">
+          <div class="row" *ngIf="cardDataSelect">
+            <div class="card-html">
+              <div class="row" (click)="obtenerDetalleAfectaciones(cardDataSelect.ipNs,cardDataSelect.idDispositivo)"
+                style="cursor: pointer;">
+                <div class="card-shadow-1"></div>
+                <div class="card-shadow-2"></div>
+                <div class="card-shadow-3"></div>
+                <div [ngClass]="(isDarkTheme | async) ? 'custom-card-claro-position custom-card-dark' : 'custom-card-claro-position custom-card-claro'">
+                  <div>
+                    <img src="assets/img/home-vista.svg" alt="home" class="icon-home ic-color-light" />
+                    <p class="card-title">
+                      {{ cardDataSelect.title  | slice:0:15}}
+                    </p><br>
+                    <p class="card-title">
+                      {{ cardDataSelect.title  | slice:16:30}} {{ cardDataSelect.title.length > 30 ? '...' : ''}}
+                    </p>
+                    <img src="assets/img/document.svg" alt="doc" class="icon-home-r" [ngClass]="(isDarkTheme | async) ? 'ic-color-light' : 'ic-color-dark'" />
+                  </div>
+                  <div class="card-content">
+                    <div class="card-totales">
+                      <app-progress-bar [data]="cardDataSelect.progressChartdata" [width]="width > 1440 ? 75 : 60">
+                      </app-progress-bar><span
+                        style="display: flex;font-style: normal;font-weight: 500;font-size: 11px;line-height: 13px;padding: 0px;">{{cardDataSelect.tiempoCaidaDescripcion | slice:0:13}}</span><span
+                        style="font-style: normal;font-weight: 900;font-size: 11px;line-height: 13px;text-align: center;padding: 8px;">{{cardDataSelect.tiempoCaidaDescripcion | slice:13}}</span>
+                    </div>
+  
+                    <div class="space-padding-5">
+                      Alcanzabilidad <img src="assets\img\graph1.svg" alt="graph" class="space-4" />
+                      <strong>{{ cardDataSelect.alcanzabilidad }}%</strong>
+                    </div>
+                    <div class="space-padding-5">
+                      Disponibilidad <img src="assets\img\graph1.svg" alt="graph" class="space-4" />
+                      <strong>{{ cardDataSelect.disponibilidad }}%</strong>
+                    </div>
+                    <div class="space-padding-5">
+                      Pérdida de paq.<img src="assets\img\graph1.svg" alt="graph" class="space-4" />
+                      <strong>{{ cardDataSelect.perdidaPaquetes }}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content> -->
+  
+        <mat-card-content >
+          <div class="row" *ngIf="cardDataSelect">
+            <div class="card-html">
+              <div class="row">
+                <div class="card-shadow-1"></div>
+                <div class="card-shadow-2"></div>
+                <div class="card-shadow-3"></div>
+                <div [ngClass]="(isDarkTheme | async) ? 'custom-card-claro-position custom-card-dark' : 'custom-card-claro-position custom-card-claro'">
+                  <ng-container *ngIf="!cardDataSelect?.alias">
+                    <div>
+                      <img src="assets/img/home-vista.svg" alt="home" class="icon-home ic-color-light" />
+                      <p class="card-title">
+                        {{ cardDataSelect.sitio  | slice:0:15}}
+                      </p><br>
+                      <p class="card-title">
+                        {{ cardDataSelect.sitio  | slice:16:30}} {{ cardDataSelect.sitio.length > 30 ? '...' : ''}}
+                      </p>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="cardDataSelect?.alias">
+                    <div>
+                      <img src="assets/img/home-vista.svg" alt="home" class="icon-home ic-color-light" />
+                      <p class="card-title">
+                        {{ cardDataSelect.alias  | slice:0:15}}
+                      </p><br>
+                      <p class="card-title">
+                        {{ cardDataSelect.alias  | slice:16:30}} {{ cardDataSelect.alias.length > 30 ? '...' : ''}}
+                      </p>
+                    </div>
+                  </ng-container>
+                  <div class="card-content">
+                    <div>
+                      <!-- <button *ngIf="cardDataSelect?.estatus != 'Sin gestión' || cardDataSelect?.group != 'B'" mat-stroked-button style="margin-top: 5px; border: solid 1px #0B112A!important; border-radius: 8px!important;" (click)="openDetalle(cardDataSelect)">Detalle</button> -->
+                      <img  *ngIf="cardDataSelect?.estatus != 'Sin gestión' || cardDataSelect?.group != 'B'" src="assets/img/document.svg" alt="doc" class="icon-home-r" [ngClass]="(isDarkTheme | async) ? 'ic-color-light' : 'ic-color-dark'" (click)="abrirModalDetalle(cardDataSelect.ipNs,cardDataSelect.idDispositivo)"/>
+                    </div>
+                    <div>
+                      TIPO:
+                      <strong>{{ cardDataSelect?.tipoDispositivo == 'P' ? 'Sitio' : cardDataSelect?.tipoDispositivo == 'I' ? 'Servicio' : 'Enlace'}}</strong>
+                    </div>
+                    <div style="padding-top: 5%;">
+                      IP/NS:
+                      <strong>{{cardDataSelect?.ip}}</strong>
+                    </div>
+                    <div style="padding-top: 5%;">
+                      ESTATUS:
+                      <strong>{{ cardDataSelect?.estatus | titlecase }}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="col-12 d-flex justify-content-center" style="margin-top: 20px;">
+            <button *ngFor="let btn of carruselCardData; let i = index" mat-mini-fab
+              [ngClass]="button == i ? 'btn-selected' : 'btn-normal'" class="ms-3"
+              style="width: 13px; height: 13px" (click)="selectCardData(btn)"></button>
+          </div>
+        </mat-card-actions>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="message">
+        <div style="margin: 90px 0px 0px 150px">
+            Sin sitios inactivos
+        </div>
+    </ng-container>
+    <ng-container *ngIf="errorCarga">
+      <app-service-error-dashboard height="140px"></app-service-error-dashboard>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="spinnerLoading">
+  <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+</ng-container>

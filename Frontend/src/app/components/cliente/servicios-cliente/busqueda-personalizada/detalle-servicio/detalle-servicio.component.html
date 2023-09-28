@@ -1,0 +1,250 @@
+<ng-container *ngIf="!spinnerLoading">
+    <div class="detalle-servicio" [ngClass]="data.dark ? 'detalle-servicio-dark' : '' ">
+      <mat-dialog-content>
+          <div class="container" style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
+              <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                  <div class="col-11"  style="padding: 0; display: flex; align-items: center;">
+                    <mat-icon [class]="iconoDispositivo()"></mat-icon>
+                    <span style="font-weight: 600; font-size: 20px; margin-left: 2px;" [ngStyle]="{'color': data.dark ? '#fff' : '#3B4559' }">
+                        {{ data.dispositivo?.aliasDispositivo ? data.dispositivo?.aliasDispositivo : data.dispositivo.sitio | uppercase | slice:0:60}} {{ data.dispositivo?.aliasDispositivo ? '' : data.dispositivo.sitio.length > 60 ? '...' : ''}}
+                    </span>
+                  </div>
+                  <div class="col-1">
+                      <button mat-flat-button style="float: right; position: relative; top: -10px; right: -12px; width: 10px!important;  min-width: unset!important;" [ngStyle]="{'background-color': data.dark ? 'rgb(11, 17, 42)' : ''}" (click)="closeDialog()">
+                          <mat-icon style="margin-left: -12px!important;">
+                              close
+                          </mat-icon>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </mat-dialog-content>
+      
+      <mat-dialog-actions>
+          <div class="container" style="width: 900px; margin: 0; padding: 0;">
+            <div class="row w100m0p0">
+                <div class="col-12 servicio">
+                    <mat-tab-group class="" [selectedIndex]="selected.value">
+                        <mat-tab>
+                            <ng-template mat-tab-label >
+                                <mat-icon class="img-servicio-tablaClip"></mat-icon>
+                                <span [ngStyle]="{'color': data.dark ? '#fff' : '' }">
+                                    Métricas
+                                </span>
+                            </ng-template>
+                            <div class="servicio-mat-tab-content">
+                                <div class="row" style="margin-right: 0; margin-left: 0;">
+                                    <div class="col-5 row">
+                                        <!-- <div class="col-3" style="font-weight: 600; font-size: 15px; color: #3B4559;" [ngStyle]="{'color': data.dark ? '#fff' : '#3B4559' }">
+                                            Estatus: 
+                                        </div>
+                                        <div class="col-9" style="font-weight: 400; font-size: 13px; color: #3B4559;" [ngStyle]="{'color': data.dark ? '#D0D0CE' : '#3B4559' }">
+                                            Dispositivo arriba con una o más interfaces inalcanzables 
+                                        </div> -->
+                                        <div class="col-12 servicio-grafica" style="margin-top: 10px;" *ngIf="data.dispositivo?.metricaSelecionada">
+                                              <div class="row py-3">
+                                                <div class="col-12" style="font-weight: 400; font-size: 11px;" [ngStyle]="{'color': data.dark ? '#FFFFFF' : '#000000' }">
+                                                  <span> {{data.dispositivo?.metricaSelecionada.metrica }} </span>
+                                                </div>
+                                              </div>
+                                              <div class="row justify-content-md-center">
+                                                <div class="col-4 servicio-porcentaje servicio-porcentaje" style="color: #FF0D0D;">
+                                                  <mat-icon class="img-servicio-arrow"></mat-icon>
+                                                  {{data.dispositivo?.metricaSelecionada.porcentajeAyer}} <span style="font-size: 10px;">{{data.dispositivo?.metricaSelecionada.metrica == 'Consumo' ? 'Mb' : '%'}}</span>
+                                                  <br>
+                                                  <span class="servicio-porcentaje-titulo" style="margin-left: 10px;">Ayer</span >
+                                                </div>
+                                                <div class="col-4 servicio-porcentaje" >
+                                                  {{data.dispositivo?.metricaSelecionada.porcentajeActual ? data.dispositivo?.metricaSelecionada.porcentajeActual : 0}} <span style="font-size: 10px;">{{data.dispositivo?.metricaSelecionada.metrica == 'Consumo' ? 'Mb' : '%'}}</span>
+                                                  <br>
+                                                  <span  class="servicio-porcentaje-titulo">Actual</span >
+                                                </div>
+                                                <div class="col-4 servicio-porcentaje">
+                                                  {{data.dispositivo?.metricaSelecionada.porcentajeSla ? data.dispositivo?.metricaSelecionada.porcentajeSla : 0 }} <span style="font-size: 10px;">{{data.dispositivo?.metricaSelecionada.metrica == 'Consumo' ? 'Mb' : '%'}}</span>
+                                                  <br>
+                                                  <span  class="servicio-porcentaje-titulo">SLA</span >
+                                                </div>
+                                              </div>
+                                              <div class="row" style="display: flex; align-items: center; text-align: center;" *ngIf="linegraph.data">
+                                                <app-line-graph *ngIf="data.dispositivo?.metricaSelecionada.idMetrica == 1" [data]="data.dispositivo?.linegraph[0]" [color]="listaMetricas[0].color" [sizex]="width > 1440 ? 400 : 350" [sizey]="width > 1440 ? 300 : 200"></app-line-graph>
+                                                <app-line-graph *ngIf="data.dispositivo?.metricaSelecionada.idMetrica == 2" [data]="data.dispositivo?.linegraph[1]" [color]="listaMetricas[1].color" [sizex]="width > 1440 ? 400 : 350" [sizey]="width > 1440 ? 300 : 200"></app-line-graph>
+                                                <app-line-graph *ngIf="data.dispositivo?.metricaSelecionada.idMetrica == 3" [data]="data.dispositivo?.linegraph[2]" [color]="listaMetricas[2].color" [sizex]="width > 1440 ? 400 : 350" [sizey]="width > 1440 ? 300 : 200"></app-line-graph>
+                                                <app-line-graph *ngIf="data.dispositivo?.metricaSelecionada.idMetrica == 4" [data]="data.dispositivo?.linegraph[3]" [color]="listaMetricas[3].color" [sizex]="width > 1440 ? 400 : 350" [sizey]="width > 1440 ? 300 : 200"></app-line-graph>
+                                                <app-line-graph *ngIf="data.dispositivo?.metricaSelecionada.idMetrica == 5" [data]="data.dispositivo?.linegraph[4]" [color]="listaMetricas[4].color" [sizex]="width > 1440 ? 400 : 350" [sizey]="width > 1440 ? 300 : 200"></app-line-graph>
+                                              </div>
+                                              <!--
+                                                  <img src="assets\img\servicio-grafica-3.png" alt="" style="width: 260px; height: 80px; margin: 4px 10px;">
+                                              -->
+                                        </div>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-6">
+                                        <mat-list class="">
+                                            <mat-list-item class="row cuadro-metrica" *ngFor="let item of data.dispositivo?.linegraph" [ngClass]="[item.idMetrica == data.dispositivo?.metricaSelecionada.idMetrica ? 'metrica-activo' : '']" (click)="graficaMetrica(item)">
+                                                <div class="col-9">{{item.metrica}}</div>
+                                                <div class="col-3 porcentaje">{{item.porcentajeActual}} <span style="font-size: 10px;">{{item.metrica == 'Consumo' ? 'Mb' : '%'}}</span></div>
+                                            </mat-list-item>
+                                        </mat-list>
+                                    </div>
+                                    <div class="col-12 row" style="margin-top: 20px;"  *ngIf="!data.dispositivo">
+                                        <div class="col-9 d-flex">
+                                            Actualmente no hay informacion del dispotivo, intenta mas tarde.
+                                        </div>
+                                    </div>
+                                    <div class="col-12 row" style="margin-top: 20px;"  *ngIf="data.dispositivo">
+                                        <div class="col-9 d-flex">
+                                            <!-- <button  mat-button class="texto-ticket" (click)="detalleHistorico(data.alias)">
+                                                <mat-icon class="img-servicio-historico"></mat-icon>
+                                                <span style="text-decoration-line: underline; margin: 5px;">Ver histórico</span> 
+                                            </button> -->
+                                            <button  mat-button class="texto-ticket" (click)="detalleMetrica(data.alias,data.dispositivo?.sitio)">
+                                                <mat-icon class="img-servicio-metrica"></mat-icon>
+                                                <span style="text-decoration-line: underline; margin: 5px;">Ver métricas</span> 
+                                            </button>
+                                        </div>
+                                        <div class="col-3" *ngIf="false">
+                                            <button mat-button class="btn-totalplay" style="width: 100%; height: 45px; font-size: 13px; font-weight: 600; color: #FFFFFF;">
+                                                <mat-icon class="img-servicio-ticket"></mat-icon>
+                                                Crear ticket
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <mat-icon class="img-servicio-document"></mat-icon>
+                                <span [ngStyle]="{'color': data.dark ? '#fff' : '' }">
+                                    Detalle
+                                </span>
+                            </ng-template>
+                            <div class="servicio-mat-tab-content">
+                                <div class="row" style="margin-right: 0; margin-left: 0;">
+                                    <div class="col-6 row">
+                                        <div class="col-12">
+                                            <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                                <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                                                    <mat-label [ngStyle]="{'color': data.dark ? '#D0D0CE' : '#000000' }">{{ data.dispositivo?.tipo == 'sitio' ? 'ALIAS DEL SITIO' : data.dispositivo?.tipo == 'servicio' ? 'ALIAS DE SERVICIO' : 'ALIAS DE ENLACE' }}</mat-label>
+                                                    <input matInput formControlName="alias" [ngStyle]="{'color': data.dark ? '#D0D0CE' : '#000000' }" (keyup.enter)="actualizarAlias()"/>
+                                                    <mat-icon class="img-edit-alias" matSuffix style="margin-top: 10px!important;"></mat-icon>
+                                                </mat-form-field>
+                                            </form>
+                                        </div>
+                                        <mat-list >
+                                            <mat-list-item class="row lista-detalle" >
+                                                <div class="col-3">{{ data.dispositivo?.tipo == 'sitio' ? 'Sitio:' : data.dispositivo?.tipo == 'servicio' ? 'Servicio:' : 'Enlace:' }}</div>
+                                                <div class="col-9" class="lista-detalle-informacion">{{ data.dispositivo?.idDispositivo}}</div>
+                                            </mat-list-item>
+                                            <mat-list-item class="row lista-detalle">
+                                                <div class="col-3">IP/NS:</div>
+                                                <div class="col-9" class="lista-detalle-informacion" [style.text-decoration-line]="data.dispositivo?.tipo == 'servicio' ? 'underline' : '' ">{{ data.dispositivo?.ipSitio }}</div>
+                                            </mat-list-item>
+                                            <mat-list-item class="row lista-detalle listado-dispositivos" *ngIf="data.dispositivo?.dispositivosDetalleSitio">
+                                                <div class="col-3">{{ data.dispositivo?.tipo == 'sitio' ? 'Enlaces:' : data.dispositivo?.tipo == 'servicio' ? 'Sitio:' : 'Sitios:'}}</div>
+                                                <div class="row" style="margin: 0;">
+                                                    <div class="col-9" class="lista-detalle-informacion" style="padding: 0; color: #285CED !important; text-decoration-line: underline; cursor: pointer;" (click)="openEnlace()" *ngFor="let item of data.dispositivo?.dispositivosDetalleSitio">
+                                                        {{item.ip}}
+                                                    </div>
+                                                </div>
+                                            </mat-list-item>
+                                            
+                                        </mat-list>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    <div class="col-4 row">
+                                        <div class="col-3 lista-detalle"></div>
+                                        <div class="col-9 lista-detalle-informacion"></div>
+                                        <img src="assets\img\tablero-dash-img-gris.svg" alt="" style=" width: 200px; height: 200px; margin: 10px 0px;">
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <!--
+    
+                            <mat-tab *ngIf="data.dispositivo?.tipo == 'sitio' || false">
+                        -->
+                        <mat-tab *ngIf="false">
+                            <ng-template mat-tab-label>
+                                <mat-icon class="img-servicio-layers"></mat-icon>
+                                <span [ngStyle]="{'color': data.dark ? '#fff' : '' }">
+                                    Servicios
+                                </span>
+                            </ng-template>
+                            <div class="servicio-mat-tab-content">
+                                <div class="row" style="margin-right: 0; margin-left: 0;">
+                                    <div class="col-8"></div>
+                                    <div class="col-4">
+                                        <mat-form-field appearance="outline" style="width: 100%; font-size: 11px;">
+                                            <mat-label [ngStyle]="{'color': data.dark ? '#D0D0CE' : '#000000' }">Buscar</mat-label>
+                                            <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important;"></mat-icon>
+                                            <input matInput [ngStyle]="{'color': data.dark ? '#D0D0CE' : '#000000' }"/>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-12" style="padding: 0px;">
+                                        <table aria-describedby="tabla" class="table table-sm" style="/*table-layout:fixed;*/ padding: 0; margin: 0;">
+                                            <thead>
+                                                <tr>
+                                                    <th *ngFor="let col of fetchCol" style="text-align: center; font-weight: 600; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;" [ngStyle]="{'color': data.dark ? '#D0D0CE' : '#7B8AA0' }">
+                                                        {{col.header}}
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let p of data.dispositivo?.servicios" style="text-align: center; font-weight: 500; font-size: 14px; color: #000000; vertical-align: middle;">
+                                                    <td *ngFor="let cell of fetchCol">
+                                                        <div [ngClass]="p.estatus == 'Activa'? 'estatus-activo' : 'estatus-inactivo'" class="cuadro-flex" *ngIf="cell.field == 'estatus'">
+                                                            <span>
+                                                                {{p.estatus}}
+                                                            </span>
+                                                        </div>
+                                                        <div class="alias-cuadro cuadro-flex" *ngIf="cell.field == 'alias'">
+                                                            <span>
+                                                                {{p.alias}}
+                                                            </span>
+                                                        </div>
+                                                        <span *ngIf="cell.field == 'servicio'" style="font-weight: 400; font-size: 14px;" [ngStyle]="{'color': data.dark ? '#fff' : '#0B112A' }">
+                                                            {{p.servicio}}
+                                                        </span>
+                                                        <button mat-button *ngIf="cell.field == 'ticket'" [ngClass]="p.ticketEstatus == true ? 'ticket-activo' : 'ticket-inactivo'" style="justify-content: center; align-items: center; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+                                                                <mat-icon [ngClass]="p.ticketEstatus == true ? 'img-servicio-ticket' : 'img-servicio-ticket-inactivo'" class="img-servicio-ticket"></mat-icon>
+                                                                <span>{{p.ticket}}</span> 
+                                                            
+                                                        </button>
+                                                        <span *ngIf="cell.field == 'opciones'">
+                                                            <div  [matMenuTriggerFor]="plantillasMenu" class="img-editar"></div>
+                                                            <mat-menu class="header-menu" #plantillasMenu="matMenu" xPosition="before" style="padding-top: 0px; padding-bottom: 0px;">
+                                                            <button mat-menu-item style="font-size: 12px; color: #000000; font-weight: 400; height: 34px; display: flex; justify-content: center; align-items: center;" (click)="detalleHistorico()">
+                                                                <mat-icon class="img-servicio-historico"></mat-icon>
+                                                                <span>Ver histórico</span> 
+                                                            </button>
+                                                            <button mat-menu-item style="font-size: 12px; color: #000000; font-weight: 400; height: 34px; display: flex; justify-content: center; align-items: center;"  (click)="detalleMetrica()">
+                                                                <mat-icon class="img-servicio-metrica"></mat-icon>
+                                                                <span>Ver métricas</span> 
+                                                            </button>
+                                                            </mat-menu>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+          </div>
+      </mat-dialog-actions>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="spinnerLoading">
+    <div class="detalle-servicio" style=" display: flex; align-items: center; justify-content: center; min-width: 850px; min-height: 400px;">
+        <mat-spinner [diameter]="60"></mat-spinner>
+    </div>
+</ng-container>

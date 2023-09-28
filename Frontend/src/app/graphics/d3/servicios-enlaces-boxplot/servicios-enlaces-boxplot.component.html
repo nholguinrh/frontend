@@ -1,0 +1,165 @@
+<div fxLayout="column" fxLayoutAlign="center stretch" style="width: 100%; margin: 0; padding: 0; padding: 10px;"> 
+    <div  fxLayout="row" [fxLayoutAlign]="full ? 'end center' : 'space-between center'">
+        <form [formGroup]="form">
+            <ng-container *ngIf="_viewGraph != 7 || _viewGraph == 40">
+                <div *ngIf="!full" class="smc-select-dashboard" style="margin-left: 10px; border-radius: 7.99373px;"
+                [ngStyle]="{'background-color': (isDark) ?  '#21273d': '#FFFFFF'}">
+                <mat-form-field appearance="outline" 
+                style="width: 160px; height: 38px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 12px; margin-right: 0;">
+                    <mat-select formControlName="metrica" disableOptionCentering (selectionChange)="changeMetrica()">
+                        <mat-option *ngFor="let metrica of metricas" [value]="metrica?.metrica">
+                            {{metrica.metrica}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="_viewGraph == 7 || _viewGraph == 40">
+                <div *ngIf="!full" class="smc-select-dashboard" style="margin-left: 10px; border-radius: 7.99373px;"
+            [ngStyle]="{'background-color': (isDark) ?  '#21273d': '#FFFFFF'}">
+            <mat-form-field appearance="outline" 
+            style="width: 160px; height: 38px; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); font-size: 12px; margin-right: 0;">
+            <mat-select formControlName="metrica" disableOptionCentering (selectionChange)="changeMetrica()">
+                <mat-option *ngFor="let metrica of metricasVelas" [value]="metrica?.metrica">
+                    {{metrica.metrica}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+            </div>
+            </ng-container>
+        </form>
+        <!-- <div [fxFlex]="full ? width > 1440 ? 15 : 20 : 40" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="10px" *ngIf="_viewGraph == 7 || _viewGraph == 40">
+            <div *ngFor="let item of domainListVelas">
+                <div style="height: 38px; background-color: white; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer; background-color: '#21273d';" (click)="changeScale(item.value)"
+                [ngStyle]="{'background-color': (this.scale == item.value) ? '#356AF0' : (isDark) ?  '#21273d': color, 'width' : item.width, 'color' :  (isDark) ? '#FFFFFF' : (this.scale == item.value) ? '#FFFFFF' : '#000000'}">
+                    <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                        <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 13px; padding-top: 10px; font-weight: 600;">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div> -->
+        <div [fxFlex]="full ? width > 1440 ? 20 : 25 : 45" fxLayout="row" fxLayoutAlign="space-evenly center"  *ngIf="idDashboard != 5" >
+            <!-- <div *ngFor="let item of domainList">
+                <div style="height: 38px; background-color: white; border-radius: 7.99373px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); cursor: pointer; background-color: '#21273d';" (click)="changeScale(item.value)"
+                [ngStyle]="{'background-color': (this.scale == item.value) ? '#356AF0' : (isDark) ?  '#21273d': color, 'width' : item.width, 'color' :  (isDark) ? '#FFFFFF' : (this.scale == item.value) ? '#FFFFFF' : '#000000'}">
+                    <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                        <div class="col-12" style="margin: 0; padding: 0; text-align: center; font-size: 13px; padding-top: 10px; font-weight: 600;">
+                            {{item.name}}
+                        </div>
+                    </div>
+                </div>                
+            </div> -->
+            <!--
+                <div style="font-size: 12px; font-weight: 600;"
+                [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+                Escala de tiempo:
+            </div>
+            <div style="text-align: center; padding-top: 5px;border: 1px solid rgb( 0 0 0 / 25%);">
+                <button mat-button [matMenuTriggerFor]="tiempo" style="background-color: #ffffff;margin-right: 10px;padding: 3px;" *ngIf="idDashboard != 5"><mat-icon class="image-calendar-date-picker"></mat-icon> {{textoSeleccionado}} </button>
+                <mat-menu #tiempo="matMenu">
+                <button mat-menu-item (click)="alertTiempo(1,'Última hora')" >Última hora</button>
+                <button mat-menu-item (click)="alertTiempo(12,'Últimas 12 hras')">Últimas 12 hras</button>
+                <button mat-menu-item (click)="alertTiempo(24,'Últimas 24 hrs')">Últimas 24 hrs</button>
+                <button mat-menu-item (click)="alertTiempo(7,'Última semana')">Última semana</button>
+                </mat-menu>
+            </div>
+            -->
+            
+            <div class="select-monitoreo-voz" [ngClass]="{'filtros-afectaciones-full-dark': (isDarkTheme | async), 'dark-theme': (isDarkTheme | async) }" > 
+                <mat-form-field [formGroup]="form" appearance="outline" style="width: 160px; height: 38px; border-radius: 7.99373px; font-size: 10px; margin-right: 30px;">
+                    <mat-icon matPrefix class="img-calendar" [ngStyle]="{filter: (isDarkTheme | async) ? 'invert(90%)' : '' }"></mat-icon>
+                    <mat-label>ESCALA DASHBOARD</mat-label>
+                    <mat-select formControlName="tiempo">
+                        <mat-option [ngClass]="{'dark-theme': (isDarkTheme | async) }" disabled>Selecciona una escala</mat-option>
+                        <mat-option value="Última hora" (click)="alertTiempo(1,'Última hora')" >Última hora</mat-option>
+                        <mat-option value="Últimas 12 horas" (click)="alertTiempo(12,'Últimas 12 hras')">Últimas 12 horas</mat-option>
+                        <mat-option value="Últimas 24 horas" (click)="alertTiempo(24,'Últimas 24 hrs')">Últimas 24 horas</mat-option>
+                        <mat-option value="Última semana" (click)="alertTiempo(7,'Última semana')">Última semana</mat-option>
+                    </mat-select>
+                  
+                  </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <!-- <button (click)="ponerMetrica()">Poner</button>
+    <button (click)="quitarMetrica()">Quitar</button> -->
+    <ng-container>
+        <div fxLayout="row" fxLayoutAlign="center center" style="padding-top: 10px;" *ngIf="!full">
+            <ng-container *ngIf="!spinnerLoading">
+                <ng-container *ngIf="!errorCarga">
+                    <div *ngIf="_viewGraph == 7 || _viewGraph == 40">
+                        <ng-container>
+                            <!-- <app-boxplot #box [data]="datesValue" [sizex]="width > 1440 ? 510 : 430" [sizey]="280" [isDynamicRange]="false" [range]="[0, 90]" [scale]="scale" [box-width]="20" [rx]="1" [unit]="unit" [margin]="{top: 10, right: 0, bottom: 5, left: 50}"></app-boxplot> -->
+                        </ng-container>
+                    </div>
+                    <div *ngIf="_viewGraph == 8 || _viewGraph == 41">
+                        <app-area [data]="dateValue" [areaType]="'average'" 
+                        [sizey]="_viewGraph == 8 ? 340 : 320" 
+                        [sizex]="_viewGraph == 8 ? width > 1440 ? 610 : 520 : width > 1440 ? 580 : 500" 
+                        [showXLabels]="true" [showDomain]="true" color="#3b68ed" linear-gradient="#3b68ed" gradient-stop="#3b68ed"  tooltip-color="rgba(151,175,243, 0.2)" [margin]="marginArea" [showDomain]="true" tick-last-color="#3b68ed" [showYLabels]="true" [isDynamicRange]="false" [range]="[0, 100]" [specialFormat]="true" [scale]="scale" [showSLA]="true" [sla]="slaPromedio" [unit]="unit"></app-area>
+                    </div>
+                    <div *ngIf="_viewGraph == 9 || _viewGraph == 42">
+                        <ng-container *ngIf="(isDark) ? true : false">
+                            <app-bar-chart 
+                            [sizex]="width > 1440 ? 480 : 430" 
+                            [sizey]="300" 
+                            [data]="dateValue" color="#285CED" [showDomain]="true" [barWidth]="30" [showLimits]="false" [showXLabels]="true" [showYLabels]="true" [border]="true" [margin]="marginBarChart" [scale]="scale" [isDynamicRange]="false" [range]="[0, 100]" [xposition]="12" [unit]="unit" [grid]="true" [showSLA]="false" [sla]="slaPromedio" [slaMean]="false"></app-bar-chart>
+                        </ng-container>
+                        <ng-container *ngIf="(isDark) ? false : true">
+                            <app-bar-chart 
+                            [sizex]="width > 1440 ? 480 : 430" 
+                            [sizey]="300" 
+                            [data]="dateValue" color="#285CED" [showDomain]="true" [barWidth]="30" [showLimits]="false" [showXLabels]="true" [showYLabels]="true" [border]="true" [margin]="marginBarChart" [scale]="scale" [isDynamicRange]="false" [range]="[0, 100]" [xposition]="12" [unit]="unit" [grid]="true" [showSLA]="true" [sla]="slaPromedio" [slaMean]="false"></app-bar-chart>
+                        </ng-container>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="errorCarga">
+                    <div class="row">
+                        <app-service-error-dashboard [typeError]="errorCarga"></app-service-error-dashboard>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="spinnerLoading">
+                <mat-spinner [diameter]="50" style="margin-top: 100px;margin-left: 50px;"></mat-spinner>
+            </ng-container>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" style="padding-top: 20px;" *ngIf="full">
+            <ng-container *ngIf="!spinnerLoading">
+                <ng-container *ngIf="!errorCarga">
+                    <div *ngIf="_viewGraph == 7 || _viewGraph == 40">
+                        <!-- <app-boxplot #box [data]="datesValue" [sizex]="width > 1440 ? 1700 : 1300" [sizey]="width > 1440 ? 700 : 600" [isDynamicRange]="true" [range]="[0, 90]" [scale]="scale" [box-width]="5" [rx]="5" [unit]="unit" [full]="true" [margin]="{top: 10, right: 15, bottom: 40, left: 60}"></app-boxplot> -->
+                    </div>
+                    <div *ngIf="_viewGraph == 8 || _viewGraph == 41">
+                        <app-area [data]="dateValue" [areaType]="'average'" 
+                        [sizey]="width > 1440 ? 700 : 600" [sizex]="width > 1440 ? 1800 : 1300" [showXLabels]="true" [showDomain]="true" color="#285CED" linear-gradient="#285CED" gradient-stop="#285CED"  [tooltip-color]="tooltipColor" [margin]="{top: 80, right: 30, bottom: 10, left: 55}" tick-last-color="#3b68ed" [showYLabels]="true" [isDynamicRange]="false" [range]="[0, 90]" [specialFormat]="true" [scale]="scale" [full]="true" [showSLA]="true" [sla]="slaPromedio" [unit]="unit"></app-area>
+                    </div>
+                    <div *ngIf="_viewGraph == 9 || _viewGraph == 42">
+                        <ng-container *ngIf="(isDark) ? true : false">
+                            <app-bar-chart [sizex]="width > 1440 ? 1800 : 1300" 
+                                [sizey]="width > 1440 ? 800 : 600" 
+                                [data]="dateValue" color="#285CED" [showDomain]="true" [barWidth]="30" [rx]="0" [showLimits]="false" [showXLabels]="true" [showYLabels]="true" [showSLA]="true" [slaMean]="false" [border]="borderFull" [unit]="unit" [scale]="scale" [isDynamicRange]="false" [range]="[0, 90]" [full]="true" [margin]="{top: 10, right: 10, bottom: 40, left: 90}" [grid]="true" [sla]="slaPromedio"></app-bar-chart>
+                        </ng-container>
+                        <ng-container *ngIf="(isDark) ? false : true">
+                            <app-bar-chart [sizex]="width > 1440 ? 1800 : 1300" 
+                                [sizey]="width > 1440 ? 800 : 600 " 
+                                [data]="dateValue" color="#285CED" [showDomain]="true" [barWidth]="30" [rx]="0" [showLimits]="false" [showXLabels]="true" [showYLabels]="true" [showSLA]="true" [slaMean]="false" [border]="borderFull" [unit]="unit" [scale]="scale" [isDynamicRange]="false" [range]="[0, 90]" [full]="true" [margin]="{top: 10, right: 10, bottom: 40, left: 90}" [grid]="true" [sla]="slaPromedio"></app-bar-chart>
+                        </ng-container>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="errorCarga">
+                    <app-service-error-dashboard [full]="true" [typeError]="errorCarga"></app-service-error-dashboard>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="spinnerLoading">
+                <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+            </ng-container>
+        </div> 
+        <div fxLayout="row" fxLayoutAlign="center center" *ngIf="!spinnerLoading">
+            <ng-container style="margin: 15px 0 0 80px;">
+                <span style="font-size: 12px;">Tiempo de Resolucion {{ scale == 'week' ? '1 dia' : scale == 'minute' ? '5 minutos' : '1 hora'}}</span>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

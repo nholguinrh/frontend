@@ -1,0 +1,100 @@
+<div class="admin-configuraciones-container">
+  <alert></alert>
+  <div class="row w100m0p0">
+    <mat-accordion class="expansion-panel" multi>
+      <mat-expansion-panel style="width: 100%; margin: 10px 0px;" [disabled]="false" [expanded]="true" (opened)="false" hideToggle="false">
+        <mat-expansion-panel-header class="expansion-panel-header-title">
+          <mat-panel-title class="title" style="font-size: 16px!important;">
+            Tus paquetes
+          </mat-panel-title>
+          <mat-panel-description *ngIf="!isBackOffice">
+            <button mat-button class="btn-totalplay-secondary nueva-configuracion" (click)="agregarPaquete($event)">
+              <mat-icon class="image-cliente-icon-right"></mat-icon>
+              Nuevo paquete
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row disable-scrollbars" style="margin: 10px 0px 10px; max-height: 300px; overflow: scroll;">
+          <div class="col-4" *ngFor="let paquete of paquetes">
+            <div class="row configuracion-card" (click)="detallePaquete(paquete.idCatPaquete)"> 
+              <div class="col-10">
+                <div class="card-titulo">
+                  {{paquete.descripcion}}
+                </div>
+                <ul class="card-lista">
+                  <li>{{paquete.informacion}}</li>
+                </ul>
+              </div>
+              <div class="col-2">
+                <div class="equipo-detail img-equipo-option-document"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>        
+
+      <mat-expansion-panel style="width: 100%; margin: 20px 0px;" [disabled]="false" [expanded]="true" (opened)="false" hideToggle="false">
+        <mat-expansion-panel-header class="expansion-panel-header-title" style="height: 80px;">
+          <mat-panel-title class="title" style="padding: 0; margin: 0; height: 80px; font-size: 16px!important; padding-top: 40px;">
+            Tus plantillas de SLA's
+          </mat-panel-title>
+          <mat-panel-description>
+            <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+              <mat-form-field appearance="outline" style="font-size: 9px; height: 80px; margin-top: 35px;" (click)="inputClick($event)">
+                <mat-label>Buscar</mat-label>
+                <input matInput formControlName="busqueda" (click)="inputClick($event)" (keydown.Space)="$event.stopPropagation()" (keydown.Enter)="$event.stopPropagation(); buscarSLATexto();"/>
+                <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important; cursor: default;" ></mat-icon>
+              </mat-form-field>
+            </form>
+            <button mat-button class="btn-totalplay-secondary nueva-configuracion" style="width:  150px !important; margin-left: 20px;" (click)="agregarPlantilla($event)">
+              <mat-icon class="image-cliente-icon-right"></mat-icon>
+              Nuevo SLA
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row w100m0p0" style="margin: 10px 0px 10px; min-height: 200px; display: flex; align-items: center;" *ngIf="plantillasSla?.length == 0 && !mostrarDataPlantillas">
+          <app-filter-error (clickReturn)="returnFilter()"></app-filter-error>
+        </div>
+        <div class="row disable-scrollbars" style="margin: 10px 0px 10px; max-height: 400px; overflow: scroll;" *ngIf="plantillasSla?.length > 0">
+          <mat-divider></mat-divider>
+          <div class="col-12 row" style="margin: 0; padding: 0;" *ngFor="let sla of plantillasSla">
+            <div class="col-10 sla-title">
+              {{ sla.configuracionSLA.tituloSLA }}
+            </div>
+            <div class="col-2">
+              <div  [matMenuTriggerFor]="plantillasMenu" class="img-editar"></div>
+              <mat-menu class="header-menu" #plantillasMenu="matMenu" xPosition="before" style="padding-top: 0px;
+              padding-bottom: 0px;">
+                <button mat-menu-item style="font-size: 14px; font-weight: 400;" (click)="detallePlantilla(sla.configuracionSLA.idConfiguracionSLA)">
+                    <mat-icon class="img-header-version"></mat-icon>
+                    <span>Detalle</span>
+                </button>
+                <button mat-menu-item style="font-size: 14px; font-weight: 400; text-align: left;" (click)="eliminarPlantilla(sla)">
+                    <mat-icon class="img-trash-version"></mat-icon>
+                    <span>Eliminar</span>
+                </button>
+              </mat-menu>
+            </div>
+            <div class="col-12 sla-subtitle">
+              Últimos 3 clientes con esta plantilla <span *ngFor="let cliente of sla.clientes"> {{  cliente.nombreCliente }}-{{cliente.puntasConfiguradas}} sitios</span>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-3 sla-subtitle" style="margin-top: 0;" *ngFor="let metrica of arregloMetricas(sla.metricasSLA)">
+                  {{ metrica.tbMetrica.metrica }} 
+                  <span *ngIf="metrica.valor != null && metrica.valor != 0">
+                    {{ metrica.valor}}
+                    <ng-container *ngIf="metrica.tbMetrica.idMetrica == 2  || metrica.tbMetrica.metrica == 'Disponibilidad'">%</ng-container>
+                    <ng-container *ngIf="metrica.tbMetrica.idMetrica == 3  || metrica.tbMetrica.metrica == 'Latencia'">mls</ng-container>
+                    <ng-container *ngIf="metrica.tbMetrica.idMetrica == 4  || metrica.tbMetrica.metrica == 'Consumo'">mbps</ng-container>
+                    <ng-container *ngIf="metrica.tbMetrica.idMetrica == 5  || metrica.tbMetrica.metrica == 'Pérdida de Paquetes'">%</ng-container>
+                  </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </mat-expansion-panel>  
+    </mat-accordion>
+  </div>
+
+</div>

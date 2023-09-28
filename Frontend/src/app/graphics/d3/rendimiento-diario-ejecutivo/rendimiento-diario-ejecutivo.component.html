@@ -1,0 +1,131 @@
+    
+<ng-container *ngIf="!spinnerLoading">
+    <ng-container *ngIf="!errorCarga">    
+        <div style="width: 100%; margin: 0; padding: 0; min-height: 330px; margin-top: 20px;" fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="30px">
+                <ng-container *ngFor="let item of rendimiento">
+                    <div  style="background-color: #ffffff; border-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);     width: 100%;
+                    align-items: center;"
+                    fxLayout="column" fxLayoutAlign="space-between stretch" [ngStyle]="{ 'background-color': (isDark) ? '#161c33' : '#FFFFFF'}">
+                        <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+                            <div style="font-size: 18px; font-weight: 400; text-align: center;"
+                            [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#0B112A'}">{{item.title | titlecase}}</div>
+                            <div  fxLayout="row" fxLayoutAlign="center end" style="height: 35px;">
+                                <div class="img-rendimiento-arrow-up" style="width: 15px; height: 15px;" *ngIf="item.status"></div>
+                                <div class="img-rendimiento-arrow-down" style="width: 15px; height: 15px;" *ngIf="!item.status"></div>
+                                <div fxFlexAlign="center" style="font-size: 30px; font-weight: 600;"
+                                [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#0B112A'}">{{item.value}}</div>
+                                <div style="font-size: 12px; font-weight: 600;"
+                                [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#0B112A'}">{{item.title === 'Consumo' ? 'Mb' : item.type+' Prom'}} </div>
+                            </div>
+                        </div>
+                        
+                            <ng-container *ngIf="item.sla">
+                                <div fxFlex="35" fxLayout="row" fxLayoutAlign="space-around center">
+                                    <app-bar-chart [sizex]="width > 1440 ? 150 : 90" [sizey]="width > 1440 ? 60 : 60" [data]="item.datesValue" [margin]="margin" color="#285CED" [rx]="2" [showDomain]="false" [barWidth]="2" [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [showSLA]="true" [sla]="item.slaValue" [isDynamicRange]="false" [scale]="'hourDiario'"></app-bar-chart>
+                                    <div fxFlex="18" fxLayout="column" fxLayoutAlign="center start" style="margin-left: -20px;">
+                                        <div style="font-size: 13px; font-weight: 600;" [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#0B112A'}">
+                                            {{item.slaValue}}<span style="font-size: 7px;">{{item.title === 'Consumo' ? 'Mb' : item.type}}</span>
+                                        </div>
+                                        <div style="color: #B4BAC1; font-size: 14px;">SLA</div>
+                                    </div>
+                                </div>
+                                <div fxFlex="25"  fxLayout="column" fxLayoutAlign="center center">
+                                    <div style="font-weight: 700; font-size: 20px;" [ngStyle]="{ 'color': item.title === 'Pérdida de Paquetes' ? '#3b68ed' : item.title === 'Consumo' ? '#3b68ed' : '#F95A36'}">{{item.dispositivosPorDebajoDeSla}}</div>
+                                    <div style="font-size: 10px; color: #C4C4C4;">{{item.title === 'Pérdida de Paquetes' ? 'Sitios cumpliendo SLA' : item.title === 'Consumo' ? 'Sitios cumpliendo SLA' : 'Sitios incumpliendo SLA' }}</div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!item.sla">
+                                <div fxFlex="30" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                                    <div class="image-alarma1-ejecutivo" style="width: 30px; height: 30px;"></div>
+                                    <div fxLayout="column" fxLayoutAlign="space-evenly center" >
+                                        <div style="color: #B4BAC1; font-size: 10px;">Minímo</div>
+                                        <div style="font-weight: 700; font-size: 17px; color: #285CED">{{item.min}}%</div>
+                                    </div>
+                                </div>
+                                <div fxFlex="30" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                                    <div class="image-alarma2-ejecutivo" style="width: 30px; height: 30px;"></div>
+                                    <div fxLayout="column" fxLayoutAlign="space-evenly center" >
+                                        <div style="color: #B4BAC1; font-size: 10px;">Máximo</div>
+                                        <div style="font-weight: 700; font-size: 17px; color: #F95A36">{{item.max}}%</div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            
+                        <div fxFlex="10" fxLayout="column" fxLayoutAlign="space-between center" (click)="false ? busquedaPersonalizada(item.title) : '' ">
+                            <div style="font-size: 10px; color: #285CED;"></div>
+                            <div style="width: 51px; height: 5px; background-color: #285CED; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px"></div>
+                        </div>
+                    </div>
+                </ng-container>
+            <!--
+                <div fxFlex="25" *ngFor="let item of rendimiento"
+                style="background-color: #ffffff; border-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);"
+                fxLayout="column" fxLayoutAlign="space-between stretch"
+                [ngStyle]="{ 'background-color': (isDark) ? '#161c33' : '#FFFFFF'}">
+                    <div fxFlex="30" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+                        <div style="font-size: 18px; font-weight: 400; text-align: center;"
+                        [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#0B112A'}">{{item.title | titlecase}}</div>
+                        <div  fxLayout="row" fxLayoutAlign="center end" style="height: 35px;">
+                            <div class="img-rendimiento-arrow-up" style="width: 15px; height: 15px;" *ngIf="item.status"></div>
+                            <div class="img-rendimiento-arrow-down" style="width: 15px; height: 15px;" *ngIf="!item.status"></div>
+                            <div fxFlexAlign="center" style="font-size: 30px; font-weight: 600;"
+                            [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#0B112A'}">{{item.value}}</div>
+                            <div style="font-size: 12px; font-weight: 600;"
+                            [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#0B112A'}">{{item.title === 'Consumo' ? 'Mb' : item.type+' Prom'}} </div>
+                        </div>
+                    </div>
+                    
+                        <ng-container *ngIf="item.sla">
+                            <div fxFlex="35" fxLayout="row" fxLayoutAlign="space-around center">
+                                <app-bar-chart [sizex]="width > 1440 ? 150 : 90" [sizey]="width > 1440 ? 60 : 60" [data]="item.datesValue" [margin]="margin" color="#285CED" [rx]="2" [showDomain]="false" [barWidth]="2" [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [showSLA]="true" [sla]="item.slaValue" [isDynamicRange]="false" [scale]="'hourDiario'"></app-bar-chart>
+                                <div fxFlex="18" fxLayout="column" fxLayoutAlign="center start" style="margin-left: -20px;">
+                                    <div style="font-size: 13px; font-weight: 600;" [ngStyle]="{'color':  (isDark) ? '#7B8AA0;' : '#0B112A'}">
+                                        {{item.slaValue}}<span style="font-size: 7px;">{{item.title === 'Consumo' ? 'Mb' : item.type}}</span>
+                                    </div>
+                                    <div style="color: #B4BAC1; font-size: 14px;">SLA</div>
+                                </div>
+                            </div>
+                            <div fxFlex="25"  fxLayout="column" fxLayoutAlign="center center">
+                                <div style="font-weight: 700; font-size: 20px;" [ngStyle]="{ 'color': item.title === 'Pérdida de Paquetes' ? '#3b68ed' : item.title === 'Consumo' ? '#3b68ed' : '#F95A36'}">{{item.dispositivosPorDebajoDeSla}}</div>
+                                <div style="font-size: 10px; color: #C4C4C4;">{{item.title === 'Pérdida de Paquetes' ? 'Sitios cumpliendo SLA' : item.title === 'Consumo' ? 'Sitios cumpliendo SLA' : 'Sitios incumpliendo SLA' }}</div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="!item.sla">
+                            <div fxFlex="30" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                                <div class="image-alarma1-ejecutivo" style="width: 30px; height: 30px;"></div>
+                                <div fxLayout="column" fxLayoutAlign="space-evenly center" >
+                                    <div style="color: #B4BAC1; font-size: 10px;">Minímo</div>
+                                    <div style="font-weight: 700; font-size: 17px; color: #285CED">{{item.min}}%</div>
+                                </div>
+                            </div>
+                            <div fxFlex="30" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+                                <div class="image-alarma2-ejecutivo" style="width: 30px; height: 30px;"></div>
+                                <div fxLayout="column" fxLayoutAlign="space-evenly center" >
+                                    <div style="color: #B4BAC1; font-size: 10px;">Máximo</div>
+                                    <div style="font-weight: 700; font-size: 17px; color: #F95A36">{{item.max}}%</div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        
+                    <div fxFlex="10" fxLayout="column" fxLayoutAlign="space-between center" (click)="false ? busquedaPersonalizada(item.title) : '' ">
+                        <div style="font-size: 10px; color: #285CED;"></div>
+                        <div style="width: 51px; height: 5px; background-color: #285CED; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px"></div>
+                    </div>
+                </div>
+            -->
+        </div>
+    </ng-container>
+        
+    <ng-container *ngIf="errorCarga">
+        <div style="width: 100%; margin: 0; padding: 0; min-height: 330px; margin-top: 20px;" fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="30px">
+            <div fxFlex="100" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);     justify-content: center;" fxLayout="column" fxLayoutAlign="space-between stretch" [ngStyle]="{ 'background-color': (isDark) ? '#161c33' : '#FFFFFF'}">
+                <app-service-error-dashboard [typeError]="errorCarga"></app-service-error-dashboard>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+
+
+<ng-container *ngIf="spinnerLoading">
+    <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 500px;"></mat-spinner>
+</ng-container>
