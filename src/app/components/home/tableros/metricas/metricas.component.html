@@ -1,0 +1,68 @@
+
+<div class="row"
+style="border-radius: 10px; 
+padding: 6px 0; margin: 0 20px;">
+<mat-accordion class="example-headers-align example-headers-text">
+    <mat-expansion-panel [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false" hideToggle>
+<mat-expansion-panel-header>
+<mat-panel-title>
+   <ng-container *ngIf="panelOpenState">
+        Periodo del {{ _periodo?.fechaInicio }} al {{ _periodo?.fechaFin }}
+   </ng-container>
+   <ng-container *ngIf="!panelOpenState">
+        Encabezado General
+    </ng-container>
+</mat-panel-title>
+<mat-panel-description>
+    <mat-icon class="img-expansion-indicator" [style.transform]="panelOpenState ? '' : 'rotate(180deg)'"></mat-icon>
+</mat-panel-description>
+</mat-expansion-panel-header>
+<div style="width: 100%; margin: 0; padding: 0;" sfxLayout="row" fxLayoutAlign="space-around center" *ngIf="!spinnerLoading"> 
+
+<div class="estadistica" *ngFor="let item of estadisticaList" 
+[ngClass]="{'estadistica-dark': (isDarkTheme | async)}">
+
+
+<div class="row" style="width: 100%; margin: 0; padding: 0;">
+ <div class="col-6" style="margin: 0; padding: 0; text-align: center; height: 51px; display: flex; align-items: center; justify-content: center;" *ngIf="item.name != 'Consumo'">
+     {{item.name | titlecase}}
+ </div>
+ <div class="col-5" style="margin-left: -5px; padding: 0; text-align: center; height: 51px; display: flex; align-items: center; justify-content: center;" *ngIf="item.name == 'Consumo'">
+     {{item.name | titlecase}}
+ </div>
+ <div class="col-4" style="margin: 0; padding: 0; padding-left: 10px;" *ngIf="item.name != 'Consumo'">
+     <div class="row" style="width: 100%; margin: 0; padding: 0; text-align: center;">
+         <div class="col-12" style="margin-top: 15px;padding: 0;">
+             {{item.value}} {{ item.name== 'Latencia' ? 'Mls' : '%'}}
+         </div>
+     </div>
+     <div class="row" style="width: 100%; margin: 0; padding: 0; text-align: center;">
+         <div class="col-12" style="margin-top: -8px;font-size: 12px;">
+             Promedio
+         </div>
+     </div>
+ </div>
+ <div class="col-5" style="margin: 0; padding: 0; padding-left: 10px;" *ngIf="item.name == 'Consumo'">
+     <div class="row" style="width: 100%; margin: 0; padding: 0; text-align: left;">
+         <div class="col-12" style="margin-top: 5px;padding: 0;margin-left: -15px;">
+             {{item.maximo}} <span style="font-size: 10px;">Mb max</span>
+         </div>
+         <div class="col-12" style="margin: 0; padding: 0; margin-top: -5px;margin-left: -15px;">
+             {{item.minimo}} <span style="font-size: 10px;">Mb min</span>
+         </div>
+     </div>
+ </div>
+ <div class="col-2" style="margin: 0; padding: 0; height: 51px; line-height: 51px; padding-right: 5px;">
+     <div [ngClass]="item.estatus == 0 ? 'image-g1': item.estatus == 1 ? 'image-g3' : 'image-g2'">&nbsp;</div>
+ </div>
+</div>
+</div>
+</div>
+<ng-container *ngIf="spinnerLoading">
+<mat-spinner [diameter]="30" style="margin-top: 10px;margin-left: 800px;"></mat-spinner>
+</ng-container>
+</mat-expansion-panel>
+</mat-accordion>
+   
+</div>

@@ -1,0 +1,9 @@
+{
+   "httpStatus":200,
+   "message":"Exito",
+   "dateTime":"2022/11/25 20:45:05",
+   "idCliente":"1000024147",
+   "empresa":"PEMEX",
+   "totalPuntas":24,
+   "estatus":1
+}

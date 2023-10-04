@@ -1,0 +1,56 @@
+<div class="home-container" style="margin-top: 30px;">
+  <alert></alert>
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-5">
+          <div class="row w100m0p0">
+              <div class="col-1" style="width: 22px; margin: 0; padding: 0;">
+                  <div class="image-administrator-workspace">&nbsp;</div>
+              </div>
+              <div class="col" style="margin: 0; padding: 0; padding-top: 1px; padding-left: 5px; font-size: 18px;">
+                  ESPACIO DE TRABAJO
+              </div>
+          </div>
+      </div>
+      <div class="col-5" style="text-align: right; font-weight: 600;"><p>¡Buen día, {{user.nombreCompleto | titlecase}}!</p></div>
+      <div class="col-1"></div>
+  </div>
+</div>
+<div class="home-container" style="margin-top: 20px;">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10 worskpace-tab">
+          <mat-tab-group [disableRipple]="true" [selectedIndex]="selected.value" (selectedIndexChange)="tabChange($event)"class="worskpace-cliente">
+              <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon class="img-servicio"></mat-icon>
+                    Dispositivos
+                  </ng-template>
+                  <div class="cuadro-contenido">
+                    <app-servicios-cliente></app-servicios-cliente>
+                  </div>
+              </mat-tab>
+              <mat-tab >
+                <ng-template mat-tab-label>
+                    <mat-icon class="img-incidentes"></mat-icon>
+                    Incidentes
+                  </ng-template>
+                  <div class="cuadro-contenido">
+                    <app-incidentes-cliente></app-incidentes-cliente>
+                  </div>
+              </mat-tab>
+              <mat-tab >
+                <ng-template mat-tab-label>
+                    <mat-icon class="img-equipo"></mat-icon>
+                    Equipo
+                  </ng-template>
+                  <div class="cuadro-contenido">
+                    <app-equipo-cliente></app-equipo-cliente>
+                  </div>
+              </mat-tab>
+          </mat-tab-group>
+      </div>
+      <div class="col-1">
+      </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.regresar{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+}
+
+@media(max-width: 767px){
+    
+    .regresar{
+        width: 100%!important;
+        background-color: #EFF6FD!important;
+        z-index: 900;  
+    }
+} 

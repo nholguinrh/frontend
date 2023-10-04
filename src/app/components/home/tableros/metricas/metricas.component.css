@@ -1,0 +1,63 @@
+.estadistica{
+    min-width: 210px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    /*
+    box-shadow: rgba(129, 129, 129, 0.2) -10px 15px 20px;
+    */
+
+    box-shadow: 0px 8.14815px 6.51852px rgba(41, 72, 152, 0.0196296), 0px 1.85185px 3.14815px rgba(41, 72, 152, 0.012037);
+    background-color: #FFFFFF;
+    border: 1px solid #697181;
+    color: #1F3B58;
+}
+
+.estadistica-dark{
+    box-shadow: rgb(0 0 0 / 25%) 0px 4px 4px !important;
+    background-color: #20263C !important;
+    border: 0px !important;
+    color: #D0D0CE !important;
+}
+
+.etiqueta-fecha{
+    margin-right: 10px;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    /*border-radius: 10px;
+    min-height: 25px;
+    box-shadow: rgba(129, 129, 129, 0.2) -10px 15px 20px;
+    */
+}
+
+@media (min-width:1441px){
+    .estadistica{
+        min-width: 238px;
+        font-size: 14px!important;
+    }
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: end;
+    align-items: end;
+}
+
+.example-headers-text .mat-panel-title {
+    display: block !important;
+}
+
+.img-expansion-indicator{
+    width: 36px; 
+    height: 36px;
+    border-radius: 8px;
+    background-image: url("src\assets\img\down-square.svg");
+    background-size: 25px 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }

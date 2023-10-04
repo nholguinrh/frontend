@@ -1,0 +1,89 @@
+<ng-container *ngIf="!spinnerLoading">
+<ng-container *ngIf="!errorCarga">
+    <div style="width: 100%; margin: 0; padding: 0;" fxLayout="column" fxLayoutAlign="space-between stretch" *ngIf="!full">
+        <div fxLayout="row" fxLayoutAlign="space-evenly stretch" style="min-height: 30px;">
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: center; color: #B1B1B1; font-size: 10px;">Alarmas</div>
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: center; color: #B1B1B1; font-size: 10px;">Procentaje</div>
+            <div fxFlex="20" style="display: flex; align-items: center; justify-content: center; color: #B1B1B1; font-size: 10px;">Total</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly stretch" *ngFor="let alarm of data; let i = index;" style="min-height: 45px;"
+        [ngStyle]="{'background-color': (isDarkTheme | async) && (i % 2 == 0) ? '#36374b' : !(isDarkTheme | async) && (i % 2 == 0) ? '#F8F8F8':'none'}">
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: left; padding-left: 10px; font-size: 13px;"
+            [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE':'#0B112A'}">{{alarm.title}}</div>
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: center;">
+                <div *ngIf="(isDarkTheme | async) ? true : false">
+                    <smc-one-bar [sizex]="width > 1440 ? 140 : 120" [sizey]="12" color="#333e6b" border-color="#2c50ba" 
+                        [value]="(alarm.bar.value * 100)" [max]="(dataTotal.value * 100)"  [titulo]="alarm.bar.titulo" background="#FFFFFF" [rx]="5" [valores]="alarm"></smc-one-bar>
+                </div>
+                <div *ngIf="(isDarkTheme | async) ? false : true">
+                    <smc-one-bar [sizex]="width > 1440 ? 140 : 120" [sizey]="12" color="#285CED" border-color="#285CED" 
+                        [value]="(alarm.bar.value * 100)" [max]="(dataTotal.value * 100)"  [titulo]="alarm.bar.titulo" background="#212238" [rx]="5" [valores]="alarm"></smc-one-bar>
+                </div>
+            </div>
+            <div fxFlex="20" style="display: flex; align-items: center; justify-content: center;">
+                <div style="width: 52px; height: 27px; border-radius: 4px; text-align: center; font-size: 16px; font-weight: 600; color: #285CED; padding-top: 3px;">{{alarm.bar.value}}</div>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly stretch" style="min-height: 45px;"
+        [ngStyle]="{'background-color': (isDarkTheme | async) ? '#36374b' : !(isDarkTheme | async)  ? '#F8F8F8':'none'}">
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: left; padding-left: 10px; font-size: 13px;"
+            [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE':'#0B112A'}">{{dataTotal.title}}</div>
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: center;">
+            </div>
+            <div fxFlex="20" style="display: flex; align-items: center; justify-content: center;">
+                <div style="width: 52px; height: 27px; border: 2px solid #285CED; border-radius: 4px; text-align: center; font-size: 16px; font-weight: 600; color: #285CED; padding-top: 3px;">{{dataTotal.value}}</div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 25px;" *ngIf="full" 
+    [ngStyle]="{
+        'width': width > 1440 ? '1800px': width > 1440 ? '1100px' : '1300px',
+        'height': width > 1440 ? '850px' : width > 1440 ? '460px' : '700px' }">
+        <div fxLayout="row" style="min-height: 50px;">
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: center; color: #B1B1B1; font-size: 20px;">Alarmas</div>
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: center; color: #B1B1B1; font-size: 20px;">Procentaje</div>
+            <div fxFlex="20" style="display: flex; align-items: center; justify-content: center; color: #B1B1B1; font-size: 20px;">Total</div>
+        </div>
+        <div fxLayout="row" *ngFor="let alarm of data; let i = index;" style="min-height: 90px;"
+        [ngStyle]="{'background-color': (isDarkTheme | async) && (i % 2 == 0) ? '#36374b' : !(isDarkTheme | async) && (i % 2 == 0) ? '#F8F8F8':'none'}">
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: left; padding-left: 10px; font-size: 24px;"
+            [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE':'#0B112A'}">{{alarm.title}}</div>
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: center; height: 10vh;">
+                <div *ngIf="(isDarkTheme | async) ? true : false">
+                    <smc-one-bar [sizex]="width > 1440 ? 540 : 420" [sizey]="width > 1440 ? 40 : width < 1440 ? 20 : 30" color="#333e6b" border-color="#2c50ba" 
+                        [value]="(alarm.bar.value * 100)" [max]="(dataTotal.value * 100)"  [titulo]="alarm.bar.titulo" background="#FFFFFF" [rx]="10" [valores]="alarm"></smc-one-bar>
+                </div>
+                <div *ngIf="(isDarkTheme | async) ? false : true">
+                    <smc-one-bar [sizex]="width > 1440 ? 540 : 420" [sizey]="width > 1440 ? 40 : width < 1440 ? 20 : 30" color="#285CED" border-color="#285CED"
+                        [value]="(alarm.bar.value * 100)" [max]="(dataTotal.value * 100)"  [titulo]="alarm.bar.titulo" background="#212238" [rx]="10" [valores]="alarm"></smc-one-bar>
+                </div>
+            </div>
+            <div fxFlex="20" style="display: flex; align-items: center; justify-content: center;">
+                <div style="width: 102px; height: 37px; border-radius: 4px; text-align: center; font-size: 24px; font-weight: 700; color: #285CED; padding-top: 7px;">{{alarm.bar.value}}</div>
+            </div>
+        </div>
+
+        <div fxLayout="row" style="min-height: 90px;"
+        [ngStyle]="{'background-color': (isDarkTheme | async) ? '#36374b' : !(isDarkTheme | async) ? '#F8F8F8':'none'}">
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: left; padding-left: 10px; font-size: 24px;"
+            [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE':'#0B112A'}">{{dataTotal.title}}</div>
+            <div fxFlex="40" style="display: flex; align-items: center; justify-content: center;">
+            </div>
+            <div fxFlex="20" style="display: flex; align-items: center; justify-content: center;">
+                <div style="width: 102px; height: 37px; border: 2px solid #285CED; border-radius: 4px; text-align: center; font-size: 24px; font-weight: 700; color: #285CED; padding-top: 7px;">{{dataTotal.value}}</div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="errorCarga">
+    <app-service-error-dashboard [full]="full" [typeError]="errorCarga"></app-service-error-dashboard>
+</ng-container>
+    
+</ng-container>
+
+<ng-container *ngIf="spinnerLoading">
+    <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+  </ng-container>
+ 

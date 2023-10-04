@@ -1,0 +1,668 @@
+<div class="modulo-informacion-container" style="margin-top: 30px; margin-bottom: 20px;">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; font-weight: 400; font-size: 9px; display: flex; align-items: center;">
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPage()">Centro de ayuda</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPageInformacion()">{{ informacionPantalla?.titulo }}</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #3B4559;">{{ detallePantalla?.titulo }}</span>
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>
+
+<div class="home-container disable-scrollbars">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="min-height: 350px; padding-bottom: 50px;">
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-12">
+              <span class="detalle-titulo">{{ detallePantalla?.titulo }}</span>
+            </div>
+          </div>
+        <ng-container *ngIf="moduloDetalle == 1">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Los Dashboards que puedes visualizar dentro del SMC dependen de dos factores:</li>
+                <ul class="a">
+                  <li>El paquete contratado</li>
+                  <li>El tipo de rol que tienes</li>
+                </ul>
+                <li>Teniendo en cuenta estos factores es como podrás saber a cuales Dashboards puedes acceder.</li>
+              </ul>
+
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; width: 800px; margin-bottom: 50px; margin-top: 30px;">
+                <div class="row">
+                  <div class="col-7">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Cada tipo de Dashboard tiene distintos objetivos, algunos son para métricas especificas o para un tipo de monitoreo. </p>
+                  </div>
+                  <div class="col-5" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 1, 2)">Conocer más Dashboards</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 2">
+          <div class="row">
+            <div class="col-12">
+              <p class="detalle-texto">El SMC tiene el principal objetivo de brindarte diferentes herramientas para el monitoreo de todos tus servicios adquiridos, por ello, existen diferentes tipos de Dashboards a los cuales puedes acceder con la finalidad de cambiar las métricas o servicios que deseas monitorear.</p>
+              <p class="detalle-subtitulo">Monitoreo Global</p>
+              <p class="detalle-texto">Con este Dashboard puedes monitorear de manera global tus dispositivos y todas sus métricas.</p>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page2-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 60px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Es importante que conozcas tus tipos de dispositivos y métricas,</span>
+                    <span style="font-weight: 500"> ya que en función a ello el Dashboard procesa información. Recuerda que dentro del cuadrante Vista General puedes seleccionar el tipo de dispositivo que deseas visualizar, de esta forma podrás ver dentro de algunos cuadrantes del Dashboard las métricas que tiene configuradas ese tipo de dispositivo.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="detalle-subtitulo">Monitoreo con Mapa</p>
+              <p class="detalle-texto">Con este Dashboard puedes geolocalizar y monitorear tus dispositivos en estatus inalcanzables.</p>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page2-img2.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Monitoreo Ejecutivo</p>
+              <p class="detalle-texto">Con este Dashboard puedes visualizar el estado de tus dispositivos en nu periodo de fecha más largo con el objetivo de medir su rendimiento.</p>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page2-img3.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 3">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Algunos tipos de Dashboards dentro del SMC tienen la funcionalidad de monitorear en función del tipo de dispositivo, para cambiar el tipo de dispositivo realiza lo siguiente:</li>
+                <ul class="a">
+                  <li>Localiza el cuadrante maestro, con el cual puedes seleccionar el tipo de dispositivo, más adelante se muestra cada Dashboard con tu cuadrante maestro.</li>
+                  <li>Haz clic sobre el botón para seleccionar el tipo de dispositivo.</li>
+                  <li>El Dashboard cargará la información en función del tipo de dispositivo seleccionado.</li>
+                </ul>
+              </ul>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 60px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Los tipos de dispositivos que puedas monitorear dependen de los servicios contratados,</span>
+                    <span style="font-weight: 500"> Es posible que veas diferentes combninaciones de dispositivos, en algunos casos podrás tener los tres tipos (Enlaces, Sitios y Servicios). Sin embargo, es posible tener solo un tipo o dos.</span>
+                  </div>
+                </div>
+              </div>
+              <p class="detalle-subtitulo">Monitoreo Global</p>
+              <p class="detalle-texto">El cuadrante maestro se encuentra en la Vista General, deberás hacer clic sobre el botón debajo del titulo de Vista general. </p>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page3-img1.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Monitoreo con Mapa</p>
+              <p class="detalle-texto">El cuadrante maestro se encuentra en la Vista General, deberás hacer clic sobre el ícono de <mat-icon class="img-ver-mas" style="height: 20px;width: 25px;"></mat-icon> dentro de la barra de progreso.</p>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page3-img2.png" alt="" />
+              </div>
+              <p class="detalle-subtitulo">Monitoreo Ejecutivo</p>
+              <p class="detalle-texto">El cuadrante maestro se encuentra en la Vista General, deberás hacer clic sobre el ícono de <mat-icon class="img-ver-mas" style="height: 20px;width: 25px;"></mat-icon> dentro de la barra de progreso.</p>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page3-img3.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 4">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>El SMC tiene el principal objetivo de brindarte diferentes herramientas para el monitoreo de todos tus servicios adquiridos, por ello, existen diferentes tipos de Dashboards a los cuales puedes acceder con la finalidad de cambiar las métricas o servicios que deseas monitorear.</li>
+                <li>Uno de los elementos fundamentales para el correcto funcionamiento de tu herramienta es que cumplas con lo siguiente:</li>
+                <ul class="c">
+                  <li>Sistema operativo: Windows o Mac IOS</li>
+                  <li>Navegador web: Google Chrome</li>
+                  <li>Resolución permitida:</li>
+                  <ul class="c">
+                    <li>1920 x 1080 px (principal)</li>
+                    <li>1440 x  1080 px (secundaria)</li>
+                  </ul>
+                  <li>Conexión a internet</li>
+                </ul>
+              </ul>
+
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; width: 800px; margin-bottom: 50px; margin-top: 30px;">
+                <div class="row">
+                  <div class="col-7">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Pudes configurar tu equipo en la resolución permitida, de lo contrario no podrás visualizar los Dashboards adecuadamente.</p>
+                  </div>
+                  <div class="col-5" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 1, 2)">Conocer más Dashboards</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 5">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Todos tipos de Dashboards dentro del SMC tienen la funcionalidad modo oscuro, para activarla deberas realizar lo siguiente:</li>
+                <ul class="a">
+                  <li>Localiza y haz clic sobre el botón de <mat-icon class="img-personalizar" style="height: 16px;width: 25px;"></mat-icon> Personalizar, que se encuentra en la esquina superior derecha de tu Dashboard.</li>
+                  <li>El sistema desplegará el menú de personalización.</li>
+                  <li>Haz clic sobre el radio botón debajo del titulo ¨Oscuro¨.</li>
+                  <li>El sistema cargará automaticamente la preferencia seleccionada.</li>
+                </ul>
+              </ul>
+
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 50px; margin-top: 30px;">
+                <div class="row">
+                  <div class="col-7">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Cada tipo de Dashboard tiene disponible un modo oscuro, para activarlo deberás ejecutar el proceso anterior, recuerda que el modo oscuro aplica únicamente para Dashboards y sus variantes en gráficos.</p>
+                  </div>
+                  <div class="col-5" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 1, 2)">Conocer más Dashboards</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 6">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>El SMC tiene distintos Dashboards a los que puedes acceder, para ello deberás realizar los siguientes pasos:</li>
+                <ul class="a">
+                  <li>Localiza y haz clic sobre el botón de <mat-icon class="img-personalizar" style="height: 16px; width: 30px;"></mat-icon> Personalizar, que se encuentra en la esquina superior derecha de tu Dashboard.</li>
+                  <li>El sistema desplegará el menú de personalización.</li>
+                  <li>Haz clic sobre el tipo de Dashboard que deseas utilizar.</li>
+                  <li>El sistema cargará automaticamente la preferencia seleccionada.</li>
+                </ul>
+              </ul>
+
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page6-img1.png" alt="" />
+              </div>
+
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 7">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Algunos gráficos dentro de cada Dashboard tienen la opción de personalización, es decir puedes modificar el tipo de visualización:</li>
+                <ul class="a">
+                  <li>Localiza y haz clic sobre el botón de <mat-icon class="img-menu-opciones" style="height: 10px;width: 30px;"></mat-icon> más opciones, que se encuentra en la esquina superior derecha cada cuadrante dentro del Dashboard.</li>
+                  <li>El sistema desplegará el menú de opciones:</li>
+                  <ul class="b">
+                    <li>Expandir</li>
+                    <li>Editar</li>
+                  </ul>
+                  <li>Haz clic sobre <mat-icon class="img-edit-dashboard" style="height: 20px;width: 25px;"></mat-icon> Editar para abrir la ventana de personalización de gráficos.</li>
+                  <li>El sistema cargará automáticamente la ventana de personalización en donde podrás seleccionar el gráfico de tu preferencia.</li>
+                  <li>Haz clic sobre el botón de Aplicar cambios para visualizar tu preferencia.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page7-img1.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 8">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Algunos gráficos dentro de cada Dashboard tienen la opción de visualizarlos en fullsize, es decir puedes verlos en modo pantalla completa:</li>
+                <ul class="a">
+                  <li>Localiza y haz clic sobre el botón de <mat-icon class="img-menu-opciones" style="height: 10px;width: 30px;"></mat-icon> más opciones, que se encuentra en la esquina superior derecha cada cuadrante dentro del Dashboard.</li>
+                  <li>El sistema desplegará el menú de opciones:</li>
+                  <ul class="b">
+                    <li>Expandir</li>
+                    <li>Editar</li>
+                  </ul>
+                  <li>Haz clic sobre <mat-icon class="img-expandir" style="height: 20px;width: 25px;"></mat-icon> Expandir y visualizar el gráfico en pantalla completa.</li>
+                  <li>El sistema cargará automáticamente la ventana de visualización Fullsize.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page8-img1.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 18">
+          <div class="row">
+            <div class="col-12">        
+
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Las opciones de sesión te ayudan a personalizar tu experiencia de monitoreo dentro del SMC, puedes configurar tu tipo de cierre de sesión seleccionando una opción, para activarla deberas realizar lo siguiente:</li>
+                <ul class="a">
+                  <li>Localiza y haz clic sobre el botón de despliegue de opciones, que se encuentra en la esquina superior derecha de tu Dashboard. a un lado de tu nombre de perfil.</li>
+                </ul>
+              </ul>
+
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page2-img4.png" alt="" />
+              </div>
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>El sistema desplegará el menú de personalización.</li>
+                <ul class="a">
+                  <li>Haz clic sobre el botón ¨Configuración¨.</li>
+                  <li>El sistema abrirá el menú de configuraciones, donde encontrarás dos opciones para el monitoreo:</li>
+                  <ul class="b">
+                    <li>Monitoreo constante (No hay cierre de sesión automático).</li>
+                    <li>Monitoreo estándar (Existe un cierre de sesión por inactividad después de 30 min).</li>
+                  </ul>
+                  <li>Selecciona la opción de tu preferencia.</li>
+                </ul>
+              </ul>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 9">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Puedes realizar búsquedas especificas de tus dispositivos y obtener información de su rendimiento, para ello deberás realizar los siguientes pasos:</li>
+                <ul class="a">
+                  <li>Ingresa a Espacio de Trabajo, encontrarás la pestaña de Dispositivos.</li>
+                  <li>Ingresa los filtros que deseas agregar a tu búsqueda.</li>
+                  <li>Haz clic sobre el botón de ¨Buscar dispositivos¨.</li>
+                  <li>El sistema realizará la búsqueda, mostrándote los dispositivos relacionados.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page9-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Si deseas agregar el SLA de un dispositivo como un criterio de búsqueda,</span>
+                    <span style="font-weight: 500">debes hacer clic sobre el checkbox a un costado del titulo ¨Nivel de servicio¨con ello estarás comunicando al sistema que realice búsquedas de dispositivos con un SLA Fuera de rango o en peligro. Puedes cambiar el tipo de SLA desplazando el botón a la izquierda o derecha.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 10">
+          <div class="row">
+            <div class="col-12">
+              <p class="detalle-texto">Las previsualizaciones son elementos que encontrarás a un costado de los filtros de búsqueda, tienen el objetivo de brindarte información concisa en tiempo real. Con ello, podrás realizar búsquedas en función de un dato que llame tu interés. </p>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page10-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 50px;">
+                <div class="row">
+                  <div class="col-8">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Puedes navegar entre las distintas previsualizaciones haciendo clic sobre los bullets debajo de cada una de ellas. Así es como puede encontrar tus accesos directos y comenzar a configurarlos.</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 3, 11)">Conocer Accesos Directos</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 11">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Con tus accesos directos podrás ejecutar búsquedas personalizadas rápidamente.</li>
+                <li>Para agregar o editar tus accesos directos deberás ubicar el botón la previsualización de <span>Accesos directos</span> A continuación, podrás visualizar las opciones de accesos que aparezcan en la ventana emergente.</li>
+                <ul class="a">
+                  <li>Encontrarás todas los accesos directos a los que puedes acceder.</li>
+                  <li>Haz clic sobre cada acceso directo que desees tener.</li>
+                  <li>Por default tendrás siempre en tu configuración los siguientes accesos:</li>
+                  <ul class="b">
+                    <li>Añadir nuevo cliente</li>
+                    <li>Ver paquetes</li>
+                  </ul>
+                  <li>Los accesos directos seleccionados conservarán un color azul, a diferencia de los no seleccionados que se muestran en color gris.</li>
+                  <li>Haz clic en el botón de guardar si deseas conservar la configuración.</li>
+                  <li>Espera a que la página se actualice. Se te redirigirá a la página de inicio en donde podrás encontrar tu configuración de accesos directos.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page11-img1.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 12">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>El detalle de métricas por dispositivos es una herramienta que te brinda un contexto sobre el rendimiento de un dispositivo en específico, para acceder a esta funcionalidad realiza los siguientes pasos:</li>
+                <ul class="a">
+                  <li>Ejecuta la búsqueda personalizada mediante los filtros de búsqueda, dentro del Espacio de trabajo.</li>
+                  <li>El sistema te mostrará las coincidencias sobre el resultado:</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page12-img1.png" alt="" />
+              </div>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Cada tarjeta es la representación gráfica de alguno de tus dispositivos, dentro de ella podrás visualizar la información más relevante para su identificación. Al deslizar tu cursor sobre la card puedes activar el ícono de <mat-icon class="img-metrica" style="height: 20px;width: 25px;"></mat-icon> Detalle de métricas.</li>
+                <ul class="a">
+                  <li>Haz clic sobre Detalle de métricas.</li>
+                  <li>El sistema abrirá la pantalla automáticamente. </li>
+                </ul>
+              </ul>
+               
+
+
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page12-img2.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Si deseas visualizar el detalle de métricas de tu Sitio más sus Servicios asociados,</span>
+                    <span style="font-weight: 500"> debes hacer clic sobre el radio botón ¨Servicios¨, con ello el sistema te mostrará las métricas del Sitios más sus Servicios. Es importante conocer que solo aplica para Sitios con Servicios asociados de lo contrario no podrás visualizar información.</span>
+                  </div>
+                </div>
+              </div>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Dentro de esta pantalla podrás seleccionar el tipo de métrica que deseas visualizar, para ello deberás hacer clic sobre el campo ¨Métrica¨. De igual forma puedes seleccionar un rango (temporalidad) en la que deseas visualizar la métrica, para ello deberás hacer clic sobre el campo ¨Rango¨.</li>
+                <li>Posterior a ello, el sistema te mostrará el detalle en función de tus preferencias seleccionadas.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 13">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>El detalle de histórico por dispositivos es una herramienta que te brinda un contexto sobre el rendimiento de un dispositivo en un periodo en específico, para acceder a esta funcionalidad realiza los siguientes pasos:</li>
+                <ul class="a">
+                  <li>Ejecuta la búsqueda personalizada mediante los filtros de búsqueda, dentro del Espacio de trabajo.</li>
+                  <li>El sistema te mostrará las coincidencias sobre el resultado: </li>
+                </ul>
+              </ul>
+               
+
+
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page13-img1.png" alt="" />
+              </div>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Cada tarjeta es la representación gráfica de alguno de tus dispositivos, dentro de ella podrás visualizar la información más relevante para su identificación. Al deslizar tu cursor sobre la card puedes activar el ícono de <mat-icon class="img-historico" style="height: 18px;width: 25px;"></mat-icon> Histórico.</li>
+                <ul class="a">
+                  <li>Haz clic sobre Histórico.</li>
+                  <li>El sistema abrirá la pantalla automáticamente. </li>
+                </ul>
+              </ul>
+                             
+
+
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page13-img2.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Si deseas visualizar el detalle de métricas de tu Sitio más sus Servicios asociados,</span>
+                    <span style="font-weight: 500"> debes hacer clic sobre el radio botón ¨Servicios¨, con ello el sistema te mostrará las métricas del Sitios más sus Servicios. Es importante conocer que solo aplica para Sitios con Servicios asociados de lo contrario no podrás visualizar información.</span>
+                  </div>
+                </div>
+              </div>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Dentro de esta pantalla podrás seleccionar el tipo de métrica que deseas visualizar, para ello deberás hacer clic sobre el campo ¨Métrica¨. De igual forma puedes seleccionar un rango (temporalidad) en la que deseas visualizar la métrica, para ello deberás hacer clic sobre el campo ¨Rango de fechas¨.</li>
+                <li>Posterior a ello, el sistema te mostrará el detalle en función de tus preferencias seleccionadas.</li>
+              </ul>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 14">
+          <div class="row">
+            <div class="col-12">
+              <p class="detalle-texto">Los tickets de incidentes son una herramienta para el seguimiento de tus dispositivos y el mantenimiento que se le brindan. Puedes visualizar los tickets de incidentes y sus diferentes estatus dentro de tu Espacio de Trabajo, en la sección de Incidentes. </p>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page14-img1.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 50px;">
+                <div class="row">
+                  <div class="col-12">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Para desplazarte entre los diferentes estuts de tus tickets es necesario hacer clic sobre cada caja con el total de tickets, de esta forma podrás visualizar la información completa.</p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="detalle-subtitulo">Detalles de incidente</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Dentro de cada ticket de incidente es posible visualizar mayor detalle, para ellos deberas realzar lo siguiente:</li>
+                <ul class="a">
+                  <li>Haz clic sobre el botón de ¨Ver detalles de incidente¨.</li>
+                  <li>El sistema abrirá una ventana con el detalle del ticket que seleccionaste.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page14-img2.png" alt="" />
+              </div>
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 50px;">
+                <div class="row">
+                  <div class="col-12">
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p>Puedes modificar y crear tu propio ID para el seguimiento de tus tickets, para ello modifica el campo Ticket sistema externo e ingresa la información que desees.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 15">
+          <div class="row">
+            <div class="col-12">
+              <p class="detalle-texto">Las notificaciones son una herramienta para mejorar la comunicación dentro del SMC, estas notificaciones son enviadas por el equipo de Totalplay.</p>
+              <p class="detalle-subtitulo">Visualización de notificaciones </p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Las notificaciones pueden ser visualizadas en una primera instancia mediante el ícono de notificaciones que se encuentra en la parte superior derecha, a un lado del nombre de usuario del sistema.</li>
+                <li>El ícono de notificaciones nos mostrará la cantidad de notificaciones no leídas que tenemos en ese momento.</li>
+                <ul class="a">
+                  <li>Haz clic sobre el ícono de notificaciones</li>
+                  <li>Se desplegará un menú, en el que podrás visualizar primeramente las notificaciones no leídas.</li>
+                  <li>Haz clic sobre la notificación que deseas visualizar.</li>
+                  <li>El sistema abrirá la bandeja de entrada junto con el mensaje que seleccionaste.</li>
+                </ul>
+              </ul>
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page15-img1.png" alt="" />
+              </div>
+
+              <div class="detalle-cuadro-boton" style="background: #D4DDEF; padding: 10px 0; margin-bottom: 40px; margin-top: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-informacion"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;"> 
+                    <span>Si la notificación ya fue leída pasará al apartado de Leídas,</span>
+                    <span style="font-weight: 500">que se encuentra dentro del menú de notificaciones. Para visualizar las notificaciones leídas deberás hacer clic a la sección de Leídas de modo que podrías desplazarte entre uno u otro menú a través de las tabs.</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="detalle-subtitulo">Bandeja de entrada</p>
+              <p class="detalle-texto">La bandeja de entrada es el punto central donde recibes las actualizaciones y notificaciones relevantes para tu trabajo, puedes visualizar con mayor detalle cada una de ellas. Puedes desplazarte por cada uno de los mensajes haciendo clic sobre ellos.</p>
+              
+              <div style="display: flex; justify-content: center; margin: 50px 0px;">
+                <img src="assets/img/modulo-ayuda/detalle-cliente-page15-img2.png" alt="" />
+              </div>
+
+              <div class="detalle-cuadro-boton" style="background: #FEEAD6; padding: 10px 0; margin-bottom: 40px; height: 100px;">
+                <div class="row">
+                  <div class="col-1" style="display: flex; justify-content: flex-end; width: 50px; padding: 0;">
+                    <mat-icon class="img-advertencia"></mat-icon>
+                  </div>
+                  <div class="col-11" style="padding-right: 70px;">
+                    <span>Las notificaciones que recibes será vistas de igual manera por tu equipo de trabajo,</span>
+                    <span style="font-weight: 500"> estas notificaciones se derivan de la comunicación directa con Totalplay, pueden variar en función del mensaje que desean transmitir.</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 16">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Crea equipos de trabajo para monitorear y administrar tus dispositivos, para que el trabajo en equipo sea simple, invita a otras personas a colaborar contigo en un dentro del SMC.</li>
+                <li>Todos los administradores pueden añadir personas a un equipo o administrarlas. Obtén más información sobre los distintos <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 6, 17)">roles y permisos para equipos.</span></li>
+              </ul>
+
+              <p class="detalle-subtitulo">Invitar a personas a unirse a tu equipo</p>
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Localiza el botón de <span><mat-icon class="img-nuevo-cliente" style="height: 20px;width: 25px;"></mat-icon>Invitar persona,</span> que se encuentra en la esquina superior derecha.</li>
+                  <li>Introduce su correo electrónico.</li>
+                  <li>Selecciona el rol que desempeñará.</li>
+                  <li>Haz clic en Enviar invitación.</li>
+                </ul>
+                <li>Le mandaremos un enlace de invitación por correo, que solo puede usar una vez. Si los enlaces no funcionan, puedes reenviarle la invitación y ver el detalle del miembro invitado, a continuación para saber cómo hacerlo.</li>
+              </ul>
+
+              <p class="detalle-subtitulo">Reenviar invitación a un invitado</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Localiza al usuario al que deseas reenviarle la invitación, puedes notar que los usuarios que no han aceptado una invitación tienen un etiqueta de Pendiente.</li>
+                  <li>Haz clic sobre el usuario para ver el detalle.</li>
+                  <li>Selecciona el ícono de <mat-icon class="img-menu-opciones" style="height: 10px;width: 30px;"></mat-icon> para desplegar las opciones de reenvío de invitación.</li>
+                  <li>Haz clic en <span><mat-icon class="img-reenviar-correo" style="height: 20px;width: 25px;"></mat-icon>Reenviar invitación.</span></li>
+                </ul>
+                <li>Le reenviaremos un enlace de invitación por correo, que solo puede usar una vez.</li>
+              </ul>
+
+              <p class="detalle-subtitulo">Eliminar personas dentro de tu equipo de trabajo </p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Localiza al usuario al que deseas eliminar</li>
+                  <li>Haz clic sobre el usuario para ver el detalle.</li>
+                  <li>Selecciona el botón de <span>Eliminar miembro.</span></li>
+                </ul>
+                <li>Si el usuario aún no ha aceptado la invitación para unirse a tu equipo y deseas eliminarlo, haz clicl sobre el ícono de <mat-icon class="img-menu-opciones" style="height: 10px;width: 30px;"></mat-icon> para desplegar las opciones de eliminar.</li>
+              </ul>
+
+              <div class="detalle-cuadro-boton" style="padding: 10px 25px; height: 130px; margin-bottom: 50px;">
+                <div class="row">
+                  <div class="col-8">
+                      
+                    <span style="display: flex;"><mat-icon class="img-consejo-rapido" style="margin-right: 10px;"></mat-icon> Consejo rápido</span>
+                    <p><span>Cuando eliminas a una persona de tu equipo perderá acceso por completo al SMC. </span>Recuerda que solo los usuarios administradores pueden eliminar y gestionar al equipo de trabajo.</p>
+                  </div>
+                  <div class="col-4" style="display: flex; align-items: center; justify-content: flex-end;">
+                    <button mat-raised-button color="primary" (click)="redireccion('submenu', 6, 16)">Ver detalles de funcionalidad</button>
+                  </div>
+                </div>
+              </div>
+              
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloDetalle == 17">
+          <div class="row">
+            <div class="col-12">        
+              <p class="detalle-texto">Los administradores pueden asignar roles de equipo o clase y cambiarlos cuando quieran desde Equipos, podrás ver los roles de todas las personas que forman parte del equipo. Consulta más detalles a continuación.</p>
+
+              <p class="detalle-subtitulo">Ejecutivo</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Este rol cuenta con todas las funcionalidades, los administradores cuentan con los permisos para acceder a funcionalidades tan importantes como lo es el monitoreo en tiempo real y la administración del equipo de trabajo.</li>
+                <ul class="c">
+                  <li>Tiene acceso completo a la administración de los integrantes del equipo, así como a la gestión del mismo.</li>
+                  <li>Puede crear  y editar tickets. </li>
+                  <li>Tiene acceso a todos los Dashboards contratados en su paquete.</li>
+                  <li>Puede visualizar detalle de métricas.</li>
+                  <li>Puede visualizar histórico de métricas.</li>
+                </ul>
+              </ul>
+
+              <p class="detalle-subtitulo">Operador</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Este rol no cuenta con todas las funcionalidades, los operadores pueden monitorear en tiempo real los dispositivos pero no pueden acceder a funcionalidades de administración de equipo de trabajo.</li>
+                <ul class="c">
+                  <li>Puede crear  y editar tickets.</li>
+                  <li>Tiene acceso a limitado a los Dashboards contratados en su paquete.</li>
+                  <li>Puede visualizar detalle de métricas.</li>
+                  <li>Puede visualizar histórico de métricas.</li>
+                </ul>
+              </ul>
+
+              <p class="detalle-subtitulo">Cambio de rol a un integrante de mi equipo</p>
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                 <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo.</li>
+                  <li>Haz clic sobre el integrante al que modificarás el rol.</li>
+                  <li>Selecciona el rol que desempeñará.</li>
+                  <li>Haz clic en guardar.</li>
+                </ul>
+              </ul>
+
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

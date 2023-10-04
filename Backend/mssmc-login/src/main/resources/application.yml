@@ -1,0 +1,387 @@
+spring:
+  config:
+    activate:
+      on-profile:
+      - default
+  application:
+    name: mssmc-login
+  datasource:
+    url: jdbc:mariadb://3.19.194.142:3306/SMCv2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: MicroUser
+    password: ENC(swGJu8HdbUWoNSYonuGvTe4sjcuKwqb4) #SFbxMgrGHg73
+    driverClassName: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      driver-class-name: org.mariadb.jdbc.Driver
+      maximum-pool-size: 100
+      minimum-idle: 10
+      pool-name: HikariPoolLogin
+      max-lifetime: 580000
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        #implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    database-platform: org.hibernate.dialect.MariaDB53Dialect
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: America/Mexico_City
+  gson:
+    date-format: yyyy-MM-dd
+  
+server:
+  servlet:
+    context-path: /mssmc-login/v1
+  port: 0
+
+info:
+  component: Microservicio para la funcionalidad de Login SMC
+
+correo:
+  url: https://localhost:8080/mssmc-correos/v1
+  #url: http://3.19.194.142:8080/mssmc-correos/v1
+
+certificado:
+  path: /home/centos/smc_api_dev_p12_mx.p12
+  passwd: kfy4R#qjG%PE
+  
+logging:
+  file:
+    path: /logs/smc/mssmc-login
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': info
+    '[mx.com.totalplay.smc]': debug
+    '[com.zaxxer.hikari]': debug
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    metadataMap:
+     instanceId: ${spring.application.name}:${server.port}
+    preferIpAddress: true
+    ip-address: 127.0.0.1
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, beans, metrics
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: q3t6w9z$C&F)J@McQfTjWnZr4u7x!A%D*G-KaPdRgUkXp2s5v8y/B?E(H+MbQeTh #Encryption Key 512-bit
+    key-obtention-iterations: 1000
+    pool-size: 1
+    provider-name: SunJCE
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    string-output-type: base64      
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+      - totalplayA
+  application:
+    name: mssmc-login
+  datasource:
+    url: jdbc:mariadb://10.71.35.37:3306/SMCv2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: MicroUser
+    password: ENC(c/IvPVLiJOGOanCDkbu3AXzAT4yeTe8f) #smc4dm1n
+    driverClassName: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      driver-class-name: org.mariadb.jdbc.Driver
+      maximum-pool-size: 100
+      minimum-idle: 10
+      pool-name: HikariPoolLogin
+      max-lifetime: 580000
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        #implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    database-platform: org.hibernate.dialect.MariaDB53Dialect
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: America/Mexico_City
+  gson:
+    date-format: yyyy-MM-dd
+  
+server:
+  servlet:
+    context-path: /mssmc-login/v1
+  port: 0
+
+info:
+  component: Microservicio para la funcionalidad de Login SMC
+
+correo:
+  url: https://localhost:8080/mssmc-correos/v1
+
+certificado:
+  path: /etc/ssl/1-ITSM-SMCv2-APP03.p12
+  passwd: SMCv2
+  
+logging:
+  file:
+    path: /logs/smc/mssmc-login
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': OFF
+    '[mx.com.totalplay.smc]': info
+    '[com.zaxxer.hikari]': OFF
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    metadataMap:
+     instanceId: ${spring.application.name}:${server.port}
+    preferIpAddress: true
+    ip-address: 127.0.0.1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, beans, metrics
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: q3t6w9z$C&F)J@McQfTjWnZr4u7x!A%D*G-KaPdRgUkXp2s5v8y/B?E(H+MbQeTh #Encryption Key 512-bit
+    key-obtention-iterations: 1000
+    pool-size: 1
+    provider-name: SunJCE
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    string-output-type: base64  
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+      - totalplayB
+  application:
+    name: mssmc-login
+  datasource:
+    url: jdbc:mariadb://10.71.35.37:3306/SMCv2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: MicroUser
+    password: ENC(c/IvPVLiJOGOanCDkbu3AXzAT4yeTe8f) #smc4dm1n
+    driverClassName: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      driver-class-name: org.mariadb.jdbc.Driver
+      maximum-pool-size: 100
+      minimum-idle: 10
+      pool-name: HikariPoolLogin
+      max-lifetime: 580000
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        #implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    database-platform: org.hibernate.dialect.MariaDB53Dialect
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: America/Mexico_City
+  gson:
+    date-format: yyyy-MM-dd
+  
+server:
+  servlet:
+    context-path: /mssmc-login/v1
+  port: 0
+
+info:
+  component: Microservicio para la funcionalidad de Login SMC
+
+correo:
+  url: https://localhost:8080/mssmc-correos/v1
+
+certificado:
+  path: /etc/ssl/1-ITSM-SMCv2-APP04.p12
+  passwd: SMCv2
+  
+logging:
+  file:
+    path: /logs/smc/mssmc-login
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': OFF
+    '[mx.com.totalplay.smc]': info
+    '[com.zaxxer.hikari]': OFF
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    metadataMap:
+     instanceId: ${spring.application.name}:${server.port}
+    preferIpAddress: true
+    ip-address: 127.0.0.1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, beans, metrics
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: q3t6w9z$C&F)J@McQfTjWnZr4u7x!A%D*G-KaPdRgUkXp2s5v8y/B?E(H+MbQeTh #Encryption Key 512-bit
+    key-obtention-iterations: 1000
+    pool-size: 1
+    provider-name: SunJCE
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    string-output-type: base64  
+                    
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+      - local
+  application:
+    name: mssmc-login
+  datasource:
+    url: jdbc:mariadb://3.19.194.142:3306/SMCv2?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: MicroUser
+    password: ENC(swGJu8HdbUWoNSYonuGvTe4sjcuKwqb4) #SFbxMgrGHg73
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        #implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    database-platform: org.hibernate.dialect.MariaDB53Dialect
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: America/Mexico_City
+  gson:
+    date-format: yyyy-MM-dd
+  
+server:
+  servlet:
+    context-path: /mssmc-login/v1
+  port: 0
+
+info:
+  component: Microservicio para la funcionalidad de Login SMC
+
+correo:
+  url: https://localhost:8080/mssmc-correos/v1
+  #url: http://3.19.194.142:8080/mssmc-correos/v1
+
+certificado:
+  path: /Users/jrauluribes/workspaces/billerticket/smc_api_dev_p12_mx.p12
+  passwd: kfy4R#qjG%PE
+  
+logging:
+  file:
+    path: /logs/smc/mssmc-login
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': info
+    '[mx.com.totalplay.smc]': debug
+    '[com.zaxxer.hikari]': debug
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    metadataMap:
+     instanceId: ${spring.application.name}:${server.port}
+    preferIpAddress: true
+    ip-address: 127.0.0.1
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, beans, metrics
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+      
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: q3t6w9z$C&F)J@McQfTjWnZr4u7x!A%D*G-KaPdRgUkXp2s5v8y/B?E(H+MbQeTh #Encryption Key 512-bit
+    key-obtention-iterations: 1000
+    pool-size: 1
+    provider-name: SunJCE
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    string-output-type: base64

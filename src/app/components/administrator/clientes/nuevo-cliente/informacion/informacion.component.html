@@ -1,0 +1,358 @@
+<div class="admin-clientes-container disable-scrollbars" style="margin-top: 30px;">
+  <alert></alert>
+  <div class="row w100m0p0">
+    <div class="col-1" style="margin: 0; padding: 0;">
+      <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;"  (click)="goBack()"></div>
+    </div>
+    <div class="col-5">
+      <div class="row w100m0p0">
+        <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 21px; font-weight: 400;">
+          NUEVO CLIENTE
+        </div>
+      </div>
+    </div>
+    <div class="col-6"></div>
+  </div>
+  <div class="row w100m0p0" style="margin-top: 30px !important; margin-left: -10px!important;">
+    <div class="col-1" style="margin: 0; padding: 0;">
+    </div>
+    <div class="col-5">
+      <div id="flowBoxes">
+        <div style="padding-left: 0px;">
+          PASO 1
+        </div>
+        <div>
+          PASO 2
+        </div>
+        <div>
+          PASO 3
+        </div>  
+      </div>
+      <smc-stteper-admin [initial]="initialStep" [steps]="steps"></smc-stteper-admin>
+    </div>
+    <div class="col-6"></div>
+  </div>
+</div>
+
+
+<div class="home-container">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10 px-3 p-3" style="padding: 0;">
+      </div>
+      <div class="col-1"></div>
+  </div>
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-10 px-4 p-4 alta-cliente" style="background-color: #FFFFFF; margin-bottom: 30px;">
+      <form [formGroup]="form" style="margin: 0; margin-bottom: 20px;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <div class="row">
+          <div class="col-4" style="font-size: 18px; line-height: 26px; font-weight: 600;">
+            {{ title }}
+            <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 14px; color: #7B8AA0; line-height: 22px;">
+              {{ subTitle }}  
+            </div>
+          </div>
+          <div class="col-6"></div>
+          <div class="col-2">
+            <div class="cliente-ico img-cliente-heart" (click)="favorito()" [ngClass]="estatusFavorito ? 'img-cliente-heart-red' : 'img-cliente-heart' " style="float: right;     cursor: pointer;" ></div>
+          </div>
+        </div>
+      
+        <div class="row pt-3" style="height: 70px;">
+          <div class="col-6" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>NOMBRE DE LA EMPRESA</mat-label>
+              <mat-icon matPrefix class="image-search-puntas"></mat-icon>
+              <input matInput formControlName="nombreEmpresa" [matAutocomplete]="auto" id="nombreEmpresa" name="nombreEmpresa" maxlength="100" 
+              (focusout)="onBlurMethod()" (keypress)="onlyalpha($event); this.idEmpresa = null;" (keyup)="keyShowAutocompleteEmpresa($event)" [disabled]="canEdit" />
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" style="overflow-y: scroll!important;" (optionSelected)="onSelectionChange($event)">
+                <ng-container *ngIf="formulario.nombreEmpresa.value?.length > 0">
+                  <mat-option *ngFor="let option of this.options" [value]="option.nombre" 
+                  style="font-size: 12px!important;">
+                    {{option.nombre}}
+                  </mat-option>
+                </ng-container>
+              </mat-autocomplete> 
+              <mat-error *ngIf="formulario.nombreEmpresa.invalid && formulario.nombreEmpresa.errors">
+                <ng-container *ngIf="formulario.nombreEmpresa.errors.required">
+                  {{ getError() }}
+                </ng-container>
+                <ng-container *ngIf="(formulario.nombreEmpresa.errors.incorrect && !formulario.nombreEmpresa.errors.minlength) || formulario.nombreEmpresa.errors.incorrectText">
+                  Lo sentimos, esta empresa no existe
+                </ng-container>
+                <ng-container *ngIf="formulario.nombreEmpresa.errors.exist">
+                  Lo sentimos, esta empresa ya esta registrada
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>NOMBRE DEL REPRESENTANTE</mat-label>
+              <input matInput formControlName="nombreAdmin" id="nombreAdmin" name="nombreAdmin" minlength="10" maxlength="80" (keypress)="onlyalpha($event);"/>
+              <mat-error *ngIf="formulario.nombreAdmin.invalid && formulario.nombreAdmin.errors">
+                <ng-container *ngIf="formulario.nombreAdmin.errors.required">
+                  {{ getError() }} 
+                </ng-container>
+                <ng-container *ngIf="formulario.nombreAdmin.errors.minlength">
+                  El nombre debe tener minimo 10 caracteres
+                </ng-container>
+                <ng-container *ngIf="formulario.nombreAdmin.errors.pattern">
+                  Nombre inválido
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row pt-3" style="height: 70px; margin-bottom: 24px;">
+          <div class="col-6" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>CORREO ELECTRÓNICO</mat-label>
+              <input matInput formControlName="email" id="email" name="email" maxlength="80" email (keypress)="blockSpace($event);onlyalphaEmail($event);"/>
+              <mat-error *ngIf="formulario.email.invalid && formulario.email.errors">
+                <ng-container *ngIf="formulario.email.errors.required">
+                  {{ getError() }}
+                </ng-container>
+                <ng-container *ngIf="formulario.email.errors.email || formulario.email.errors.pattern">
+                  Correo electrónico inválido
+                </ng-container>
+                <ng-container *ngIf="formulario.email.errors.incorrect">
+                  Lo sentimos, este correo electrónico ya está registrado
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>NÚMERO CELULAR</mat-label>
+              <input matInput formControlName="telefono" id="telefono" name="telefono" minlength="10" maxlength="10" (keypress)="onlyNumbers($event);" (keyup)="keyShowAutocomplete($event)"/>
+              <mat-error *ngIf="formulario.telefono.invalid && formulario.telefono.errors">
+                <ng-container *ngIf="formulario.telefono.errors.required">
+                  {{ getError() }}
+                </ng-container>
+                <ng-container *ngIf="formulario.telefono.errors.minlength">
+                  El número debe ser minimo de 10 digitos
+                </ng-container>
+                <ng-container *ngIf="formulario.telefono.errors.incorrectText">
+                  Este campo solo es llenado con números
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>SECTOR DEL CLIENTE</mat-label>
+              <mat-select formControlName="sector" id="sector" name="sector">
+                <mat-option class="input-select-scroll"  *ngFor="let sector of sectores" [value]="sector.idCatSector">
+                  {{sector.descripcion}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formulario.sector.invalid && formulario.sector.errors">
+                <ng-container *ngIf="formulario.sector.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      
+        <div class="equipo-title-subtitle p-1" style="font-size: 15px; font-weight: 600; line-height: 20px;">
+          Datos del contrato 
+          <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 14px; color: #7B8AA0; line-height: 22px;">
+            Ingresa los datos del contrato  
+          </div>
+        </div>
+      
+        <div class="row pt-3" style="height: 70px;">
+          <div class="col-6" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>NÚMERO DE CONTRATO</mat-label>
+              <input matInput formControlName="contrato" id="contrato" name="contrato" maxlength="20" (keypress)="blockSpace($event);"/>
+              <mat-error *ngIf="formulario.contrato.invalid && formulario.contrato.errors">
+                <ng-container *ngIf="formulario.contrato.errors.required">
+                  {{ getError() }}
+                </ng-container>
+                <ng-container *ngIf="formulario.contrato.errors.incorrect">
+                  Lo sentimos, este número de contrato ya está registrado
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>BANDEJA SD</mat-label>
+              <mat-select formControlName="bandeja" id="bandeja" name="bandeja">
+                <mat-option *ngFor="let bandeja of bandejas" [value]="bandeja.idCatBandejaSD">
+                  {{bandeja.descripcion}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formulario.bandeja.invalid && formulario.bandeja.errors">
+                <ng-container *ngIf="formulario.bandeja.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row pt-3" style="height: 70px; margin-top: 5px;margin-bottom: 24px;">
+          
+          <div class="col-6" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>ORIGEN NOMBRE</mat-label>
+              <mat-select formControlName="origen" id="origen" name="origen">
+                <mat-option *ngFor="let origen of origenNombre" [value]="origen.idCatOrigenNombre">
+                  {{origen.descripcion}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formulario.origen.invalid && formulario.origen.errors">
+                <ng-container *ngIf="formulario.origen.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          
+          <div class="col-3" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>TIPO DE TICKETS</mat-label>
+              <mat-select formControlName="ticket" id="ticket" name="ticket">
+                <mat-option *ngFor="let ticket of tickets" [value]="ticket.idCatTipoTicket">
+                  {{ticket.descripcion}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formulario.ticket.invalid && formulario.ticket.errors">
+                <ng-container *ngIf="formulario.ticket.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>HISTÓRICO PERFORMANCE</mat-label>
+              <mat-select formControlName="historico" id="historico" name="historico">
+                <mat-option *ngFor="let historico of historicos" [value]="historico.idCatHistoricoPerformance">
+                  {{historico.valor}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formulario.historico.invalid && formulario.historico.errors">
+                <ng-container *ngIf="formulario.historico.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="equipo-title-subtitle p-1" style="font-size: 15px; font-weight: 600; line-height: 20px;">
+          Servicios contratados
+          <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 14px; color: #7B8AA0; line-height: 22px;">
+            Ingresa los servicios  y dispositivos contratados 
+          </div>
+        </div>
+        <div class="row pt-3" style="height: 90px;">
+          <div class="col-6" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>PAQUETE CONTRATADO</mat-label>
+              <mat-select formControlName="paquete" id="paquete" name="paquete">
+                <mat-option *ngFor="let paquete of paquetes" [value]="paquete.idCatPaquete">
+                  {{paquete.descripcion}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formulario.paquete.invalid && formulario.paquete.errors">
+                <ng-container *ngIf="formulario.paquete.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>TIPO DE SERVICIOS CONTRATADOS</mat-label>
+              <mat-select formControlName="servicio" id="servicio" name="servicio" multiple>
+                <mat-select-trigger>
+                  <mat-chip-list> 
+                    <mat-chip *ngFor="let servicio of form.value['servicio']"
+                      [removable]="false" (removed)="serviceRemoved(servicio.idCatServicios)">
+                      {{ servicio.descripcion }}
+                    </mat-chip>
+                  </mat-chip-list>
+                </mat-select-trigger>
+                <mat-option *ngFor="let servicio of servicios" [value]="servicio">
+                  {{servicio.descripcion}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formulario.servicio.invalid && formulario.servicio.errors">
+                <ng-container *ngIf="formulario.servicio.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row pt-3" style="height: 70px;">
+          <div class="col-4" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>ENLACES CONTRATADOS</mat-label>
+              <input matInput formControlName="enlace" id="enlace" name="enlace" (keypress)="onlyNumbers($event);" maxlength="10"/>
+              <mat-error *ngIf="formulario.enlace.invalid && formulario.enlace.errors">
+                <ng-container *ngIf="formulario.enlace.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-4" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>SITIOS CONTRATADOS</mat-label>
+              <input matInput formControlName="punta" id="punta" name="punta" (keypress)="onlyNumbers($event);" maxlength="10"/>
+              <mat-error *ngIf="formulario.punta.invalid && formulario.punta.errors">
+                <ng-container *ngIf="formulario.punta.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-4" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>SERVICIOS CONTRATADOS</mat-label>
+              <input matInput formControlName="servicios" id="servicio" name="servicio" (keypress)="onlyNumbers($event);" maxlength="10"/>
+              <mat-error *ngIf="formulario.servicio.invalid && formulario.servicio.errors">
+                <ng-container *ngIf="formulario.servicio.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row pt-3" style="height: 70px;">
+          <div class="col-12" style="margin-top: 0px;">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+              <mat-label>OBSERVACIONES</mat-label>
+              <textarea matInput formControlName="observaciones" id="observaciones" name="observaciones" rows="6" maxlength="350" style="resize: none;"></textarea>
+              <mat-error *ngIf="formulario.observaciones.invalid && formulario.observaciones.errors">
+                <ng-container *ngIf="formulario.observaciones.errors.required">
+                  {{ getError() }}
+                </ng-container>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row pt-3" style="margin-top: 80px; margin-bottom: 0px;">
+          <div class="col-7"></div>
+          <div class="col-3">
+              <button class="btn-totalplay-secondary" style="height: 45px; font-size: 14px; font-weight: 600;" id="btnsend" (click)="continueLater()">
+                Continuar más tarde
+              </button>  
+          </div>
+          <div class="col-2">
+            <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" id="btnsend" [ngStyle]="{'background-color': this.form.invalid ? '#b1b3b3' : '#285ced', 'outline-color': this.form.invalid ? 'none' : '#285ced', 'box-shadow': this.form.invalid ? 'none' : '0px 5px 7px #285ced' }" (click)="send()">
+              Siguiente
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

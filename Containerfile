@@ -1,11 +1,13 @@
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
-FROM registry.access.redhat.com/ubi8/nodejs-16 as build
+#FROM registry.access.redhat.com/ubi8/nodejs-14 as build
+FROM docker.io/node:14-slim as build
 # Set the working directory
-WORKDIR /app
+WORKDIR /usr/src/app
+USER root
 COPY ./Frontend/* .
-RUN npm install
+RUN npm update
 # Generate the build of the application
 RUN npm run build --prod
 

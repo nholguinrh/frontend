@@ -1,0 +1,32 @@
+mat-toolbar{
+    position: absolute;    
+    bottom: 0;
+    z-index: 1000;
+    height: 60px;
+    display: flex;
+    background-color: #3B4559!important;
+    justify-content: space-between; 
+}
+
+.ml30{
+    margin-left: 30px;
+}
+
+.ml10{
+    margin-left: 10px;
+}
+
+.ml30{
+    margin-right: 30px;
+}
+
+@media(max-width: 767px){
+    mat-toolbar{
+        flex-flow: column;
+        height: 40px;
+    }
+
+    .ml30{
+        display: none;
+    }
+}

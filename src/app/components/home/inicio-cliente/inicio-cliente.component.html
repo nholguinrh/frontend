@@ -1,0 +1,11 @@
+<div class="page-wrapper" style="height: 1200px!important; margin: 0; padding: 0;">
+    <div class="sticky-header">
+        <smc-header-cliente></smc-header-cliente>
+    </div>
+    <div class="content-wrapper"
+    [ngStyle]="{'background-color': dark ? '#0B112A':'#F4F4F4'}">
+        <div class="content-home">
+            <router-outlet name="tablero"></router-outlet>
+        </div>
+    </div>
+</div>

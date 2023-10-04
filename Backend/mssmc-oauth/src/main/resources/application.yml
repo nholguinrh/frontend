@@ -1,0 +1,67 @@
+spring:
+  profiles:
+    - default
+  application:
+    name: mssmc-oauth
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: America/Mexico_City
+    default-property-inclusion: NON_NULL
+  gson:
+    date-format: yyyy-MM-dd
+  
+server:
+  servlet:
+    context-path: /mssmc-oauth/v1
+  port: 0
+  
+info:
+  component: Microservicio para la funcionalidad de Autenticación del SMC
+
+
+logging:
+  file:
+    path: /logs/smc/mssmc-oauth
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': info
+    '[mx.com.totalplay.smc]': debug
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    metadataMap:
+     instanceId: ${spring.application.name}:${server.port}
+    preferIpAddress: true
+    ip-address: 127.0.0.1
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, beans, metrics
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+
+#3 minutes validity     
+authorization:
+  signingKey: kXp2s5v8y/B?E(H+MbQeThWmYq3t6w9z
+  tokenTime: 180000
+  refreshTokenTime: 180000
+  usernameWeb: app-web
+  passwordWeb: password123

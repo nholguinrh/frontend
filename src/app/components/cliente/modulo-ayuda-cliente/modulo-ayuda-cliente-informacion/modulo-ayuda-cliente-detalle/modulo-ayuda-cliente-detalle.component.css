@@ -1,0 +1,201 @@
+.modulo-informacion-container-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 0px;
+}
+
+.home-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 0;
+}
+
+.img-servicio-paginator{
+  background-image: url("src\assets\img\paginator-servicio-azul.svg");
+  background-size: 9px 9px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.detalle-titulo{
+  font-weight: 600;
+  font-size: 28px;
+  color: #0B112A;
+}
+
+.detalle-subtitulo{
+  font-weight: 600;
+  font-size: 16px;
+  color: #0B112A;
+  margin-top: 40px;
+  line-height: 20px;
+}
+
+.detalle-texto{
+  font-weight: 400;
+  font-size: 14px;
+  color: #0B112A;
+  margin-top: 25px;
+  line-height: 30px;
+}
+
+ul{
+  padding-left: 0;
+  list-style: none;
+}
+
+ul.a {
+  padding-left: 1rem;
+  list-style-type: decimal;
+}
+
+ul.b {
+  padding-left: 1rem;
+  list-style-type: lower-alpha;
+}
+
+ul.c {
+  padding-left: 1rem;
+  list-style-type: disc;
+}
+
+ul.c li::marker{
+  font-size: 0.5em;
+}
+
+ul.d li{
+  display: flex;
+  align-items: center;
+}
+
+li span, p span{
+  font-weight: 600;
+}
+
+.detalle-lista li{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 40px;
+  color: #0B112A;
+}
+
+.detalle-cuadro-boton{
+  background: #FFFFFF;
+  border: 1px solid #AEBDDF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detalle-cuadro-boton span{
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 25px;
+  color: #0B112A;
+  
+}
+
+.detalle-cuadro-boton p{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  color: #0B112A;
+}
+
+.detalle-cuadro-boton button{
+  font-weight: 600;
+  font-size: 16px;
+  color: #FFFFFF;
+  background: #285CED;
+  border-radius: 2px;
+}
+
+
+.img-advertencia{
+  background-image: url("src\assets\img\modulo-ayuda\advertencia.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-informacion{
+  background-image: url("src\assets\img\modulo-ayuda\informacion.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-consejo-rapido{
+  background-image: url("src\assets\img\modulo-ayuda\consejo-rapido.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-personalizar{
+  background-image: url("src\assets\img\modulo-ayuda\personalizar-dashboard.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-menu-opciones{
+  background-image: url("src\assets\img\modulo-ayuda\menu-opciones.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-edit-dashboard{
+  background-image: url("src\assets\img\modulo-ayuda\edit-dashboard.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-expandir{
+  background-image: url("src\assets\img\modulo-ayuda\expandir.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-metrica{
+  background-image: url("src\assets\img\modulo-ayuda\metrica.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-historico{
+  background-image: url("src\assets\img\modulo-ayuda\historico.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-nuevo-cliente{
+  background-image: url("src\assets\img\modulo-ayuda\nuevo-cliente.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-reenviar-correo{
+  background-image: url("src\assets\img\modulo-ayuda\reenviar-correo.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-ver-mas{
+  background-image: url("src\assets\img\modulo-ayuda\ver-mas.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+

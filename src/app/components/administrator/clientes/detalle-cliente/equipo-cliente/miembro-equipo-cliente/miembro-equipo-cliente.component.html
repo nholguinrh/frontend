@@ -1,0 +1,155 @@
+<div style="width: 100%!important; margin: 0; padding: 20px; margin-top: 30px;">
+    <alert></alert>
+    <div class="row w100m0p0">
+        <div class="col-1">
+            <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goToEquipoCliente()"></div>
+        </div>
+        <div class="col-5" style="padding: 0;">
+            <div class="row w100m0p0">                
+                <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 18px;">
+                    DETALLES DEL MIEMBRO
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="text-align: right; font-weight: 600; padding: 0;"></div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row w100m0p0" style="margin-top: 15px!important;">
+        <div class="col-1">
+        </div>
+        <div class="col-5" style="padding: 0;">
+            <div class="row w100m0p0">                
+                <div class="col" style="margin: 0; padding: 0; font-size: 14px;">
+                    Visualiza las preferencias tu cliente
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="text-align: right; font-weight: 600; padding: 0;"></div>
+        <div class="col-1"></div>
+    </div>
+</div>
+<div style="width: 100%!important; margin: 0; padding: 20px; margin-top: 0px;">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10" style="background-color: #FFFFFF!important; min-height: 300px;">
+            <div class="row">
+                <div class="col-3" style="margin: 0; padding: 0; padding: 20px;">
+                    <div class="row" style="display: table; padding: 0;">
+                        <div class="col" style="max-width: 60px; min-width: 60px;">
+                            <div class="img-detalle-cliente" style="width: 40px; height: 40px; border-radius: 50%; background-color:#E6EDF6; margin-left: 0px;"></div>
+                        </div>
+                        <div class="col" style="display: table-cell; font-weight: 600; min-height: 40px; vertical-align: middle;">
+                            {{ data?.nombreCompleto }} 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5" style="margin: 0; padding: 0; padding: 20px;">
+                    <div class="row" style="display: table; padding: 0; min-height: 40px;">                       
+                        <div class="col-5 punta-tittle" style="display: table-cell; min-height: 40px; border-left: 1px solid #D0D0CE; vertical-align: middle; text-align: center; text-transform: uppercase;">
+                            {{ data?.tbCatPerfil?.descripcion }} 
+                        </div>
+                        <div class="col-7" style="display: table-cell; min-height: 40px; border-left: 1px solid #D0D0CE; vertical-align: middle; text-align: center; color: #285CED; text-decoration: underline;">
+                            {{ data?.email }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="background: #D0D0CE; margin: 10px; margin-top: 0;">
+            <div class="row" style="margin-top: 20px; margin-bottom: 30px;">
+                <div class="col-5" style="margin: 0; padding-left: 35px;">
+                    <div class="row" style="font-weight: 600; font-size: 15px;">
+                        Rol
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-10" style="margin: 0; padding: 0;">
+                            <div class="option-button" style="box-shadow: 0px 0px 4px 0px #a3b4cd; border: 2px solid #7B8AA0;">
+                                <div class="button-main">
+                                    <div class="row button-image">
+                                        <div class="col-2">
+                                            <div class="img-detalle-miembro-backoffice" style="min-width: 40px; min-height: 40px; border-radius: 7px; background-color: '#FFFFFF';">&nbsp;</div>
+                                        </div>
+                                        <div class="col-9">
+                                            <div style="flex-grow: 5; padding-left: 20px;" >
+                                                <div style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; color: #000000; font-weight: 600;" >
+                                                    {{ data?.tbCatPerfil?.descripcion }} 
+                                                </div>
+                                                <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 12px; color: #7B8AA0; line-height: 24px; margin-top: 5px;">
+                                                    {{ data?.tbCatPerfil?.informacion }} 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                          
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="row" style="font-weight: 600; font-size: 15px;">
+                        Dashboard
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-12" style="margin: 0; padding: 0; padding-right: 20px;">
+                            <div class="option-button" style="box-shadow: 0px 0px 4px 0px #a3b4cd; border: 2px solid #7B8AA0; min-height: 340px; background: #FFFFFF !important;">
+                                <div class="button-main">
+                                    <div class="row button-image">
+                                        <div class="col-12" *ngIf="dashboard">
+                                            <div class="row" style="padding-left: 20px;" >
+                                                <div style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; color: #000000; font-weight: 600;" >
+                                                    {{ datadashboard.tbDashboard.descripcion }}
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin: 0; padding: 0;">
+                                                <div class="col" style="margin: 0; padding: 0!important; display: flex; align-items: center;">
+                                                    <ng-container *ngIf="datadashboard.tbDashboard.idDashboard == 5">
+                                                        <div class="preview-dashboard-enlaces" style="width: 95%; height: 60%; margin: 0; padding: 0;"></div>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="datadashboard.tbDashboard.idDashboard == 6">
+                                                        <div class="preview-dashboard-mapa" style="width: 95%; height: 60%; margin: 0; padding: 0;"></div>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="datadashboard.tbDashboard.idDashboard == 4">
+                                                        <div class="preview-dashboard-ejecutivo" style="width: 95%; height: 60%; margin: 0; padding: 0;"></div>
+                                                    </ng-container>
+                                                </div> 
+                                                <div class="col-5" style="min-height: 300px; display: flex; align-items: center;">
+                                                    {{ datadashboard.tbDashboard.informacion }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12" *ngIf="!dashboard">
+                                            <div class="row" style="padding-left: 20px;" >
+                                                <div style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; color: #000000; font-weight: 600;" >
+                                                    {{ datadashboard.tbDashboard.descripcion }}
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin: 0; padding: 0;">
+                                                <div class="col" style="margin: 0; padding: 0!important; display: flex; align-items: center;">
+                                                    <ng-container *ngIf="datadashboard.tbDashboard.idDashboard == 5">
+                                                        <div class="preview-dashboard-enlaces" style="width: 95%; height: 60%; margin: 0; padding: 0;"></div>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="datadashboard.tbDashboard.idDashboard == 6">
+                                                        <div class="preview-dashboard-mapa" style="width: 95%; height: 60%; margin: 0; padding: 0;"></div>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="datadashboard.tbDashboard.idDashboard == 4">
+                                                        <div class="preview-dashboard-ejecutivo" style="width: 95%; height: 60%; margin: 0; padding: 0;"></div>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="datadashboard.tbDashboard.idDashboard == 7">
+                                                        <div class="preview-dashboard-voz" style="width: 95%; height: 60%; margin: 0; padding: 0;"></div>
+                                                    </ng-container>
+                                                </div> 
+                                                <div class="col-5" style="min-height: 300px; display: flex; align-items: center;">
+                                                    {{ datadashboard.tbDashboard.informacion }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                          
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>

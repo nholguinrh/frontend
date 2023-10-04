@@ -1,0 +1,225 @@
+<div class="modulo-informacion-container" style="margin-top: 30px; margin-bottom: 20px;">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; font-weight: 400; font-size: 9px; display: flex; align-items: center;">
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPage()">Centro de ayuda</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #0B112A; cursor: pointer;" (click)="returnPageInformacion()">{{ informacionPantalla?.titulo }}</span>
+                <mat-icon class="img-servicio-paginator"></mat-icon>
+                <span style="color: #3B4559;">{{ solucionPantalla?.titulo }}</span>
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>
+
+<div class="home-container disable-scrollbars">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="min-height: 350px; padding-bottom: 50px;">
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-12">
+              <span class="detalle-titulo">{{ solucionPantalla?.titulo }}</span>
+            </div>
+          </div>
+        <ng-container *ngIf="moduloSolucion == 1">
+          <div class="row">
+            <div class="col-12">
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Para el correcto funcionamiento del SMC es necesario que cumplas con los requerimientos mínimos, de lo contrario no podrás visualizar información:</li>
+                <ul class="c">
+                  <li>Sistema operativo: Windows o Mac IOS</li>
+                  <li>Navegador web: Google Chrome</li>
+                  <li>Resolución permitida: </li>
+                  <ul class="c">
+                    <li>1920 x 1080 px (principal)</li>
+                    <li>1440 x  1080 px (secundaria)</li>
+                  </ul>
+                  <li>Conexión a internet</li>
+                </ul>
+              </ul>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 2">
+          <div class="row">
+            <div class="col-12">
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>
+                  Las diferentes métricas que puedes visualizar en cada uno de tus Dashboard dependerás de la contratación que hayas realizado directamente con el área de ventas.  Si tienes problemas en visualizar tus métricas puedes contactarte con el área de 
+                  <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('ayuda', 1, 1)">atención a clientes.</span>  
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 3">
+          <div class="row">
+            <div class="col-12">
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Los diferentes Dashboards que puedes visualizar dependerán de dos factores:</li>
+                <ul class="a">
+                  <li>El tipo de rol asignado.</li>
+                  <ul class="list-unstyled">
+                    <li>
+                      Cada usuario dentro del SMC cuenta con un rol que le otorga ciertos permisos dentro de la plataforma, si deseas conocer más sobre los permisos y roles de cad usuario ve a <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 6, 17)">Roles y permisos.</span>
+                    </li>
+                  </ul>
+                  <li>El paquete o servicios contratados directamente con el área de ventas.</li>
+                  <ul class="list-unstyled">
+                    <li>
+                      Si tienes problemas en visualizar tus Dashboards puedes contactarte con el área de <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('ayuda', 1, 1)">atención a clientes.</span>
+                    </li>
+                  </ul>
+                </ul>
+              </ul>
+
+
+ 
+
+
+
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 4">
+          <div class="row">
+            <div class="col-12">
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>
+                  Sino encuentras información dentro de tus criterios de búsqueda puedes utilizar las <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('submenu', 3, 10)">previsualizaciones</span> o generar una nueva estructura en tus filtros de búsqueda. Recuerda que puedes visualizar todos tus dispositivos seleccionando únicamente el tipo de dispositivo. 
+                </li>
+              </ul>
+
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/solucion-cliente-page4-img1.png" alt="" />
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 5">
+          <div class="row">
+            <div class="col-12">
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Los tickets de incidentes que puedes visualizar dentro de tu Espacio de Trabajo son únicamente del mes corriente, es decir, cada inicio de mes se reinician  tickets de incidentes.</li>
+                <li>Si te encuentras a inicios de mes, es muy probable que no puedas visualizar los tickets de incidentes del mes anterior, sin embargo podrás comenzar a visualizar el mes en curso.</li>
+              </ul>
+              
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 6">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tienes problemas con el envío de notificaciones, es necesario que recuerdes las limitaciones y reglas del proceso, con la finalidad de validar que el proceso es efectuado correctamente:</li>
+                <ul class="a">
+                  <li>Las notificaciones son un medio de comunicación directo con Totalplay, sin embargo no garantiza la respuesta diaria e inmediata.</li>
+                  <li>Los usuarios del SMC no pueden enviar notificaciones, únicamente las reciben.</li>
+                  <li>Si eliminas tus notificaciones, no será posible recuperarlas.</li>
+                  <li>Puedes buscar dentro de tu Bandeja de Entrada una o varias notificaciones.</li>
+                  <li>Todo tu equipo de trabajo recibe las mismas notificaciones.</li>
+                </ul>
+              </ul>   
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 7">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tienes problemas para visualizar tus notificaciones, es necesario que recuerdes las limitaciones y reglas del proceso, con la finalidad de validar que el proceso es efectuado correctamente:</li>
+                <ul class="a">
+                  <li>Las notificaciones que has eliminado en el menú de notificaciones o en tu bandeja de entrada no podrán ser recuperadas.</li>
+                  <li>Si la notificación ya fue leída pasará al apartado de Leídas, que se encuentra dentro del menú de notificaciones. Para visualizar las notificaciones leídas deberás hacer clic a la sección de Leídas de modo que podrías desplazarte entre uno u otro menú a través de las tabs.</li>
+                </ul>
+              </ul>   
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 8">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Muchas empresas reconocen lo valioso que es tener un amplio equipo de trabajo para el monitoreo de sus dispositivos. Cuando completes el máximo de usuarios dentro de tu equipo de trabajo puedes acercarte con tu <span style="color: #285CED; cursor: pointer; text-decoration: underline;" (click)="redireccion('ayuda', 1, 1)">área de ventas</span> para incrementar y solicitar una extensión del mismo.</li>
+              </ul>   
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 9">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Cuando eliminas a una persona de tu equipo perderá acceso por completo al SMC. Recuerda que solo los usuarios ejecutivos pueden eliminar y gestionar al equipo de trabajo.</li>
+                <li>Si deseas recuperar a un integrante eliminado deberás realizar de nuevo el proceso de alta:</li>
+              </ul>   
+
+              <p class="detalle-subtitulo">Invitar a personas a unirse a tu equipo</p>
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo. </li>
+                  <li>Localiza el botón de <span><mat-icon class="img-nuevo-cliente" style="height: 18px;width: 28px;"></mat-icon>Invitar persona,</span> que se encuentra en la esquina superior derecha. </li>
+                  <li>Introduce su correo electrónico.</li>
+                  <li>Selecciona el rol que desempeñará. </li>
+                  <li>Haz clic en Enviar invitación.</li>
+                </ul>
+                <li>Le mandaremos un enlace de invitación por correo, que solo puede usar una vez. Si los enlaces no funcionan, puedes reenviarle la invitación y ver el detalle del miembro invitado, a continuación para saber cómo hacerlo. </li>
+              </ul>   
+
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="moduloSolucion == 10">
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <li>Si tu invitado no ha recibido la invitación para colaborar dentro de tu equipo, puedes hacer el reenvío: </li>
+              </ul>   
+
+              <p class="detalle-subtitulo">Reenviar invitación</p>
+
+              <ul class="list-unstyled detalle-lista" style="margin-top: 25px;">
+                <ul class="a">
+                  <li>Ingresa a la pantalla de Equipos, que encontrarás dentro del espacio de trabajo. </li>
+                  <li>Localiza a tu invitado y haz clic sobre su botón de <span><mat-icon class="img-detalle" style="height: 18px;width: 25px;"></mat-icon></span> detalle. </li>
+                  <li>El sistema abrirá la información general de tu invitado.</li>
+                  <li>Localiza el botón de <span><mat-icon class="img-menu-opciones" style="height: 18px;width: 25px;"></mat-icon></span> ver más para desplegar la opción de reenviar invitación. </li>
+                  <li>Haz clic en <span>Reenviar invitación.</span></li>
+                </ul>
+                <li>Le mandaremos un enlace de invitación por correo, que solo puede usar una vez. Si los enlaces no funcionan, puedes reenviarle la invitación varias veces. </li>
+              </ul>   
+
+              <div style="display: flex; justify-content: center;margin: 30px 0px;">
+                <img src="assets/img/modulo-ayuda/solucion-cliente-page10-img1.png" alt="" />
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

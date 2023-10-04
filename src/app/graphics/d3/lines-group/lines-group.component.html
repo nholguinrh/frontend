@@ -1,0 +1,31 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start start"
+  fxLayoutGap="1em"
+  style="width: 100%"
+  class="border"
+>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between start"
+    fxLayoutGap="1em"
+    fxFlexFill
+  >
+  <div class="col-12 row" style="display: flex; align-items: center;">
+    <div class="col-1"></div>
+    <div class="col-10" style="display: flex; justify-content: center;">
+      <span class="lines-group-chart-title">{{ title }}</span>
+    </div>
+    <div class="col-1">
+      <button mat-icon-button style="cursor: pointer" *ngIf="icon" (click)="fullSize()">
+        <mat-icon class="image-expand"></mat-icon>
+      </button>
+    </div>
+  </div>
+
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <div #linesGroup></div>
+    <div #complementary *ngIf="!single"></div>
+  </div>
+</div>

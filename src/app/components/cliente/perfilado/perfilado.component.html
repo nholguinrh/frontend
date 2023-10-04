@@ -1,0 +1,22 @@
+<div class="perfilado-container">
+    <div class="perfilado-menu">
+        <div class="pf1"> 
+            <p>
+                <button mat-flat-button class="btn-back-totalplay" [disableRipple]="true" (click)="goToBienvenida()">
+                    <mat-icon class="image-back" style="margin-left: 0px; margin-right: 0px; margin-top: -5px;"></mat-icon>                
+                </button> 
+                <span style="font-size: 19px; font-weight: 500; color: #E6EDF6;">¿QU&Eacute; PERFIL VAS A DESEMPEÑAR?</span>
+            </p>
+            <p style="margin-top: 20px;"><span>¡No te preocupes! Podr&aacute;s explorar las otras &aacute;reas m&aacute;s tarde.</span></p>            
+        </div>
+        <div class="perfilado-perfil" style="margin-top: 30px;" (click)="goToDashboards(item.descripcion)" *ngFor="let item of perfiles">
+            <div class="pimg" [ngClass]="item.imagen" style="background-color: #E6EDF6; border-radius: 10%; height: 40px;"></div>
+            <div class="perfil-main">
+                <p><span style="font-size: 1rem; font-weight: 600;">{{item.descripcion}}</span></p>
+                <p><span style="font-size: .8rem;">{{item.informacion}}</span></p>
+            </div>
+            <div class="perfil-ico image-arrow pimg"></div>
+        </div>
+        
+    </div>
+</div>

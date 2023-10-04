@@ -1,0 +1,216 @@
+<div style="
+    width: 100%;
+    min-height: 815px;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    min-width: none;
+  " fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+  <div fxLayout="column" fxFlexAlign="center stretch" style="width: 100%">
+
+    <div style="font-size: 30px; color: #0b112a; font-weight: 500" [ngStyle]="{ color: dark ? '#7B8AA0' : '#0B112A' }"
+      *ngIf="typeNumber == 0">
+      <mat-icon class="image-dashboard-enlace" *ngIf="typeService == 'Enlaces'"></mat-icon>
+      <mat-icon class="image-dashboard-punta" *ngIf="typeService == 'Puntas'"></mat-icon>
+      <mat-icon class="image-dashboard-interface" *ngIf="typeService == 'Interfaces'"></mat-icon>
+      {{ typeService }} 
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center"
+      style="height: 50px; padding-left: 50px; padding-right: 50px">
+      <div style="font-size: 30px; color: #0b112a; font-weight: 500" [ngStyle]="{ color: dark ? '#7B8AA0' : '#0B112A' }"
+        *ngIf="typeNumber == 2 && type != 'DETALLE_METRICA'">
+        {{ title }}
+      </div>
+      <div style="
+          font-size: 30px;
+          color: #0b112a;
+          font-weight: 500;
+          line-height: 37px;
+        " [ngStyle]="{ color: dark ? '#7B8AA0' : '#0B112A' }" *ngIf="typeNumber == 1">
+        {{ title }}
+      </div>
+      <div style="
+          font-size: 30px;
+          color: #0b112a;
+          font-weight: 500;
+          line-height: 37px;
+        " [ngStyle]="{ color: dark ? '#7B8AA0' : '#0B112A' }" *ngIf="typeNumber == 0">
+        {{ title }}
+      </div>
+
+      <div *ngIf="type == 'DETALLE_METRICA'" style="
+          font-size: 30px;
+          color: #0b112a;
+          font-weight: 500;
+          line-height: 37px;
+        " [ngStyle]="{ color: dark ? '#7B8AA0' : '#0B112A' }">
+        <strong>Servicio: </strong> {{ title }}
+      </div>
+      <div>
+        <mat-icon class="image-expand-dark" style="margin: 0; padding: 0; cursor: pointer" (click)="fullSize()"
+          *ngIf="dark"></mat-icon>
+        <mat-icon class="image-expand" style="margin: 0; padding: 0; cursor: pointer" (click)="fullSize()"
+          *ngIf="!dark"></mat-icon>
+      </div>
+    </div>
+    
+    <div class="col-12" style="display: flex; justify-content: center;">
+      
+      <!-- Dashboard Monitoreo global -->
+        <!--Vista general -->
+        <ng-container *ngIf="type === 'ENLACES_VISTA_GENERAL'">
+          <smc-vista-general-enlaces-speed [viewGraph]="child" [typeGraph]="1" [full]="true">
+          </smc-vista-general-enlaces-speed>
+        </ng-container>
+        <!--Afectaciones recientes-->
+        <ng-container *ngIf="type === 'ENLACES_AFECTACIONES'">
+          <app-afectaciones-recientes style="    width: 100%;" monitoreo="Global"></app-afectaciones-recientes>
+        </ng-container>
+        <!--Métricas por-->
+        <ng-container *ngIf="type === 'ENLACES_METRICAS'">
+          <smc-servicios-enlaces-boxplot [viewGraph]="child" [ngStyle]="{
+                width: width > 1440 ? '1800px' : 1440 > width ? '1100px' : '1300px'
+              }" [full]="true" colorFull="#3b68ed"></smc-servicios-enlaces-boxplot>
+        </ng-container>
+        <!--Tickets de incidentes / monitoreo con mapa -->
+        <ng-container *ngIf="type === 'ENLACES_TICKETS'">
+          <div *ngIf="child == 13 || child == 20 || child == 31">
+            <smc-tickets-mapa-barras-full-size [idOptionSelected]="1"></smc-tickets-mapa-barras-full-size>
+          </div>
+          <div *ngIf="child == 14 || child == 21 || child == 32">
+            <smc-tickets-enlaces-lineas [isFull]="true"></smc-tickets-enlaces-lineas>
+          </div>
+          <div *ngIf="child == 15 || child == 22 || child == 33">
+            <smc-tickets-incidentes-area [isFull]="true" [sizeY]="500" [sizeX]="475" [sizeXLarge]="565">
+            </smc-tickets-incidentes-area>
+          </div>
+        </ng-container>
+        <!--Alarmas -->
+        <ng-container *ngIf="type === 'ENLACES_ALARMAS'">
+          <div *ngIf="child == 10">
+            <smc-alarmas-enlaces-lineas [full]="true"></smc-alarmas-enlaces-lineas>
+          </div>
+          <div *ngIf="child == 11">
+            <smc-alarmas-enlaces-burbujas [full]="true"></smc-alarmas-enlaces-burbujas>
+          </div>
+          <div *ngIf="child == 12">
+            <smc-alarmas-enlaces-barras [full]="true"></smc-alarmas-enlaces-barras>
+          </div>
+        </ng-container>
+      <!-- /Dashboard Monitoreo global -->
+
+      <!-- Dashboard Monitoreo mapa -->
+        <ng-container *ngIf="type === 'MAPA_ENLACES_INALCANZABLES'">
+          <div *ngIf="dark">
+            <app-services-map [sizex]="width - 100" [sizey]="width > 1440 ? 700 : 600" [scale]="width * 1" [dark]="false"
+              mapColor="#5e728b" mapLine="#8199a4" [full]="true" [dark]="true"></app-services-map>
+          </div>
+          <div *ngIf="!dark">
+            <app-services-map [sizex]="width - 100" [sizey]="width > 1440 ? 700 : 600" [scale]="width * 1" [dark]="false"
+              mapColor="#c8def0" mapLine="#f3fdff" [full]="true"></app-services-map>
+          </div>
+        </ng-container>
+        <!--Afectaciones mas recientes-->
+        <ng-container *ngIf="type === 'MAPA_AFECTACIONES'">
+          <app-afectaciones-recientes style="    width: 100%;" monitoreo="Mapa"></app-afectaciones-recientes>
+        </ng-container>
+        <ng-container *ngIf="type == 'RESOLUCION_INTERFACES'">
+          <div *ngIf="child == 23 || child == 37">
+            <smc-tickets-mapa-barras-full-size [idOptionSelected]="1" [promedios]="true">
+            </smc-tickets-mapa-barras-full-size>
+          </div>
+          <div *ngIf="child == 24 || child == 38">
+            <smc-promedios-mapa-barras [isFull]="true" [sizeX]="780" [sizeXLarge]="1900" [viewGraph]="24" [sizeYLarge]="850">
+            </smc-promedios-mapa-barras>
+          </div>
+          <div *ngIf="child == 25 || child == 39">
+            <smc-promedios-mapa-barras [sizeX]="780" [sizeXLarge]="1800" [viewGraph]="25" [isFull]="true">
+            </smc-promedios-mapa-barras>
+          </div>
+        </ng-container>
+      <!-- /Dashboard Monitoreo mapa -->
+
+
+      <!--
+
+      
+      <ng-container *ngIf="type == 'RESOLUCION_METRICAS'">
+        <div *ngIf="child == 34 || child == 36">
+          <smc-servicios-enlaces-boxplot [viewGraph]="8" [ngStyle]="{
+              width: width > 1440 ? '1800px' : 1440 > width ? '1100px' : '1300px'
+            }" [full]="true" tooltipColor="rgba(253,141,141, 0.3)" colorFull="#F95A36"></smc-servicios-enlaces-boxplot>
+        </div>
+        <div *ngIf="child == 35">
+          <smc-servicios-enlaces-boxplot [viewGraph]="9" [ngStyle]="{
+              width: width > 1440 ? '1800px' : 1440 > width ? '1100px' : '1300px'
+            }" [full]="true" colorFull="#285CED" [borderFull]="false" colorFullDark="#F95A36">
+          </smc-servicios-enlaces-boxplot>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="type == 'RESOLUCION_METRICAS'">
+        <div *ngIf="child == 34 || child == 36">
+          <smc-servicios-enlaces-boxplot [viewGraph]="8" [ngStyle]="{
+              width: width > 1440 ? '1800px' : 1440 > width ? '1100px' : '1300px'
+            }" [full]="true" tooltipColor="rgba(253,141,141, 0.3)" colorFull="#F95A36"></smc-servicios-enlaces-boxplot>
+        </div>
+        <div *ngIf="child == 35">
+          <smc-servicios-enlaces-boxplot [viewGraph]="9" [ngStyle]="{
+              width: width > 1440 ? '1800px' : 1440 > width ? '1100px' : '1300px'
+            }" [full]="true" colorFull="#285CED" [borderFull]="false" colorFullDark="#F95A36">
+          </smc-servicios-enlaces-boxplot>
+        </div>
+      </ng-container>
+
+-->
+      <ng-container *ngIf="type == 'RESOLUCION_METRICAS'">
+        <div *ngIf="child == 34 || child == 36">
+          <smc-servicios-enlaces-boxplot [viewGraph]="8" [ngStyle]="{
+              width: width > 1440 ? '1800px' : 1440 > width ? '1100px' : '1300px'
+            }" [full]="true" colorFull="#3b68ed"></smc-servicios-enlaces-boxplot>
+        </div>
+        <div *ngIf="child == 35">
+          <smc-servicios-enlaces-boxplot [viewGraph]="9" [ngStyle]="{
+              width: width > 1440 ? '1800px' : 1440 > width ? '1100px' : '1300px'
+            }" [full]="true" colorFull="#3b68ed" [borderFull]="false" colorFullDark="#F95A36">
+          </smc-servicios-enlaces-boxplot>
+        </div>
+      </ng-container>
+      
+      
+      <ng-container *ngIf="type == 'DETALLE_METRICA'">
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1em" class="simple-title">
+          Utilización Input
+        </div>
+        <app-lines-group [scaleRange]="range" [data]="enlace" [single]="true" [showIcon]="false"
+          [sizex]="width > 1440 ? 1800 : 1440 > width ? 1100 : 1300" [sizey]="700" [margin]="marginEnlace">
+        </app-lines-group>
+      </ng-container>
+
+
+
+
+      <ng-container *ngIf="type == 'VISTA_LLAMADAS_VOZ'">
+        <div>
+          <smc-voz-vista-llamadas [isFull]="true"></smc-voz-vista-llamadas>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="type == 'RENDIMIENTO_DIARIO_VOZ'">
+        <div>
+          <smc-voz-rendimiento-metricas [isFull]="true"></smc-voz-rendimiento-metricas>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="type == 'DURACION_LLAMADAS_VOZ'">
+        <div>
+          <smc-voz-duracion-llamada [isFull]="true"></smc-voz-duracion-llamada>
+        </div>
+      </ng-container>
+
+
+    </div>
+
+  </div>
+</div>

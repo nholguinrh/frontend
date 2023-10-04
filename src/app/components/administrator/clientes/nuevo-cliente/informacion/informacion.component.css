@@ -1,0 +1,111 @@
+#flowBoxes {
+    margin:auto;
+    text-align: left;
+    max-width: 600px;
+    min-width: 600px;
+    font-size: 9px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #7B8AA0!important;
+    letter-spacing: 0.2em;
+}
+
+#flowBoxes div {
+    display: inline-block;
+    height: 25px;
+    padding: 0px 46px; 
+    font-weight: 600;
+}
+
+@media(max-width: 767px){
+    #flowBoxes {        
+        text-align: center;
+    }
+}
+
+.admin-clientes-container{
+    width: 100%!important;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  ::ng-deep .admin-clientes-container .mat-form-field-wrapper{
+    margin-bottom: -1.25em!important;
+  }
+  
+  .mat-standard-chip {
+    border-radius: 4px !important;
+    min-height: 28px !important;
+    background-color: #E6EDF6 !important;
+  }
+  
+  .vector{
+    background-image: url("src\assets\img\vector.svg");
+  }
+  
+  ::ng-deep  #flowBoxes {
+    max-width: 900px !important;
+    min-width: 900px !important;
+  }
+  
+  
+  .cliente-ico{
+    width: 38px; 
+    height: 38px; 
+    background-color: #E6EDF6; 
+    border-radius: 8px; 
+    position: relative; 
+  }
+  
+  .img-cliente-heart{
+    background-image: url("src\assets\img\heart.svg");
+    background-size: 22px 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .img-cliente-heart-red{
+    background-image: url("src\assets\img\heart-red.svg");
+    background-size: 20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  ::ng-deep .alta-cliente .mat-form-field-wrapper{
+    margin-bottom: -1.25em!important;
+  }
+
+ /*  input, select{
+    box-sizing: border-box;
+  } */
+
+  input{
+    font-weight: 400;
+    font-size: 12px!important;
+  }
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: unset!important;
+}
+
+::ng-deep .mat-option-pseudo-checkbox.mat-pseudo-checkbox-checked {
+  background-color: #285CED!important;
+}
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #ccc !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+
+/* .btn-totalplay{
+  outline-color: none !important;
+} */

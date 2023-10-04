@@ -1,0 +1,51 @@
+<div style="margin-top: -10%;">
+    <smc-stteper [initial]="initialStep" [steps]="steps" *ngIf="mostrarStteper"></smc-stteper>
+    <div class="d-flex justify-content-center">
+      <mat-card class="totalplay-card">
+        <mat-card-content class="totalplay-card-container">
+          <div class="img-preload" *ngIf="!imgLoad">&nbsp;</div>
+          <img mat-card-image (load)="loadImage()" [hidden]="imgLoad === false" src="assets/img/paso2.png" style="border-radius: 3px 0px 0px 3px;" alt="Onboarding">
+          <div class="totalplay-card-content">
+            <mat-card class="card-content">
+              <mat-card-title class="text-left mt-2" style="width: 120%; font-size: 24px;">
+                INGRESA EL CÓDIGO
+              </mat-card-title>
+              <mat-card-subtitle class="text-left mt-2" style="font-size: 16px;">
+                Te hemos enviado un código al 
+                <strong>{{ user?.email | mask }}</strong>
+              </mat-card-subtitle>
+              <mat-card-content class="mt-4">
+                  <div class="row d-flex justify-content-center">
+                    <div class="col-sm-12">
+                      
+                      <app-pincode #pincode [numOfDigits]="6"
+                      (notifyParentBtn)="btnHandlerEnabled($event)"
+                      (notifyTimeOut)="timeOutHandler($event)"
+                      ></app-pincode>
+                      
+                    </div>
+                  </div>
+    
+                  <div class="row mt-4 d-flex justify-content-center mb-3">
+                    <div class="col-md-6 d-flex align-items-end mt-4">
+                      <a *ngIf="timeOut" (click)="reenviarCodigo()"
+                      style="color: #285CED; cursor: pointer; padding-left: 5px; text-decoration: underline; margin-bottom: 10px;">
+                        Reenviar código</a>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end mt-4">
+                      <div>
+                        <button class="btn-totalplay" style="min-width: 100px; height: 45px; font-size: 14px; line-height: 25px;"
+                        [disabled]="btnControl || timeOut"
+                        (click)="mostrarStteper ? goToSecondStep() : confirmarCodigo()">
+                          Continuar
+                        </button>
+                      </div>
+                    </div>
+                  </div>            
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    </div>

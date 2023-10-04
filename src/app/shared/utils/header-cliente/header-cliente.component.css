@@ -1,0 +1,115 @@
+mat-toolbar{
+    position: sticky;    
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+    background-color:#3B4559;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-menu{
+    height: 50px; 
+    border-radius: 8px 8px 0px 0px;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.menu-ico{
+    width: 30px; 
+    height: 30px; 
+    background-color: #7B8AA0; 
+    border-radius: 8px; 
+    position: relative; 
+    top: 10px; 
+    left: 0px;
+}
+
+.menu-active{
+    background-color: #F4F4F4;
+}
+
+.menu-title-active{
+    position: relative; 
+    top: -20px; 
+    left: 35px; 
+    font-size: 14px; 
+    font-weight: 600;
+    width: fit-content;
+}
+
+.menu-title{
+    position: relative; 
+    top: -20px; 
+    left: 35px; 
+    font-size: 14px; 
+    font-weight: 500;
+    color:#7B8AA0;
+    width: fit-content;
+}
+
+.menu-user{
+    width: fit-content; 
+    max-width: 250px; 
+    /* background-color: red; */
+    margin-top: -10px; 
+    padding: 0;
+    cursor: pointer;
+}
+
+.menu-user-container{
+    /* background-color: #E6EDF6;  */
+    margin: 0; 
+    padding: 0; 
+    width: fit-content;
+    max-width: 180px; 
+    height: 40px; 
+    margin-top: 10px; 
+    margin-left: 5px;
+}
+
+::ng-deep .header-menu  .mat-menu-item[disabled] { 
+    color: unset!important;
+}
+
+::ng-deep .mat-menu-panel{
+    max-width:fit-content !important;
+    max-height: fit-content!important;
+  }
+
+::ng-deep .header-menu  .mat-menu-item { 
+    color: unset!important;
+}
+
+::ng-deep .dark-menu-theme {
+    color: #7B8AA0!important;
+}
+
+::ng-deep .menu-theme {
+    color: #0B112A!important;
+}
+
+.badged-notification {
+    width: 25px;
+    background-color: #285ced;
+    height: 25px;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    margin-left: 14px;
+    margin-top: -6px;
+    font-size: 15px;
+}
+
+::ng-deep .mat-dark-label .mat-tab-label, .mat-tab-link {
+    color: #FFFFFF;
+}
+
+/* ::ng-deep .mat-dark-menu {
+    background-color: #161C33;
+} */
+
+::ng-deep .mat-dark-menu {
+    background-color: #161C33 !important;
+}

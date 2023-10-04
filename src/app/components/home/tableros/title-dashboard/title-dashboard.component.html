@@ -1,0 +1,51 @@
+<div class="tittle" style="width: 100%; margin: 0; padding: 0;">
+    <div class="row" style="width: 100%; margin: 0; padding: 0;">
+        <div *ngIf="title === 'Sitios con más afectaciones' 
+        || title === 'Tickets de incidentes por Servicios'        
+        || title === 'Tickets de incidentes por Sitios'
+        || title === 'Afectaciones más recientes'
+        ; 
+        else tittleGeneric" class="col-10"
+            style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 15px; color: #7B8AA0;">
+            {{ title }}
+        </div>
+        <ng-template #tittleGeneric>
+            <div class="col-10"
+                style="margin: 0; padding: 0; text-align: left; padding-left: 10px; padding-top: 10px; font-weight: 600; font-size: 15px; color: #7B8AA0;">
+                {{ title }}
+            </div>
+        </ng-template>
+
+        <div class="col-2" style="margin: 0; padding: 0;" *ngIf="buttonMenu">
+            <ng-container *ngIf="menu">
+                <button mat-button style="float: right; border-radius: 10px!important;" [matMenuTriggerFor]="tickets">
+                    <mat-icon class="image-dots" *ngIf="!dark"></mat-icon>
+                    <mat-icon class="image-dots-dark" *ngIf="dark"></mat-icon>
+                </button>
+                
+                <mat-menu #tickets="matMenu" xPosition="before" [class]="dark ? 'dark-menu-theme':'menu-theme'" 
+                >
+                    <button mat-menu-item style="font-size: 14px; font-weight: 600;" *ngIf="expandible" (click)="fullSize()">
+                        <mat-icon class="image-expand-dark" *ngIf="dark"></mat-icon>
+                        <mat-icon class="image-expand" *ngIf="!dark"></mat-icon>
+                        <span
+                        [ngStyle]="{'color':  (dark) ? '#7B8AA0;' : '#0B112A'}">Expandir</span>
+                    </button>
+                    <button mat-menu-item style="font-size: 14px; font-weight: 600; text-align: left;" *ngIf="editable" (click)="openDialog()">
+                        <mat-icon class="image-edit" *ngIf="!dark"></mat-icon>
+                        <mat-icon class="image-edit-dark" *ngIf="dark"></mat-icon>
+                        <span
+                        [ngStyle]="{'color':  (dark) ? '#7B8AA0;' : '#0B112A'}">Editar</span>
+                    </button>
+                </mat-menu>
+                
+            </ng-container>
+            <ng-container *ngIf="!menu">
+                <div style="float: right; width: 30px!important; padding-top: 5px; cursor: pointer;" >
+                    <mat-icon class="image-expand-dark" style="margin: 0; padding: 0;" (click)="fullSize()" *ngIf="dark"></mat-icon>
+                    <mat-icon class="image-expand" style="margin: 0; padding: 0;" (click)="fullSize()" *ngIf="!dark"></mat-icon>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

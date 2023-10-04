@@ -1,0 +1,156 @@
+<div class="cliente-servicio-container" style="margin: 10px 0px" *ngIf="groupType == 2">
+  <div class="row w100m0p0">
+    <div class="col-1" style="margin: 0; padding: 0">
+      <div
+        class="image-workspace-back"
+        style="width: 30px; height: 20px; float: right; cursor: pointer"
+        (click)="fullSize()"
+      ></div>
+    </div>
+    <div class="col-10">
+      <div class="row w100m0p0">
+        <div
+          class="col"
+          style="
+            margin: 0;
+            padding: 0;
+            padding-top: 1px;
+            font-size: 21px;
+            font-weight: 400;
+          "
+        >
+          HISTÓRICO
+          <p
+            style="
+              margin: 0;
+              padding: 0;
+              padding-top: 10px;
+              font-size: 14px;
+              font-weight: 400;
+              color: #7b8aa0;
+            "
+          >
+            Puedes descargar la actividad (Histórico) de tus dispositivos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="home-container">
+  <div class="row" [ngStyle]="{'padding': groupType == 2 ? '0px 50px' : '0px'}">
+    <div class="col-12" style="background-color: #ffffff; min-height: 350px; padding: 10px 60px;">
+      <div class="row" [ngStyle]="{'margin': groupType == 2 ? '' : '50px 0px'}">
+        <div class="col-12" style="display: flex; justify-content: space-between;"> 
+          <div style="font-size: 18px; color: #0b112a; font-weight: 500" [ngStyle]="{ color: dark ? '#7B8AA0' : '#0B112A' }">
+            <ng-container>
+              <span style="font-weight: 600; color: #0B112A; text-transform: capitalize;" [ngStyle]="{'font-size': groupType == 2 ? '14px' : '26px'}">
+                {{ groupDevice }}:
+              </span>
+              <span style="font-weight: 400; color: #0B112A;" [ngStyle]="{'font-size': groupType == 2 ? '14px' : '26px'}">
+                {{ title }}
+              </span>
+            </ng-container>
+          </div>
+          <div>
+            <mat-icon
+              class="image-expand-dark"
+              style="margin: 0; padding: 0; cursor: pointer;"
+              (click)="fullSize()"
+              *ngIf="dark"
+            ></mat-icon>
+            <mat-icon
+              class="image-expand"
+              style="margin: 0; padding: 0; cursor: pointer;"
+              (click)="fullSize()"
+              *ngIf="!dark"
+            ></mat-icon>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-10">
+          </div>
+          <div class="col-2">
+            <mat-form-field appearance="outline" style="
+                width: 100%;
+                font-size: 12px;
+                padding: 10px;
+                padding: 0px 10px;
+                margin-top: 20px;
+              ">
+              <mat-label>RANGO</mat-label>
+              <mat-select id="paquete" name="paquete" [formControl]="rangeControl">
+                <mat-option *ngFor="let servicio of services" [value]="servicio.value" (click)="changeRange(servicio.value)">
+                  {{ servicio.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-12" *ngIf="type == 'DISPOSITIVO_DETALLE_HISTORICO'" style="font-weight: 400; font-size: 22px; text-align: center; color: #0B112A;">
+          {{ metrica }}
+        </div>
+        <div class="col-12" style="display: flex; justify-content: center; margin-top: 30px;">
+          <ng-container *ngIf="type == 'DISPOSITIVO_DETALLE_METRICA'">
+            <ng-container *ngIf="!spinnerLoading">
+              <app-area [data]="dateValue" [areaType]="'tickets'" 
+              [sizey]="width > 1440 ? 900 : 800" 
+              [sizex]="width > 1440 ? 1800 : width < 1440 ? 1300 : 1400" 
+              [showXLabels]="true" [showDomain]="true" color="#3b68ed" linear-gradient="#3b68ed" [margin]="marginArea"
+              gradient-stop="#FFFFFF" gradient-start="#FFFFFF" tooltip-color="rgba(151,175,243, 0.2)"
+              [showDomain]="true" tick-last-color="#FFFFFF" [showYLabels]="true" [isDynamicRange]="false" [range]="[0,120]"
+              [specialFormat]="true" scale="week" [showSLA]="false" [sla]="slaPromedio" [unit]="unit"></app-area>
+            </ng-container>
+            <ng-container *ngIf="spinnerLoading">
+              <div class="row busqueda-personalizada disable-scrollbars" style="margin-left: 0; display: flex; align-items: center; justify-content: center; min-height: 800px;" >
+                <mat-spinner [diameter]="60"></mat-spinner>
+              </div>
+            </ng-container>
+            
+
+            <!-- <ng-container *ngIf="groupType == 1">
+              <app-lines-group
+                [scaleRange]="rangeControl.value"
+                [data]="enlace"
+                [single]="true"
+                [sizex]="width > 1440 ? 1600 : width < 1440 ? 1200 : 1300"
+                [sizey]="width > 1440 ? 800 : 600"
+                [title]="'Promedio de disponibilidad del dispositivo (Périodo seleccionado)'"
+                [icon]="false"
+                [color]="'#285CED'"
+                [margin]="marginEnlace">
+              </app-lines-group> 
+            </ng-container>
+            <ng-container *ngIf="groupType == 2">
+              <app-lines-group
+                [data]="interfaz.data"
+                [dataComplementary]="interfaz.dataComplementary"
+                [title]="interfaz.title"
+                [color]="interfaz.color"
+                [margin]="marginEnlace"
+                [marginComplementary]="marginInterfaz"
+                [sizex]="width > 1440 ? 1500 : width < 1440 ? 900 : 1050"
+                [sizey]="width > 1440 ? 500 : 400"
+                [single]="false"
+                [icon]="false"
+              ></app-lines-group>
+            </ng-container> -->
+
+          </ng-container>
+
+          <ng-container *ngIf="type == 'DISPOSITIVO_DETALLE_HISTORICO'">
+            <smc-inverted-histogram
+              [data]="datesValue"
+              [sizex]="width > 1440 ? 1750 : width == 1440 ? 1300 : 1200"
+              [sizey]="width > 1440 ? 700 : width == 1440 ? 500 : 400"
+              [isDynamicRange]="true"
+              [range]="[0, 100]">
+            </smc-inverted-histogram>
+          </ng-container>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

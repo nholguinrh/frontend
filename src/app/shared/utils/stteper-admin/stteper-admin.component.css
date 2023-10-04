@@ -1,0 +1,148 @@
+:root {
+    --pimary: white;
+}
+
+#flowBoxes {
+    margin:auto;
+    text-align: left;
+    max-width: 600px;
+    min-width: 600px;
+    font-size: 11px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #7B8AA0!important;
+    letter-spacing: 0.2em;
+}
+
+#flowBoxes div {
+    display:inline-block;
+    position:relative;
+    height:25px;
+    line-height:25px;
+    padding:0 20px;
+    border:1px solid #0B112A;
+    margin-right: 0px;
+    background-color:#F4F4F4;
+    color: #0B112A;
+}
+
+.initial-radius{
+    border-radius: 2px 0px 0px 2px;
+}
+
+#flowBoxes div.right:after{
+    content:'';
+    border-top:1px solid #0B112A;
+    border-right:1px solid #0B112A;
+    width:17px;
+    height:17px;
+    position:absolute;
+    right:0px;
+    top: -1px;
+    background-color:#F4F4F4;
+    /* background-color: aliceblue; */
+    z-index:150;
+    
+    -webkit-transform: translate(10px,4px) rotate(45deg);
+       -moz-transform: translate(10px,4px) rotate(45deg);
+        -ms-transform: translate(10px,4px) rotate(45deg);
+         -o-transform: translate(10px,4px) rotate(20deg); 
+            transform: translate(10px,4px) rotate(45deg);
+}
+
+#flowBoxes div.initial-list:after{
+    right: 1px;
+    width: 17px;
+    height: 18px;
+    -webkit-transform: translate(10px,4px) rotate(45deg);
+       -moz-transform: translate(10px,4px) rotate(45deg);
+        -ms-transform: translate(10px,4px) rotate(45deg);
+         -o-transform: translate(10px,4px) rotate(20deg); 
+            transform: translate(10px,3.5px) rotate(43deg);
+}
+
+#flowBoxes div.left:before{
+    content:'';
+    border-top:1px solid #0B112A;
+    border-right:1px solid #0B112A;
+    display: none;
+    border-radius: 0px 2px 0px 2px;
+    width:17px;
+    height:17px;
+    position:absolute;
+    left: 1px;
+    top: -1.1px;
+    background-color: #0B112A;
+    z-index:50;
+    
+    -webkit-transform: translate(-10px,4px) rotate(45deg);
+       -moz-transform: translate(-10px,4px) rotate(45deg);
+        -ms-transform: translate(-10px,4px) rotate(45deg);
+         -o-transform: translate(-10px,4px) rotate(20deg);
+            transform: translate(-10px,4px) rotate(45deg);
+}
+
+#flowBoxes div.left:before{
+    content:'';
+    border-top:1px solid #0B112A;
+    border-right:1px solid #0B112A;
+}
+
+#flowBoxes .active{
+    background-color: #0B112A;
+    color:white;
+}
+
+#flowBoxes .passed{
+    background-color: #7B8AA0;
+    color:white;
+    border: 1px solid #7B8AA0!important;
+}
+
+#flowBoxes div.passed.right:after {
+    background-color:#7B8AA0;
+    border: 1px solid #7B8AA0!important;
+    /* border-color: #7B8AA0; */
+    /* background-color:red; */
+    top: -1.3px!important;
+    right: .5px;
+}
+
+#flowBoxes div.gray.right:after {
+    background-color:#3B4559!important;
+    border: 1px solid #3B4559!important;
+    /* border-color: #7B8AA0; */
+    /* background-color:red; */
+    top: -1.3px!important;
+    right: .5px;
+}
+
+#flowBoxes div.last:after{
+    /* background-color: red!important; */
+    right: .7px;
+    top: -1.8px!important;
+    transform: translate(9.9px, 4.3px) rotate(44deg);
+}
+
+#flowBoxes .gray{
+    background-color: #3B4559!important;
+    color:white;
+    border: 1px solid #3B4559!important;
+}
+
+#flowBoxes div.active:after{
+    background-color:#0B112A;
+    /* background-color:blue; */
+    width:17.2px;
+    top: -1.02px;
+}
+
+#flowBoxes div.active.final:after{
+    right: 10px!important;
+}
+
+@media(max-width: 767px){
+    #flowBoxes {        
+        text-align: center;
+    }
+}

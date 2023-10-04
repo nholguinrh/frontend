@@ -1,0 +1,199 @@
+{
+  "data": {
+    "metricas":[
+      {
+        "name": "Llamadas completadas",
+        "siglas": "LLC",
+        "total": 55,
+        "promedioComparativo": "+5.63",
+        "color": "#1E3BB3",
+        "unidad": "",
+        "titulo": "Total",
+        "data": [
+          {
+            "date": "2023/2/28",
+            "value": 20
+          },{
+            "date": "2023/2/27",
+            "value": 35
+          },{
+            "date": "2023/2/26",
+            "value": 83
+          },{
+            "date": "2023/2/25",
+            "value": 53
+          },{
+            "date": "2023/2/24",
+            "value": 36
+          },{
+            "date": "2023/2/23",
+            "value": 83
+          },{
+            "date": "2023/2/22",
+            "value": 23
+          }
+        ]
+      },{
+        "name": "Llamadas simultáneas",
+        "siglas": "LLS",
+        "total": 55,
+        "promedioComparativo": "+5.63",
+        "color": "#75787D",
+        "unidad": "",
+        "titulo": "Total",
+        "data": [
+          {
+            "date": "2023/2/28",
+            "value": 20
+          },{
+            "date": "2023/2/27",
+            "value": 35
+          },{
+            "date": "2023/2/26",
+            "value": 83
+          },{
+            "date": "2023/2/25",
+            "value": 53
+          },{
+            "date": "2023/2/24",
+            "value": 36
+          },{
+            "date": "2023/2/23",
+            "value": 83
+          },{
+            "date": "2023/2/22",
+            "value": 23
+          }
+        ]
+      },{
+        "name": "ASR",
+        "siglas": "ASR",
+        "total": 98,
+        "promedioComparativo": "+1.33",
+        "color": "#FDA700",
+        "unidad": "%",
+        "titulo": "Promedio",
+        "data": [
+          {
+            "date": "2023/2/28",
+            "value": 20
+          },{
+            "date": "2023/2/27",
+            "value": 35
+          },{
+            "date": "2023/2/26",
+            "value": 83
+          },{
+            "date": "2023/2/25",
+            "value": 53
+          },{
+            "date": "2023/2/24",
+            "value": 36
+          },{
+            "date": "2023/2/23",
+            "value": 83
+          },{
+            "date": "2023/2/22",
+            "value": 23
+          }
+        ]
+      },{
+        "name": "Retardo de Llamada",
+        "siglas": "PDD",
+        "total": 6,
+        "promedioComparativo": "+1.33",
+        "color": "#1A7F1C",
+        "unidad": "Seg",
+        "titulo": "Promedio",
+        "data": [
+          {
+            "date": "2023/2/28",
+            "value": 20
+          },{
+            "date": "2023/2/27",
+            "value": 35
+          },{
+            "date": "2023/2/26",
+            "value": 83
+          },{
+            "date": "2023/2/25",
+            "value": 53
+          },{
+            "date": "2023/2/24",
+            "value": 36
+          },{
+            "date": "2023/2/23",
+            "value": 83
+          },{
+            "date": "2023/2/22",
+            "value": 23
+          }
+        ]
+      },{
+        "name": "Duración de Llamada",
+        "siglas": "ACD",
+        "total": 63,
+        "promedioComparativo": "+5.63",
+        "color": "#285CED",
+        "unidad": "Seg",
+        "titulo": "Promedio",
+        "data": [
+          {
+            "date": "2023/2/28",
+            "value": 20
+          },{
+            "date": "2023/2/27",
+            "value": 35
+          },{
+            "date": "2023/2/26",
+            "value": 83
+          },{
+            "date": "2023/2/25",
+            "value": 53
+          },{
+            "date": "2023/2/24",
+            "value": 36
+          },{
+            "date": "2023/2/23",
+            "value": 83
+          },{
+            "date": "2023/2/22",
+            "value": 23
+          }
+        ]
+      },{
+        "name": "Calidad de Audio",
+        "siglas": "MOS",
+        "total": 4,
+        "promedioComparativo": "+1.33",
+        "color": "#1E3BB3",
+        "unidad": "Seg",
+        "titulo": "Promedio",
+        "data": [
+          {
+            "date": "2023/2/28",
+            "value": 20
+          },{
+            "date": "2023/2/27",
+            "value": 35
+          },{
+            "date": "2023/2/26",
+            "value": 83
+          },{
+            "date": "2023/2/25",
+            "value": 53
+          },{
+            "date": "2023/2/24",
+            "value": 36
+          },{
+            "date": "2023/2/23",
+            "value": 83
+          },{
+            "date": "2023/2/22",
+            "value": 23
+          }
+        ]
+      }
+    ]
+  }
+}

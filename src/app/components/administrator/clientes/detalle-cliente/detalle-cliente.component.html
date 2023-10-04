@@ -1,0 +1,55 @@
+<div class="admin-clientes-container" style="margin-top: 30px;">
+    <alert></alert>
+    <div class="row w100m0p0">
+        <div class="col-1">
+            <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goToWorkspace()"></div>
+        </div>
+        <div class="col-5" style="padding: 0;">
+            <div class="row w100m0p0">                
+                <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 18px;">
+                    DETALLES DEL CLIENTE
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="text-align: right; font-weight: 600; padding: 0;"><p>¡Buen día, {{user.nombreCompleto | titlecase}}!</p></div>
+        <div class="col-1"></div>
+    </div>
+</div>
+<div class="admin-clientes-container" style="margin-top: -10px;">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10 worskpace-tab" style="margin: 0; padding: 0;">
+            <mat-tab-group [disableRipple]="true" [selectedIndex]="selected.value" (selectedIndexChange)="tabChange($event)">
+                <mat-tab label="Información general">
+                    <ng-template matTabContent >
+                        <div style="width: 100%; background-color: #FFFFFF; min-height: 200px;">
+                            <app-infomacion-general></app-infomacion-general>
+                        </div>
+                    </ng-template>
+                </mat-tab>
+                <mat-tab label="Dispositivos">
+                    <ng-template matTabContent>
+                        <div style="width: 100%; background-color: #FFFFFF; min-height: 200px;">
+                            <app-puntas></app-puntas>
+                        </div>
+                    </ng-template>
+                </mat-tab>
+                <mat-tab label="Configuración SLA">
+                    <ng-template matTabContent>
+                        <div style="width: 100%; background-color: #FFFFFF; min-height: 450px;">
+                            <app-configuracion-sla [accionGuardar]="true"></app-configuracion-sla>
+                        </div>
+                    </ng-template>
+                </mat-tab>
+                <mat-tab label="Equipo de trabajo">
+                    <ng-template matTabContent>
+                        <div style="width: 100%; background-color: #FFFFFF; min-height: 450px;">
+                            <app-equipo-cliente></app-equipo-cliente>
+                        </div>
+                    </ng-template>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>

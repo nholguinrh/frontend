@@ -1,0 +1,175 @@
+::ng-deep .notification .mat-dialog-content{
+    max-width: 850px!important;
+    /*max-height: 460px!important;*/
+}
+
+::ng-deep .notification .mat-dialog-content::-webkit-scrollbar {
+  width: 7px;               /* width of the entire scrollbar */
+}
+
+::ng-deep .notification .mat-dialog-content::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+  border-radius: 10px;
+}
+
+
+::ng-deep .input-geolocalizacion .mat-form-field-wrapper{
+ padding: 0 !important;
+}
+
+::ng-deep .input-geolocalizacion  .mat-form-field-underline{
+    height: 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-ripple{
+    height: 0 !important;
+}
+
+.punta-tittle{
+    margin: 0; 
+    padding: 0;
+    letter-spacing: 2px;
+    color: #7B8AA0;
+    font-weight: 600;
+    font-size: 9px;
+}
+
+.punta-subtittle{
+  font-weight: 400;
+  font-size: 12px;
+  color: #000;
+}
+
+.interface-activa{
+    background-color: #F0FDCF; 
+    height: 40px; 
+    width: 60px; 
+    border-radius: 8px; 
+    padding-top: 10px; 
+    text-align: center;
+}
+
+.interface-inactiva{
+    background-color: #F4F4F4; 
+    height: 40px; 
+    width: 60px; 
+    border-radius: 8px; 
+    padding-top: 10px; 
+    text-align: center;
+}
+
+.estatus-punta{
+    border-radius: 20px; 
+    background-size: 15px 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 15px;
+}
+
+.estatus-title{
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.activa .estatus-punta{
+    background-color: #1A7F1C; 
+}
+.activa .estatus-title{
+    color: #1A7F1C;
+}
+
+.inactiva .estatus-punta{
+    background-color: #F95A36; 
+}
+.inactiva .estatus-title{
+    color: #F95A36;
+}
+
+
+.mantenimiento .estatus-punta{
+    background-color: #979797; 
+}
+.mantenimiento .estatus-title{
+    color: #979797;
+}
+
+.img-geolocalizacion{
+    background-image: url("src\assets\img\geolocalizacion.svg");
+    background-size: 23px 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 23px;
+    width: 23px;
+  }
+
+  .img-geolocalizacion-3{
+    background-image: url("src\assets\img\img-geolocalizacion-1.svg");
+    background-size: 15px 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 15px;
+  }
+
+  .img-geolocalizacion-2{
+    background-image: url("src\assets\img\img-geolocalizacion-2.svg");
+    background-size: 15px 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 15px;
+  }
+
+  .img-geolocalizacion-1{
+    background-image: url("src\assets\img\img-geolocalizacion-3.svg");
+    background-size: 15px 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 15px;
+  }
+
+  .img-vector-doble-invertido{
+    background-image: url("src\assets\img\vector-doble-invertido.svg");
+    background-size: 13px 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 23px;
+    width: 13px;
+  }
+
+  .estatus-switch{
+    height: 40px;
+    width: 40px;
+    background: #D3E3FE;
+    border-radius: 8px;
+  }
+
+  ::ng-deep.header-menu .mat-menu-content{
+    padding: 0 !important;
+  }
+
+  
+.tableFixHead::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+  }
+  
+  .tableFixHead::-webkit-scrollbar-thumb {
+    background: #D9D9D9;
+    border-radius: 10px;
+  }
+
+.tableFixHead { 
+  overflow: auto; 
+  height: 145px;
+}
+
+
+  .puntas-disabled{
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  

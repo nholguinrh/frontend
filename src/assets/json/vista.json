@@ -1,0 +1,390 @@
+{
+    "data":{
+        "enlace":[
+            {
+                "typeGraph":1,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Velocímetro",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real y un histórico de 7 días"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real y un histórico de 7 días"
+                    }
+                ]
+            },
+            {
+                "typeGraph":2,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Estatus global",
+                        "descripcion":"Visualiza el total de incidentes y sus estatus"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Línea comparativa",
+                        "descripcion":"Visualiza el estatus global de incidentes así como una linea mensual comparativa"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus de incidentes en tiempo real y un histórico"
+                    }
+                ]
+            },
+            {
+                "typeGraph":3,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Estatus global",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas así como una linea comparativa"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de burbuja",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Tabla de alarmas",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas mediante una tabla"
+                    }
+                ]
+            },
+            {
+                "typeGraph":4,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de velas",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    }
+                ]
+            },
+            {
+                "typeGraph":5,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de línea",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    }
+                ]
+            },
+            {
+                "typeGraph":6,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de línea",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    }
+                ]
+            }
+        ],
+        "mapa":
+        [
+            {
+                "typeGraph":1,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Velocímetro",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real y un histórico de 7 días"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real y un histórico de 7 días"
+                    }
+                ]
+            },
+            {
+                "typeGraph":2,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Estatus global",
+                        "descripcion":"Visualiza el total de incidentes y sus estatus"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Línea comparativa",
+                        "descripcion":"Visualiza el estatus global de incidentes así como una linea mensual comparativa"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus de incidentes en tiempo real y un histórico"
+                    }
+                ]
+            },
+            {
+                "typeGraph":3,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Estatus global",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas así como una linea comparativa"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de burbuja",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Tabla de alarmas",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas mediante una tabla"
+                    }
+                ]
+            },
+            {
+                "typeGraph":4,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de velas",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    }
+                ]
+            },
+            {
+                "typeGraph":5,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de línea",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    }
+                ]
+            },
+            {
+                "typeGraph":6,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de línea",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    }
+                ]
+            }
+        ],
+        "ejecutivo":
+        [
+            {
+                "typeGraph":1,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Velocímetro",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real y un histórico de 7 días"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus de tus dispositivos en tiempo real y un histórico de 7 días"
+                    }
+                ]
+            },
+            {
+                "typeGraph":2,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Estatus global",
+                        "descripcion":"Visualiza el total de incidentes y sus estatus"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Línea comparativa",
+                        "descripcion":"Visualiza el estatus global de incidentes así como una linea mensual comparativa"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus de incidentes en tiempo real y un histórico"
+                    }
+                ]
+            },
+            {
+                "typeGraph":3,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Estatus global",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas así como una linea comparativa"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de burbuja",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Tabla de alarmas",
+                        "descripcion":"Visualiza el estatus global de todas las alarmas mediante una tabla"
+                    }
+                ]
+            },
+            {
+                "typeGraph":4,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de velas",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus global de tus métricas y dispositivos"
+                    }
+                ]
+            },
+            {
+                "typeGraph":5,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de línea",
+                        "descripcion":"Visualiza el promedio de resolución de tus tickets de incidentes"
+                    }
+                ]
+            },
+            {
+                "typeGraph":6,
+                "viewGraph":1,
+                "vistas":[
+                    {
+                        "id":1,
+                        "titulo":"Gráfico de área",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    },
+                    {
+                        "id":2,
+                        "titulo":"Gráfico de barras",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    },
+                    {
+                        "id":3,
+                        "titulo":"Gráfico de línea",
+                        "descripcion":"Visualiza el estatus y promedio de métricas de tus dispositivos "
+                    }
+                ]
+            }
+        ]
+    }
+}

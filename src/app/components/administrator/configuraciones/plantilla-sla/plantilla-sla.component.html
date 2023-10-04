@@ -1,0 +1,191 @@
+<div class="configuracion-paquete-container" style="margin-top: 30px;">
+  <alert></alert>
+  <div class="row w100m0p0">
+    <div class="col-1" style="margin: 0; padding: 0;">
+      <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goBack()"></div>
+    </div>
+    <div class="col-5">
+      <div class="row w100m0p0">
+        <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 18px; font-weight: 400;">
+          {{ tituloPlantilla }}
+        </div>
+      </div>
+    </div>
+    <div class="col-6"></div>
+  </div>
+</div>
+
+ 
+<div class="home-container">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10 px-3 p-3" style="padding: 0;">
+      </div>
+      <div class="col-1"></div>
+  </div>
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-10 px-4 p-4 alta-cliente" style="background-color: #FFFFFF; min-height: 350px;">
+      <form [formGroup]="form" style="margin: 0; margin-bottom: 20px; min-height: 500px;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <div class="row">
+          <div class="col-10">
+            <span style="font-weight: 600; line-height: 26px; font-size: 16px; color: #0B112A;">
+              {{ subtituloPlantilla }}
+            </span>
+          </div>
+          <div class="col-2">
+            <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" id="btnsend" (click)="data ? validarPlantilla('editar') : validarPlantilla('crear')">
+              Guardar
+            </button>
+          </div>
+        </div>
+        <div class="row sla-cofig" style="margin-top: 20px;">
+          <div class="col-12" style="margin: 0px 0px 10px;" *ngIf="!data">
+            <span style="font-weight: 600; line-height: 24px; font-size: 16px; color: #0B112A;">
+              Detalles del SLA
+            </span>
+          </div>
+          <div class="col-4">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px; height: 80px;">
+              <mat-label>Título del SLA</mat-label>
+              <input matInput formControlName="tituloSLA" id="tituloSLA" name="tituloSLA" maxlength="80" style="font-size: 14px!important;"/>
+              <mat-error *ngIf="!form.controls['tituloSLA'].valid && form.controls['tituloSLA'].touched">
+                {{ getError('tituloSLA') }}
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+          <div class="col-1"></div>
+          <div class="col-6">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px; height: 80px;">
+              <mat-label>Descripción</mat-label>
+              <input matInput formControlName="descripcion" id="descripcion" name="descripcion" maxlength="250" style="font-size: 14px!important;"/>
+              <mat-error *ngIf="!form.controls['descripcion'].valid && form.controls['descripcion'].touched">
+                {{ 'Este campo es requerido' }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-divider style="margin: 20 0px;"></mat-divider>
+        <div class="" style=" margin-top: 20px; font-weight: 600; line-height: 26px; font-size: 16px; color: #0B112A;">
+          Métricas 
+        </div>
+        <p class="" style="font-weight: 400; line-height: 26px; font-size: 14px; color: #7B8AA0;">
+          Configura las métricas de tu SLA. 
+        </p>
+        <div class="row">
+          <div class="col-12" style="margin: 5px 30px;">
+            <div class="">
+              Métricas Básicas
+            </div>
+            <div class="row">
+              <div class="col-2">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                  <mat-label>ALCANZABILIDAD</mat-label>
+                  <span matSuffix>%</span>
+                  <input matInput formControlName="basicasAlcanzabilidad" id="basicasAlcanzabilidad" name="basicasAlcanzabilidad" minlength="1" maxlength="3" (keypress)="onlyNumbers($event);" (keyup)="keyShowAutocomplete('basicasAlcanzabilidad', $event)"/>
+                  <mat-error *ngIf="!form.controls['basicasAlcanzabilidad'].valid && form.controls['basicasAlcanzabilidad'].touched">
+                    <ng-container *ngIf="form.controls['basicasAlcanzabilidad'].errors.incorrect">
+                      El valor ingresado debe ser mayor a 0 y menor que 100
+                    </ng-container>
+                    <ng-container *ngIf="form.controls['basicasAlcanzabilidad'].errors.incorrectText">
+                      Este campo solo es llenado con números
+                    </ng-container>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                  <mat-label>DISPONIBILIDAD</mat-label>
+                  <span matSuffix>%</span>
+                  <input matInput formControlName="basicasDisponibilidad" id="basicasDisponibilidad" name="basicasDisponibilidad" minlength="1" maxlength="3" (keypress)="onlyNumbers($event);" (keyup)="keyShowAutocomplete('basicasDisponibilidad', $event)"/>
+                  <mat-error *ngIf="!form.controls['basicasDisponibilidad'].valid && form.controls['basicasDisponibilidad'].touched">
+                    <ng-container *ngIf="form.controls['basicasDisponibilidad'].errors.incorrect">
+                      El valor ingresado debe ser mayor a 0 y menor que 100
+                    </ng-container>
+                    <ng-container *ngIf="form.controls['basicasDisponibilidad'].errors.incorrectText">
+                      Este campo solo es llenado con números
+                    </ng-container>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                  <mat-label>LATENCIA</mat-label>
+                  <span matSuffix>mls</span>
+                  <input matInput formControlName="basicasLatencia" id="basicasLatencia" name="basicasLatencia" minlength="1" maxlength="10" (keypress)="onlyNumbers($event);" (keyup)="keyShowAutocomplete('basicasLatencia', $event)"/>
+                  <mat-error *ngIf="!form.controls['basicasLatencia'].valid && form.controls['basicasLatencia'].touched">
+                    <ng-container *ngIf="form.controls['basicasLatencia'].errors.incorrect">
+                      El valor ingresado debe ser mayor a 0
+                    </ng-container>
+                    <ng-container *ngIf="form.controls['basicasLatencia'].errors.incorrectText">
+                      Este campo solo es llenado con números
+                    </ng-container>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                  <mat-label>CONSUMO</mat-label>
+                  <span matSuffix>mbs</span>
+                  <input matInput formControlName="basicasBanda" id="basicasBanda" name="basicasBanda" minlength="1" maxlength="10" (keypress)="onlyNumbers($event);" (keyup)="keyShowAutocomplete('basicasBanda', $event)"/>
+                  <mat-error *ngIf="!form.controls['basicasBanda'].valid && form.controls['basicasBanda'].touched">
+                    <ng-container *ngIf="form.controls['basicasBanda'].errors.incorrect">
+                      El valor ingresado debe ser mayor a 0
+                    </ng-container>
+                    <ng-container *ngIf="form.controls['basicasBanda'].errors.incorrectText">
+                      Este campo solo es llenado con números
+                    </ng-container>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                  <mat-label>PÉRDIDA DE PQTS</mat-label>
+                  <span matSuffix>%</span>
+                  <input matInput formControlName="basicasPaquetes" id="basicasPaquetes" name="basicasPaquetes" minlength="1" maxlength="3" (keypress)="onlyNumbers($event);" (keyup)="keyShowAutocomplete('basicasPaquetes', $event)"/>
+                  <mat-error *ngIf="!form.controls['basicasPaquetes'].valid && form.controls['basicasPaquetes'].touched">
+                    <ng-container *ngIf="form.controls['basicasPaquetes'].errors.incorrect">
+                      El valor ingresado debe ser mayor a 0 y menor que 100
+                    </ng-container>
+                    <ng-container *ngIf="form.controls['basicasPaquetes'].errors.incorrectText">
+                      Este campo solo es llenado con números
+                    </ng-container>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-2"></div>
+            </div>
+          </div>
+        </div>
+        <!-- <mat-divider style="margin: 15px 0px;"></mat-divider> -->
+        <!-- <div class="row">
+          <div class="col-12" style="margin: 5px 30px;">
+            <section>
+              <p><mat-checkbox formControlName="vozSelecion">Métricas de Voz</mat-checkbox></p>
+            </section>
+            <div class="row">
+              <div class="col-2">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                  <mat-label>ALCANZABILIDAD</mat-label>
+                  <span matSuffix>%</span>
+                  <input matInput formControlName="vozAlcanzabilidad" id="vozAlcanzabilidad" name="vozAlcanzabilidad" maxlength="100" (keypress)="onlyNumbers($event);"/>
+                </mat-form-field>
+              </div>
+              <div class="col-2">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                  <mat-label>DISPONIBILIDAD</mat-label>
+                  <span matSuffix>%</span>
+                  <input matInput formControlName="vozDisponibilidad" id="vozDisponibilidad" name="vozDisponibilidad" maxlength="100" (keypress)="onlyNumbers($event);"/>
+                </mat-form-field>
+              </div>
+              <div class="col-8"></div>
+            </div>
+          </div>
+        </div> -->
+      </form>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+

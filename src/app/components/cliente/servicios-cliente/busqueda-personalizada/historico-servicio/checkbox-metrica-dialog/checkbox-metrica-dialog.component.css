@@ -1,0 +1,29 @@
+::ng-deep .select-dialog .mat-dialog-content{
+  max-width: 380px!important;
+}
+
+/*
+.confirm{
+  border: 1px solid #27509B;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+*/
+
+.boton-dialogo{
+  width: 300px;
+  min-height: 50px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  margin-top: 10px;
+  white-space: normal;
+  line-height: 17px;
+}
+
+
+
+::ng-deep .mat-dialog-container:has(.checkbox-metrica-dialog){
+  border: 1px solid #285CED;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}

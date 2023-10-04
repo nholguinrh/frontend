@@ -1,0 +1,2258 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ESTILO GENERAL ESTRUCTURA */
+
+.page-wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sticky-header {
+  flex-grow: 0;
+}
+
+.content-wrapper {
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  flex-grow: 0;
+}
+
+.w100m0p0 {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ESTILO GENERAL ESTRUCTURA */
+
+.image-totalplay {
+  margin-left: 15px;
+  margin-right: -20px;
+  height: 60px;
+  background-image: url("src\assets\img\logo-totalplay.svg");
+  background-size: 100px 60px;
+  background-repeat: no-repeat;
+}
+
+.image-toolbar {
+  height: 60px;
+  width: 140px;
+  background-image: url("src\assets\img\Logo.png");
+  background-size: 140px 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-toolbar-second {
+  height: 60px;
+  width: 140px;
+  background-image: url("src\assets\img\LogoBlack.png");
+  background-size: 140px 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-avatar {
+  background-image: url("src\assets\img\avatar.png");
+  background-size: cover;
+}
+
+.image-temporal {
+  background-image: url("src\assets\img\image.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-iniciar-smc {
+  background-image: url("src\assets\img\tutorial.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.image-tutorial {
+  background-image: url("src\assets\img\iniciar-smc.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.img-dashboards-monitoreo-ejecutivo {
+  background-image: url("src\assets\img\monitoreo-ejecutivo.svg");
+  background-size: 23px 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-dashboards-monitoreo-mapa {
+  background-image: url("src\assets\img\monitoreo-mapa.svg");
+  background-size: 23px 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-dashboards-monitoreo-enlaces {
+  background-image: url("src\assets\img\monitoreo-enlaces.svg");
+  background-size: 23px 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-dash-density {
+  background-image: url("src\assets\img\dash-density.png");
+  background-size: 75px 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-dash-line {
+  background-image: url("src\assets\img\dash-line.png");
+  background-size: 58px 75px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-dash-speed {
+  background-image: url("src\assets\img\dash-speed.png");
+  background-size: 145px 80px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-dash-box {
+  background-image: url("src\assets\img\dash-box.png");
+  background-size: 200px 110px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-dash-tickets {
+  background-image: url("src\assets\img\dash-tickets.png");
+  background-size: 115px 95px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 10px;
+}
+
+.img-dash-bars {
+  background-image: url("src\assets\img\dash-bars.png");
+  background-size: 70px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-cuadrantes {
+  background-image: url("src\assets\img\cuadrantes.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dos-cuadrantes {
+  background-image: url("src\assets\img\dos-cuadrantes.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-tres-cuadrantes {
+  background-image: url("src\assets\img\tres-cuadrantes.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-cuatro-cuadrantes {
+  background-image: url("src\assets\img\cuatro-cuadrantes.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-cliente-personalizar {
+  background-image: url("src\assets\img\img-cliente-personalizar.svg");
+  background-size: 20px 20px;
+  margin-top: -3px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-db-monitoreo {
+  background-image: url("src\assets\img\db1.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-db-tickets {
+  background-image: url("src\assets\img\db2.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-db-historico {
+  background-image: url("src\assets\img\db3.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-tooltip-mapa {
+  background-image: url("src\assets\img\dashboard-tooltip-mapa.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-tooltip-ticketline1 {
+  background-image: url("src\assets\img\ticketline-tooltip1.svg");
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-tooltip-ticketline2 {
+  background-image: url("src\assets\img\ticketline-tooltip2.svg");
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-tooltip-ticketline3 {
+  background-image: url("src\assets\img\ticketline-tooltip3.svg");
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-mapa-titulo {
+  background-image: url("src\assets\img\dahbord-mapa-titulo-enlace.svg");
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-mapa-titulo-inactivo {
+  background-image: url("src\assets\img\dahbord-mapa-titulo-enlace.svg");
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-mapa-titulo-gestion {
+  background-image: url("src\assets\img\dahbord-mapa-titulo-enlace-gestion.svg");
+  background-size: 32px 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-mapa-crear-ticket {
+  background-image: url("src\assets\img\dahsboard-mapa-crear-ticket.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-mapa-crear-ticket-black {
+  background-image: url("src\assets\img\dahsboard-mapa-crear-ticket-black.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-preview-monitoreo-enlace {
+  background-image: url("src\assets\img\preview-monitoreo-enlace.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-preview-monitoreo-ejecutivo {
+  background-image: url("src\assets\img\preview-monitoreo-ejecutivo.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-preview-monitoreo-voz {
+  background-image: url("src\assets\img\dashboard-monitoreo-voz.PNG");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-preview-monitoreo-mapa {
+  background-image: url("src\assets\img\preview-monitoreo-mapa.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-preview-monitoreo-enlace-dark {
+  background-image: url("src\assets\img\dashboard-monitoreo-enlaces-dark.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-preview-monitoreo-ejecutivo-dark {
+  background-image: url("src\assets\img\dashboard-monitoreo-ejecutivo-dark.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-preview-monitoreo-mapa-dark {
+  background-image: url("src\assets\img\dashboard-monitoreo-mapa-dark.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dahsboard-preview-monitoreo-voz-dark {
+  background-image: url("src\assets\img\dashboard-monitoreo-voz-dark.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.map-zoom-in {
+  background-image: url("src\assets\img\map-zoom-in.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.map-zoom-out {
+  background-image: url("src\assets\img\map-zoom-out.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-inicio {
+  background-image: url("src\assets\img\inicio.svg");
+  background-size: cover;
+}
+
+.image-help {
+  margin-top: -5px;
+  background-image: url("src\assets\img\help.svg");
+  background-size: 30px 30px;
+}
+
+.image-notification {
+  background-image: url("src\assets\img\notification.svg");
+  background-size: 20px 20px;
+}
+
+.image-workspace {
+  margin-top: 5px;
+  background-image: url("src\assets\img\workspace.svg");
+  background-size: 20px 20px;
+}
+
+.image-arrow {
+  background-image: url("src\assets\img\arrow.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-back {
+  background-image: url("src\assets\img\arrow-back.svg");
+  background-size: 30px 15px;
+  background-position: center;
+}
+
+.image-dashboard-enlace {
+  background-image: url("src\assets\img\dash-enlace.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-new-enlace {
+  background-image: url("src\assets\img\arrow-up.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-interface {
+  background-image: url("src\assets\img\dash-interface.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-interface-blanco {
+  background-image: url("src\assets\img\dash-interface-white.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-interface-llave {
+  background-image: url("src\assets\img\image-dashboard-interface-llave.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-new-interface {
+  background-image: url("src\assets\img\arrow-down.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-punta {
+  background-image: url("src\assets\img\dash-punta.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-punta-blanco {
+  background-image: url("src\assets\img\dash-punta-white.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-punta-llave {
+  background-image: url("src\assets\img\dash-punta-llave.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dashboard-down-red {
+  background-image: url("src\assets\img\image-dashboard-down-red.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.image-dashboard-up-blue {
+  background-image: url("src\assets\img\image-dashboard-up-blue.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.preview-dashboard-enlaces {
+  background-image: url("src\assets\img\dashboard-monitoreo-enlaces.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.preview-dashboard-mapa {
+  background-image: url("src\assets\img\dashboard-monitoreo-mapa.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.preview-dashboard-ejecutivo {
+  background-image: url("src\assets\img\dashboard-monitoreo-ejecutivo.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.preview-dashboard-voz {
+  background-image: url("src\assets\img\dashboard-monitoreo-voz.PNG");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+mat-form-field input {
+  font-size: 1.05rem !important;
+}
+
+/* .image-perfil-ejecutivo {
+    background-image: url("src\assets\img\perfil-ejecutivo.svg");
+    background-size: 30px 30px;
+    min-height: 30px!important;
+    width: 40px!important;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-perfil-auditor {
+    background-image: url("src\assets\img\perfil-auditor.svg");
+    background-size: 25px 25px;
+    min-height: 30px!important;
+    width: 40px!important;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image-perfil-operador {
+    background-image: url("src\assets\img\perfil-operador.svg");
+    background-size: 30px 30px;
+    min-height: 30px!important;
+    width: 40px!important;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+} */
+
+.img-perfiles-ejecutivo {
+  background-image: url("src\assets\img\ejecutivo.svg");
+  background-size: 30px 30px;
+  min-height: 30px !important;
+  width: 40px !important;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-perfiles-auditor {
+  background-image: url("src\assets\img\auditor.svg");
+  background-size: 25px 25px;
+  min-height: 30px !important;
+  width: 40px !important;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-perfiles-operador {
+  background-image: url("src\assets\img\operador.svg");
+  background-size: 30px 30px;
+  min-height: 30px !important;
+  width: 40px !important;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-perfiles-audito {
+  background-image: url("src\assets\img\operador.svg");
+  background-size: 30px 30px;
+  min-height: 30px !important;
+  width: 40px !important;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ico-login {
+  background-image: url("src\assets\img\contrato.svg");
+  background-size: 20px 20px;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.ico-password {
+  background-image: url("src\assets\img\password.svg");
+  background-size: 21px 21px;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.image-g1 {
+  background-image: url("src\assets\img\graph1.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-g1-min {
+  background-image: url("src\assets\img\graph1.svg");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-g2 {
+  background-image: url("src\assets\img\graph2.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-g2-min {
+  background-image: url("src\assets\img\graph2.svg");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-g3 {
+  background-image: url("src\assets\img\graph3.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-g3-min {
+  background-image: url("src\assets\img\graph3.svg");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dots {
+  background-image: url("src\assets\img\dots.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dots-dark {
+  background-image: url("src\assets\img\dots-dark.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-dots-min {
+  background-image: url("src\assets\img\dots.svg");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-home {
+  background-image: url("src\assets\img\home-vista.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-home-min {
+  background-image: url("src\assets\img\home-vista.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-arrow-up {
+  background-image: url("src\assets\img\vista-arrow-up.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-arrow-up-min {
+  background-image: url("src\assets\img\vista-arrow-up.svg");
+  background-size: 9px 9px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-arrow-down {
+  background-image: url("src\assets\img\vista-arrow-down.svg");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-arrow-down-red {
+  background-image: url("src\assets\img\vista-arrow-down-red.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-arrow-down-min {
+  background-image: url("src\assets\img\vista-arrow-down.svg");
+  background-size: 9px 9px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-config {
+  background-image: url("src\assets\img\vista-config.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-vista-config-min {
+  background-image: url("src\assets\img\vista-config.svg");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-alarma1 {
+  background-image: url("src\assets\img\alarma1.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-alarma1-ejecutivo {
+  background-image: url("src\assets\img\alarma1.svg");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-alarma1-min {
+  background-image: url("src\assets\img\alarma1.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-alarma2 {
+  background-image: url("src\assets\img\alarma2.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-alarma2-ejecutivo {
+  background-image: url("src\assets\img\alarma2.svg");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-alarma2-min {
+  background-image: url("src\assets\img\alarma2.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-alarma3 {
+  background-image: url("src\assets\img\alarma3.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-alarma3-min {
+  background-image: url("src\assets\img\alarma3.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-expand {
+  background-image: url("src\assets\img\expand.svg");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-expand-dark {
+  background-image: url("src\assets\img\expand-dark.svg");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-expand-min {
+  background-image: url("src\assets\img\expand.svg");
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-edit {
+  background-image: url("src\assets\img\edit.svg");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-edit-dark {
+  background-image: url("src\assets\img\edit-dark.svg");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-edit-min {
+  background-image: url("src\assets\img\edit.svg");
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-service-arrow {
+  background-image: url("src\assets\img\service-arrow.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-service-arrow-min {
+  background-image: url("src\assets\img\service-arrow.svg");
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-ticket-ico1 {
+  background-image: url("src\assets\img\ticket-ico1.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-ticket-ico1-min {
+  background-image: url("src\assets\img\ticket-ico1.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-ticket-ico2 {
+  background-image: url("src\assets\img\ticket-ico2.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-ticket-ico2-min {
+  background-image: url("src\assets\img\ticket-ico2.svg");
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-home {
+  background-image: url("src\assets\img\header-home.svg");
+  background-size: 19px 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-home-active {
+  background-image: url("src\assets\img\header-home-active.svg");
+  background-size: 19px 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-work {
+  background-image: url("src\assets\img\header-work.svg");
+  background-size: 19px 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-work-active {
+  background-image: url("src\assets\img\header-work-active.svg");
+  background-size: 19px 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-user {
+  background-image: url("src\assets\img\header-user.svg");
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-support {
+  background-image: url("src\assets\img\header-support.svg");
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-support-dark {
+  background-image: url("src\assets\img\header-support-dark.svg");
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-notification {
+  background-image: url("src\assets\img\header-notification.svg");
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-notification-dark {
+  background-image: url("src\assets\img\header-notification-dark.svg");
+  background-size: 35px 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-select {
+  background-image: url("src\assets\img\header-user-select.svg");
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-logout {
+  background-image: url("src\assets\img\header-logout.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-version {
+  background-image: url("src\assets\img\header-version.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-header-configuracion {
+  background-image: url("src\assets\img\header-configuracion.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-inicio-home {
+  background-image: url("src\assets\img\inicio-home.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.img-inicio-acceso {
+  background-image: url("src\assets\img\inicio-acceso.svg");
+  margin-top: -1px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.img-acceso-option-file {
+  background-image: url("src\assets\img\acceso-option-file.svg");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-acceso-option-add {
+  background-image: url("src\assets\img\acceso-option-add.svg");
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-acceso-option-plus {
+  background-image: url("src\assets\img\accesos-plus.svg");
+  background-size: 25px 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-acceso-option-check {
+  background-image: url("src\assets\img\accesos-check.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-administrator-workspace {
+  background-image: url("src\assets\img\administrator-workspace.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-workspace-search {
+  background-image: url("src\assets\img\workspace-search.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-search-puntas {
+  background-image: url("src\assets\img\workspace-search.svg");
+  background-size: 21px 21px;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+.img-detalle-cliente {
+  background-image: url("src\assets\img\detalle-cliente-case.svg");
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-cliente-complete-heart {
+  background-image: url("src\assets\img\cliente-autocomplete-heart.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-cliente-complete-heart-active {
+  background-image: url("src\assets\img\cliente-favorito-active.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-detalle-cliente-notificacion {
+  background-image: url("src\assets\img\detalle-cliente-notificacion.svg");
+  background-size: 20px 20px;
+  margin-top: -2px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-detalle-cliente-notificacion-white {
+  background-image: url("src\assets\img\white-bell.svg");
+  background-size: 20px 20px;
+  margin-top: -2px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-detalle-cliente-notificacion-disabled {
+  background-image: url("src\assets\img\detalle-cliente-notificacion-disabled.svg");
+  background-size: 20px 20px;
+  margin-top: -2px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-cliente-complete-loading {
+  background-image: url("src\assets\img\cliente-autocomplete-loading.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-cliente-complete-clock {
+  background-image: url("src\assets\img\cliente-autocomplete-clock.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-ont {
+  background-image: url("src\assets\img\puntas-ont.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-radio {
+  background-image: url("src\assets\img\puntas-radio-inactive.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-router {
+  background-image: url("src\assets\img\puntas-router.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-activo {
+  background-image: url("src\assets\img\puntas-activo.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-inactivo {
+  background-image: url("src\assets\img\puntas-incativo.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-ont-inactive {
+  background-image: url("src\assets\img\puntas-ont.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-radio-inactive {
+  background-image: url("src\assets\img\puntas-radio.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-router-inactive {
+  background-image: url("src\assets\img\puntas-router.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-ont-active {
+  background-image: url("src\assets\img\puntas-ont-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-radio-active {
+  background-image: url("src\assets\img\puntas-radio-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-router-active {
+  background-image: url("src\assets\img\puntas-router-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-ver-interfaces {
+  background-image: url("src\assets\img\punta-ver-interface.svg");
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-ver-sla {
+  background-image: url("src\assets\img\punta-ver-interface.svg");
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-togle-enabled {
+  background-image: url("src\assets\img\punta-toggle-enabled.svg");
+  background-size: 60px 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-togle-disabled {
+  background-image: url("src\assets\img\punta-toggle-disabled.svg");
+  background-size: 60px 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-equipo-option-user {
+  background-image: url("src\assets\img\user.svg");
+  background-size: 12px 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-equipo-option-document {
+  background-image: url("src\assets\img\document.svg");
+  background-size: 14px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-detalle-miembro-backoffice {
+  background-image: url("src\assets\img\miembro-detalle-backofice.svg");
+  background-size: 23px 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-miembro-monitoreo-mapa {
+  background-image: url("src\assets\img\miembro-monitoreo-mapa.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-workspace-detail {
+  background-image: url("src\assets\img\ic-detail.svg");
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-workspace-back {
+  background-image: url("src\assets\img\workspace-back.svg");
+  background-size: 20px 20px;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.image-personaliza-tablero-oscuro {
+  background-image: url("src\assets\img\personaliza-tablero-oscuro.svg");
+  background-size: 50px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-personaliza-tablero-claro {
+  background-image: url("src\assets\img\personaliza-tablero-claro.svg");
+  background-size: 50px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-personaliza-tablero-oscuro {
+  background-image: url("src\assets\img\personaliza-tablero-oscuro.svg");
+  background-size: 50px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-personaliza-button-claro {
+  background-image: url("src\assets\img\personaliza-button-claro.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-personaliza-button-oscuro {
+  background-image: url("src\assets\img\personaliza-button-oscuro.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-personaliza-dash-img {
+  background-image: url("src\assets\img\tablero-dash-img.svg");
+  background-size: 60px 60px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-personaliza-dash-check {
+  background-image: url("src\assets\img\personaliza-dash-check.svg");
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-personaliza-dash-icon {
+  background-image: url("src\assets\img\personaliza-dash-icon.svg");
+  background-size: 40px 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-paginator-start-enabled {
+  background-image: url("src\assets\img\paginator-end-enabled.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+}
+
+.image-paginator-start-disabled {
+  background-image: url("src\assets\img\paginator-start-disabled.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-paginator-end-enabled {
+  background-image: url("src\assets\img\paginator-end-enabled.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-paginator-end-disabled {
+  background-image: url("src\assets\img\paginator-start-disabled.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+}
+
+.image-calendar-date-picker {
+  background-image: url("src\assets\img\datepicker-calendar.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-alerta-info {
+  background-image: url("src\assets\img\alert-info.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-alerta-success {
+  background-image: url("src\assets\img\alert-success.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-alerta-danger {
+  background-image: url("src\assets\img\alert-danger.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-alerta-warn {
+  background-image: url("src\assets\img\warn.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.image-trash-can {
+  background-image: url("src\assets\img\trash-can.svg");
+  background-size: 18px 19px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.image-resend-invitation {
+  background-image: url("src\assets\img\resend-invitation.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.image-cliente-favorito-active {
+  background-image: url("src\assets\img\cliente-favorito-active.svg");
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-cliente-down-square {
+  background-image: url("src\assets\img\down-square.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-cliente-up-square {
+  background-image: url("src\assets\img\up-square.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-cliente-icon-right {
+  background-image: url("src\assets\img\icon-right.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-close-notification {
+  background-image: url("src\assets\img\close-notification.svg");
+  background-size: 16px 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-delete-notification {
+  background-image: url("src\assets\img\delete-notification.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-notification-empty {
+  background-image: url("src\assets\img\notification-empty.svg");
+  background-size: 80px 79px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-send-massive-notification {
+  background-image: url("src\assets\img\send-massive-notification.svg");
+  background-size: 25px 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-chip-selected {
+  background-image: url("src\assets\img\client-chip-selected.svg");
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-option-curso {
+  background-image: url("src\\assets\\img\\option-curso.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-promedio-down {
+  background-image: url("src\assets\img\promedio-down.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-option-total {
+  background-image: url("src\assets\img\option-total.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-option-resueltos {
+  background-image: url("src\assets\img\option-resueltos.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-option-pendientes {
+  background-image: url("src\assets\img\option-pendientes.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-option-detalle {
+  background-image: url("src\assets\img\option-detalle.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-ticket-afectaciones-mapa {
+  background-image: url("src\assets\img\crear-ticket-afectaciones-mapa.svg");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+.img-ticket-afectaciones-mapa-dark {
+  background-image: url("src\assets\img\crear-ticket-afectaciones-mapa-dark.svg");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+}
+
+.img-rendimiento-arrow-up {
+  background-image: url("src\assets\img\rendimiento-arrow-up.svg");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.img-rendimiento-arrow-down {
+  background-image: url("src\assets\img\rendimiento-arrow-down.svg");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn-totalplay {
+  background-color: #285ced;
+  border: 1px solid #285ced;
+  border-radius: 2px !important;
+  font-size: 1rem;
+  color: #ffffff;
+  width: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-totalplay:disabled {
+  background-color: #b1b3b3;
+  border: 1px solid #b1b3b3;
+  border-radius: 2px !important;
+  font-size: 1rem;
+  color: #ffffff !important;
+  width: 100%;
+}
+
+.btn-totalplay:disabled:active {
+  outline-color: none !important;
+  box-shadow: none !important;
+}
+
+.btn-totalplay-secondary:active,
+.btn-totalplay-secondary:focus,
+.btn-totalplay-secondary:focus:active {
+  outline-color: #285ced !important;
+  opacity: 0.7;
+}
+
+.btn-totalplay:hover {
+  color: #ffffff !important;
+}
+
+.btn-totalplay:active,
+.btn-totalplay:focus,
+.btn-totalplay:focus:active {
+  outline-color: #285ced;
+  box-shadow: 0px 5px 7px #285ced;
+}
+
+.btn-totalplay-secondary {
+  background-color: #ffffff;
+  border: 2px solid #285ced;
+  border-radius: 2px !important;
+  font-size: 1rem;
+  color: #285ced;
+  width: 100%;
+  /*box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
+}
+
+.btn-totalplay-secondary:hover {
+  color: #285ced !important;
+}
+
+.btn-totalplay-secondary:disabled {
+  border: 1px solid #b1b3b3;
+  color: #b1b3b3 !important;
+}
+
+.btn-totalplay-danger {
+  background-color: #ffffff;
+  border: 2px solid #f95a36 !important;
+  border-radius: 2px !important;
+  font-size: 1rem;
+  color: #f95a36;
+  width: 100%;
+}
+
+.btn-totalplay-danger:hover {
+  background-color: #ffffff;
+  color: #f95a36 !important;
+}
+.btn-totalplay-danger:focus {
+  box-shadow: 0 0 0 0.25rem rgb(249 90 54 / 25%);
+}
+
+.image-headphones {
+  background-image: url("src\assets\img\headphones.svg");
+  background-size: 17px 23px;
+}
+
+.image-check {
+  background-image: url("src\assets\img\check.svg");
+  background-size: 22px 24px;
+}
+
+.image-warn {
+  background-image: url("src\assets\img\warn.svg");
+  background-size: 22px 24px;
+}
+
+.image-dash-check {
+  background-image: url("src\assets\img\dash-check.svg");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-benefits {
+  background-image: url("src\assets\img\benefits.svg");
+  background-size: 10px 10px;
+  width: 13px !important;
+  height: 12px !important;
+  background-position: center;
+}
+
+.add-blue {
+  background-image: url("src\assets\img\add-blue.svg");
+  background-size: 20px 20px;
+  width: 30px !important;
+  height: 30px !important;
+  background-position: center;
+  position: absolute;
+  margin-left: -25px;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.btn-default-totalplay {
+  background-color: #3b4559;
+  color: #7b8aa0;
+  border-radius: 1px !important;
+  border: 2px solid #7b8aa0 !important;
+  font-size: 12px;
+}
+
+.btn-help-totalplay {
+  background-color: #3b4559;
+  color: #7b8aa0;
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+.mat-badge-content {
+  background: #0d99ff;
+}
+
+.card-dashboards-filler {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ESTILOS DE LOS MAT FORM FIELD */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #7b8aa0 !important;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-outline-thick {
+  color: #f95a36 !important;
+}
+
+/* Estilos modal */
+
+.show-modal {
+  display: block !important;
+}
+
+.hide-modal {
+  display: none !important;
+}
+
+.modal.show-modal {
+  background: rgba(11, 17, 42, 0.6);
+}
+
+.noresize {
+  resize: none;
+}
+
+.modal {
+  overflow-y: auto;
+}
+
+.header-75 {
+  width: 75%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.border-success {
+  /* border: solid 1px #006455; */
+  border: solid 1px #285ced;
+  background-color: #e6edf6 !important;
+}
+.border-error {
+  border: solid 1px #f95a36;
+  background-color: #feead6 !important;
+}
+
+.border-info {
+  border: solid 1px #285ced;
+  background-color: #e6edf6 !important;
+}
+
+.border-warning {
+  border: solid 1px #aa9a09;
+}
+
+.border-success-blue {
+  border: solid 1px #285ced;
+  background-color: #e6edf6 !important;
+  color: #000000;
+}
+
+.border-info-blue {
+  border: solid 1px #285ced;
+  background-color: #e6edf6 !important;
+  color: #000000;
+}
+
+/* SCROLL FIGMA */
+
+.scrollmenu,
+.mat-drawer-inner-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  width: -moz-available;
+  width: -webkit-fill-available;
+}
+
+.scrollmenu::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.scrollmenu::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+  border-radius: 4px !important;
+  border: none !important;
+}
+
+.scrollmenu::-webkit-scrollbar-thumb:hover,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3 !important;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
+  border: none;
+}
+
+.scrollmenu::-webkit-scrollbar-thumb:active,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+  border: none;
+}
+
+.scrollmenu::-webkit-scrollbar-track,
+.mat-drawer-inner-container::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 4px;
+  border: none;
+}
+
+.scrollmenu::-webkit-scrollbar-track:hover,
+.scrollmenu::-webkit-scrollbar-track:active,
+.mat-drawer-inner-container::-webkit-scrollbar-track:hover,
+.mat-drawer-inner-container::-webkit-scrollbar-track:active {
+  background: #ffffff;
+  border-radius: 4px;
+  border-top: 1px solid #dddddd !important;
+}
+
+/* SCROLL FIGMA */
+
+/* mat-focus-indicator:hover {
+    background-color: yellow  !important;
+} */
+
+/* .mat-calendar-body-today {
+    background-color: yellow  !important;
+} */
+
+.mat-calendar-body-selected {
+  background-color: #285ced !important;
+  color: #ffffff !important;
+}
+
+.mat-checkbox-checked
+  .mat-checkbox-layout
+  .mat-checkbox-inner-container
+  .mat-checkbox-background {
+  background-color: #285ced !important;
+}
+
+/* .mat-datepicker-input {
+    user-select: none !important;
+} */
+
+/* .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #a9a9a9 !important;
+} */
+
+.mat-calendar-body-active > .mat-calendar-body-today {
+  color: #ffffff !important;
+  background-color: #285ced !important;
+  border-color: #ffffff !important;
+}
+
+/* .mat-date-options {
+    position: relative !important;
+    padding-left: 8px !important;
+    top: -5px !important;
+    color: #404040 !important;
+} */
+
+/* .mat-button-base {
+    position: relative !important;
+    left: 5px !important;
+} */
+
+/* .mat-datepicker-close-button {
+    display: none !important;
+} */
+
+.mat-calendar-header {
+  background: #3b4559 !important;
+  color: #ffffff !important;
+  border-radius: 9px 9px 0px 0px;
+  height: 37px;
+  padding-top: 0 !important;
+}
+
+.mat-calendar-controls * {
+  color: #ffffff !important;
+  line-height: 35px !important;
+}
+
+.mat-calendar-controls {
+  margin: 0 !important;
+}
+
+.mat-calendar-arrow {
+  border-top-color: #ffffff !important;
+}
+
+.mat-calendar-body-label {
+  display: none;
+}
+
+.mat-datepicker-content .mat-calendar {
+  width: 296px;
+  height: auto !important;
+}
+
+.mat-calendar-body-selected {
+  background-color: #3b4559 !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+}
+
+.mat-calendar-body-active > .mat-calendar-body-today {
+  color: #ffffff !important;
+  background-color: #3b4559 !important;
+  border-color: #ffffff !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+}
+
+.mat-calendar-body-cell-content {
+  border-radius: 4px !important;
+  font-size: 12px !important;
+}
+
+/* .mat-calendar-body-cell-content .mat-focus-indicator {
+    background-color: yellow !important;
+} */
+
+.modal800 {
+  max-width: 350px !important;
+}
+
+@media (max-width: 767px) {
+  .modal800 {
+    min-width: 96% !important;
+  }
+}
+
+/* Estilos modal */
+
+/* Estilo modificado angular-material-dialog */
+.mat-dialog-container {
+  border-radius: 4px;
+  min-width: 380px !important;
+  min-height: 220px !important;
+}
+
+.mat-dialog-actions {
+  display: contents !important;
+}
+
+.mat-dialog-content {
+  word-wrap: break-word;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.sub b {
+  font-weight: 600 !important;
+  color: rgb(90, 90, 90) !important;
+}
+
+.backdropBackground {
+  background: #3b4559;
+}
+
+.d3-tip-area,
+.d3-tip-area.simple {
+  padding: 12px;
+  /* background: #f7d0c5; */
+  color: #000000;
+  border-radius: 4px;
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.d3-tip-area:not(.simple):after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 20px;
+  width: 100%;
+  line-height: 1;
+  color: #f7d0c5;
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+  margin: -5px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.absolute-p {
+  position: absolute;
+}
+
+.space-4 {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.font-b {
+  font-weight: bold;
+}
+
+.dark-theme .mat-select-panel {
+  background: #22273d;
+}
+
+.dark-theme .mat-menu-panel,
+.dark-theme.mat-menu-panel {
+  background: #22273d;
+}
+
+.img-settings {
+  background-image: url("src\assets\img\settings.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-enlaces {
+  background-image: url("src\assets\img\dash-enlace.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-sitios {
+  background-image: url("src\assets\img\dash-punta.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-puntas-servicios {
+  background-image: url("src\assets\img\dash-interface.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-base-active {
+  background-image: url("src\assets\img\dispositivo-base-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-enlace-active {
+  background-image: url("src\assets\img\dispositivo-enlace-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-estatus-active {
+  background-image: url("src\assets\img\dispositivo-estatus-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-servicio-active {
+  background-image: url("src\assets\img\dispositivo-servicio-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-sitio-active {
+  background-image: url("src\assets\img\dispositivo-sitio-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-base {
+  background-image: url("src\assets\img\dispositivo-base.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-enlace {
+  background-image: url("src\assets\img\dispositivo-enlace.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-estatus {
+  background-image: url("src\assets\img\dispositivo-estatus.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-servicio {
+  background-image: url("src\assets\img\dispositivo-servicio.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-sitio {
+  background-image: url("src\assets\img\dispositivo-sitio.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-ont {
+  background-image: url("src\assets\img\cpe.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-ont-active {
+  background-image: url("src\assets\img\cpe-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-enlace-inactive {
+  background-image: url("src\assets\img\dispositivo-enlace-inactive.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-sitio-inactive {
+  background-image: url("src\assets\img\dispositivo-sitio-inactive.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-estatus-inactive {
+  background-image: url("src\assets\img\dispositivo-estatus-inactive.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-servicio-inactive {
+  background-image: url("src\assets\img\dispositivo-servicio-inactive.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-ont-inactive {
+  background-image: url("src\assets\img\cpe-inactive.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-cpe {
+  background-image: url("src\assets\img\ont.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-cpe-active {
+  background-image: url("src\assets\img\ont-active.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-dispositivo-cpe-inactive {
+  background-image: url("src\assets\img\ont-inactive.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-filter {
+  background-image: url("src\assets\img\filter.svg");
+  background-size: 19px 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image-alerta-bell {
+  background-image: url("src\assets\img\bell.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Custom datepicker */
+
+.custom-datepicker .mat-form-field-underline {
+  height: 0px !important;
+  opacity: 0;
+}
+
+.custom-datepicker {
+  box-sizing: border-box;
+  height: 30px;
+  border: 1px solid #f2f2f2;
+  border-radius: 7px;
+  max-width: 120px !important;
+  cursor: pointer;
+}
+
+.custom-datepicker .mat-form-field-infix {
+  padding: 0;
+  border: 0;
+}
+
+.custom-datepicker .mat-form-field-label-wrapper {
+  padding: 0;
+}
+
+.custom-datepicker .mat-form-field-suffix {
+  padding-top: 2px;
+  padding-right: 8px;
+  line-height: 13px;
+}
+
+.custom-datepicker .mat-form-field-flex {
+  align-items: center;
+}
+
+.custom-datepicker .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+  margin-top: 5px;
+  padding-left: 8px;
+  font-size: 10px !important;
+}
+
+.detail-sla {
+  background-image: url("src\assets\img\detail-sla.svg");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.disable-scrollbars::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar,
+.mat-select-panel:has(.input-select-scroll)::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.disable-scrollbars::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb,
+.mat-select-panel:has(.input-select-scroll)::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+  border-radius: 4px !important;
+  border: none !important;
+}
+
+.disable-scrollbars-home::-webkit-scrollbar {
+  width: 10px !important;
+  height: 8px !important;
+}
+
+.disable-scrollbars-home::-webkit-scrollbar-thumb {
+  background: #ccc !important;
+  border-radius: 4px !important;
+  border: none !important;
+}
+
+.cdk-overlay-pane {
+  /*width: auto !important;*/
+  width: auto !important;
+  height: auto !important;
+}
+
+.img-voz-card {
+  background-image: url("src\assets\img\voz-card.svg");
+  background-size: 20px 20px;
+  margin-top: -3px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-logo-total {
+  background-image: url("src\assets\img\logo-total.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+:root {
+  --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg)
+    saturate(0.3) brightness(0.7);
+}
+
+.map-tiles-dark  {
+  filter: var(--map-tiles-filter, none);
+}
+
+.image-refresh-page-notification {
+  background-image: url("src\assets\img\actualizar-pagina.png");
+  background-size: 30px 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,214 @@
+<div style="width: 100%; min-height: 815px; margin: 0; padding: 0" fxLayout="row" fxLayoutAlign="space-around center">
+  <div style="width: 100%; margin: 0; padding: 0" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
+    <div fxFlex="15" fxLayout="row" fxLayoutAlign="center center" [fxLayoutGap]="width > 1440 ? '100px' : '20px'">
+      <div class="dashboard-card enlace" fxLayout="row" fxLayoutAlign="space-around center" [ngStyle]="{
+          'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+        }">
+        <div fxFlex="50" fxFlexAlign="stretch" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+          <div style="
+              font-size: 48px;
+              font-weight: 600;
+              color: #848B91;
+              padding-top: 10px;
+            ">
+            {{totalDispositivos}}
+          </div>
+          <div style="color: #848B91; padding-top: 4px;">Total de {{typeService}}</div>
+        </div>
+        <div fxFlex="50" fxLayoutAlign="center center" style="padding-left: 10px"
+          *ngIf="(isDarkTheme | async) ? true : false" [ngStyle]="{ 'margin-rigth': width > 1440 ? '-30px' : '-40px' }">
+          <app-progress-bar [data]="progressChartdata" [width]="width > 1440 ? 75 : 60" [icon]="true" [typeService]="typeService" (typeChanged)="update()">
+          </app-progress-bar>
+        </div>
+        <div fxFlex="50" fxLayoutAlign="center center" *ngIf="!(isDarkTheme | async) ? true : false"
+          [ngStyle]="{ 'margin-rigth': width > 1440 ? '-30px' : '-40px' }">
+          <app-progress-bar [data]="progressChartdataDark" [width]="width > 1440 ? 75 : 60" [icon]="true" [typeService]="typeService" (typeChanged)="update()">
+          </app-progress-bar>
+        </div>
+      </div>
+      <div class="dashboard-card enlace" fxLayout="row" fxLayoutAlign="stretch" [ngStyle]="{
+          'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+        }">
+        <div fxFlex="38" fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div style="
+                width: 41px;
+                height: 39.82px;
+                border-radius: 7px;
+                padding-left: 13px;
+                padding-top: 12.41px;
+              " [ngStyle]="{
+                'background-color':
+                  (isDarkTheme | async) ? '#21273d' : '#EEF1F8'
+              }">
+              <mat-icon class="image-vista-arrow-up" style="width: 15px; height: 15px;"></mat-icon>
+            </div>
+            <div style="font-size: 11px; color: #2c8eff">Activos</div>
+          </div>
+          <div style="font-size: 20px; color: #2c8eff; font-weight: 600">
+            {{totalDispositivosActivos}}
+          </div>
+        </div>
+        <div fxFlex="62" fxLayout="row" fxLayoutAlign="space-evenly end">
+          <ng-container *ngIf="(isDarkTheme | async) ? true : false">
+            <app-bar-chart [sizex]="width > 1440 ? 170 : 140" [sizey]="width > 1440 ? 80 : 60" [data]="datesValue"
+              [margin]="margin" color="#30354b" [rx]="0" [showDomain]="false" [barWidth]="width > 1440 ? 14 : 11"
+              [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [different]="true" [viewTooltip]="false"
+              different-color="#285CED"></app-bar-chart>
+          </ng-container>
+          <ng-container *ngIf="(isDarkTheme | async) ? false : true">
+            <app-bar-chart [sizex]="width > 1440 ? 170 : 140" [sizey]="width > 1440 ? 80 : 60" [data]="datesValue"
+              [margin]="margin" color="#eaeaee" [rx]="0" [showDomain]="false" [barWidth]="width > 1440 ? 14 : 11"
+              [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [different]="true" [viewTooltip]="false"
+              different-color="#285CED"></app-bar-chart>
+          </ng-container>
+        </div>
+      </div>
+      <div class="dashboard-card enlace" fxLayout="row" fxLayoutAlign="stretch" [ngStyle]="{
+          'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+        }">
+        <div fxFlex="38" fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div style="
+                width: 41px;
+                height: 39.82px;
+                border-radius: 7px;
+                padding-left: 13px;
+                padding-top: 12.41px;
+              " [ngStyle]="{
+                'background-color':
+                  (isDarkTheme | async) ? '#21273d' : '#FCEAEC'
+              }">
+              <mat-icon class="image-vista-arrow-down-red" style="width: 15px; height: 15px;"></mat-icon>
+            </div>
+            <div style="font-size: 11px; color: #da5263">Inactivos</div>
+          </div>
+          <div style="font-size: 20px; color: #da5263; font-weight: 600">
+            {{totalDispositivosInactivos}}
+          </div>
+        </div>
+        <div fxFlex="62" fxLayout="row" fxLayoutAlign="space-evenly end">
+          <ng-container *ngIf="(isDarkTheme | async) ? true : false">
+            <app-bar-chart [sizex]="width > 1440 ? 170 : 140" [sizey]="width > 1440 ? 80 : 60" [data]="datesValue"
+              [margin]="margin" color="#30354b" [rx]="0" [showDomain]="false" [barWidth]="width > 1440 ? 14 : 11"
+              [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [different]="true" [viewTooltip]="false"
+              different-color="#DF6574"></app-bar-chart>
+          </ng-container>
+          <ng-container *ngIf="(isDarkTheme | async) ? false : true">
+            <app-bar-chart [sizex]="width > 1440 ? 170 : 140" [sizey]="width > 1440 ? 80 : 60" [data]="datesValue"
+              [margin]="margin" color="#eaeaee" [rx]="0" [showDomain]="false" [barWidth]="width > 1440 ? 14 : 11"
+              [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [different]="true" [viewTooltip]="false"
+              different-color="#DF6574"></app-bar-chart>
+          </ng-container>
+        </div>
+      </div>
+      <div class="dashboard-card enlace" fxLayout="row" fxLayoutAlign="stretch" [ngStyle]="{
+          'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+        }">
+        <div fxFlex="38" fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div style="
+                width: 41px;
+                height: 39.82px;
+                border-radius: 7px;
+                padding-left: 10px;
+                padding-top: 9px;
+                margin-left: 20px;
+              " [ngStyle]="{
+                'background-color':
+                  (isDarkTheme | async) ? '#21273d' : '#DBDBDB'
+              }">
+              <mat-icon class="image-vista-config"></mat-icon>
+            </div>
+            <div style="font-size: 11px; color: #838383; margin-left: 20px">
+              Mantenimiento
+            </div>
+          </div>
+          <div style="font-size: 20px; color: #838383; font-weight: 600">
+            {{totalDispositivosMantenimiento}}
+          </div>
+        </div>
+        <div fxFlex="62" fxLayout="row" fxLayoutAlign="space-evenly end">
+          <ng-container *ngIf="(isDarkTheme | async) ? true : false">
+            <app-bar-chart [sizex]="width > 1440 ? 170 : 140" [sizey]="width > 1440 ? 80 : 60" [data]="datesValue"
+              [margin]="margin" color="#30354b" [rx]="0" [showDomain]="false" [barWidth]="width > 1440 ? 14 : 11"
+              [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [different]="true" [viewTooltip]="false"
+              different-color="#838383"></app-bar-chart>
+          </ng-container>
+          <ng-container *ngIf="(isDarkTheme | async) ? false : true">
+            <app-bar-chart [sizex]="width > 1440 ? 170 : 140" [sizey]="width > 1440 ? 80 : 60" [data]="datesValue"
+              [margin]="margin" color="#eaeaee" [rx]="0" [showDomain]="false" [barWidth]="width > 1440 ? 14 : 11"
+              [showLimits]="false" [showXLabels]="false" [showYLabels]="false" [different]="true" [viewTooltip]="false"
+              different-color="#838383"></app-bar-chart>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="42" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+      <div fxFlex="70" fxFlexAlign="stretch">
+        <span style="font-weight: 500;font-size: 16px;line-height: 20px;color: #0B112A;" 
+        [ngStyle]="{'color': (isDarkTheme | async) ? '#7B8AA0' : '#7B8AA0'}">
+          <strong> Rendimiento de {{typeService}} - Últimas 12 hrs</strong>
+        </span>
+        <smc-rendimiento-diario-ejecutivo></smc-rendimiento-diario-ejecutivo>
+      </div>
+      <div fxFlex="30" fxFlexAlign="stretch" class="dashboard-card" [ngStyle]="{
+          'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+        }">
+        <smc-title-dashboard title="{{typeService}} inactivos {{totalSitios ? '('+totalSitios+')' : ''}} - Tiempo real" [menu]="true" [buttonMenu]="false">
+        </smc-title-dashboard>
+        <smc-carousel></smc-carousel>
+      </div>
+    </div>
+    <div fxFlex="43" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+      <div fxFlex="70" fxFlexAlign="stretch" class="dashboard-card" [ngStyle]="{
+          'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+        }">
+        <ng-container *ngIf="tabGraph == 19">
+          <smc-title-dashboard title="" [menu]="true" [typeGraph]="19" [viewGraph]="objectGraph[1]?.cuadranteActivo?.idCuadranteGrafica" [buttonMenu]="true"
+            [fullType]="fullType"></smc-title-dashboard>
+        </ng-container>
+        <ng-container *ngIf="tabGraph == 20">
+          <smc-title-dashboard title="" [menu]="true" [typeGraph]="20" [viewGraph]="objectGraph[2]?.cuadranteActivo?.idCuadranteGrafica" [buttonMenu]="true"
+          [fullType]="fullType"></smc-title-dashboard>
+        </ng-container>
+        <mat-tab-group [disableRipple]="true" [selectedIndex]="selected.value" (selectedIndexChange)="tabChange($event)"
+          style="margin-left: 20px; margin-right: 20px; margin-top: -10px" class="remove-border-bottom">
+          <mat-tab label="Promedio de Métricas - Última hora">
+            <ng-template matTabContent>
+              <div *ngIf="objectGraph[1]?.idDashboardCudrante == 19" class="ocultar-scroll">
+                <smc-promedios-incidentes-area [viewGraph]="objectGraph[1]?.cuadranteActivo?.idCuadranteGrafica">
+                </smc-promedios-incidentes-area>
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Promedio de Resolución" *ngIf="false">
+            <ng-template matTabContent>
+              <div *ngIf="objectGraph[2]?.idDashboardCudrante == 20" class="ocultar-scroll">
+                <smc-promedios-mapa-barras [sizeX]="700" [sizeXLarge]="1000"
+                  [viewGraph]="objectGraph[2]?.cuadranteActivo?.idCuadranteGrafica"></smc-promedios-mapa-barras>
+              </div>
+               </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div fxFlex="30" fxFlexAlign="stretch" class="dashboard-card" [ngStyle]="{
+          'background-color': (isDarkTheme | async) ? '#161c33' : '#FFFFFF'
+        }" *ngIf="objectGraph">
+        <smc-title-dashboard title="Tickets de incidentes por {{typeService}} - Mes en curso" [menu]="true" [typeGraph]="18"
+          [viewGraph]="objectGraph[0]?.cuadranteActivo?.idCuadranteGrafica" fullType="ENLACES_TICKETS">
+        </smc-title-dashboard>
+        <div *ngIf="objectGraph[0]?.cuadranteActivo?.idCuadranteGrafica == 31">
+          <smc-tickets-mapa-barras [tamano]="380" [sizeX]="150" [dispositivo]="typeService"></smc-tickets-mapa-barras>
+        </div>
+        <div *ngIf="objectGraph[0]?.cuadranteActivo?.idCuadranteGrafica == 32">
+          <smc-tickets-enlaces-lineas [dispositivo]="typeService"></smc-tickets-enlaces-lineas>
+        </div>
+        <div *ngIf="objectGraph[0]?.cuadranteActivo?.idCuadranteGrafica == 33">
+          <smc-tickets-incidentes-area [sizeY]="190" [sizeX]="350" [sizeXLarge]="470" [dispositivo]="typeService">
+          </smc-tickets-incidentes-area>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

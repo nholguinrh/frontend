@@ -1,0 +1,192 @@
+.admin-configuraciones-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 20px;
+}
+
+::ng-deep .admin-configuraciones-container .mat-form-field-wrapper{
+  margin-bottom: -1.25em!important;
+}
+
+.expansion-panel .mat-expansion-panel-header-description {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.expansion-panel .mat-expansion-panel-header-description .expansion-panel .mat-expansion-panel-header-description{
+  justify-content: flex-start;
+}
+
+.expansion-panel .mat-expansion-panel-header {
+  height: 60px;
+}
+
+.expansion-panel .mat-expansion-panel-header-title {
+  color: #3B4559; 
+  font-weight: 600; 
+  font-size: 14px;
+  align-items: center;
+}
+
+.expansion-panel .mat-expansion-panel {
+  margin-bottom: 20px;
+}
+
+::ng-deep .expansion-panel-header-title .mat-expansion-indicator{
+  width: 36px; 
+  height: 36px; 
+  background-color: #D3E3FE; 
+  border-radius: 8px; 
+  position: relative;
+  background-image: url("src\assets\img\down-square.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+::ng-deep .expansion-panel-header-title .mat-expansion-indicator::after{
+  visibility: hidden;
+}
+
+::ng-deep .mat-menu-panel {
+  position: relative;
+}
+
+::ng-deep .mat-menu-content:not(:empty) {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+
+.configuracion-card{
+  background-color: #E6EDF6; 
+  /*height: 80px;*/ 
+  border-radius: 4px;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-left: 15px;
+  width: 100%;
+  height: 180px;
+  margin-top: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-titulo{
+  font-weight: 600;
+  line-height: 20px;
+  font-size: 15px;
+  color: #0B112A;
+  max-height: 40px;
+  word-wrap: break-word;
+  overflow: hidden;
+  /*text-overflow: ellipsis;*/
+}
+
+.card-lista{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3B4559;
+  margin-top: 12px;
+  max-height: 100px;
+  word-wrap: break-word;
+  overflow: hidden;
+   /*text-overflow: ellipsis;*/
+}
+
+.nueva-configuracion{
+  border: 2px solid #285CED !important;
+  color: #285CED !important;
+  min-width: 150px;
+  width: 250px;
+  height: 40px; 
+  font-weight: 600;
+  font-size: 14px !important;
+  line-height: 20px;
+  box-shadow: none;
+}
+
+.equipo-detail{
+  height: 30px;
+  width: 30px;
+  position: relative; 
+  right: 10px;
+  top: 10px; 
+  background-color: #D3E3FE;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+.title{
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  line-height: 24px !important;
+  color: #0B112A !important;
+}
+
+.sla-title{
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3B4559;
+  margin-top: 20px;
+}
+
+.sla-subtitle{
+font-weight: 600;
+font-size: 9px;
+line-height: 16px;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: #7B8AA0;
+margin-top: 10px;
+}
+
+.sla-subtitle span{
+  font-weight: 400;
+  font-size: 14px;
+  color: #1D2640;
+}
+
+.configuracion-ico-editar{
+  width: 20px; 
+  height: 20px; 
+  position: relative; 
+}
+
+.img-editar{
+  background-image: url("src\assets\img\editar-configuracion.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px; 
+  height: 50px; 
+  cursor: pointer;
+  float: right;
+}
+
+.img-trash-version{
+  background-image: url("src\assets\img\trash-can-black.svg");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+::ng-deep .expansion-panel-header-title .mat-form-field-wrapper{
+  margin-bottom: -1.25em!important;
+}
+
+.disable-scrollbars::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.disable-scrollbars::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #ccc !important;
+    border-radius: 4px !important;
+    border: none !important;
+}

@@ -1,0 +1,67 @@
+<div class="confirm">
+    <mat-dialog-content>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                <div class="col-6"  style="margin: 0; padding: 0;">
+                    <ng-container *ngIf="data.type === 'success'">
+                        <div style="background-color: #81D871; border-radius: 5px; width: 30px; padding-left: 4px; padding-top: 3px; height: 30px;" disabled>
+                            <mat-icon class="image-check"></mat-icon>
+                        </div> 
+                    </ng-container>
+                    <ng-container *ngIf="data.type === 'warn'">
+                        <div style="background-color: #F4E361; border-radius: 5px; width: 30px; padding-left: 4px; padding-top: 3px; height: 30px;" disabled>
+                            <mat-icon class="image-warn"></mat-icon>
+                        </div> 
+                    </ng-container>
+                </div>
+                <div class="col-6">
+                    <button mat-flat-button style="float: right; position: relative; top: -10px; right: -12px; width: 10px!important;  min-width: unset!important;" (click)="closeDialog()">
+                        <mat-icon style="margin-left: -12px!important; margin-top: 6px;">
+                            close
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; min-height: 100px; margin-top: 10px;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                <div class="col-12"  style="margin: 0; padding: 0;">
+                    <span style="font-weight: 800; font-size: 15px;">{{data.title}}</span>
+                </div>
+            </div>
+            <div class="row sub" style="width: 100%; margin: 0; padding: 0; margin-top: 10px;">
+                <div class="col-12"  style="margin: 0; padding: 0;" [innerHTML]="data.subtitle">
+                    
+                </div>
+            </div>
+        </div>
+        
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <div class="container" style="width: 100%; margin: 0; padding: 0;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">                  
+                    <div class="col-4"  style="margin: 0; padding: 0;">
+                        <button type="button" 
+                                class="btn-totalplay-secondary"
+                                style="height: 45px; font-size: 14px; line-height: 25px;"
+                                *ngIf="data.showCancelMessage"
+                                (click)="closeDialog()">
+                                {{ data.cancelMessage }}
+                        </button>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-4" style="margin: 0; padding: 0;">
+                        <button type="button" 
+                                class="btn-totalplay"
+                                style="width: 150px;  height: 45px; font-size: 14px; line-height: 25px;"
+                                (click)="confirmDialog()">
+                                {{ data.confirmMessage }}
+                        </button>
+                    </div>
+                    
+                
+            </div>
+        </div>
+    </mat-dialog-actions>
+</div>

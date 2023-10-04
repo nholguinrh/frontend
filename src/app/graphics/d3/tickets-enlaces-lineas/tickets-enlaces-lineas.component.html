@@ -1,0 +1,208 @@
+<ng-container *ngIf="!spinnerLoading">
+  <div style="margin: 0; padding: 0; padding: 10px" fxLayout="column" fxLayoutAlign="space-between stretch">
+    <div fxLayout="row" fxLayoutAlign="space-between stretch">
+      <div fxFlex="{{isFull ? 20 : 40}}" style="padding-top: 5px; font-size: 12px"
+        [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+        En curso vs Resueltos
+      </div>
+      <!--
+        <div fxFlex="{{isFull ? 80 : 60}}">
+          <smc-custom-datepicker startView="multi-year" (clickReturn)="update()"></smc-custom-datepicker>
+        </div>
+      -->
+    </div>
+    <ng-container *ngIf="!errorCarga">
+      <div fxLayout="row" fxLayoutAlign="space-between stretch" [ngStyle]="{ minHeight: isFull ? '500' : '275px' }"
+        [fxLayoutGap]="isFull ? '10px' : '0px'">
+        <div fxLayout="column" fxLayoutAlign="center start" [fxFlex]="isFull 
+        ? width > 1440 ? 80 : width < 1440 ? 75 : 75  
+        : width > 1440 ? 65 : 55">
+          <app-ticketline [margin]="isFull ? marginFull : margin" [isFull]="isFull" [sizex]="isFull
+                ? width > 1440 ? 1550 : width < 1440 ? 1050 : 1150
+                : width > 1440 ? 350 : 250" [sizey]="isFull 
+            ? width > 1440 ? 800 : width < 1440 ? 450 : 650 
+            : width > 1440 ? 275 : 240" [showTips]="true" [showGradient]="false" [isDynamicRange]="false"
+            [range]="[0, 40]" [showDomain]="true" [showXLabels]="true" [showYLabels]="true" [data]="datatickets"
+            [showYDomain]="false" [domainOpacity]="false"
+            [margin]="width > 1440 ? {top: 20, right: -5, bottom: 2, left: 30} : {top: 20, right: 0, bottom: 10, left: 20}"
+            [month]="true"></app-ticketline>
+        </div>
+  
+        <div fxLayout="row" fxLayoutAlign="space-between stretch" [fxFlex]="isFull 
+          ? width > 1440 ? 20 : width < 1440 ? 25 : 25  
+          : width > 1440 ? 35 : 45">
+          <div *ngIf="false" fxFlex="40" fxLayout="row" fxLayoutAlign="space-between end" fxLayoutGap="10px">
+            <div fxFlex="50"
+              style="width: 80px; height: 70px; border-radius: 11px; display: flex; flex-wrap: wrap; align-items: center;"
+              [ngStyle]="{
+                'background-color': (isDarkTheme | async) ? '#433b29' : '#fdf0cc',
+                height: isFull ? '150px' : '70px'
+              }">
+              <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 10px;">
+                <div class="col-12" style="
+                    margin: 0;
+                    padding: 0;
+                    text-align: center;
+                    color: #f7b500;
+                    font-weight: 600;
+                  " [ngStyle]="{ 'font-size': isFull ? '30px' : '21px' }">
+                  {{ enCurso }}
+                </div>
+              </div>
+              <div class="row" style="width: 100%; margin: 0; padding: 0; ">
+                <div class="col-12" style="
+                    padding: 0;
+                    font-size: 8px !important;
+                    line-height: 10px;
+                    font-weight: 600;
+                    color: #f7b500;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    " [ngStyle]="{ 'font-size': isFull ? '22px' : '10px', 'margin-left': isFull ? '10px' : '5px'}">
+                  <mat-icon class="image-ticket-ico1" style="margin-right: 5px;" [ngStyle]="{'background-size': isFull ? '34px 34px' : '', 'height': isFull ? '34px' : '', 'width': isFull ? '34px' : ''}"></mat-icon>
+                  En curso
+                </div>
+              </div>
+            </div>
+            <div fxFlex="50" style="width: 80px; height: 70px; border-radius: 11px; background-color: #124047; display: flex; flex-wrap: wrap; align-items: center; " 
+              [ngStyle]="{
+                'background-color': (isDarkTheme | async) ? '#124047' : '#ccf5eb',
+                height: isFull ? '150px' : '70px'
+              }">
+              <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 10px">
+                <div class="col-12" style="
+                    margin: 0;
+                    padding: 0;
+                    text-align: center;
+                    font-size: 18px;
+                    color: #00cf99;
+                    font-weight: 600;
+                  " [ngStyle]="{ 'font-size': isFull ? '30px' : '21px' }">
+                  {{ resueltos }}
+                </div>
+              </div>
+              <div class="row" style="width: 100%; margin: 0; padding: 0; ">
+                <div class="col-12" style="
+                    padding: 0;
+                    font-size: 8px !important;
+                    line-height: 10px;
+                    font-weight: 600;
+                    color: #00cf99;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    " [ngStyle]="{ 'font-size': isFull ? '22px' : '10px', 'margin-left': isFull ? '10px' : '5px'}">
+                  <mat-icon class="image-ticket-ico2" style="margin-right: 5px;" [ngStyle]="{'background-size': isFull ? '34px 34px' : '', 'height': isFull ? '34px' : '', 'width': isFull ? '34px' : ''}"></mat-icon>
+                  Resueltos
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="false" fxFlex="60" fxLayout="column" fxLayoutGap="0px" style="align-items: stretch; justify-content: flex-start;">
+            <div *ngFor="let item of data" style="">
+              <div fxLayout="row" fxLayoutAlign="space-between stretch" style="
+                  font-size: 11px;
+                  text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.25);
+                  text-transform: capitalize;
+                  font-weight: 500;
+                  padding-right: 30px;
+                  align-items: center;
+                  " [ngStyle]="{ 'margin-top': isFull ? '50px' : '20px', 
+                  'color': (isDarkTheme | async) ? '#7B8AA0' : '#0B112A'
+                }">
+                <div [ngStyle]="{'font-size': isFull ? '17px' : '11px' }" style="white-space: pre-line;" *ngIf="item.title == 'Pendiente'">
+                  {{ item.title == 'Pendiente' ? 'Pendientes por \n cliente' : 'Cerrados' }}
+                </div>
+                <div style="
+                    font-weight: 600;
+                    font-size: 15px;
+                    letter-spacing: -0.28px;
+                    text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.25);
+                  " [ngStyle]="{
+                    'font-size': isFull ? '17px' : '15px',
+                    'color': (isDarkTheme | async) ? '#7B8AA0' : '#0B112A'
+                  }" *ngIf="item.title == 'Pendiente'">
+                  {{ item.bar.value }} / {{ item.bar.max }}
+                </div>
+              </div>
+              <ng-container *ngIf="item.title == 'Pendiente'">
+  <div *ngIf="(isDarkTheme | async) ? true : false">
+                <smc-one-bar [sizex]="isFull 
+                  ? width > 1440 ? 250 : width < 1440 ? 160 : 190  
+                  : width > 1440 ? 190 : 150" [sizey]="isFull ? 4 : 4" [color]="item.bar.color" border-color="#8F92A1"
+                  [value]="((item.bar.value * 100) / item.bar.max)" [max]="100"
+                  background="#8F92A1" [rx]="3" [textcolor]="item.bar.textcolor" [textx]="item.bar.textx"
+                  [texty]="item.bar.texty" [transparent]="false" [margin]="margin2">
+                </smc-one-bar>
+              </div>
+              </ng-container>
+              
+              <ng-container *ngIf="item.title == 'Pendiente'">
+  <div *ngIf="(isDarkTheme | async) ? false : true">
+                <smc-one-bar [sizex]="isFull 
+                  ? width > 1440 ? 250 : width < 1440 ? 160 : 190  
+                  : width > 1440 ? 190 : 150" [sizey]="isFull ? 4 : 4" [color]="item.bar.color" border-color="#f4f4f6"
+                  [value]="((item.bar.value * 100) / item.bar.max)" [max]="100"
+                  background="#f4f4f6" [rx]="3" [textcolor]="item.bar.textcolor" [textx]="item.bar.textx"
+                  [texty]="item.bar.texty" [transparent]="false" [margin]="margin2">
+                </smc-one-bar>
+              </div>
+              </ng-container>
+              
+            </div>
+          </div>
+  
+          <div fxFlex="100" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="0px" style="align-content: center; flex-wrap: wrap;">
+            <div class="row w100m0p0" style=" padding-right: calc(-0.5 * var(--bs-gutter-x)); padding-left: calc(-.5 * var(--bs-gutter-x));">
+              <ng-container *ngFor="let item of dataEstatus">
+                <div  fxFlex="40" style="width: 50px; height: 90px; 
+                border: 1px solid #cccccc; border-radius: 11.2px;
+                display: flex; flex-wrap: wrap; align-items: center;
+                box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+                padding: 0;" 
+                
+                [ngStyle]="{
+                  'background-color': (isDarkTheme | async) ? '#21273d' : '#FFFFFF',
+                  'border':  (isDarkTheme | async) ? '1px solid #161c33' : '1px solid #cccccc',
+                  'height': isFull ? '180px' : '90px',
+                  'color': item.color
+                }">
+                  <div class="row" style="width: 100%; margin: 0; padding: 0; padding-top: 10px;">
+                    <div class="col-12" style="
+                        margin: 0;
+                        padding: 0;
+                        text-align: center;
+                        font-weight: 600;
+                      " [ngStyle]="{ 'font-size': isFull ? '30px' : '21px' }">
+                      {{ item.valor }}
+                    </div>
+                  </div>
+                  <div class="row" style="width: 100%; margin: 0; padding: 0; ">
+                    <div class="col-12" style="
+                        padding: 0;
+                        font-size: 8px !important;
+                        line-height: 10px;
+                        font-weight: 600;
+                        text-align: center;
+                        " [ngStyle]="{ 'font-size': isFull ? '22px' : '10px'}">
+                      {{ item.estatus }}
+                    </div>
+                  </div>
+      
+                </div>
+                <div  fxFlex="5" style="padding: 0;"></div> 
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="errorCarga">
+      <app-service-error-dashboard [full]="isFull" [height]="isFull ? 'auto' : '140px'" [typeError]="errorCarga"></app-service-error-dashboard>
+    </ng-container>
+  </div>
+</ng-container>
+<ng-container *ngIf="spinnerLoading">
+  <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+</ng-container>

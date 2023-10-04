@@ -1,0 +1,86 @@
+<div class="admin-equipos-container">
+<alert></alert>
+  <div class="row w100m0p0">
+      <div class="col-4">
+        <div class="row">
+            <div class="col-12 pe-1" style="font-size: 16px; line-height: 28px; font-weight: 600;">
+                Roles y permisos
+                <p class="equipo-title-subtitle">
+                    Invita a personas para trabajar, asignarles <br> roles y establece sus permisos.
+                </p>
+            </div>
+        </div>
+      </div>
+      <div class="col-3" style="margin: 0; padding: 0;">
+        <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                <mat-label>Buscar</mat-label>
+                <input matInput formControlName="busqueda" (keyup.enter)="changeFilter()"/>
+                <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important;"></mat-icon>
+            </mat-form-field>
+        </form>
+      </div>
+      <div class="col-5" style="margin-left: auto;">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-4 ps-2" style="padding-right: 0; margin-top: 5px;">
+                <button class="btn-totalplay-secondary " style="width: 100%; height: 45px; font-size: 14px; font-weight: 600;" (click)="descargarActividades()">
+                    Descargar
+                </button>  
+            </div>
+            <div class="col-5" style="padding-right: 0; margin-top: 5px;">
+                <button mat-button class="btn-totalplay" style="width: 100%; height: 45px; font-size: 14px; line-height: 40px;" (click)="invitarPersona()">
+                    <mat-icon class="img-inicio-acceso"></mat-icon>
+                    Invitar persona
+                </button>
+            </div>
+        </div>
+      </div>
+  </div>
+  <div class="row w100m0p0" style="margin: 10px 0px 10px; min-height: 200px; display: flex; align-items: center;" *ngIf="pageResponse.content?.length == 0">
+    <app-filter-error (clickReturn)="returnPage()"></app-filter-error>
+  </div>
+
+  <div class="row w100m0p0 pt-3" style="margin-top: 20px!important;" *ngIf="pageResponse.content?.length > 0">
+    <div class="col-12">
+        <div class="row gx-3 gy-4">
+            <div class="col-4" *ngFor="let user of this.pageResponse.content">
+                <div class="equipo-card" *ngIf="usuario != user.idUsuario"> 
+                    <div class="equipo-ico img-equipo-option-user"></div>
+                    <div class="equipo-title">
+                        <ng-container *ngIf="user?.tbCatEstatus?.idCatEstatus == 3"> {{ user.nombreCompleto | slice:0:10 }}<span *ngIf="user.nombreCompleto.length > 10">..</span><div class="border-warning badge text-warning warning-text" *ngIf="user?.tbCatEstatus?.idCatEstatus == 3">PENDIENTE</div></ng-container>
+                        <ng-container *ngIf="user?.tbCatEstatus?.idCatEstatus != 3">{{ user.nombreCompleto | slice:0:25 }}<span *ngIf="user.nombreCompleto.length > 25">...</span></ng-container>
+                        <p class="equipo-subtitle">
+                            {{ user.tbCatPerfil.descripcion | slice:0:30 }}
+                        </p>
+                        <a style="color: #285CED; line-height: 20px; text-decoration: underline;">
+                            {{ user.email | slice:0:28 }}<span *ngIf="user.email.length > 25">...</span>
+                        </a>
+                    </div>
+                    <div class="equipo-detail img-equipo-option-document" (click)="cambiarRol(user)" style="cursor: pointer;"></div>
+                </div>
+                <div class="equipo-card2" *ngIf="usuario == user.idUsuario"> 
+                    <div class="equipo-ico img-equipo-option-user"></div>
+                    <div class="equipo-title">
+                        {{ user.nombreCompleto | slice:0:25 }} <span *ngIf="user.nombreCompleto.length > 25">...</span>  <div class="border-warning badge text-warning warning-text" *ngIf="user?.tbCatEstatus?.idCatEstatus == 3">PENDIENTE</div>
+                        <p class="equipo-subtitle">
+                            {{ user.tbCatPerfil.descripcion | slice:0:30 }}
+                        </p>
+                        <a style="color: #285CED; line-height: 20px; text-decoration: underline;">
+                            {{ user.email | slice:0:28 }} <span *ngIf="user.email.length > 25">...</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row w100m0p0" style="margin-top: 30px!important; min-height: 50px;" *ngIf="pageResponse.content?.length > 0">
+    <div class="col-6" style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px;">
+        MOSTRANDO PÁG {{ this.pageResponse.number + 1 }} DE {{ this.pageResponse.totalOfPages }} DE {{ this.pageResponse.totalElements }} RESULTADOS
+    </div>
+    <div class="col-6" style="margin: 0; padding: 0;">
+        <app-pager [pageModel]="pageResponse" (paged)="onPaged($event + 1)" style="float: right;" [variant]="true"></app-pager>
+    </div>
+  </div>
+</div>

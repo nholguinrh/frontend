@@ -1,0 +1,258 @@
+<div class="home-container">
+  <div class="row w100m0p0">
+    <div class="col-12 px-4 p-4" style="background-color: #FFFFFF; min-height: 350px;">
+      <alert></alert>
+      <div class="row" style="margin-left: 15px; margin-right: 15px;">
+        <div class="col-6" style="padding: 0; margin: 0;">
+          <div class="row" style="padding: 0; margin: 0;">
+            <div class="col-11" style="padding: 0;">
+              <div class="row" style="margin: 0; padding: 0;">
+                <div class="col-12" style="margin-bottom: 4px; padding: 0; line-height: 28px; font-weight: 600; font-size: 18px; color: #0B112A;">
+                  Configuración de Métricas y SLA's por Dispositivos
+                </div>
+                <div class="col-8 equipo-title-subtitle" style="margin-bottom: 15px; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0; line-height: 20px;">
+                  Configura las métricas de SLA de los dispositivos que este cliente contrató
+                </div>
+                <div class="col-4" style="padding: 0; margin: 0;"></div>
+                <div class="col-7" style="margin: 0; padding: 0;">
+                  <form [formGroup]="formPlantilla" style="margin: 0; padding: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <mat-form-field appearance="outline" style="width: 100%; font-size: 12px; margin-right: 0;">
+                      <mat-label>USAR PLANTILLA</mat-label>
+                      <mat-select formControlName="plantilla" id="plantilla" name="plantilla" [disabled]="plantillaDisabled">
+                        <mat-option *ngFor="let item of plantillas" [value]="item.configuracionSLA.idConfiguracionSLA" (click)="llenaCampos()">
+                          {{item.configuracionSLA.tituloSLA}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </div>
+                <div class="col-5" style="padding: 0; margin: 0;"></div>
+              </div>
+            </div>
+            <div class="col-1 d-flex">
+              <mat-divider vertical></mat-divider>
+            </div>
+          </div>
+        </div>
+        <div class="col-6" style="padding: 0; margin: 0; font-weight: 600;">
+          <div class="row d-flex" style="padding: 0; margin: 0;">
+            <div class="col-12" style="margin-bottom: 8px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #0B112A;">
+              <div class="row" style="display: flex; align-items: center;">
+                <div class="col-1" style="padding: 0;">
+                  <div class="img-detalle-cliente" style="width: 40px; height: 40px; border-radius: 50%; background-color:#E6EDF6; margin-left: 0px;"></div>
+                </div>
+                <div class="col-11" >
+                  {{detalleCliente?.cliente.razonSocial}}
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="row">
+                <div class="col-12">
+                  <div class="row" style="margin: 0; padding: 0; display: flex; align-items: center;     margin-bottom: 10px;" *ngIf="datosPunta?.totalEnlacesActivos != 0">
+                    <div class="col-6" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                      Total de Enlaces configurados 
+                    </div>
+                    <div class="col-3" style="margin: 0; padding: 0 5px;">
+                      <div class="progress" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); height: 5px; border-radius: 2.1px;">
+                        <div class="progress-bar" style="background-color: #1A7F1C !important"  
+                        [style.width]="(datosPunta?.totalEnlacesActivos*100)/datosPunta?.totalEnlacesActivos + '%'"
+                        aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="col-3" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                      {{datosPunta?.totalEnlacesActivos}} de {{datosPunta?.totalEnlacesActivos}}
+                    </div>
+                  </div>
+                  <div class="row" style="margin: 0; padding: 0; display: flex; align-items: center;     margin-bottom: 10px;">
+                    <div class="col-6" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                      Total de Sitios configurados 
+                    </div>
+                    <div class="col-3" style="margin: 0; padding: 0 5px;">
+                      <div class="progress" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); height: 5px; border-radius: 2.1px;">
+                        <div class="progress-bar" style="background-color: #1A7F1C !important"  
+                        [style.width]="(datosPunta?.totalPuntasConfiguradas*100)/datosPunta?.totalPuntasActivas + '%'"
+                        aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="col-3" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                      {{datosPunta?.totalPuntasConfiguradas}} de {{datosPunta?.totalPuntasActivas}}
+                    </div>
+                  </div>
+                  <div class="row" style="margin: 0; padding: 0; display: flex; align-items: center;     margin-bottom: 10px;">
+                    <div class="col-6" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                      Total de Servicios configurados 
+                    </div>
+                    <div class="col-3" style="margin: 0; padding: 0 5px;">
+                      <div class="progress" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); height: 5px; border-radius: 2.1px;">
+                        <div class="progress-bar" style="background-color: #1A7F1C !important"  
+                        [style.width]="(datosPunta?.totalInterfacesConfiguradas*100)/datosPunta?.totalInterfacesActivas + '%'"
+                        aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="col-3" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                       {{datosPunta?.totalInterfacesConfiguradas}} de {{datosPunta?.totalInterfacesActivas}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form [formGroup]="form" class="metricas-expansion" style="margin: 0; padding: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <div class="row" style="margin-top: 20px; background-color: #FFFFFF; ">
+        <mat-accordion class="expansion-panel" multi>
+          <mat-expansion-panel style="width: 100%; margin: 0; padding: 0; margin-top: 10px;" [disabled]="false" [expanded]="true" (opened)="false" hideToggle="false">
+            <mat-expansion-panel-header class="expansion-panel-header-title">
+              <mat-panel-title>
+                Métricas básicas
+              </mat-panel-title>
+              <mat-panel-description>
+                <button mat-button class="btn-totalplay-secondary nueva-configuracion" style="height: 40px; font-size: 13px!important; font-weight: 600; box-shadow: none;" (click)="addMetricaBasica($event)">
+                  Nueva configuración
+                  <mat-icon class="image-cliente-icon-right"></mat-icon>
+                </button>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
+            <div class="configuration" formArrayName="metricasBasicas" *ngIf="metricasBasicas.length > 0">
+              <mat-expansion-panel *ngFor="let control of metricasBasicas.controls; let i = index;" [formGroupName]="i">
+                <mat-expansion-panel-header style="height: 80px;">
+                  <mat-panel-title  style="padding: 0; margin: 0; height: 80px;">
+                    <mat-form-field appearance="outline" style="margin: 0; padding: 0; width: 100%; font-size: 12px; margin-right: 30px; height: 80px; margin-top: 25px;" (click)="inputClick($event)">
+                      <mat-label>Nombre de la configuración</mat-label>
+                      <input matInput formControlName="nombreBasica" (click)="inputClick($event)" (paste)="paste($event)" (keydown.Space)="$event.stopPropagation()"(keydown.Enter)="$event.stopPropagation()"/>
+                    </mat-form-field>
+                  </mat-panel-title>
+                  <mat-panel-description style="justify-content: flex-start; height: 80px; padding: 0;">
+                    <button mat-button class="btn-totalplay" style="width: 110px; height: 45px; font-size: 13px!important;" (click)="guardarConfiguracion(control, $event)" *ngIf="!control.disabled && navegacion == 'nuevo-cliente-configuracion'">
+                      Asignar
+                    </button>
+                    <button mat-button class="btn-totalplay" style="width: 110px; height: 45px; font-size: 13px!important;" (click)="guardarConfiguracion(control, $event)" *ngIf="control.disabled && navegacion == 'nuevo-cliente-configuracion' && plantilla == true">
+                      Asignar
+                    </button>
+                    <button mat-button class="btn-totalplay" style="width: 110px; height: 45px; font-size: 13px!important;" (click)="asignarSLA(i)" *ngIf="control.disabled && navegacion == 'nuevo-cliente-configuracion' && plantilla == false">
+                      Asignar
+                    </button>
+                    <button mat-button class="btn-totalplay" style="width: 110px; height: 45px; font-size: 13px!important;" (click)="guardarConfiguracion(control, $event)" *ngIf="!control.disabled && navegacion == 'detalle-cliente'">
+                      Asignar
+                    </button>
+                    <button mat-button class="btn-totalplay" style="width: 110px; height: 45px; font-size: 13px!important;" (click)="guardarConfiguracion(control, $event)" *ngIf="control.disabled && plantilla == true && navegacion == 'detalle-cliente'">
+                      Asignar
+                    </button>
+                    <button mat-button class="btn-totalplay" style="width: 110px; height: 45px; font-size: 13px!important;" (click)="asignarSLA(i)" *ngIf="control.disabled && navegacion == 'detalle-cliente' && plantilla == false">
+                      Asignar
+                    </button>
+                    <button  mat-button class="borrar-configuracion image-trash-can" (click)="eliminarPlantilla(i,control)"></button>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="row" style="margin-top: 20px; margin-bottom: 10px">
+                  <div class="col-10" style="margin: 0; padding: 0;">                    
+                    <div class="row" style="margin: 0; padding: 0;">
+                      <div class="col-2">
+                        <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                          <mat-label>ALCANZABILIDAD</mat-label>
+                          <span matSuffix>%</span>
+                          <input matInput formControlName="alcanzabilidadBasica" name="alcanzabilidadBasica" (paste)="paste($event)" (keypress)="onlyNumbers($event);"/>
+                          
+                        </mat-form-field>
+                      </div>
+                      <div class="col-2">
+                        <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                          <mat-label>DISPONIBILIDAD</mat-label>
+                          <span matSuffix>%</span>
+                          <input matInput  formControlName="disponibilidadBasica" name="disponibilidadBasica" (paste)="paste($event)" (keypress)="onlyNumbers($event);"/>
+                        
+                        </mat-form-field>
+                      </div>
+                      <div class="col-2">
+                        <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                          <mat-label>LATENCIA</mat-label>
+                          <span matSuffix>mls</span>
+                          <input matInput  formControlName="latenciaBasica" name="latenciaBasica" (paste)="paste($event)" (keypress)="onlyNumbers($event);"/>
+                          
+                          </mat-form-field>
+                      </div>
+                      <div class="col-2">
+                        <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                          <mat-label>CONSUMO</mat-label>
+                          <span matSuffix>mbs</span>
+                          <input matInput  formControlName="anchoBasica" name="anchoBasica" (paste)="paste($event)" (keypress)="onlyNumbers($event);"/>
+                          
+                          </mat-form-field>
+                      </div>
+                      <div class="col-2">
+                        <mat-form-field appearance="outline" style="width: 100%; font-size: 10px;">
+                          <mat-label>PÉRDIDA DE PQTS</mat-label>
+                          <span matSuffix>%</span>
+                          <input matInput formControlName="perdidaBasica" id="perdidaBasica" (paste)="paste($event)" name="perdidaBasica" (keypress)="onlyNumbers($event);"/>
+                        
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-2 cuadro">
+                    <div class="row" style="margin: 10px 0px;">
+                      <div class="row d-flex align-items-center" style="padding: 0; margin: 0; margin-bottom: 5px;">
+                        <div class="col-8 texto" style="padding: 0; margin: 0;">
+                          enlaces configurados
+                        </div>
+                        <div class="col-2" style="margin: 0;">
+                          <mat-icon class="image-paginator-servicio"></mat-icon> 
+                        </div>
+                        <div class="col-2 numero justify-content-end" style="margin: 0;">
+                          {{ configuracionesSLA.length > i ? configuracionesSLA[i].configuracionSLA.totalEnlacesConfiguradas : 0}}
+                        </div>
+                      </div>
+                      <div class="row d-flex align-items-center" style="padding: 0; margin: 0; margin-bottom: 5px;">
+                        <div class="col-8 texto" style="padding: 0; margin: 0;">
+                          sitios configuradas
+                        </div>
+                        <div class="col-2" style="margin: 0;">
+                          <mat-icon class="image-paginator-servicio"></mat-icon> 
+                        </div>
+                        <div class="col-2 numero justify-content-end" style="margin: 0;">
+                          {{ configuracionesSLA.length > i ? configuracionesSLA[i].configuracionSLA.totalPuntasConfiguradas : 0}}
+                        </div>
+                      </div>
+                      <div class="row d-flex align-items-center" style="padding: 0; margin: 0; margin-bottom: 5px;">
+                        <div class="col-8 texto" style="padding: 0; margin: 0;">
+                          servicios configuradas
+                        </div>
+                        <div class="col-2" style="margin: 0;">
+                          <mat-icon class="image-paginator-servicio"></mat-icon> 
+                        </div>
+                        <div class="col-2 numero justify-content-end" style="margin: 0;">
+                          {{ configuracionesSLA.length > i ? configuracionesSLA[i].configuracionSLA.totalInterfacesConfiguradas : 0}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </div>
+            
+          </mat-expansion-panel>
+
+        </mat-accordion>
+        </div>
+        <div class="row" style="margin-top: 20px;" *ngIf="!accionGuardar">
+          <div class="col-8"></div>
+          <div class="col-2" style="padding-right: 0; margin-top: 5px;">
+            <button class="btn-totalplay-secondary" style="height: 45px; font-size: 14px; font-weight: 600;" (click)="cancelar()">
+              Cancelar
+            </button> 
+          </div>
+          <div class="col-2" style="padding-right: 0; margin-top: 5px;">
+            <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" (click)="finalizar()">
+              Finalizar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+</div>

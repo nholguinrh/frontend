@@ -1,0 +1,16 @@
+<div class="option-button" (click)="click()"
+[ngClass]="{'option-selected': selected == true }">
+<!-- 'fullbutton' :  index == 2 -->
+    <div class="button-main">
+        <div class="button-image">
+            <div [ngClass]="class" style="min-width: 40px; min-height: 40px; margin-left: 10px; border-radius: 5px;" [style.background-color]="selected ? '#FFFFFF' : '#E6EDF6'">&nbsp;</div>
+            <div class="image-dash-check" style="min-width: 40px; min-height: 40px; background-color: #285CED; color: white; border-radius: 2px 0px 0px 2px; padding-top: 10px; padding-left: 13px;" *ngIf="selected"></div>
+        </div> 
+        <div style="flex-grow: 5; padding-left: 20px; padding-right: 20px; font-size: 15px; font-weight: 600;" [style.color]="selected ? 'black' : '#7B8AA0'"
+        [ngStyle]="{'margin-top': recomendado ? '20px' : '30px'}">
+            <div>{{tittle}}</div>
+            <div class="button-recomendado" *ngIf="recomendado">RECOMENDADO</div>
+        </div>
+        
+    </div>
+</div>

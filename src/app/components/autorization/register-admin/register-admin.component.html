@@ -1,0 +1,129 @@
+<div class="page-wrapper">
+  <div class="sticky-header">
+    <smc-simple-toolbar></smc-simple-toolbar>
+  </div>
+  <div class="content-wrapper" style="background-color:#3B4559">
+      <div class="content">
+        <div class="autorization-container">
+          <div class="d-flex justify-content-center">
+            <mat-card class="totalplay-card margin-top">
+              <mat-card-content class="totalplay-card-container">
+                <div class="img-preload" *ngIf="!imgLoad">&nbsp;</div>
+                <img mat-card-image (load)="loadImage()" width="224px" height="385px" style="border-radius: 3px 0px 0px 3px;"
+                [hidden]="imgLoad === false" src="assets/img/img-login.png" alt="Onboarding">
+                <div class="totalplay-card-content">
+                  <mat-card class="card-content">
+                    <mat-card-title class="text-left" style="font-size: 24px;">
+                      {{ title }}
+                    </mat-card-title>
+                    <mat-card-subtitle class="text-left mt-2" style="font-size: 16px; margin: 20px 0px !important;">
+                      Ingresa los siguientes datos para crear tu cuenta
+                    </mat-card-subtitle>
+                    <mat-card-content>
+                      <form [formGroup]="form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                        <div class="row d-flex justify-content-center">
+                          <div class="col-sm-12" style="margin-top: 0px;">
+                            <mat-form-field appearance="outline">
+                              <mat-icon matPrefix class="ico-login"></mat-icon>
+                              <mat-label style="text-transform: uppercase;">nombre completo</mat-label>
+                              <input matInput formControlName="nombreCompleto" #contrato="matInput" minlength="3"
+                              (keydown.enter)="$event.preventDefault()" (keydown.enter)="enterContrato()" style="font-size: 15px!important;"/>
+                              <mat-error
+                                *ngIf="
+                                  !form.controls['nombreCompleto'].valid &&
+                                  form.controls['nombreCompleto'].touched
+                                "
+                              >
+                                {{ getError('nombreCompleto') }}
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                
+                        <div class="row d-flex justify-content-center" style="align-items: flex-end; margin-top: 10px;">
+                          <div class="col-sm-6 fields-container" >
+                            <mat-form-field appearance="outline">
+                              <mat-icon matPrefix class="ico-login"></mat-icon>
+                              <mat-label style="text-transform: uppercase;">Contraseña</mat-label>
+                              <input
+                                (paste)="paste($event)" (keypress)="blockSpace($event);"
+                                matInput
+                                [type]="hide ? 'password' : 'text'" (keydown.enter)="$event.preventDefault()" (keydown.enter)="enterPassword()"
+                                formControlName="password" #password="matInput" maxlength="40" style="font-size: 15px!important;" 
+                              />
+                              <button
+                                mat-icon-button
+                                matSuffix
+                                (click)="hide = !hide"
+                                [attr.aria-label]="'Ocultar contraseña'"
+                                [attr.aria-pressed]="hide"
+                              >
+                                <mat-icon>{{
+                                  hide ? "visibility_off" : "visibility"
+                                }}</mat-icon>
+                              </button>
+                              <mat-error
+                                *ngIf="
+                                  !form.controls['password'].valid &&
+                                  form.controls['password'].touched
+                                "
+                              >
+                                {{ getError('password') }}
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+
+                          <div class="col-sm-6 fields-container" >
+                            <mat-form-field appearance="outline">
+                              <mat-label style="text-transform: uppercase;">Confirmar</mat-label>
+                              <input
+                                (paste)="paste($event)" (keypress)="blockSpace($event);"
+                                matInput
+                                [type]="hideConfPassword ? 'password' : 'text'" (keydown.enter)="$event.preventDefault()" (keydown.enter)="enterPassword()"
+                                formControlName="confirmPassword" #confirmPassword="matInput" maxlength="40"
+                              />
+                              <button
+                                mat-icon-button
+                                matSuffix
+                                (click)="hideConfPassword = !hideConfPassword"
+                                [attr.aria-label]="'Ocultar contraseña'"
+                                [attr.aria-pressed]="hideConfPassword"
+                              >
+                                <mat-icon>{{ hideConfPassword ? "visibility_off" : "visibility" }}</mat-icon>
+                              </button>
+                              <mat-error
+                                *ngIf="!form.controls['confirmPassword'].valid && form.controls['confirmPassword'].touched">
+                                {{ getError('confirmPassword') }}
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                
+                        <div class="row mt-4 d-flex justify-content-center mb-3">
+                          <div class="col-md-7 d-flex align-items-end">
+                            <a style="color: #285CED; cursor: pointer; padding-left: 0px; text-decoration: underline; margin-bottom: 10px;" (click)="sendLogin()">
+                              Acceder a tu cuenta en su lugar</a>
+                          </div>
+                          <div class="col-md-5 d-flex justify-content-end">
+                            <button class="btn-totalplay" 
+                              id="btnsend"                 
+                              (click)="login()"  style="height: 45px; font-size: 14px; line-height: 25px;"
+                              [disabled]="!form.valid">
+                              Regístrate
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <smc-footer></smc-footer>
+      </div>
+  </div>
+</div>

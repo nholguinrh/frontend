@@ -1,0 +1,125 @@
+<div class="clientes-container">
+  <div class="row w100m0p0">
+    <div class="col-12" style="font-size: 14px; font-weight: 500; color: #3B4559;">
+      Tickets de incidentes del mes en curso
+    </div>
+    <div class="col-7" >
+      <div class="row" style="margin-top: 10px;">
+        <div class="col-3" *ngFor="let tickets of ticketEstatus">
+          <button [class]="ticketActivo == tickets.id ? tickets.clase + ' cuadro-estatus' : tickets.clase + ' cuadro-estatus'  " 
+                  [style.border]="ticketActivo == tickets.id ? '' : '0px none'" 
+                  [style.text-shadow]="ticketActivo == tickets.id ? '#000 .2px .2px' : ''" 
+                  mat-stroked-button 
+                  style="width: 100%;" (click)="filtroTicket(tickets.id)">
+            <span class="cuadro-span" style="font-weight: 700 !important; font-size: 20px; line-height: 24px; ">{{tickets.cantidad}}</span>
+            <p [style.color]="ticketActivo == tickets.id ? '' : '#000000'" [style.font-weight]="ticketActivo == tickets.id ? '800' : '400'" style="font-size: 15px; margin: 0px; line-height: 18px;">{{tickets.estatus}} - hoy</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-3" style="margin: 0; padding: 0;">
+      <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+            <mat-label>Buscar</mat-label>
+            <input matInput formControlName="busqueda" (keyup)="onKeyDownEvent($event)"/>
+            <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important;"></mat-icon>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div class="row w100m0p0" style="margin-left: 0;">
+    <div class="col-12">
+      <div class="titulo-estatus row" style="cursor: pointer;" (click)="panelesActivos ? accordion.openAll() : accordion.closeAll()" (click)="panelesActivos = !panelesActivos">
+        <div class="col-9">
+          {{ estatusTickets }}
+        </div>
+        <div class="col-3" style="display: flex; justify-content: flex-end; padding: 0px 40px;" >
+          <mat-icon class="img-expansion-indicator" [style.transform]="panelesActivos ? '' : 'rotate(180deg)'"></mat-icon>
+        </div>
+      </div>
+      
+    </div>
+
+    <ng-container *ngIf="!spinnerLoading">
+      <ng-container *ngIf="!errorCarga">
+        <div class="col-12 scroll-personalizado" style="min-height: 400px; max-height: 400px; overflow-x: hidden; overflow-y: scroll;">
+          <mat-accordion multi *ngIf="ticketsStatusList.length > 0">
+            <ng-container *ngFor="let control of ticketsStatusList">
+              <mat-expansion-panel style="border: 1px solid #3B4559; border-radius: 10px; margin: 10px 0;" class="expansion-panel-secondary">
+                <mat-expansion-panel-header class="expansion-panel-header-title-secondary">
+                  <div class="row encabezado-panel" style="padding: 0; width: 100%;">
+                    <div class="col-3">
+                      <span>Fecha de apertura</span>
+                      <p style="font-weight: 600; font-size: 14px;">{{control.fechaDeApertura}}</p>
+                    </div>
+                    <div class="col-3">
+                      <span>Tiempo transcurrido</span>
+                      <p style="font-weight: 600; font-size: 18px;">{{control.tiempoTranscurrido ? '' : '3 días'}}  <span style="font-weight: 500; font-size: 14px; color: #000000; margin-left: 15px;">{{control.tiempoTranscurrido}}</span> </p>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-4" style="padding: 0;">
+                      <div class="row">
+                        <div class="col-6" style="padding: 0; text-align: end;">
+                          <span style="color: #000000;">Número de ticket: </span>
+                        </div>
+                        <div class="col-6">
+                          <span style="font-weight: 700; font-size: 14px; padding-left: 10px;">{{control.numeroTicket}}</span>
+                          <p style="font-weight: 600; font-size: 12px; color: #285CED; box-shadow: none; text-decoration-line: underline;" (click)="detalleIncidente(control.numeroTicket, $event)">
+                            Ver detalles del incidente
+                          </p>
+                        </div>
+                      </div>
+                      
+                      
+                    </div>
+                  </div>
+                </mat-expansion-panel-header>
+                <div class="row encabezado-panel" style="padding: 0; width: 100%; margin: 10px 0px 20px 0px;">
+                  <div class="col-3" style="padding-left: 35px;">
+                    <span style="font-weight: 600; color: #285CED;">Ticket externo <mat-icon class="img-edit-incidencia"></mat-icon></span>
+                    <p style="font-weight: 600; font-size: 14px;">{{control.ticketAlias}}</p>
+                  </div>
+                  <div class="col-3" style="padding-left: 0;">
+                    <span>Categoría</span>
+                    <p style="font-weight: 600; font-size: 14px;">{{control.categoria}}</p>
+                  </div>
+                  <div class="col-6" style="padding: 0px 70px 0px 20px;">
+                    <div style="background: #FEEAD6; border-radius: 10px; padding: 0px 20px;">
+                      <span style="font-size: 10px; font-weight: 400;">Descripción</span>
+                      <p style="font-weight: 600; font-size: 12px; color: #000;">{{control.descripcion}}</p>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </ng-container>
+          </mat-accordion>
+          <mat-accordion *ngIf="ticketsStatusList.length == 0 && !errorCarga">
+            <app-filter-error (clickReturn)="returnFilter()"></app-filter-error>
+          </mat-accordion>
+        </div>
+      </ng-container>
+  
+      <ng-container *ngIf="errorCarga">
+        <app-service-error-dashboard [typeError]="errorCarga"></app-service-error-dashboard>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="spinnerLoading">
+      <div class="col-12" style="margin-left: 0; display: flex; align-items: center; justify-content: center; min-height: 400px;" >
+        <mat-spinner [diameter]="70"></mat-spinner>
+      </div>
+    </ng-container>
+  </div>
+  
+
+  <div class="row w100m0p0" style="margin-top: 30px!important; min-height: 50px;" *ngIf="ticketsStatusList.length > 0">
+    <ng-container *ngIf="!errorCarga">
+      <div class="col-6" style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px; text-transform: uppercase;">
+        MOSTRANDO PÁG {{ pager?.current }} DE {{ pager?.total }} DE {{ pager.data.length }} RESULTADOS
+      </div>
+      <div class="col-6" style="margin: 0; padding: 0;">
+        <app-paginator [pageModel]="pager" (paged)="onPaged($event)" style="float: right;"></app-paginator>
+      </div>
+    </ng-container>
+  </div>
+</div>

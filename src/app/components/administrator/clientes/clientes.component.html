@@ -1,0 +1,219 @@
+<div class="admin-clientes-container">
+  <alert></alert>
+  <div class="row w100m0p0" style=" display: flex; justify-content: flex-end; align-items: center;">
+    <div class="col-4"></div>
+    <div class="col-3 clientes-table">
+      <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off"
+        spellcheck="false">
+        <mat-form-field class="tamano-option" appearance="outline" style="width: 100%; font-size: 12px;">
+          <mat-label>Buscar</mat-label>
+          <input matInput [matAutocomplete]="auto" formControlName="busqueda" #trigger="matAutocompleteTrigger"
+            (keyup.enter)="filterString()" (keyup)="keyShowAutocomplete($event)" />
+          <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important;"></mat-icon>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option value="Favoritos" (click)="selectFavoritos()"
+              [ngClass]="{'hide-autocomplete': !showAutocomplete}" [ngClass]="{'hide-autocomplete': !showAutocomplete}">
+              <mat-icon class="image-cliente-complete-heart"></mat-icon>
+              Favoritos
+            </mat-option>
+            <mat-option value="Más recientes" (click)="selectRecientes()"
+              [ngClass]="{'hide-autocomplete': !showAutocomplete}">
+              <mat-icon class="image-cliente-complete-loading"></mat-icon>
+              M&aacute;s recientes
+            </mat-option>
+            <mat-option value="Más antiguos" (click)="selectAntiguos()"
+              [ngClass]="{'hide-autocomplete': !showAutocomplete}">
+              <mat-icon class="image-cliente-complete-clock"></mat-icon>
+              M&aacute;s antiguos
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="col-2 clientes-table-buscador" style="margin: 0 10px; padding: 0;">
+      <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px; line-height: 40px;"
+        (click)="nuevoCliente()">
+        <mat-icon class="img-inicio-acceso"></mat-icon>
+        Nuevo cliente
+      </button>
+    </div>
+    <div class="col-1" style="display: flex;" *ngIf="!isBackOffice">
+      <button mat-button class="btn-totalplay-secondary enviar-notificacion" (click)="sendMassiveNotification()"
+        style="max-width: 30px; height:45px; font-size: 14px; line-height: 40px;float: right;">
+        <mat-icon class="image-send-massive-notification"></mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="row w100m0p0" style="margin-top: 30px!important; min-height: 300px; display: flex; align-items: center;"
+    *ngIf="pageResponse.content?.length == 0">
+    <app-filter-error (clickReturn)="returnPage()"></app-filter-error>
+  </div>
+  <div class="row w100m0p0" style="margin-top: 30px!important;" *ngIf="pageResponse.content?.length > 0">
+    <div class="col-12" style="margin: 0; padding: 0;">
+      <div class="row scrollmenu" style="margin: 0; padding: 0; overflow-x: scroll;">
+        <table aria-describedby="tabla" class="table table-responsive table-bordered table-striped"
+          style="border: solid 1px #ffffff; table-layout:fixed; padding: 0; margin: 0;">
+          <thead
+            style="border-top: solid 1px #D0D0CE; border-bottom: solid 1px #D0D0CE; height: 60px!important; vertical-align: middle;">
+            <tr>
+              <th *ngFor="let col of fetchCol" class="tablaEquipo" [style.width]="calcularAnchoColumna(col.field)">
+                <span style="cursor:default!important;"
+                  *ngIf="col.field != 'paquete' && col.field != 'puntasActivas' && col.field != 'estatus'">
+                  {{col.header}}
+                </span>
+                <span *ngIf="col.field == 'paquete'"
+                  style="display: flex; align-items: center; justify-content: center; cursor: pointer;"
+                  [matMenuTriggerFor]="plantillaMenuPaquete">
+                  {{col.header}}
+                  <mat-icon class="img-select-arrow-gray"></mat-icon>
+                  <mat-menu class="header-menu limiteHeightMenu scrollmenu" #plantillaMenuPaquete="matMenu"
+                    yPosition="below" xPosition="before"
+                    style="width: 50px !important;padding-top: 0px; padding-bottom: 0px; overflow-y: scroll;"
+                    (closed)="selectoFiltros()">
+                    <p *ngFor="let menu of paquetes" style="margin-left: 10px; margin-right: 30px;"
+                      (click)="selectEncabezado($event)">
+                      <mat-checkbox [(ngModel)]="menu.estatus">{{menu.descripcion | slice:0:25}}
+                        {{menu.descripcion.length > 25 ? '...' : ''}} </mat-checkbox>
+                    </p>
+                  </mat-menu>
+                </span>
+                <span *ngIf="col.field == 'puntasActivas'"
+                  style="display: flex; align-items: center; justify-content: center; cursor: pointer;"
+                  [matMenuTriggerFor]="plantillaMenuPuntas">
+                  {{col.header}}
+                  <mat-icon class="img-select-arrow-gray"></mat-icon>
+                  <mat-menu class="header-menu limiteHeightMenu scrollmenu" #plantillaMenuPuntas="matMenu"
+                    yPosition="below" xPosition="before"
+                    style="padding-top: 0px; padding-bottom: 0px; overflow-y: scroll;">
+                    <p style="margin-left: 10px; margin-right: 30px;">
+                      <mat-checkbox [checked]="menuDispositivosEstatus" (change)="setAllDispositivos()"
+                        (click)="$event.stopPropagation();">Todos los dispositivos</mat-checkbox>
+                    </p>
+                    <div *ngFor="let menu of menuDispositivos">
+                      <p style="margin-left: 10px; margin-right: 30px;">
+                        <mat-checkbox [(ngModel)]="menu.estatus" (ngModelChange)="updateAllCompleteDispositivos()"
+                          (click)="selectEncabezado($event)">{{menu.descripcion}}</mat-checkbox>
+                      </p>
+                    </div>
+                  </mat-menu>
+                </span>
+                <span *ngIf="col.field == 'estatus'"
+                  style="display: flex; align-items: center; justify-content: center; cursor: pointer;"
+                  [matMenuTriggerFor]="plantillaMenuEstatus">
+                  {{col.header}}
+                  <mat-icon class="img-select-arrow-gray"></mat-icon>
+                  <mat-menu class="header-menu limiteHeightMenu scrollmenu" #plantillaMenuEstatus="matMenu"
+                    yPosition="below" xPosition="before"
+                    style="padding-top: 0px; padding-bottom: 0px; overflow-y: scroll;" (closed)="selectoFiltros()">
+                    <div *ngFor="let menu of estatus">
+                      <p style="margin-left: 10px; margin-right: 30px;" (click)="selectEncabezado($event)">
+                        <mat-checkbox [(ngModel)]="menu.estatus">{{menu.descripcion}}</mat-checkbox>
+                      </p>
+                    </div>
+                  </mat-menu>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody style="border: solid 1px #ffffff;">
+            <tr *ngFor="let p of pageResponse.content"
+              style="text-align: center; font-weight: 400; vertical-align: middle;">
+              <td *ngFor="let cell of fetchCol">
+                <span *ngIf="cell.field == 'idEmpresa' else razonSocial">
+                  {{p.idClienteString}}
+                </span>
+                <ng-template #razonSocial>
+                  <span *ngIf="cell.field == 'razonSocial' else paquete">
+                    {{p.razonSocial}}
+                  </span>
+                </ng-template>
+                <ng-template #paquete>
+                  <span *ngIf="cell.field == 'paquete' else puntasActivas">
+                    {{p.tbCatPaquete?.descripcion}}
+                  </span>
+                </ng-template>
+                <ng-template #puntasActivas>
+                  <span *ngIf="cell.field == 'puntasActivas' else estatus">
+                    <div class="row" style=" display: flex; justify-content: center;">
+                      <div class="col-4"
+                        style="display: flex; padding: 0; align-items: center; justify-content: center;"
+                        *ngIf="menuDispositivos[0].estatus || mostrarDispositivo()" matTooltip="Enlace"
+                        matTooltipPosition="below" [matTooltipDisabled]="p.enlacesContratados == 0">
+                        <ng-container *ngIf="p.enlacesContratados != 0">
+                          <mat-icon class="img-dispositivo-uno"></mat-icon>
+                          {{p.enlacesContratados ? p.enlacesContratados : 0}}
+                        </ng-container>
+                      </div>
+                      <div class="col-4"
+                        style="display: flex; padding: 0; align-items: center; justify-content: center;"
+                        [ngStyle]="{'border-left': menuDispositivos[0].estatus || mostrarDispositivo() ? '1px solid #D0D0CE' : ''}"
+                        *ngIf="menuDispositivos[1].estatus || mostrarDispositivo()" matTooltip="Sitios"
+                        matTooltipPosition="below" [matTooltipDisabled]="p.sitiosContratados == 0">
+                        <ng-container *ngIf="p.sitiosContratados != 0">
+                          <mat-icon class="img-dispositivo-dos"></mat-icon>
+                          {{p.sitiosContratados ? p.sitiosContratados : 0}}
+                        </ng-container>
+                      </div>
+                      <div class="col-4"
+                        style="display: flex; padding: 0; align-items: center; justify-content: center;"
+                        [ngStyle]="{'border-left': menuDispositivos[1].estatus || mostrarDispositivo() ? '1px solid #D0D0CE' : menuDispositivos[0].estatus ? '1px solid #D0D0CE' : ''}"
+                        *ngIf="menuDispositivos[2].estatus || mostrarDispositivo()" matTooltip="Servicios"
+                        matTooltipPosition="below" [matTooltipDisabled]="p.serviciosContratados == 0">
+                        <ng-container *ngIf="p.serviciosContratados != 0">
+                          <mat-icon class="img-dispositivo-tres"></mat-icon>
+                          {{p.serviciosContratados ? p.serviciosContratados : 0}}
+                        </ng-container>
+                      </div>
+                    </div>
+
+                  </span>
+                </ng-template>
+                <ng-template #estatus>
+                  <div class="row" style="margin: 0; padding: 0;" *ngIf="cell.field == 'estatus' else numeroUsuarios">
+                    <div class="col-9" style="text-align: center; overflow: hidden;">
+                      <span>
+                        {{p.tbCatEstatus.descripcion}}
+                      </span>
+                    </div>
+                    <div class="col-3"
+                      style="margin: 0px; padding: 0; text-align: left!important; display: flex; justify-content: center; align-items: center; min-width: 20px;"
+                      *ngIf="p.indicadorFavorito">
+                      <div class="image-cliente-favorito-active" style="width: 20px; height: 20px;"></div>
+                    </div>
+                  </div>
+                </ng-template>
+                <ng-template #numeroUsuarios>
+                  <span *ngIf="cell.field == 'numeroUsuarios' else detalle">
+                    {{p.numeroUsuarios ? p.numeroUsuarios : 0}}/{{p.tbCatPaquete.cantidadUsuarios ? p.tbCatPaquete.cantidadUsuarios : 0}}
+                  </span>
+                </ng-template>
+                <ng-template #detalle>
+                  <div class="image-workspace-detail" *ngIf="cell.field == 'detalle' else cellDefualt"
+                    style="width: 100%; height: 40px; cursor: pointer;" (click)="detalleCliente(p.idCliente)">
+                  </div>
+                </ng-template>
+                <ng-template #cellDefualt>
+                  <span style="text-align: center;">
+                    SIN INFORMACION
+                  </span>
+                </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row w100m0p0" style="margin-top: 30px!important; min-height: 50px;"
+    *ngIf="pageResponse.content?.length > 0">
+    <div class="col-6"
+      style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px;">
+      MOSTRANDO PÁG {{ this.pageResponse.number  + 1}} DE {{ this.pageResponse.totalOfPages }} DE
+      {{ this.pageResponse.totalElements }} RESULTADOS
+    </div>
+    <div class="col-6" style="margin: 0; padding: 0;">
+      <app-pager [pageModel]="pageResponse" (paged)="onPaged($event)" style="float: right;" [variant]="true">
+      </app-pager>
+    </div>
+  </div>
+</div>

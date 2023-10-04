@@ -1,0 +1,250 @@
+
+.dashboard-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+.title-promedio{
+  display: flex;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #838383;
+}
+
+.title-promedio-rendimiento{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #838383;
+}
+
+.title-number{
+  padding-top: 2px;
+  padding-left: 20px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 32px;
+  color: #0B112A;
+}
+
+.title-number-text{
+  padding-top: 2px;
+  padding-left: 5px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 20px;
+  color: #0B112A;
+}
+
+
+/*
+::ng-deep .mat-date-range-input-start-wrapper .mat-date-range-input-inner {
+  position: relative !important;
+  top: 8px !important;
+  right: -5px;
+  max-width: 100%;
+}
+*/
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-inner {
+  top: 12px !important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-start-wrapper {
+  position: static !important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-inner{
+  font-size: 12px !important;
+  margin-top: 8px !important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-date-range-input-separator{
+  margin-top: 6px !important;
+}
+::ng-deep .select-monitoreo-voz .mat-form-field-appearance-outline .mat-form-field-infix {
+  margin-top: -18px!important;
+  font-size: 12px!important;
+  font-weight: 600!important;
+}
+
+::ng-deep .select-monitoreo-voz .mat-select-arrow {
+  border: 0;
+}
+
+::ng-deep .select-monitoreo-voz .mat-form-field-suffix {
+  top: 0.75em !important;
+}
+
+.cuadro-llamadas{
+  border-radius: 11.2px;
+  text-align: center;
+  color: #0B112A;
+  max-width: 75px;
+  max-height: 45px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  margin-right: 14px;
+}
+
+.img-calendar{
+  background-image: url("src\assets\img\calendar-voz.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-metricas-voz{
+  background-image: url("src\assets\img\metricas-voz.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/*
+.filtro-tiempo ::ng-deep .mat-form-field-flex{
+  height: 38px;
+}
+
+.filtro-tiempo ::ng-deep .mat-select-arrow{
+  border: 0;
+}
+
+*/
+
+
+/*
+.cdk-overlay-pane:has(.metricas-catalogo){
+    top: 840px;
+}
+*/
+/*
+::ng-deep .smc-select-dashboard-speed .mat-form-field-appearance-outline.mat-form-field-disabled, 
+::ng-deep .smc-select-dashboard-speed .mat-form-field-outline {
+  opacity: 0!important;
+}
+
+
+    ::ng-deep .smc-select-dashboard-speed .mat-select-arrow {
+      margin-top: 10px!important;
+      color: #2c8eff!important;
+    }
+
+    ::ng-deep .smc-select-dashboard-speed .mat-select-value {
+      color: #2c8eff!important;
+    }
+
+*/
+
+.carrusel-prev{
+  background: #285CED;
+  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  margin-left: -10px;
+}
+
+.carrusel-next{
+  background: #285CED;
+  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  right: 10%;
+  margin-right: -5px;
+}
+
+.img-paginador{
+  background-image: url("src\assets\img\paginator-servicio-blanco.svg");
+  background-size: 25px 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+::ng-deep .carousel-container{
+  padding: 0 20px !important;
+}
+
+::ng-deep .carousel{
+  z-index: 1 !important;
+}
+
+::ng-deep .carousel-arrow-disabled{
+  opacity: 0 !important;
+}
+
+::ng-deep .carousel-cells{
+  width: 100% !important;
+}
+
+
+::ng-deep  .carousel-arrow{
+  background-color: #285CED !important;
+  box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.12) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 8px !important;
+}
+
+::ng-deep  .carousel-arrow-next{
+  right: -1px !important;
+  background-image: url("src\assets\img\paginator-servicio-blanco.svg") !important;
+  background-size: 25px 25px !important;
+}
+
+::ng-deep  .carousel-arrow-prev{
+  left: -1px !important;
+  background-image: url("src\assets\img\paginator-servicio-blanco.svg") !important;
+  background-size: 25px 25px !important;
+  transform: rotate(180deg);
+}
+
+
+
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-appearance-outline .mat-form-field-outline {
+  background: #F8FDFF;
+  opacity: 0.05;
+  border-radius: 7px;
+  color: #D0D0CE !important
+}
+
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick,
+::ng-deep .filtros-afectaciones-full-dark .mat-form-field-flex:hover .mat-form-field-outline-thick {
+  opacity: 0.1 !important;
+}
+
+::ng-deep .mat-select-panel:has(.dark-theme){
+  background: #22273d;
+}
+
+
+::ng-deep .mat-select-panel:has(.dark-theme) .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: rgba(255, 255, 255, 0.12);
+}
+::ng-deep  .mat-primary:has(.dark-theme) .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #7b8aa0;
+}
+
+::ng-deep .mat-select-panel:has(.dark-theme) .mat-option{
+  color: #D0D0CE;
+}
+
+::ng-deep .mat-menu-panel:has(.dark-theme),
+::ng-deep .mat-menu-panel:has(.dark-theme) {
+  background: #22273d;
+}
+
+::ng-deep .carousel-cell:has(img),
+.carousel-cell.display {     
+  display: none; 
+}

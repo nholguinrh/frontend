@@ -1,0 +1,37 @@
+.punta-tittle{
+    margin: 0; 
+    padding: 0;
+    letter-spacing: 2px;
+    color: #7B8AA0;
+    font-weight: 600;
+    font-size: 9px;
+}
+
+.option-button{
+    min-height: 150px;
+    justify-content: center;
+    background: #E6EDF6;
+    border: 2px solid #E6EDF6;
+    box-shadow: 0px 0px 8px 0px #A3B4CD;
+    border-radius: 4px;
+}
+
+
+.option-selected{
+    background: #E6EDF6;
+    border: 2px solid #FFFFFF;
+  }
+  
+  .button-main{
+    min-height: 130px;
+    min-width: 170px;
+  }
+  
+  .fullbutton{
+    width: 365px;
+    margin-top: -15px;
+  }
+  
+  .button-image{
+    margin: 15px auto 10px auto !important;
+  }

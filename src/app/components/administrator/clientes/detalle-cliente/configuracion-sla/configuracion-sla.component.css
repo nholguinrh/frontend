@@ -1,0 +1,129 @@
+.expansion-panel .mat-expansion-panel-header-description {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.expansion-panel .mat-expansion-panel-header-description .expansion-panel .mat-expansion-panel-header-description{
+  justify-content: flex-start;
+}
+
+.expansion-panel .mat-expansion-panel-header {
+  height: 60px;
+}
+
+.expansion-panel .mat-expansion-panel-header-title {
+  color: #3B4559; 
+  font-weight: 600; 
+  font-size: 14px;
+  align-items: center;
+}
+
+.expansion-panel .mat-expansion-panel {
+  margin-bottom: 14px;
+}
+
+::ng-deep .expansion-panel-header-title .mat-expansion-indicator{
+  width: 36px; 
+  height: 36px; 
+  background-color: #D3E3FE; 
+  border-radius: 8px; 
+  position: relative;
+  background-image: url("src\assets\img\down-square.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+::ng-deep .metricas-expansion .expansion-panel-header-title .mat-expansion-indicator::after{
+  visibility: hidden;
+}
+
+::ng-deep .metricas-expansion .mat-expansion-panel-body {
+  padding: 0px 0px 0px !important;
+}
+
+::ng-deep .metricas-expansion .mat-expansion-panel-body .mat-expansion-panel-body {
+  padding: 0px 22px 0px !important;
+}
+
+::ng-deep .metricas-expansion .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.nueva-configuracion{
+  border: 2px solid #285CED !important;
+  font-size: 1rem !important;
+  color: #285CED !important;
+  min-width: 250px;
+  width: 250px;
+}
+
+.cuadro{
+  background: #EFF6FD;
+  border-radius: 4px;
+  position: relative;
+  height: min-content;
+  margin-top: -35px;
+}
+
+.texto{
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7B8AA0;
+  line-height: 16px;
+}
+
+.numero{
+  font-weight: 400;
+  font-size: 14px;
+  text-align: right;
+  color: #3B4559;
+}
+
+.borrar-configuracion{
+  width: 40px; 
+  height: 40px; 
+  background-color: #FEEAD6; 
+  border-radius: 8px; 
+  position: relative; 
+  margin-left: 20px;
+  border: none;
+}
+
+.image-trash-can{
+  background-size: 22px 22px;
+  background-position: center !important;
+}
+
+.image-paginator-servicio{
+  width: 12px; 
+  height: 14px; 
+  background-image: url("src\assets\img\paginator-servicio.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+::ng-deep .configuration .mat-form-field-wrapper{
+  margin-bottom: -1.25em;
+}
+
+::ng-deep .configuration .mat-expansion-panel{
+  box-shadow: none !important;
+}
+
+.progress-bar-sla{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+  height: 5px; 
+  border-radius: 2.1px;
+}
+
+.progress-bar-sla ::ng-deep .mat-progress-bar-buffer{
+  /* background-color: #1A7F1C !important;*/
+}
+
+.progress-bar-sla ::ng-deep .mat-progress-bar-fill::after {
+  background-color: #1A7F1C !important;
+}

@@ -1,0 +1,360 @@
+<div mat-dialog-content [ngStyle]="{'background-color': dark ? '#161c33':'#FFFFFF','color': dark ? '#D0D0CE':'#161c33'}">
+  <div fxLayout="row" fxLayoutAlign="space-between center" mat-dialog-title>
+    <div
+      fxFlex="50"
+      fxFlexAlign="stretch"
+      fxLayout="column"
+      fxLayoutAlign="center stretch"
+    ><h1><b>Editar gráfico</b></h1></div>
+    <div
+      fxFlex="50"
+      fxFlexAlign="stretch"
+      fxLayout="column"
+      fxLayoutAlign="center end"
+    >
+    <button style="border: none; background-color: white; color: black;" (click)="closeData()" [ngStyle]="{'background-color': dark ? '#161c33':'#FFFFFF','color': dark ? '#FFFFFF':'#0B112A'}">
+      <h1><b>X</b></h1>
+    </button>
+   </div>
+    
+  </div>
+  <hr />
+  <div mat-dialog-content>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div
+          fxFlex="50"
+          fxFlexAlign="stretch"
+          fxLayout="column"
+          fxLayoutAlign="center stretch"
+        >
+          <div fxLayout="row" style="margin-bottom: 30px !important">
+            <div *ngIf="this.typeGraph == 5 || this.typeGraph == 10 || this.typeGraph == 18">
+              <b>Tickets de incidentes</b>
+            </div>
+            <div *ngIf="this.typeGraph == 4">
+              <b>Alarmas </b>
+            </div>
+            <div *ngIf="this.typeGraph == 1">
+              <b>Vista general </b>
+            </div>
+            <div *ngIf="this.typeGraph == 3 || this.typeGraph == 21">
+              <b>Métricas </b>
+            </div>
+            <div *ngIf="this.typeGraph == 11 || this.typeGraph == 20">
+              <b>
+                Promedio de resolución</b>
+            </div>
+            <div *ngIf="this.typeGraph == 19">
+              <b>
+                Promedio de métricas</b>
+            </div>
+          </div>
+          <mat-card *ngFor="let object of objectGraph[0]?.cuadranteGrafica" style="cursor: pointer;" (click)="changeGraph(object.idCuadranteGrafica)"
+          [ngStyle]="{'background-color': dark ? '#161c33':'#FFFFFF','color': dark ? '#FFFFFF':'#212238',
+        'border': this.img == object.idCuadranteGrafica ? '1px solid #285CED' : '1px solid #9698AB' }">
+            <div fxLayout="row" style="margin: 8px 0px 0px 12px">
+              <div
+                fxLayout="column"
+                fxFlex="70"
+                fxFlexAlign="stretch"
+                fxLayoutAlign="center start"
+              >
+                <b>{{object.tipoGrafica}}</b>
+              </div>
+              <div
+                fxLayout="column"
+                fxFlex="30"
+                fxFlexAlign="stretch"
+                fxLayoutAlign="center end"
+              >
+                <button
+                  
+                  [ngClass]="this.img == object.idCuadranteGrafica ? 'button-check' : 'button-notcheck'"
+                  [ngStyle]="{'background-color': dark ? '#354A5E':'#9698AB','color': dark ? '#FFFFFF':'#0B112A'}"
+                >
+                  <mat-icon class="image-arrow"></mat-icon>
+                </button>
+              </div>
+            </div>
+            <div fxLayout="row" style="margin: 0px 0px 5px 12px">
+              <div fxLayout="column" fxLayoutAlign="center start" fxFlex="80">
+                {{object.informacion}}
+              </div>
+            </div>
+          </mat-card>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="space-around center" style="margin: 0 0 0 40px;">
+            <div *ngIf="this.typeGraph == 1">
+              <div *ngIf="this.dark">
+                <img
+                src="assets/img/velocimetro-vg-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 1"
+              />
+              <img
+                src="assets/img/grafico-linea-vg-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 4"
+              />
+              <img
+                src="assets/img/grafico-barras-vg-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 5"
+              />
+              </div>
+              <div *ngIf="!this.dark">
+                <img
+                src="assets/img/velocimetro-vg.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 1"
+              />
+              <img
+                src="assets/img/grafico-linea-vg.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 4"
+              />
+              <img
+                src="assets/img/grafico-barras-vg.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 5"
+              />
+              </div>
+            </div>
+            <div *ngIf="this.typeGraph == 5 || this.typeGraph == 10 || this.typeGraph == 18">
+              <div *ngIf="this.dark">
+                <img
+                src="assets/img/estatus-global-ticket-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 13 || this.img == 20 || this.img == 31"
+              />
+              <img
+                src="assets/img/linea-comparativa-ticket-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 14 || this.img == 21 || this.img == 32"
+              />
+              <img
+                src="assets/img/grafico-area-ticket-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 15 || this.img == 22 || this.img == 33"
+              />
+              </div>
+              <div *ngIf="!this.dark">
+                <img
+                src="assets/img/estatus-global-ticket.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 13 || this.img == 20 || this.img == 31"
+              />
+              <img
+                src="assets/img/linea-comparativa-ticket.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 14 || this.img == 21 || this.img == 32"
+              />
+              <img
+                src="assets/img/grafico-area-ticket.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 15 || this.img == 22 || this.img == 33"
+              />
+              </div>
+            </div>
+            <div *ngIf="this.typeGraph == 4">
+              <div *ngIf="this.dark">
+                <img
+                src="assets/img/estatus-global-alarmas-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 10"
+              />
+              <img
+                src="assets/img/grafica-burbuja-alarmas-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 11"
+              />
+              <img
+                src="assets/img/tabla-alarmas-alarmas-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 12"
+              />
+              </div>
+              <div *ngIf="!this.dark">
+                <img
+                src="assets/img/estatus-global-alarmas.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 10"
+              />
+              <img
+                src="assets/img/grafica-burbuja-alarmas.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 11"
+              />
+              <img
+                src="assets/img/tabla-alarmas-alarmas.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 12"
+              />
+              </div>
+            </div>
+            <div *ngIf="this.typeGraph == 3 || this.typeGraph == 21">
+              <div *ngIf="this.dark">
+                <img
+                src="assets/img/grafico-velas-servicios-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 7 || this.img == 40"
+              />
+              <img
+                src="assets/img/grafico-area-servicios-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 8 || this.img == 41"
+              />
+              <img
+                src="assets/img/grafico-barras-servicios-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 9 || this.img == 42"
+              />
+              </div>
+              <div *ngIf="!this.dark">
+                <img
+                src="assets/img/grafico-velas-servicios.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 7 || this.img == 40"
+              />
+              <img
+                src="assets/img/grafico-area-servicios.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 8 || this.img == 41"
+              />
+              <img
+                src="assets/img/grafico-barras-servicios.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 9 || this.img == 42"
+              />
+              </div>
+            </div>
+            <div *ngIf="this.typeGraph == 11 || this.typeGraph == 20">
+              <div *ngIf="this.dark">
+                <img
+                src="assets/img/grafico-barras-promedio-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 23 || this.img == 37"
+              />
+              <img
+                src="assets/img/grafico-area-promedio-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 24 || this.img == 38"
+              />
+              <img
+                src="assets/img/grafico-linea-promedio-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 25 || this.img == 39"
+              />
+              </div>
+              <div *ngIf="!this.dark">
+                <img
+                src="assets/img/grafico-barras-promedio.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 23 || this.img == 37"
+              />
+              <img
+                src="assets/img/grafico-area-promedio.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 24 || this.img == 38"
+              />
+              <img
+                src="assets/img/grafico-linea-promedio.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 25 || this.img == 39"
+              />
+              </div>
+            </div>
+            <div *ngIf="this.typeGraph == 19">
+              <div *ngIf="this.dark">
+                <img
+                src="assets/img/grafica-area-promedio-metricas-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 34"
+              />
+              <img
+                src="assets/img/grafica-barras-promedio-metricas-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 35"
+              />
+              <img
+                src="assets/img/grafica-linea-promedio-metricas-dark.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 36"
+              />
+              </div>
+              <div *ngIf="!this.dark">
+                <img
+                src="assets/img/grafica-area-promedio-metricas.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 34"
+              />
+              <img
+                src="assets/img/grafica-barras-promedio-metricas.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 35"
+              />
+              <img
+                src="assets/img/grafica-linea-promedio-metricas.svg" alt
+                width="400px"
+                height="390px"
+                *ngIf="this.img == 36"
+              />
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button
+      mat-button
+      class="button-color"
+      mat-dialog-close
+      style="margin-right: 15px; color: #285CED!important;"
+      (click)="closeData()"
+      [ngStyle]="{'background-color': dark ? '#161c33':'#FFFFFF'}"
+    >
+      Cancelar
+    </button>
+    <button mat-button class="button-color" mat-dialog-close (click)="close()"
+    [ngStyle]="{'background-color': dark ? '#285CED':'#285CED','color': dark ? '#FFFFFF':'#FFFFFF'}">
+      Aplicar cambios
+    </button>
+  </div>  
+</div>

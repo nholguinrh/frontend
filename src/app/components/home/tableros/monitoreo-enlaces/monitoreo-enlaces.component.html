@@ -1,0 +1,59 @@
+<div style="width: 100%; min-height: 815px; margin: 0; padding: 0; margin-top: 20px;" fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px" *ngIf="objectGraph?.length > 0">
+    <div class="cuadrante1" fxLayout="column"  fxLayoutGap="20px" fxFlexAlign="stretch">
+        <div class="dashboard-card" fxFlex="55" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+            <smc-title-dashboard title="Vista general - Disponibilidad- {{escalaTiempo}}" [menu]="true" [viewGraph]="objectGraph[0].cuadranteActivo.idCuadranteGrafica" [typeGraph]="1"  fullType="ENLACES_VISTA_GENERAL"></smc-title-dashboard>
+                <smc-vista-general-enlaces-speed [viewGraph]="objectGraph[0].cuadranteActivo.idCuadranteGrafica" [typeGraph]="1"></smc-vista-general-enlaces-speed>
+        </div>
+        <div class="dashboard-card" fxFlex="45" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}" *ngIf="objectGraph">
+            <smc-title-dashboard title="Alarmas por {{typeService}} - Tiempo real" [menu]="true" [viewGraph]="objectGraph[2].cuadranteActivo.idCuadranteGrafica" [typeGraph]="4" fullType="ENLACES_ALARMAS"></smc-title-dashboard>
+            <div *ngIf="objectGraph[2].cuadranteActivo.idCuadranteGrafica == 10">
+                <smc-alarmas-enlaces-lineas [dispositivo]="typeService"></smc-alarmas-enlaces-lineas>
+            </div>
+            <div *ngIf="objectGraph[2].cuadranteActivo.idCuadranteGrafica == 11">
+                <smc-alarmas-enlaces-burbujas></smc-alarmas-enlaces-burbujas>
+            </div>
+            <div *ngIf="objectGraph[2].cuadranteActivo.idCuadranteGrafica == 12">
+                <smc-alarmas-enlaces-barras [dispositivo]="typeService"></smc-alarmas-enlaces-barras>
+            </div>
+        </div>
+    </div>
+    <div class="cuadrante2 dashboard-card" fxFlexAlign="stretch" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+
+        <smc-title-dashboard title="{{typeService}} inactivos {{totalSitios ? '('+totalSitios+')' : ''}} - Tiempo real" [menu]="false" fullType="ENLACES_AFECTACIONES" numFullTtype="2"></smc-title-dashboard>
+        <div class="row" style="width: 100%; margin: 0; padding: 0; padding-left: 10px; padding-top: 5px;">
+            <!-- Aplicar filtro: -->
+        </div>
+        <form [formGroup]="form">
+            <div fxLayout="row" fxLayoutAlign="center center" style="width: 100%; margin: 0; padding: 0; padding-top: 5px;">
+                <div class="row filtros-afectaciones" [ngClass]="{'filtros-afectaciones-dark': (isDarkTheme | async)}" style="margin: 0; padding: 0; max-width: 100%; padding-left: 10px; padding-right: 10px;">
+                    <div class="col-6" style="margin: 0; padding: 0; padding-right: 10px;">
+                    </div>
+                    <div class="col-6" style="margin: 0; padding: 0;">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <smc-afectaciones-enlaces-density [metrica]="metricaSeleccionada" [tiempo]="tiempoSeleccionada"></smc-afectaciones-enlaces-density>
+
+
+    </div>
+    <div class="cuadrante3" fxLayout="column"  fxLayoutGap="20px"  fxFlexAlign="stretch">
+        <div class="dashboard-card" fxFlex="55" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+            <smc-title-dashboard title="Métricas por {{typeService}} - {{escalaTiempo}}" [menu]="true" [viewGraph]="objectGraph[1].cuadranteActivo.idCuadranteGrafica" [typeGraph]="3"  fullType="ENLACES_METRICAS"></smc-title-dashboard>
+            <smc-servicios-enlaces-boxplot [viewGraph]="objectGraph[1].cuadranteActivo.idCuadranteGrafica" [dispositivo]="typeService"></smc-servicios-enlaces-boxplot>
+        </div>
+        <div class="dashboard-card" fxFlex="45" [ngStyle]="{'background-color': (isDarkTheme | async) ? '#161c33':'#FFFFFF'}">
+            <smc-title-dashboard title="Tickets de incidentes por {{typeService}} - Mes en curso" [menu]="true" [viewGraph]="objectGraph[3].cuadranteActivo.idCuadranteGrafica" [typeGraph]="5" fullType="ENLACES_TICKETS"></smc-title-dashboard>
+            <div *ngIf="objectGraph[3].cuadranteActivo.idCuadranteGrafica == 13">
+                <smc-tickets-mapa-barras [tamano]="340"  [dispositivo]="typeService"></smc-tickets-mapa-barras>
+            </div>
+            <div *ngIf="objectGraph[3].cuadranteActivo.idCuadranteGrafica == 14">
+                <smc-tickets-enlaces-lineas [dispositivo]="typeService"></smc-tickets-enlaces-lineas>
+            </div>
+            <div *ngIf="objectGraph[3].cuadranteActivo.idCuadranteGrafica == 15">
+                <smc-tickets-incidentes-area [sizeY]="170" [sizeX]="475" [sizeXLarge]="565" [dispositivo]="typeService"></smc-tickets-incidentes-area>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- TODO: Regresar el orden a los tableros en <smc-tickets-enlaces-lineas></smc-tickets-enlaces-lineas> -->

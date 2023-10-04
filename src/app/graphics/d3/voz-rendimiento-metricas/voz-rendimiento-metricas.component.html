@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-4" style="display: flex; align-items: center;">
+        <span class="title-promedio-rendimiento" style="padding-left: 20px;">
+            {{ metricaSelecionada?.titulo }}:
+        </span>
+        <span class="title-number" style="padding-left: 10px;" [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A' }">{{ metricaSelecionada?.total }}</span>
+        <span class="title-number-text" style="padding-left: 10px;" [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#0B112A' }">{{ unit }}</span>
+        <span style="margin-left: 5px;" [ngStyle]="{'color': metricaSelecionada?.color}">({{ metricaSelecionada?.promedioComparativo }})</span>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-7 select-monitoreo-voz" [ngClass]="{'filtros-afectaciones-full-dark': (isDarkTheme | async), 'dark-theme': (isDarkTheme | async) }" style=" display: flex; justify-content: flex-end;">
+        <mat-form-field [formGroup]="form" appearance="outline" style="width: 210px; height: 38px; font-size: 10px; margin-right: 20px;" [ngStyle]="{width: widths > 1600 ? '210px' : '180px'}">
+            <mat-select formControlName="metricaS">
+                <mat-option disabled [ngClass]="{'dark-theme': (isDarkTheme | async) }">Selecciona una métrica</mat-option>
+                <mat-option *ngFor="let item of metricasVozCatalogo" [value]="item.sigla" class="metricas-catalogo input-select-scroll" (click)="changeMetrica(item.sigla)" >   
+                    {{item.name}}
+                </mat-option>
+            </mat-select>
+            <mat-icon matSuffix class="img-metricas-voz" [ngStyle]="{filter: (isDarkTheme | async) ? 'invert(90%)' : '' }"></mat-icon>
+        </mat-form-field>
+        <div>   
+        <mat-form-field appearance="outline" style="width: 250px; height: 38px; font-size: 10px; margin-right: 20px;" [ngStyle]="{width: widths > 1600 ? '250px' : '180px'}">
+            <mat-date-range-input [rangePicker]="picker" [formGroup]="dateRange" style="padding: -10px;" [min]="minDate" [max]="maxDate" disabled>
+                <input matInput  matStartDate formControlName="start" >
+                <input matEndDate formControlName="end" (dateChange)="changeRange()">
+            </mat-date-range-input>
+            <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+            <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
+            
+            </mat-form-field>
+            <div *ngIf="rangeInvalid">
+                <span  style="color: red; font-size: 12px;">La fecha final no puede ser igual a fecha inicial</span>
+            </div>
+        </div>
+            
+    </div>
+</div> 
+<ng-container *ngIf="!errorCarga">
+    <ng-container *ngIf="!spinnerLoading">
+        <div class="row">
+            <app-area-voz [data]="metricaSelecionada?.data" [areaType]="'tickets'" 
+            [scale]="scale"
+            [sizey]="isFull ? widths > 1440 ? 800 : 800 : widths > 1440 ? 280 : 200" [sizex]="isFull ? widths > 1440 ? 1800 : 1400 : widths > 1440 ? 1200 : 800" 
+            [color]="metricaSelecionada?.color" 
+            [gradient-start]="metricaSelecionada?.color" 
+            [linear-gradient]="'#FFFFFF'" 
+            [gradient-stop]="'#FFFFFF'" 
+            [tooltip-color]="tooltipColor" [margin]="{top: 30, right: 10, bottom: 30, left: 55}" 
+            tick-last-color="#797C8C" [showYLabels]="true" [isDynamicRange]="false" [unit]="unit"
+            [range]="[0, 100]" [specialFormat]="true" [full]="true" [showSLA]="false" [showXLabels]="true" [showDomain]="true" ></app-area-voz>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <ng-container style="margin: 5px 0 0 80px;">
+                <span style="font-size: 12px;">Tiempo de Resolucion {{ scale == 'week' ? '1 dia' : '1 hora'}}</span>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="spinnerLoading">
+        <div class="col-12" style=" display: flex; align-items: center; justify-content: center; min-height: 200px;">
+            <mat-spinner [diameter]="50"></mat-spinner>
+        </div>
+      </ng-container>
+</ng-container>
+<ng-container *ngIf="errorCarga">
+<app-service-error-dashboard height="140px"></app-service-error-dashboard>
+</ng-container>

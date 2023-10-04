@@ -1,0 +1,203 @@
+spring:
+  config:
+    activate:
+      on-profile:
+      - local
+  application:
+    name: gateway
+  jackson:
+    default-property-inclusion: NON_NULL    
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            - PATCH
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      
+logging:
+  file:
+    path: /logs/smc/mssmc-gateway
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': info
+    '[mx.com.totalplay.smc]': debug
+
+authorization:
+  signingKey: kXp2s5v8y/B?E(H+MbQeThWmYq3t6w9z
+  
+---
+
+
+spring:
+  config:
+    activate:
+      on-profile:
+      - default
+  application:
+    name: gateway
+  jackson:
+    default-property-inclusion: NON_NULL    
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            - PATCH
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      
+logging:
+  file:
+    path: /logs/smc/mssmc-gateway
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': info
+    '[mx.com.totalplay.smc]': debug
+
+authorization:
+  signingKey: kXp2s5v8y/B?E(H+MbQeThWmYq3t6w9z
+  
+server:
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:smc_api_dev_p12_mx.p12
+    key-store-password: kfy4R#qjG%PE
+    
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+      - totalplayA
+  application:
+    name: gateway
+  jackson:
+    default-property-inclusion: NON_NULL    
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            - PATCH
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      
+logging:
+  file:
+    path: /logs/smc/mssmc-gateway
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': info
+    '[mx.com.totalplay.smc]': debug
+
+authorization:
+  signingKey: kXp2s5v8y/B?E(H+MbQeThWmYq3t6w9z
+
+server:
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:1-ITSM-SMCv2-APP03.p12
+    key-store-password: SMCv2 
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile:
+      - totalplayB
+  application:
+    name: gateway
+  jackson:
+    default-property-inclusion: NON_NULL    
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+            - OPTIONS
+            - PATCH
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      
+logging:
+  file:
+    path: /logs/smc/mssmc-gateway
+  pattern:
+    console: "%d %-5level %logger : %msg%n"  
+    file: "%d %-5level [%thread] %logger : %msg%n"   
+  level:
+    '[org.springframework]': info
+    '[mx.com.totalplay.smc]': debug
+
+authorization:
+  signingKey: kXp2s5v8y/B?E(H+MbQeThWmYq3t6w9z
+    
+server:
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:1-ITSM-SMCv2-APP04.p12
+    key-store-password: SMCv2 

@@ -1,0 +1,392 @@
+<div style="width: 100%!important; margin: 0; padding: 20px; margin-top: 30px;">
+    <alert></alert>
+    <div class="row w100m0p0">
+        <div class="col-1">
+            <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goToDetalleCliente()"></div>
+        </div>
+        <div class="col-5" style="padding: 0;">
+            <div class="row w100m0p0">                
+                <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 24px;color: #0B112A;">
+                    SLA A CONFIGURAR:
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="text-align: right; font-weight: 600; padding: 0;"></div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row w100m0p0" style="margin-top: 15px!important;">
+        <div class="col-1">
+        </div>
+        <div class="col-5" style="padding: 0;">
+            <div class="row w100m0p0">                
+                <div class="col" style="margin: 0; padding: 0; font-size: 14px;">
+                    Busca y configura un SLA a los dispositivos que activaste
+                </div>
+            </div>
+        </div>
+        <div class="col-5" style="text-align: right; font-weight: 600; padding: 0;"></div>
+        <div class="col-1"></div>
+    </div>
+</div>
+<div style="width: 100%!important; margin: 0; padding: 20px; margin-top: 0px;">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10" style="background-color: #FFFFFF!important; min-height: 300px;">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-6" style="margin-top: 20px; padding-left: 20px;">
+                    <div class="row">
+                        <div class="col-12" style="font-weight: 600;
+                        font-size: 20px;
+                        line-height: 28px;color: #0B112A;">
+                            Configuración de SLA
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12" style="font-weight: 400;
+                        font-size: 16px;
+                        line-height: 24px;color: #7B8AA0; margin-top: 10px;margin-bottom: 10px;">
+                            El SLA que estás asignando es: <span style="color: #0B112A;">{{sla?.tituloSLA}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                                <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                                    <mat-label>Buscar dispositivos</mat-label>
+                                    <mat-icon matPrefix class="image-workspace-search"></mat-icon>
+                                    <input matInput [matAutocomplete]="auto"
+                                    #trigger="matAutocompleteTrigger" 
+                                    formControlName="busqueda" (keyup)="keyShowAutocomplete($event)"
+                                    style="font-size: 15px!important;"
+                                    (keyup.enter)="searchEnter($event);"/>
+                                    <button mat-icon-button matSuffix (click)="closeAutocomplete(); $event.stopPropagation();" style="margin-top: 10px!important;"  matTooltip="Mostrar opciones de búsqueda" matTooltipClass="custom-tooltip-blue"> 
+                                    <mat-icon class="img-settings" [matMenuTriggerFor]="searchSettings" #menuTriggerSearchSettings="matMenuTrigger"></mat-icon>
+                                    </button>
+                                    <mat-menu #searchSettings="matMenu" class="modalBusqueda" yPosition="below" xPosition="after">
+                                        <div class="row" style="font-weight: 400;" (click)="$event.stopPropagation();">
+                                          <div class="col-8" style="font-weight: 500; font-size: 16px; color: #261C15;">
+                                            Filtro de búsqueda
+                                          </div>
+                                          <div class="col-4" style="font-size: 14px; color: #285CED; text-align: end; cursor: pointer;" (click)="borrarFiltro(3, $event)">
+                                            Borrar filtros
+                                          </div>
+                                          <div class="col-12" style="margin-top: 20px;">
+                                            <div class="row">
+                                              <div class="col-8" style="font-size: 12px; color: #636971; margin-bottom: 10px;">
+                                                Dispositivo:
+                                              </div>
+                                              <div class="col-4" style="font-size: 12px; color: #F95A36; text-align: end; cursor: pointer;" (click)="borrarFiltro(1, $event)">
+                                                Borrar
+                                              </div>
+                                              <div class="col-12 row">
+                                                <div class="col-12 row" *ngIf="asigandosSLA?.totalEnlacesActivos == 0">
+                                                  <div class="col-6" *ngFor="let dispositivo of dispositivosBusqueda">
+                                                    <div  [class]="dispositivo.estatus ? 'checkboxBusqueda' : ''">
+                                                      <p style="margin-right: 30px;">
+                                                        <mat-checkbox (click)="$event.stopPropagation();" [(ngModel)]="dispositivo.estatus" [ngModelOptions]="{standalone: true}" *ngIf="dispositivo.nombre != 'SLA asignado'">
+                                                          <span>
+                                                              {{dispositivo.nombre}}
+                                                          </span>
+                                                      </mat-checkbox>
+                                                      <mat-checkbox (click)="$event.stopPropagation();" [(ngModel)]="dispositivo.estatus" [ngModelOptions]="{standalone: true}" *ngIf="dispositivo.nombre == 'SLA asignado'">
+                                                          <span>
+                                                              {{dispositivo.nombre}}
+                                                          </span>
+                                                      </mat-checkbox>
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 row" *ngIf="asigandosSLA?.totalEnlacesActivos != 0">
+                                                  <div class="col-4" *ngFor="let dispositivo of dispositivosBusqueda">
+                                                    <div  [class]="dispositivo.estatus ? 'checkboxBusqueda' : ''">
+                                                      <p style="margin-right: 30px;">
+                                                        <mat-checkbox (click)="$event.stopPropagation();" [(ngModel)]="dispositivo.estatus" [ngModelOptions]="{standalone: true}" *ngIf="dispositivo.nombre != 'SLA asignado'">
+                                                          <span>
+                                                              {{dispositivo.nombre}}
+                                                          </span>
+                                                      </mat-checkbox>
+                                                      <mat-checkbox (click)="$event.stopPropagation();" [(ngModel)]="dispositivo.estatus" [ngModelOptions]="{standalone: true}" *ngIf="dispositivo.nombre == 'SLA asignado'" style="margin-left: 35px;">
+                                                          <span>
+                                                              {{dispositivo.nombre}}
+                                                          </span>
+                                                      </mat-checkbox>
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                  
+                                          <div class="col-12">
+                                            <div class="row">
+                                              <div class="col-8" style="font-size: 12px; color: #636971; margin-bottom: 10px;">
+                                                Tipo de dispositivo:
+                                              </div>
+                                              <div class="col-4" style="font-size: 12px; color: #F95A36; text-align: end; cursor: pointer;" (click)="borrarFiltro(2, $event)">
+                                                Borrar
+                                              </div>
+                  
+                                              <div class="col-12">
+                                                <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;" (click)="$event.stopPropagation();">
+                                                  <mat-label>Selecciona...</mat-label>
+                                                  <mat-select formControlName="dispositivos"  multiple #selectDispositivo>
+                                                    <mat-select-trigger>
+                                                      <mat-chip-list #chipList> 
+                                                        <mat-chip *ngFor="let item of form.controls['dispositivos'].value; let i = index;" [selectable]="selectable" 
+                                                        [removable]="removable" (removed)="removeService(i, item)">
+                                                          {{ item }} 
+                                                          <button matChipRemove *ngIf="removable">
+                                                            <mat-icon>cancel</mat-icon>
+                                                          </button>
+                                                        </mat-chip>
+                                                      </mat-chip-list>
+                                                    </mat-select-trigger>
+                                                    <mat-option class="checknone" *ngFor="let item of Options; let i = index" [value]="item.nombre" (click)="selectDispositivo.close();">
+                                                        <mat-icon class="filtroTipoDispositivos" [ngClass]="item.icono"></mat-icon>{{item.nombre}}
+                                                    </mat-option>
+                                                  </mat-select>
+                                                </mat-form-field>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-4"></div>
+                                          <div class="col-4">
+                                            <button class="btn-totalplay-secondary" style="height: 45px; font-size: 14px; font-weight: 600;" id="btnsend" (click)="borrarFiltro(3)">
+                                              Cerrar
+                                            </button>  
+                                          </div>
+                                          <div class="col-4">
+                                            <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" id="btnsend" (click)="filtrarDispositivo()">
+                                              Buscar
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </mat-menu>
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                        <mat-option value="Enlaces" (click)="changeFiltro('enlaces')" [ngClass]="{'hide-autocomplete': !showAutocomplete}" *ngIf="asigandosSLA?.totalEnlacesActivos != 0"> 
+                                            <mat-icon class="image-puntas-enlaces"></mat-icon>
+                                            Enlaces
+                                        </mat-option>
+                                        <mat-option value="Sitios" (click)="changeFiltro('sitios')" [ngClass]="{'hide-autocomplete': !showAutocomplete}">
+                                            <mat-icon class="image-puntas-sitios"></mat-icon>
+                                            Sitios  
+                                        </mat-option>
+                                        <mat-option value="Servicios" (click)="changeFiltro('servicios')" [ngClass]="{'hide-autocomplete': !showAutocomplete}">
+                                            <mat-icon class="image-puntas-servicios"></mat-icon>
+                                            Servicios
+                                        </mat-option>
+                                        <mat-option value="SLA asignado" (click)="changeFiltro('asignados')" [ngClass]="{'hide-autocomplete': !showAutocomplete}">
+                                        <mat-icon class="image-puntas-activo"></mat-icon>
+                                        SLA asignado
+                                        </mat-option>
+                                        <mat-option value="SLA sin asignar" (click)="changeFiltro('sinasignar')" [ngClass]="{'hide-autocomplete': !showAutocomplete}">
+                                        <mat-icon class="image-puntas-inactivo"></mat-icon>
+                                        SLA sin asignar
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
+                            </form>
+                        </div>
+                        <div class="col-4" style="padding-top: 6px;">
+                            <button class="btn-totalplay-secondary" style="width: 100%; height: 45px; font-size: 14px; line-height: 25px; font-weight: 600; padding: 0;" 
+                            (click)="activarInterfaces()" [disabled]="this.pageResponse?.totalElements == 0">
+                                Configuración masiva
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-1 d-flex">
+                    <mat-divider vertical></mat-divider>
+                </div>
+                <div class="col-5" style="padding: 0; margin: 0; font-weight: 600;margin-left: -37px;">
+                    <div class="row d-flex" style="padding: 0; margin: 0;">
+                      <div class="col-12" style="margin-bottom: 8px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #0B112A;">
+                        <div class="row" style="display: flex; align-items: center;">
+                          <div class="col-1" style="padding: 0;">
+                            <div class="img-detalle-cliente" style="width: 40px; height: 40px; border-radius: 50%; background-color:#E6EDF6; margin-left: 0px;"></div>
+                          </div>
+                          <div class="col-11" >
+                            {{detalleCliente?.cliente.razonSocial}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="row" style="margin: 0; padding: 0; display: flex; align-items: center;     margin-bottom: 10px;" *ngIf="asigandosSLA?.totalEnlacesActivos != 0">
+                              <div class="col-6" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                                Total de Enlaces asociados a SLA 
+                              </div>
+                              <div class="col-3" style="margin: 0; padding: 0 5px;">
+                                <div class="progress" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); height: 5px; border-radius: 2.1px;">
+                                  <div class="progress-bar" style="background-color: #1A7F1C !important"  
+                                  [style.width]="(asigandosSLA?.totalEnlacesConfiguradas*100)/asigandosSLA?.totalEnlacesActivos + '%'"
+                                  aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                              <div class="col-3" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                                {{asigandosSLA?.totalEnlacesConfiguradas}} de {{asigandosSLA?.totalEnlacesActivos}}
+                              </div>
+                            </div>
+                            <div class="row" style="margin: 0; padding: 0; display: flex; align-items: center;     margin-bottom: 10px;">
+                              <div class="col-6" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                                Total de Sitios asociados a SLA 
+                              </div>
+                              <div class="col-3" style="margin: 0; padding: 0 5px;">
+                                <div class="progress" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); height: 5px; border-radius: 2.1px;">
+                                  <div class="progress-bar" style="background-color: #1A7F1C !important"  
+                                  [style.width]="(asigandosSLA?.totalPuntasConfiguradas*100)/asigandosSLA?.totalPuntasActivas + '%'"
+                                  aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                              <div class="col-3" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                                {{asigandosSLA?.totalPuntasConfiguradas}} de {{asigandosSLA?.totalPuntasActivas}}
+                              </div>
+                            </div>
+                            <div class="row" style="margin: 0; padding: 0; display: flex; align-items: center;     margin-bottom: 10px;">
+                              <div class="col-6" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                                Total de Servicios asociados a SLA 
+                              </div>
+                              <div class="col-3" style="margin: 0; padding: 0 5px;">
+                                <div class="progress" style="box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); height: 5px; border-radius: 2.1px;">
+                                  <div class="progress-bar" style="background-color: #1A7F1C !important"  
+                                  [style.width]="(asigandosSLA?.totalInterfacesConfiguradas*100)/asigandosSLA?.totalInterfacesActivas + '%'"
+                                  aria-valuemax="100"></div>
+                                </div>
+                              </div>
+                              <div class="col-3" style="margin: 0; padding: 0; font-weight: 400; font-size: 14px; color: #7B8AA0;">
+                                 {{asigandosSLA?.totalInterfacesConfiguradas}} de {{asigandosSLA?.totalInterfacesActivas}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="row w100m0p0" style="margin-top: 30px!important; min-height: 200px; align-items: center;height: 486px;" *ngIf="this.pageResponse.content?.length == 0">
+                <div class="col-12 d-flex justify-content-center" style="margin-bottom: -50px;">
+                        <img src="assets/img/error-pesando.svg" alt="Error en busca de resultado"/>
+                </div>
+                <div class="col-12">
+                    <div class="text-center" style="font-size: 16px; color: #3B4559; padding: 0px 10%;margin-top: -150px;">
+                      No hay resultados que coincidan con tus criterios. Intenta usar otros filtros de búsqueda, trata de <br>ser menos específico, usa palabras clave diferentes o <span style="color: blue;cursor: pointer;" (click)="refresh()">vuelve a la página anterior.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="this.pageResponse.content?.length > 0" style="padding: 20px; padding-top: 0; margin-top: -10px;">
+                <div class="col-12" style="background-color: #FFFFFF; min-height: 350px; margin-top: 30px; padding: 0 5px 0 0;">
+                    <div class="row gx-3 gy-3">
+                        <div class="col-4" *ngFor="let punta of pageResponse.content">
+                            <div class="p-1 puntas-card" 
+                            [ngStyle]="{'border': punta.tbConfiguracionSLA ? '2px solid #1A7F1C':'2px solid #D3E3FE'}"> 
+                                <div class="row" style="margin: 0; padding: 0;">
+                                    <div class="col-12" style="margin: 0; padding: 0;">
+                                        <div 
+                                        [ngClass]="getIcon(punta)"
+                                        [matTooltip]="punta.tipoPunta" matTooltipPosition="below" matTooltipHideDelay="100"
+                                        style="width: 20px; height: 20px; float: right;"></div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 0; padding: 0; padding-left: 5px;">
+                                    <div class="col-6" style="margin: 0; padding: 0;">
+                                        <div class="row" class="punta-tittle">
+                                            IP/NS
+                                        </div>
+                                        <div class="row" style="margin: 0; padding: 0; font-size: 14px; overflow: hidden;">
+                                            {{punta.ipns}}
+                                        </div>
+        
+                                        <div class="row" class="punta-tittle" style="margin-top: 15px;">
+                                            SITIO
+                                        </div>
+                                        <div class="row" style="margin: 0; padding: 0; font-size: 14px;">
+                                          {{punta.sitio | slice:0:25}}{{punta.sitio?.length > 25 ? '...' : ''}}
+                                        </div>
+        
+                                        <div>
+                                          <div class="row" class="punta-tittle" style="margin-top: 15px;" *ngIf="punta?.tipoPunta !== 'ENLACE'">
+                                            SERVICIOS CON SLA
+                                            </div>
+                                            <div class="row" style="margin: 0; padding: 0;" *ngIf="punta.tipoPunta != 'ENLACE'">
+                                              <div [ngStyle]="{'background-color': punta.tbConfiguracionSLA ? '#F0FDCF':'#F4F4F4'}"
+                                                  style="height: 30px; width: fit-content; border-radius: 8px; padding-top: 5px; letter-spacing: 2px; font-size: 13px;">
+                                                  <strong style="color: #043C19;">{{ punta.interfacesActivas == null ? 0 : punta.interfacesActivas }}</strong> <span style="color: #043C19;">/ {{punta.numeroInterfaces == null ? 0 : punta.numeroInterfaces}}</span>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6" style="margin: 0; padding: 0; border-left: 1px solid #D0D0CE; padding-left: 20px;">
+                                        <div class="row" class="punta-tittle" style="margin-top: 20px; line-height: 5px;">
+                                            <button mat-button class="btn-totalplay" style="width: 90%; font-size: 14px; max-height: none!important;  height: 65px!important; line-height: 15px; border-radius: 6px;" *ngIf="punta.tipoPunta != 'ENLACE'" (click)="punta.tbConfiguracionSLA ? activarDispositivo(punta, false) : activarDispositivo(punta, true)">
+                                              {{ punta.tbConfiguracionSLA ? 'Desasignar SLA' : 'Asignar SLA' }} <br> a Sitio
+                                            </button>
+                                            <button mat-button class="btn-totalplay" style="width: 90%; font-size: 14px; max-height: none!important;  height: 65px!important; line-height: 15px; border-radius: 6px;" *ngIf="punta.tipoPunta == 'ENLACE'" (click)="punta.tbConfiguracionSLA ? activarDispositivo(punta, false) : activarDispositivo(punta, true)">
+                                              {{ punta.tbConfiguracionSLA ? 'Desasignar SLA' : 'Asignar SLA' }} <br> a Enlace
+                                            </button>
+                                        </div>
+        
+                                        <div>
+                                          <div class="row" class="punta-tittle" style="margin-top: 25px; line-height: 5px;" *ngIf="punta.tipoPunta != 'ENLACE' ">
+                                            PERSONALIZAR
+                                        </div>        
+                                        <div class="row" class="punta-tittle" style="margin-top: 10px;" *ngIf="punta.tipoPunta != 'ENLACE' ">
+                                            <div class="detail-sla" style="width: 40px; height: 40px; cursor: pointer;" (click)="getDetalle(punta.idClientePunta)"></div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin: 0; padding: 0; padding-left: 5px;" *ngIf="punta.tipoPunta == 'ENLACE'">
+                                      <div class="col-12" style="margin: 0; padding: 0; padding-left: 0px;">
+                                        <div class="row" class="punta-tittle" style="margin-top: 15px;">
+                                          NOMBRE DE ENLACE
+                                        </div>
+                                        <div class="row" style="margin: 0; padding: 0; font-size: 14px;">
+                                          {{punta.enlace | slice:0:50}} {{punta.enlace.length > 50 ? '...' : ''}}
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="this.pageResponse.content?.length > 0"  style="margin-top: 10px!important; min-height: 50px; padding: 20px;">
+                <div class="col-6" style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px;">
+                    MOSTRANDO PÁG {{ this.pageResponse.number  + 1}} DE {{ this.pageResponse.totalOfPages }} DE {{ this.pageResponse.totalElements }} RESULTADOS
+                </div>
+                <div class="col-6" style="margin: 0; padding: 0;">
+                    <app-pager [pageModel]="pageResponse" (paged)="onPaged($event)" style="float: right;"></app-pager>
+                </div>
+            </div>
+            <div class="row" style="margin: 0; margin-top: 10px!important; min-height: 50px;">
+                <div class="col-7" style="margin: 0; padding: 0;">
+            
+                </div>
+                <div class="col-5" style="margin: 0; padding: 0;">
+                    <div class="row">
+                        <div class="col-4"  style="margin: 0; padding: 0;">
+                            <button type="button" style="height: 45px; font-size: 14px; line-height: 25px;"
+                            class="btn-totalplay-secondary" (click)="goToDetalleCliente()">
+                                Cancelar
+                            </button>
+                        </div>
+                        <div class="col-8"  style="margin: 0; padding: 0; padding-left: 20px; padding-right: 12px;">
+                            <button type="button" 
+                                class="btn-totalplay"
+                                style="float: right; width: 100%; height: 45px; font-size: 14px; line-height: 25px;" (click)="goToDetalleCliente()">
+                                Guardar cambios
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>

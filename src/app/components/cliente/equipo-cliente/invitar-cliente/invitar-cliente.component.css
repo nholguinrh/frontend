@@ -1,0 +1,122 @@
+.admin-equipo-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 20px;
+}
+
+::ng-deep .admin-equipo-container .mat-form-field-wrapper{
+  margin-bottom: -1.25em!important;
+}
+
+.home-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 0;
+}
+
+.equipo-ico{
+  width: 38px; 
+  height: 38px; 
+  background-color: #E6EDF6; 
+  border-radius: 20px; 
+}
+
+.option-button{
+  min-height: 150px;
+  justify-content: center;
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 2px solid #E6EDF6;
+  box-shadow: 0px 0px 8px 0px #A3B4CD;
+  border-radius: 10px;
+}
+
+.option-selected{
+  background: #E6EDF6;
+  border: 2px solid #FFFFFF;
+}
+
+.button-main{
+  min-height: 130px;
+  min-width: 170px;
+}
+
+.fullbutton{
+  width: 365px;
+  margin-top: -15px;
+}
+
+.button-image{
+  margin: 15px auto 10px auto !important;
+}
+
+
+.action-button{
+  min-height: 100%;
+  width: 100%;
+}
+
+:host ::ng-deep .action-button .mat-badge-content  {
+  top: 10px!important;
+  left: 120px!important;
+  border-radius: 0!important;
+  width: 40px;
+  height: 40px;
+  padding-top: 10px;
+}
+
+.perfil-ico{    
+  min-height: 50%!important;    
+  margin-top: 0px!important;
+}
+
+.img-ejecutivo{
+  width: 22px; 
+  height: 22px; 
+  background-image: url("src\assets\img\img-cliente-ejecutivo.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-operador{
+  width: 22px; 
+  height: 22px; 
+  background-image: url("src\assets\img\img-cliente-operador.svg");
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.img-editar{
+  background-image: url("src\assets\img\editar-configuracion-menu.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 40px; 
+  height: 40px; 
+  cursor: pointer;
+  float: right;
+}
+
+.img-reenviar{
+  background-image: url("src\assets\img\resend-invitation-black.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-borrar{
+  background-image: url("src\assets\img\trash-can-black.svg");
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.menu-edit{
+  background: #E6EDF6; border-radius: 8px; width: 36px; height: 36px;     
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

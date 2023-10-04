@@ -1,0 +1,11 @@
+.autorization-container{    
+    background-color:#3B4559;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width: 767px){
+    .autorization-container{
+        height: calc(100vh - 80px);
+    }
+}

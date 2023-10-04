@@ -1,0 +1,101 @@
+<alert></alert>
+<div class="container-carousel">
+
+  <ng-container *ngIf="!errorCarga">
+    <div>
+      <ng-container *ngIf="!spinnerLoading">
+        <ng-container>
+          <span style="font-weight: 700; font-size: 18px; margin-left: 30px;" [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#3B4559'}">
+            Total de IP`s
+          </span>
+        </ng-container>
+        <div class="row" style="margin-bottom: 10px;">
+          <div class="col-1">
+          </div>
+          <div class="col-5 " style="padding: 0; display: flex; align-items: center;">
+            <img src="assets/img/voz-card.svg" alt="Card dispositivo" [ngStyle]="{filter: (isDarkTheme | async) ? 'invert(80%)' : '' }"/>
+            <span style="font-weight: 700; font-size: 28px; margin-left: 10px;" [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#3B4559'}">
+              {{cardData?.length}}
+            </span>
+          </div>
+          <div class="col-6 select-monitoreo-voz dispositivo-voz"
+          [ngClass]="{'filtros-afectaciones-full-dark': (isDarkTheme | async)}">
+            <mat-form-field [formGroup]="form" appearance="outline" style="width: 180px; height: 30px; font-size: 10px; margin-right: 20px;" [ngStyle]="{width: widths > 1600 ? '180px' : '150px'}">
+              <mat-label>Selecciona tu IP</mat-label>
+              <input matInput formControlName="busqueda" maxlength="15"
+              (keyup.enter)="filterString()" (keypress)="onlyNumbers($event);">
+              <mat-icon matSuffix class="image-workspace-search" [ngStyle]="{filter: (isDarkTheme | async) ? 'invert(75%)' : '' }"></mat-icon>
+            </mat-form-field>  
+          </div>
+        </div>
+        <mat-card-content>
+          <div class="row">
+            <div class="card-html">
+              <div class="row">
+                <div class="card-shadow-1"></div>
+                <div class="card-shadow-2"></div>
+                <div class="card-shadow-3"></div>
+                <div
+                  [ngClass]="(isDarkTheme | async) ? 'custom-card-claro-position custom-card-dark' : 'custom-card-claro-position custom-card-claro'">
+                  <div>
+                    <img src="assets/img/voz-card.svg" alt="Card dispositivo" alt="home" class="icon-home ic-color-light" />
+                    <p class="card-title" style="padding-left: 65px; padding-right: 20px; font-size: 20px;">
+                      {{ cardDataSelect?.nombreDispositivo }}
+                    </p><br>
+                    <!--
+                      <p class="card-title" style="padding-left: 50px; padding-right: 20px;">
+                        {{ cardDataSelect?.nombreDispositivo  | slice:0:30}} {{ cardDataSelect?.nombreDispositivo.length > 30 ? '...' : ''}}
+                      </p>
+                    -->
+                  </div>
+                  <div class="card-content">
+                    <div style="padding-top: 20%;">
+                      <div class="row" style="display: flex; align-items: center;">
+                        <div class="col-6" style="font-weight: 600; font-size: 18px;">
+                          <span [ngStyle]="{'color': (isDarkTheme | async) ? '#FFFFFF' : '#000000'}">
+                            IP:
+                          </span>
+                          <span [ngStyle]="{'color': (isDarkTheme | async) ? '#D0D0CE' : '#848B91'}">
+                            {{ cardDataSelect?.ip}}
+                          </span>
+                        </div>
+                        <div class="col-5">
+                          <button mat-button class="btn-totalplay"
+                            style="max-width: 150px; font-size: 12px; line-height: 40px; background-color: #285ced !important;"
+                            (click)="changeMetricas(cardDataSelect?.idDispositivo)">
+                            Ver métricas
+                          </button>
+                        </div>
+                        <!--
+                          <div class="col-2"><img src="assets/img/logo-total.svg" alt="home" style="display: inline;"/></div>
+                        -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="col-12 d-flex justify-content-center" style="margin-top: 20px;">
+            <button *ngFor="let btn of carruselCardData; let i = index" mat-mini-fab
+              [ngClass]="button == i ? 'btn-selected' : 'btn-normal'" class="ms-3" style="width: 13px; height: 13px"
+              (click)="selectCardData(btn)"></button>
+          </div>
+        </mat-card-actions>
+      </ng-container>
+
+      <ng-container *ngIf="spinnerLoading">
+        <div class="col-12" style=" display: flex; align-items: center; justify-content: center; min-height: 250px;">
+          <mat-spinner [diameter]="50"></mat-spinner>
+        </div>
+      </ng-container>
+
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="errorCarga">
+    <app-service-error-dashboard height="140px"></app-service-error-dashboard>
+  </ng-container>
+</div>

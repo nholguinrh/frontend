@@ -1,0 +1,264 @@
+<div class="notification">
+    <mat-dialog-content>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                <div class="col-6"  style="margin: 0; padding: 0;">
+                    <div style="font-size: 19px; font-weight: 600; margin: 10px 0px;">Detalle de sitio</div>
+                </div>
+                <div class="col-6">
+                    <button mat-flat-button style="float: right; position: relative; top: -10px; right: -12px; width: 10px!important;  min-width: unset!important;" (click)="closeDialog()">
+                        <mat-icon style="margin-left: -12px!important; margin-top: 6px;">
+                            close
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; min-height: 100px;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 20px;">
+                <div class="col-4" style="margin: 0; padding: 0;">
+                    <div class="row" class="punta-tittle" style="line-height: 5px;">
+                        SITIO
+                    </div>
+                    <div class="row" class="punta-subtittle" style="margin: 0; padding: 0; margin-top: 10px;">
+                        {{detallePunta.punta.sitio}}
+                    </div>
+                </div>
+                <div class="col-3" style="margin: 0; padding: 0;">
+                    <div class="row" class="punta-tittle" style="line-height: 5px;">
+                        IP/NS:
+                    </div>
+                    <div class="row" class="punta-subtittle" style="margin: 0; padding: 0; margin-top: 10px;">
+                        {{detallePunta.punta.ipns}}
+                    </div>
+                </div>
+                <div class="col-3" style="margin: 0; padding: 0;">
+                    <ng-container *ngIf="detallePunta.punta.tbConfiguracionSLA?.tituloSLA">
+                        <div class="row" class="punta-tittle" style="line-height: 5px;">
+                            SLA de la punta:
+                        </div>
+                        <div class="row" class="punta-subtittle" style="margin: 0; padding: 0; margin-top: 10px;">
+                            {{detallePunta.punta.tbConfiguracionSLA?.tituloSLA}}
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="col-2 row" [ngClass]="estatusPunta"  style="margin: 0; padding: 0; display: flex; align-items: center;">
+                    <div class="col-3" style="margin: 0; padding: 0;">
+                        <div class="estatus-punta"></div>
+                    </div>
+                    <div class="col-9" style="margin: 0; padding: 0;">
+                        <span class="estatus-title">Estatus del sitio</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 20px;">
+                <div class="col-4 row" style="margin: 0; padding: 0; padding-top: 15px !important;">
+                    <!-- <div class="col-2" style="margin: 0; padding: 0;">
+                        <mat-icon class="img-geolocalizacion"></mat-icon>
+                    </div>
+                    <div [matMenuTriggerFor]="plantillasMenu"  class="col-10" style="margin: 0; padding: 0; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 600; font-size: 10px; color: #285CED;text-decoration: underline;">
+                        Geolocalización
+                    </div>
+                    <mat-menu class="header-menu menu-punta" #plantillasMenu="matMenu" xPosition="before" style="padding-top: 0px; padding-bottom: 0px;" (closed)="validarGeolocalizacion()">
+                        <form [formGroup]="form" style="margin: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                            <div class="row" style="display: flex; align-items: center; margin: 0;">
+                                <div class="col-2" style="padding: 0;">
+                                    <mat-icon class="img-geolocalizacion-1"></mat-icon>
+                                </div>
+                                <div class="col-10" style="padding: 0;">
+                                    <mat-form-field class="input-geolocalizacion" appearance="legacy" style="width: 100%; font-size: 12px;">
+                                        <mat-label *ngIf="showLatitud">Escribe la Latitud</mat-label>
+                                        <input matInput formControlName="latitud" autocomplete="off" (keyup)="eventoKeyShow($event, 1)" (click)="inputClick($event)" (keypress)="onlyNumbers($event);" (keydown.Space)="$event.stopPropagation()" (keydown.Enter)="$event.stopPropagation()"/>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row" style="display: flex; align-items: center; margin: 0;">
+                                <div class="col-2" style="padding: 0;">
+                                    <mat-label></mat-label>
+                                    <mat-icon class="img-geolocalizacion-2"></mat-icon>
+                                </div>
+                                <div class="col-10" style="padding: 0;">
+                                    <mat-form-field class="input-geolocalizacion" appearance="legacy" style="width: 100%; font-size: 12px;" >
+                                        <mat-label *ngIf="showLongitud">Escribe la Longitud</mat-label>
+                                        <input matInput formControlName="longitud" autocomplete="off" (keyup)="eventoKeyShow($event, 2)" (click)="inputClick($event)" (keypress)="onlyNumbers($event);" (keydown.Space)="$event.stopPropagation()"(keydown.Enter)="$event.stopPropagation()"/>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row" style="display: flex; align-items: center; margin: 0;">
+                                <div class="col-2" style="padding: 0;">
+                                    <mat-icon class="img-geolocalizacion-3"></mat-icon>
+                                </div>
+                                <div class="col-10" style="padding: 0;">
+                                    <mat-form-field class="input-geolocalizacion" appearance="legacy" style="width: 100%; font-size: 12px;">
+                                        <mat-label *ngIf="showEstado">Estado</mat-label>
+                                        <input type="text"
+                                               
+                                               matInput
+                                               formControlName="estado"
+                                               [matAutocomplete]="auto" (click)="inputClick($event)" (keyup)="eventoKeyShow($event, 3)">
+                                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                            {{option}}
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                      </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-menu> -->
+                </div>
+                <div class="col-3" style="margin: 0; padding: 0;">
+                    <div class="row" class="punta-tittle" style="line-height: 5px;">
+                        TIPO
+                    </div>
+                    <div class="row" class="punta-subtittle" style="margin: 0; padding: 0; margin-top: 10px;">
+                        {{detallePunta.punta.tipoPunta}}
+                    </div>
+                </div>
+                <div class="col-3"></div>
+                <div class="col-2" style="margin: 0; padding: 0;">
+                    <mat-form-field appearance="outline" style="width: 100%; font-size: 11px;">
+                        <mat-select [(value)]="estatusPunta">
+                          <mat-option value="activa">Activa</mat-option>
+                          <mat-option value="inactiva">Inactiva</mat-option>
+                          <mat-option value="mantenimiento">En mantenimiento</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row" style="width: 100%; margin: 0; padding: 0; margin-top: 10px;">
+                <div class="col-8" style="margin: 0; padding: 0; font-size: 19px; font-weight: 600; color: #1D2640; margin-top: 5px;">
+                    Servicios
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                        <mat-label>Buscar</mat-label>
+                        <!-- <input matInput [matAutocomplete]="auto"/> -->
+                        <input matInput (keyup)="onKeyDownEvent($event)" />
+                        <mat-icon class="image-workspace-search" matSuffix style="margin-top: 10px!important;"></mat-icon>
+                        <!-- <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option value="ONT">
+                                <mat-icon class="image-puntas-ont"></mat-icon>
+                                ONT
+                            </mat-option>
+                        </mat-autocomplete> -->
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" style="width: 800px; margin: 0; padding: 0; margin-top: 10px;margin-bottom: 10px;" *ngIf="!tablePuntas">
+                <div class="col-12" style="margin: 0; padding: 0; margin-top: 5px;">
+                    Sin servicios por mostrar para este dispositivo ( No se encontraron servicios para poder activar )
+                </div>
+            </div>
+            <div class="row tableFixHead" style="width: 100%; margin: 0; padding: 0;" *ngIf="tablePuntas?.length > 0">
+                <table aria-describedby="tabla" class="table table-bordered table-striped " style="border: solid 1px #ffffff; table-layout:fixed; padding: 0; margin: 0;" >
+                    <thead style="margin-bottom: 10px;">
+                        <tr>
+                            <th class="punta-tittle" style="text-align: center; width: 90px;">
+                                <span style="cursor:default!important;">
+                                    ESTATUS
+                                </span>
+                            </th>
+                            <th class="punta-tittle" style="text-align: center;">
+                                <span style="cursor:default!important;">
+                                    SERVICIO
+                                </span>
+                            </th>
+                            <th class="punta-tittle" style="text-align: center;">
+                                <span style="cursor:default!important;">
+                                    ALIAS
+                                </span>
+                            </th>
+                            <th class="punta-tittle" style="text-align: center;">
+                                <span style="cursor:default!important;">
+                                    TIPO
+                                </span>
+                            </th>
+                            <th style="width: 70px;">
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-scroll" style="border: solid 1px #ffffff; ">
+                        <tr *ngFor="let interface of tablePuntas; let i = index" style="vertical-align: middle;">
+                            <td style="padding: 0; text-align: center;">
+                                <div style="text-align: center;">
+                                    <ng-container *ngIf="interface.tbCatEstatus.idCatEstatus == 27">
+                                        Activa
+                                    </ng-container>
+                                    <ng-container *ngIf="interface.tbCatEstatus.idCatEstatus == 28">
+                                        Inactiva
+                                    </ng-container> 
+                                    <ng-container *ngIf="interface.tbCatEstatus.idCatEstatus == 29">
+                                        Mantenimiento
+                                    </ng-container> 
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                {{interface.interfaz}}
+                            </td>
+                            <td style="text-align: center;">
+                                {{interface.alias}}
+                            </td>
+                            <td style="text-align: center;">
+                                {{interface.tipoServicios}}
+                            </td>
+                            <div [matMenuTriggerFor]="menuInterface" class="estatus-switch" style="cursor: pointer; display: flex; justify-content: center; align-items: center;" [ngClass]="{'puntas-disabled': estatusPunta != 'activa'}">
+                                <mat-icon class="img-vector-doble-invertido"></mat-icon>
+                                <mat-menu class="header-menu menu-interfaz" #menuInterface="matMenu" xPosition="before" style="padding-top: 0px; padding-bottom: 0px; " >
+                                    <mat-option class="texto-interfaz" (click)="cambiar(i,'activo')" value="activa">Activa</mat-option>
+                                    <mat-option class="texto-interfaz" (click)="cambiar(i,'inactivo')" value="inactiva">Inactiva</mat-option>
+                                    <mat-option class="texto-interfaz" (click)="cambiar(i,'mantenimiento')" value="mantenimiento">En mantenimiento</mat-option>
+                                </mat-menu>
+                            </div>
+
+                            <!--
+                            <td [ngClass]="{'puntas-disabled': !monitoreo }">
+                                <ng-container *ngIf="interface.activarInterfaz">
+                                    <div class="image-puntas-togle-enabled" style="width: 60px; height: 25px; cursor: pointer;" (click)="interface.activarInterfaz = !interface.activarInterfaz"></div>
+                                </ng-container>
+                                <ng-container *ngIf="!interface.activarInterfaz">
+                                    <div class="image-puntas-togle-disabled" style="width: 60px; height: 25px; cursor: pointer;" (click)="interface.activarInterfaz = !interface.activarInterfaz"></div>
+                                </ng-container>
+                            </td>
+                            -->
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row" style="margin: 0; padding: 0; margin-top: 10px!important; min-height: 50px;">
+                    <div class="col-6" style="margin: 0; padding: 0; font-weight: 600; font-size: 10px; letter-spacing: 3px; color: #7B8AA0; padding-top: 7px;">
+                        MOSTRANDO PÁG {{ pager.current }} DE {{ pager.total }} DE {{ pager.data.length }} RESULTADOS
+                    </div>
+                    <div class="col-6" style="margin: 0; padding: 0;">
+                        <app-paginator [pageModel]="pager" (paged)="onPaged($event)" style="float: right;"></app-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+        <div class="container" style="width: 100%; margin: 0; padding: 0; margin-top: 10px; padding-right: 20px;">
+            <div class="row" style="width: 100%; margin: 0; padding: 0;">
+                <div class="col-7" style="margin: 0; padding: 0;"></div>
+                <div class="col-2">
+                    <button type="button" style="height: 45px; font-size: 14px; line-height: 25px;"
+                        class="btn-totalplay-secondary" (click)="closeDialog()">
+                    Cancelar
+                    </button>
+                </div>
+                <div class="col-3">
+                    <button type="button" class="btn-totalplay"
+                        style="max-width: 170px; height: 45px; font-size: 14px; line-height: 25px;"
+                        (click)="confirmDialog()">
+                        Guardar cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</div>

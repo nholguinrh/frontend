@@ -1,0 +1,105 @@
+<div class="page-wrapper">
+  <div class="sticky-header">
+    <smc-simple-toolbar color="#FFFFFF" logo="image-toolbar-second"></smc-simple-toolbar>
+  </div>
+  <div class="content-wrapper">
+      <div class="content">
+        <div class="autorization-container">
+          <div class="d-flex justify-content-center">
+            <mat-card class="totalplay-card margin-top">
+              <mat-card-content class="totalplay-card-container">
+                <div class="img-preload" *ngIf="!imgLoad">&nbsp;</div>
+                <img mat-card-image (load)="loadImage()" width="224px" height="385px" 
+                style="border-radius: 3px 0px 0px 3px;"
+                [hidden]="imgLoad === false" src="assets/img/img-signup.png" alt="Inicio Login">
+                <div class="totalplay-card-content">
+                  <mat-card class="card-content">
+                    <mat-card-title class="text-left" style="font-size: 24px;">
+                      {{ title }}
+                    </mat-card-title>
+                    <mat-card-subtitle class="text-left mt-2" style="font-size: 16px; min-width: 350px;">
+                      Ingresa los siguientes datos
+                    </mat-card-subtitle>
+                    <mat-card-content>
+                      <form [formGroup]="form" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                        <div class="row d-flex justify-content-center">
+                          <div class="col-sm-12" style="margin-top: 10px;">
+                            <mat-form-field appearance="outline"  color="primary">
+                              <mat-icon matPrefix class="ico-login"></mat-icon>
+                              <mat-label>CORREO ELECTRÓNICO</mat-label>
+                              <input matInput formControlName="email" #contrato="matInput" maxlength="100" minlength="3"
+                              (keydown.enter)="$event.preventDefault()" (keydown.enter)="enterContrato()" (change)="paste($event)" (keypress)="blockSpace($event)" style="font-size: 15px!important;"/>
+                              <mat-error
+                                *ngIf="
+                                  !form.controls['email'].valid &&
+                                  form.controls['email'].touched
+                                "
+                              >
+                                {{ getError('email') }}
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                
+                        <div class="row d-flex justify-content-center">
+                          <div class="col-sm-12 fields-container" style="margin-top: 10px;">
+                            <mat-form-field appearance="outline">
+                              <mat-icon matPrefix class="ico-password"></mat-icon>
+                              <mat-label>CONTRASEÑA</mat-label>
+                              <input
+                                matInput
+                                [type]="hide ? 'password' : 'text'" (keydown.enter)="$event.preventDefault()" (keydown.enter)="login()"
+                                formControlName="password" #password="matInput" maxlength="40" style="font-size: 15px!important;"
+                              />
+                              <button
+                                mat-icon-button
+                                matSuffix
+                                (click)="hide = !hide"
+                                [attr.aria-label]="'Ocultar contraseña'"
+                                [attr.aria-pressed]="hide"
+                              >
+                                <mat-icon>{{
+                                  hide ? "visibility_off" : "visibility"
+                                }}</mat-icon>
+                              </button>
+                              <mat-error
+                                *ngIf="
+                                  !form.controls['password'].valid &&
+                                  form.controls['password'].touched
+                                "
+                              >
+                                {{ getError('password') }}
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                
+                        <div class="row mt-4 d-flex justify-content-center mb-3">
+                          <div class="col-md-7 d-flex align-items-end">
+                            <a (click)="changePassword()" 
+                              style="color: #285CED; cursor: pointer; padding-left: 0px; text-decoration: underline; margin-bottom: 10px;">
+                              Olvidé la contraseña</a>
+                          </div>
+                          <div class="col-md-5 d-flex justify-content-end">
+                            <button class="btn-totalplay" 
+                              id="btnsend" style="height: 45px; font-size: 14px; line-height: 25px;"
+                              (click)="login()"
+                              [disabled]="!form.valid">
+                              Ingresar
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <smc-footer></smc-footer>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<div id="flowBoxes">
+    <div class="right initial-radius" [ngClass]="{active: this.initial.selected, passed: this.initial.passed}">{{initial.text}}</div>
+    <div class="left right initial-list" *ngFor="let step of steps" [ngClass]="{active: step.selected, passed: step.passed, gray: step.gray, last: step.last}">{{step.text}}</div>
+    <div class="left final" [ngClass]="{active: this.final.selected, passed: this.final.passed}" *ngIf="final != null">{{final.text}}</div>
+</div>

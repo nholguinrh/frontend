@@ -1,0 +1,113 @@
+<div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="80px">
+ <ng-container *ngIf="!spinnerLoading">
+  <ng-container *ngIf="!errorCarga">
+    <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="1em" style="width: 100%"
+      *ngIf="fullType == 'ENLACES_TICKETS'">
+      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="23px" *ngIf="!promedios">
+        <span style="font-size: 20px; font-weight: 500">
+          {{ optionSelected.name || "" }}
+        </span>
+  
+        <div fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="3px">
+          <span style="font-size: 36px; font-weight: 700">
+            {{ optionSelected.value || "0" }}
+          </span>
+  
+          <span style="
+              font-size: 14px;
+              line-height: 17px;
+              font-weight: 700;
+              color: #356af0;
+            ">
+            Hoy
+          </span>
+        </div>
+      </div>
+  
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="50px">
+        <div *ngFor="let item of options" style="
+            width: 50px;
+            height: 50px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+          " [ngStyle]="{
+            width: width > 1440 ? '50px' : '40px',
+            height: width > 1440 ? '50px' : '40px',
+            'background-color': getIconBcolor(isDarkTheme | async, item)
+          }" [ngClass]="item.ico" (click)="chageView(item.id)"></div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="1em" style="width: 100%">
+      <div style="
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          vertical-align: center;
+        "
+         [ngStyle]="{'color': (isDarkTheme | async) ? '#7B8AA0' : '#7B8AA0'}">
+        
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="53px" *ngIf="promedios">
+        <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+            border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+            'background-color': (isDarkTheme | async) ? '#1a2958' : '#FFFFFF'
+          }" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+          <div fxLayout="column" fxLayoutAlign="center end">
+            <mat-icon class="image-alarma1"></mat-icon>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div style="font-size: 10px; text-align: center; line-height: 10px"
+              [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+              > Tiempo promedio de respuesta
+            </div>
+            <div style="font-weight: 700; font-size: 17px; color: #285ced">
+              18 hrs
+            </div>
+          </div>
+        </div>
+        <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+            border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+            'background-color': (isDarkTheme | async) ? '#44293b' : '#FFFFFF'
+          }" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+          <div fxLayout="column" fxLayoutAlign="center end">
+            <mat-icon class="image-alarma2"></mat-icon>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div style="font-size: 10px; text-align: center; line-height: 10px"
+              [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+              > Tiempo promedio de respuesta
+            </div>
+            <div style="font-weight: 700; font-size: 17px; color: #fc5b5c">
+              18 hrs
+            </div>
+          </div>
+        </div>
+        <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+            border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+            'background-color': (isDarkTheme | async) ? '#443829' : '#FFFFFF'
+          }" fxLayout="column" fxLayoutAlign="center center">
+          <div style="font-size: 10px; text-align: center; line-height: 10px"
+            [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+            > Tiempo promedio de respuesta
+          </div>
+          <div style="font-weight: 700; font-size: 17px; color: #fda700">
+            18 hrs
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-bar-chart [scale]="'week'" [full]="true" [margin]="margin" [color]="chartColor"
+      [sizex]="width > 1440 ? 1800 : width < 1440 ? 1200 : 1300" [sizey]="width > 1440 ? 600 : width < 1440 ? 300 : 450"
+      [data]="optionSelected?.data" [opacity]="0.5" [showDomain]="false" [barWidth]="33" [showLimits]="true" [showXLabels]="true"
+      [showYLabels]="true" [showDomain]="true" [unit]="unit" ></app-bar-chart>
+  </ng-container>
+
+  <ng-container *ngIf="errorCarga">
+      <app-service-error-dashboard [full]="true" [typeError]="errorCarga"></app-service-error-dashboard>
+  </ng-container>
+ </ng-container>
+ <ng-container *ngIf="spinnerLoading">
+  <mat-spinner [diameter]="50" style="margin-top: 150px;margin-left: 250px;"></mat-spinner>
+</ng-container>
+</div>

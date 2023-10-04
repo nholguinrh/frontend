@@ -1,0 +1,17 @@
+.cudrante1{
+  min-width: 408px
+}
+
+.cliente-servicio-container{
+  width: 100%!important;
+  margin: 0;
+  padding: 20px;
+}
+
+::ng-deep .content-wrapper:has(.cliente-servicio-container){
+  background-color: rgb(244, 244, 244) !important; 
+}
+
+::ng-deep .cliente-servicio-container .mat-form-field-wrapper{
+  margin-bottom: -1.25em!important;
+}

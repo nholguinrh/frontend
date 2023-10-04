@@ -1,0 +1,122 @@
+.home-container-ayuda{
+  width: 100%!important;
+  margin: 0;
+  padding: 0 40px;
+}
+
+.card-modulo-ayuda{
+  background-color: #697181; 
+  min-height: 250px; 
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding-top: 30px;
+}
+
+.card-modulo-ayuda-title{
+  font-weight: 600;
+  font-size: 40px;
+  display: flex;
+  text-align: center;
+  color: #FFFFFF;
+  line-height: 40px;
+}
+
+.card-modulo-ayuda-subtitle{
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+  line-height: 24px;
+}
+
+
+.cuadro-icono{
+  background: #285CED;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modulo-ayuda-acceso{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 180px;
+  max-width: 260px;
+  padding: 15px 7px 0px;
+}
+
+.modulo-ayuda-acceso span{
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+  color: #0B112A;
+  margin-bottom: 20px;
+}
+
+.modulo-ayuda-acceso p{
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  color: #0B112A;
+  line-height: 15px;
+}
+
+.modulo-ayuda-acceso:hover{
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+
+.img-modulo-dashboards{
+  background-image: url("src\assets\img\modulo-ayuda-dashboards.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-personalizacion{
+  background-image: url("src\assets\img\modulo-ayuda-personalizacion.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-busqueda{
+  background-image: url("src\assets\img\modulo-ayuda-busqueda.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-incidentes{
+  background-image: url("src\assets\img\modulo-ayuda-incidentes.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-notificaciones{
+  background-image: url("src\assets\img\modulo-ayuda-notificaciones.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-modulo-equipos{
+  background-image: url("src\assets\img\modulo-ayuda-equipos.svg");
+  background-size: 23px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+

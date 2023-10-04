@@ -1,0 +1,22 @@
+.notificacion-selected{
+    background-color: #E6EDF6; 
+    min-height: 100px; 
+    border-left: 5px solid #3B4559;
+}
+
+.notificacion-not-selected{
+    min-height: 100px; 
+}
+
+.disable-scrollbars::-webkit-scrollbar,
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+.disable-scrollbars::-webkit-scrollbar-thumb,
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #ccc !important;
+    border-radius: 4px !important;
+    border: none !important;
+}

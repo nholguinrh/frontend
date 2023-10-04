@@ -1,0 +1,176 @@
+<alert></alert>
+<div class="admin-equipo-container" style="margin-top: 30px;">
+  <div class="row w100m0p0">
+      <div class="col-1" style="margin: 0; padding: 0;">
+          <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goToEquipos()"></div>
+      </div>
+      <div class="col-5">
+          <div class="row w100m0p0">
+              <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 21px; font-weight: 400;">
+                  {{ pageTitle }} 
+              </div>
+          </div>
+      </div>
+      <div class="col-5" style="text-align: right; font-weight: 600;"></div>
+      <div class="col-1"></div>
+  </div>
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10">
+          <div class="row w100m0p0">
+              <div class="col" style="margin-top: 10px; padding: 0; color: #7B8AA0; font-weight: 400;">
+                Edita los permisos de tu equipo y asignarles roles. 
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>
+<div class="home-container">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10" style="background-color: #FFFFFF; min-height: 350px;">
+          <form [formGroup]="form" style="margin: 0; padding: 0;" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <!--Invitar persona-->
+            <div class="row" style="margin-top: 20px; margin-left: 15px; margin-right: 15px; font-weight: 600;" *ngIf="!usuario">
+              <div class="col-4" style="font-size: 18px; line-height: 28px; font-weight: 600;">
+                Email
+                <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 14px; color: #7B8AA0; line-height: 20px;">
+                  Agrega el Email del invitado
+                </div>
+              </div>
+              <div class="col-3" style="margin: 0; padding: 0;">
+                <mat-form-field appearance="outline" style="width: 100%; font-size: 12px;">
+                    <mat-label>EMAIL</mat-label>
+                    <input matInput formControlName="correo" name="correo" id="correo" email (keypress)="blockSpace($event);"/>
+                    <mat-error *ngIf="!form.controls['correo'].valid && form.controls['correo'].touched">
+                        {{ getError() }}
+                    </mat-error>
+
+
+                </mat-form-field>
+              </div>
+              <div class="col-5"></div>
+            </div>
+            <!--Cambiar rol-->
+            <div class="row" style="margin-top: 20px; margin-left: 15px; margin-right: 15px; font-weight: 600;" *ngIf="usuario">
+              <div class="col-8" style="font-size: 14px; line-height: 24px; font-weight: 600;">
+                <div class="row">
+                  <div class="col-md-auto d-flex">
+                    <div class="equipo-ico img-equipo-option-user"></div>
+                    <div class="align-self-center ps-2">
+                      {{ usuario?.nombreCompleto | slice:0:25}} <span *ngIf="usuario?.nombreCompleto.length > 25">...</span>
+                    </div>
+                  </div>
+                  <div class="col-md-auto d-flex">
+                    <mat-divider vertical></mat-divider>
+                    <div class="align-self-center px-3" style="font-size: 9px; color: #7B8AA0; line-height: 16px; letter-spacing: 0.2em; text-transform: uppercase;">
+                      {{ nombreRol }}
+                    </div>
+                    <mat-divider vertical></mat-divider>
+                  </div>
+                  <div class="col-md-auto align-self-center">
+                    <a style="font-size: 14px; color: #285CED; line-height: 24px; font-weight: 400; text-decoration: underline;">
+                      {{ usuario?.email | slice:0:25}} <span *ngIf="usuario?.email.length > 25">...</span>
+                    </a>
+                  </div>
+                  <div class="col-md-auto align-self-center" style="border-left: 1.3px solid #D0D0CE; line-height: 45px;">
+                    <ng-container *ngIf="!pendiente">
+                      <div class="border-success badge text-success" style="background-color: #FFFFFF!important;">Activo</div>
+                    </ng-container>
+                    <ng-container *ngIf="pendiente">
+                      <div class="border-warning badge text-warning" style="font-size: 10px;">PENDIENTE</div>  
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col-3" style="margin-left: auto; display: flex; justify-content: flex-end;">
+                
+                <button mat-button class="btn-totalplay-danger" style="height: 45px; font-size: 14px; font-weight: 600;" (click)="delete()" *ngIf="!pendiente">
+                  <mat-icon class="image-trash-can"></mat-icon>
+                  Eliminar miembro
+                </button>  
+
+                <span *ngIf="pendiente">
+                  <div  [matMenuTriggerFor]="plantillasMenu" class="menu-edit">
+                    <mat-icon class="img-editar"></mat-icon>
+                  </div>
+                  <mat-menu class="header-menu" #plantillasMenu="matMenu" xPosition="before" style="padding-top: 0px; padding-bottom: 0px;">
+                  <button mat-menu-item style="font-size: 14px; color: #0B112A; font-weight: 400; height: 34px; display: flex; justify-content: flex-start; align-items: center;" (click)="reenviarInvitacion()" >
+                      <mat-icon class="img-reenviar"></mat-icon>
+                      <span>Reenviar invitación</span> 
+                  </button>
+                  <button mat-menu-item style="font-size: 14px; color: #0B112A; font-weight: 400; height: 34px; display: flex; justify-content: flex-start; align-items: center;" (click)="delete()">
+                      <mat-icon class="img-borrar"></mat-icon>
+                      <span>Eliminar</span> 
+                  </button>
+                  </mat-menu>
+                </span>
+              </div>
+            </div>
+            <mat-divider style="margin-top: 16px !important;" ></mat-divider>
+            <div class="row" style="margin-top: 20px; margin-left: 15px; margin-right: 15px; font-weight: 600;">
+              <div class="col-4" style="font-size: 18px; line-height: 28px; font-weight: 600;">
+                Roles
+                <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 14px; color: #7B8AA0; line-height: 20px;">
+                  Selecciona un rol a tu invitado
+                </div>
+              </div>
+              <div class="col-8"></div>
+            </div>
+            <div class="row" style="margin-top: 20px; margin-left: 15px; margin-right: 15px; font-weight: 600;">
+              <div class="col-4" *ngFor="let item of perfiles; let i = index;">
+                <div class="option-button" (click)="seleccionaCuadrante(item)" [ngClass]="{'option-selected': item.idCatPerfil == perfilRol?.idCatPerfil, 'fullbutton' :  i == 2}" style="box-shadow: 0px 0px 4px 0px #a3b4cd;" [style.border]="item.idCatPerfil == perfilRol?.idCatPerfil ? '2px solid #7B8AA0' : '2px solid #E6EDF6'">
+                      <div class="button-main">
+                          <div class="row button-image">
+                            <div class="col-2">
+                              <div [ngClass]="item.descripcion === 'Administrador' ? 'img-administrador' : 'img-back-office'" style="min-width: 40px; min-height: 40px; border-radius: 7px;" [style.background-color]="item.idCatPerfil == perfilRol?.idCatPerfil ? '#FFFFFF' : '#E6EDF6'">&nbsp;</div>
+                            </div>
+                            <div class="col-8">
+                              <div style="flex-grow: 5; padding-left: 20px;" >
+                                <div style="letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; color: #000000; font-weight: 600;" >
+                                  {{ item.descripcion }}
+                                </div>
+                                <div class="equipo-title-subtitle" style="font-weight: 400; font-size: 12px; color: #7B8AA0; line-height: 24px;">
+                                  {{ item.informacion }}
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2" style="padding: 0;">
+                              <div class="image-dash-check" style="width: 40px; height: 40px; background-color: #285CED; color: white; border-radius: 2px 0px 0px 2px; float: right;" *ngIf="item.idCatPerfil == perfilRol?.idCatPerfil"></div>
+                            </div>
+                          </div>                          
+                      </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="margin: 40px 15px 20px 15px; font-weight: 600;">
+                <div class="col-7"></div>
+                <div class="col-5">
+                  <div class="row" style="margin: 0; padding: 0;">
+                    <div class="col-4" *ngIf="usuario"></div>
+                    <div class="col-4" style="padding-right: 0; margin-top: 5px;">
+                        <button class="btn-totalplay-secondary" style="height: 45px; font-size: 14px; font-weight: 600;" (click)="goToEquipos()">
+                            Cancelar
+                        </button>  
+                    </div>
+                    <div class="col-7" style="padding-right: 0; margin-top: 5px;" *ngIf="!usuario">
+                      <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" (click)="enviarInvitacion()">
+                        Enviar invitación
+                      </button>
+                    </div>
+                    <div class="col-4" style="padding-right: 0; margin-top: 5px;" *ngIf="usuario">
+                      <button mat-button class="btn-totalplay" style="height: 45px; font-size: 14px;" (click)="edit()">
+                        Guardar
+                      </button>
+                    </div>
+                      
+                  </div>
+                </div>
+            </div>
+          </form>
+      </div>
+      <div class="col-1"></div>
+  </div>
+</div>

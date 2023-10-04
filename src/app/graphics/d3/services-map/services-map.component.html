@@ -1,0 +1,436 @@
+<ng-container *ngIf="!spinnerLoading">
+  <ng-container *ngIf="!errorCarga">
+    <div id="mapa" [ngClass]="{ 'filter-white': dark }">
+      <!-- TODO: Cambio de mapa-->
+      <div style="width: 100%; justify-content: center">
+        <div
+          style="height: 60vh; width: 80vw"
+          leaflet
+          [leafletOptions]="optionsFull"
+          [leafletLayers]="layersWithMark"
+          *ngIf="full"
+        ></div>
+        <div
+          style="height: 300px; width: 100%"
+          leaflet
+          [leafletOptions]="options"
+          [leafletLayers]="layersWithMark"
+          *ngIf="!full"
+        ></div>
+      </div>
+    </div>
+    <ng-container>
+      <div
+        style="
+          position: relative;
+          top: -100px;
+          background-color: #d3e3fe;
+          width: 175px;
+          height: 80px;
+          border-radius: 10px;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          z-index: 999;
+        "
+        [ngStyle]="{
+          color: dark ? '#7B8AA0' : '#0B112A',
+          'background-color': dark ? '#21273d' : '#D3E3FE'
+        }"
+        *ngIf="!full"
+      >
+        <div
+          class="row"
+          style="
+            margin: 0;
+            padding: 0;
+            text-align: center !important;
+            padding-top: 25px;
+          "
+        >
+          <div
+            style="
+              width: 40px;
+              font-weight: 600;
+              font-size: 30px;
+              display: inline;
+              margin-top: -5px;
+              margin-left: 50px;
+            "
+          >
+            {{ totalDispositivos || 0 }}
+          </div>
+          <!--/{{totalDispositivosglobal}}-->
+        </div>
+        <div
+          class="row"
+          style="
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            margin-top: 3px;
+          "
+        >
+          <div class="col-1" style="width: 20px; margin-left: 2px">
+            <div
+              style="
+                width: 10px;
+                height: 10px;
+                background-color: #f95a36;
+                margin-top: 5px;
+                border-radius: 50%;
+              "
+            ></div>
+          </div>
+          <div
+            class="col"
+            style="width: 185px; font-weight: 600; margin-left: -5px"
+          >
+            {{ service == 3 ? "Sitios" : "Servicios" }} Inactivos
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          position: absolute;
+          top: 150px;
+          right: 100px;
+          background-color: #eff6fd;
+          width: 250px;
+          height: 120px;
+          border-radius: 10px;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          z-index: 999;
+        "
+        [ngStyle]="{
+          color: dark ? '#7B8AA0' : '#0B112A',
+          'background-color': dark ? '#21273d' : '#EFF6FD'
+        }"
+        *ngIf="full"
+      >
+        <div
+          class="row"
+          style="
+            margin: 0;
+            padding: 0;
+            text-align: center !important;
+            padding-top: 50px;
+            font-size: 30px;
+          "
+        >
+          <div
+            style="
+              width: 40px;
+              font-weight: 600;
+              font-size: 55px;
+              display: inline;
+              margin-top: -8px;
+              margin-left: 50px;
+              margin-right: 20px;
+            "
+          >
+            {{ totalDispositivos ? totalDispositivos : "0" }}
+          </div>
+          <!--/{{totalDispositivosglobal}}-->
+        </div>
+        <div
+          class="row"
+          style="
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 17px;
+            margin-top: 10px;
+          "
+        >
+          <div class="col-1" style="width: 20px; margin-left: 2px">
+            <div
+              style="
+                width: 15px;
+                height: 15px;
+                background-color: #f95a36;
+                margin-top: 3px;
+                border-radius: 50%;
+              "
+            ></div>
+          </div>
+          <div
+            class="col"
+            style="width: 220px; font-weight: 600; margin-left: -2px"
+          >
+            {{ service == 3 ? "Sitios" : "Servicios" }} Inactivos
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!message">
+      <div
+      style="
+        position: relative;
+        top: -80px;
+        width: 650px;
+        margin: 0;
+        padding: 10;
+        margin-top: 0px;
+        min-height: 260px;
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      "
+      [ngStyle]="{
+        color: dark ? '#7B8AA0' : '#0B112A',
+        'max-width': full ? '500px' : 'none',
+        'width' : widths > 1600 ? '600px' : '420px'
+      }"
+    >
+      <div
+        class="row"
+        style="width: 100%; margin: 0; padding: 0; padding-top: 20px"
+      >
+        <div
+          class="col-2"
+          style="
+            margin: 0;
+            padding: 0;
+            margin-right: 0;
+            padding-right: 0;
+            display: flex;
+            align-items: center;
+          "
+        >
+          <div
+            [ngClass]="
+              selected?.group == 'A'
+                ? 'dahsboard-mapa-titulo-inactivo'
+                : 'dahsboard-mapa-titulo-gestion'
+            "
+            style="width: 100%; height: 40px"
+          ></div>
+        </div>
+        <ng-container *ngIf="!selected?.alias">
+          <div
+          class="col-8"
+          style="
+            font-weight: 700;
+            font-size: 17px;
+            color: #f95a36;
+            padding-top: 10px;
+            margin-left: -25px;
+            word-wrap: break-word;
+            overflow: hidden;
+            height: 50px;
+          "
+          [ngStyle]="{ color: selected?.group == 'A' ? '#F95A36' : '#697181' }"
+        >
+        {{
+          selected?.tittle.length > 38
+            ? (selected?.tittle | slice : 0 : 38) + "..."
+            : selected?.tittle
+        }}
+        </div>
+        </ng-container>
+        <ng-container *ngIf="selected?.alias">
+          <div
+          class="col-8"
+          style="
+            font-weight: 700;
+            font-size: 17px;
+            color: #f95a36;
+            padding-top: 10px;
+            margin-left: -25px;
+            word-wrap: break-word;
+            overflow: hidden;
+            height: 50px;
+          "
+          [ngStyle]="{ color: selected?.group == 'A' ? '#F95A36' : '#697181' }"
+        >
+        {{
+          selected?.alias.length > 38
+            ? (selected?.alias | slice : 0 : 38) + "..."
+            : selected?.alias
+        }}
+        </div>
+        </ng-container>
+        <div class="col-2" style="margin-right: 0">
+          <ng-container *ngIf="false">
+            <div
+              class="dahsboard-mapa-crear-ticket"
+              style="width: 100%; height: 40px; cursor: pointer"
+              *ngIf="!dark"
+              (click)="crearTicket()"
+            ></div>
+            <div
+              class="dahsboard-mapa-crear-ticket-black"
+              style="width: 100%; height: 40px; cursor: pointer"
+              *ngIf="dark"
+              (click)="crearTicket()"
+            ></div>
+          </ng-container>
+        </div>
+      </div>
+  
+      <div
+        class="row"
+        style="
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          margin-top: 20px;
+          padding-top: 10px;
+        "
+      >
+        <div
+          class="col-1"
+          style="
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+          "
+        >
+          <div
+            class="img-paginador"
+            style="
+              width: 100%;
+              height: 40px;
+              transform: rotate(180deg);
+              cursor: pointer;
+            "
+            [ngStyle]="{ filter: dark ? 'invert(100%)' : '' }"
+            (click)="selectDataCard(carruselBack)"
+            *ngIf="mostrarCarrusel"
+          ></div>
+        </div>
+        <div class="col-8" style="margin: 0; padding: 0; padding-right: 8px">
+          <div class="row" style="margin: 0; padding: 0">
+            <div
+              class="col-12"
+              style="
+                margin: 0;
+                padding: 0;
+                word-wrap: break-word;
+                overflow: hidden;
+                height: 41px;
+              "
+            >
+              <ng-container *ngIf="!selected?.alias">
+                <b> {{ dispositivo == "Servicios" ? "SERVICIO" : "SITIO" }}: </b>
+                    {{
+                      selected?.sitio.length > 40
+                        ? (selected?.sitio | slice : 0 : 40) + "..."
+                        : selected?.sitio
+                    }}
+              </ng-container>
+              <ng-container *ngIf="selected?.alias">
+                <b> {{ dispositivo == "Servicios" ? "SERVICIO" : "SITIO" }}: </b>
+                    {{
+                      selected?.alias.length > 40
+                        ? (selected?.alias | slice : 0 : 40) + "..."
+                        : selected?.alias
+                    }}
+              </ng-container>
+            </div>
+            <div class="col-12" style="margin: 0; padding: 0; padding-top: 0px">
+              <b>TIPO:</b> {{ selected?.tipo }}
+            </div>
+            <div
+              *ngIf="dispositivo == 'Servicios'"
+              class="col-12"
+              style="margin: 0; padding: 0; padding-top: 10px"
+            >
+              <b>SITIO:</b> {{ selected?.sitio }}
+            </div>
+            <div class="col-12" style="margin: 0; padding: 0; padding-top: 10px">
+              <b>IP/NS:</b> {{ selected?.ip }}
+            </div>
+            <div
+              class="col-12"
+              style="
+                margin: 0;
+                padding: 0;
+                padding-top: 10px;
+                text-transform: uppercase;
+              "
+            >
+              <b>ESTATUS:</b> {{ selected?.estatus }}
+            </div>
+          </div>
+        </div>
+        <div class="col-2" style="margin: 0; padding: 0; padding-left: 8px">
+          <!-- <ng-container *ngIf="selected?.estatus != 'Sin gestión' || selected?.group != 'B'">  -->
+          <ng-container *ngIf="false">
+            <div class="row" style="margin: 0; padding: 0">
+              <div
+                class="col-12"
+                style="margin: 0; padding: 0; padding-left: 1px"
+              >
+                <b> FECHA DE CAIDA: </b> <br />
+                <span style="font-size: 12px"> {{ selected?.fecha }}</span>
+              </div>
+            </div>
+            <div class="row" style="margin: 0; padding: 0">
+              <div
+                class="col-4"
+                style="padding-top: 30px; font-weight: 600; font-size: 14px"
+              >
+                TIEMPO DE CAIDA:
+              </div>
+              <div
+                class="col-6"
+                [ngStyle]="{ 'padding-top': innerwidth > 1440 ? '10px' : '25px' }"
+              >
+                <app-progress-bar
+                  [data]="progressChartdata"
+                  [width]="innerwidth > 1440 ? 75 : 65"
+                ></app-progress-bar>
+              </div>
+              <div
+                class="col-2"
+                style="padding-top: 40px; font-weight: 600; font-size: 20px"
+              >
+                <div class="row">{{ selected?.tiempo }}hrs</div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+        <div
+          class="col-1"
+          style="
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+          "
+        >
+          <div
+            class="img-paginador"
+            style="width: 100%; height: 40px; cursor: pointer"
+            [ngStyle]="{ filter: dark ? 'invert(100%)' : '' }"
+            (click)="selectDataCard(carruselNext)"
+            *ngIf="mostrarCarrusel"
+          ></div>
+        </div>
+      </div>
+    </div>
+    </ng-container>
+    <ng-container *ngIf="message">
+        <div style="margin: 60px 0px 0px 180px">
+            Sin sitios inactivos
+        </div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="errorCarga">
+    <div style="margin: 60px 0px">
+      <app-service-error-dashboard
+        width="300px"
+        [full]="full"
+        [typeError]="errorCarga"
+      ></app-service-error-dashboard>
+    </div>
+  </ng-container>  
+</ng-container>
+<ng-container *ngIf="spinnerLoading">
+  <mat-spinner [diameter]="50" style="margin-top: 250px;margin-left: 250px;"></mat-spinner>
+</ng-container>

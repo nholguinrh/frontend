@@ -1,0 +1,192 @@
+<ng-container *ngIf="!errorCarga">
+  <div style="width: 100%; margin: 0; padding: 0" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10px">
+    <div style="font-size: 10px; padding-left: 20px; padding-bottom: 10px" [ngStyle]="{
+        color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A',
+        'font-size': isFull ? '20px' : '10px'
+      }"></div>
+    <div fxLayout="row" fxLayoutAlign="space-around stretch" *ngIf="!isFull">
+      <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+          border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+          'background-color': (isDarkTheme | async) ? '#1a2958' : '#FFFFFF'
+        }" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+        <div fxLayout="column" fxLayoutAlign="center end">
+          <div style="padding-top: 20px">
+            <mat-icon class="image-alarma1"></mat-icon>
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center flex-start" style="padding-left: 10px">
+          <div style="font-size: 9px; line-height: 10px"
+            [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+            Tiempo mínimo de respuesta
+          </div>
+          <div style="font-weight: 700; font-size: 17px; color: #285ced">
+            {{ tiempoMinimo }} min
+          </div>
+        </div>
+      </div>
+      <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+          border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+          'background-color': (isDarkTheme | async) ? '#44293b' : '#FFFFFF'
+        }" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+        <div fxLayout="column" fxLayoutAlign="center end">
+          <div style="padding-top: 20px">
+            <mat-icon class="image-alarma2"></mat-icon>
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center flex-start" style="padding-left: 10px">
+          <div style="font-size: 9px; line-height: 10px"
+            [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+            Tiempo máximo de respuesta
+          </div>
+          <div style="font-weight: 700; font-size: 17px; color: #fc5b5c">
+            {{ tiempoMaximo }} min
+          </div>
+        </div>
+      </div>
+      <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+          border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+          'background-color': (isDarkTheme | async) ? '#443829' : '#FFFFFF'
+        }" fxLayout="column" fxLayoutAlign="center center">
+        <div style="font-size: 9px; text-align: center; line-height: 10px"
+          [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+          Tiempo promedio de respuesta
+        </div>
+        <div style="font-weight: 700; font-size: 17px; color: #fda700">
+          {{ tiempoPromedio}} min
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="1em" *ngIf="isFull">
+      <div style="font-size: 24px; line-height: 29px; color: #838383">
+        Del {{ initDate | date : "dd MMM" : "" }} - Al
+        {{ endDate | date : "dd MMM" : "" }}
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="53px">
+          <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+              border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+              'background-color': (isDarkTheme | async) ? '#1a2958' : '#FFFFFF'
+            }" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+            <div fxLayout="column" fxLayoutAlign="center end">
+              <mat-icon class="image-alarma1"></mat-icon>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <div style="font-size: 10px; text-align: center; line-height: 10px" [ngStyle]="{
+                  color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A'
+                }">
+                Tiempo mínimo de respuesta
+              </div>
+              <div style="font-weight: 700; font-size: 17px; color: #285ced">
+                {{ tiempoMinimo | i18nPlural : hrsMapping }}
+              </div>
+            </div>
+          </div>
+          <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+              border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+              'background-color': (isDarkTheme | async) ? '#44293b' : '#FFFFFF'
+            }" fxLayout="row" fxLayoutAlign="space-evenly stretch">
+            <div fxLayout="column" fxLayoutAlign="center end">
+              <mat-icon class="image-alarma2"></mat-icon>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <div style="font-size: 10px; text-align: center; line-height: 10px" [ngStyle]="{
+                  color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A'
+                }">
+                Tiempo máximo de respuesta
+              </div>
+              <div style="font-weight: 700; font-size: 17px; color: #fc5b5c">
+                {{ tiempoMaximo | i18nPlural : hrsMapping }}
+              </div>
+            </div>
+          </div>
+          <div style="width: 110px; height: 60px; border-radius: 4px" [ngStyle]="{
+              border: (isDarkTheme | async) ? 'none' : '1.1px solid #285CED',
+              'background-color': (isDarkTheme | async) ? '#443829' : '#FFFFFF'
+            }" fxLayout="column" fxLayoutAlign="center center">
+            <div style="font-size: 10px; text-align: center; line-height: 10px" [ngStyle]="{
+                color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A'
+              }">
+              Tiempo promedio de respuesta
+            </div>
+            <div style="font-weight: 700; font-size: 17px; color: #fda700">
+              {{ tiempoPromedio | i18nPlural : hrsMapping }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between stretch" style="padding-left: 20px; padding-right: 20px"
+      *ngIf="!isFull">
+      <div style="font-size: 12px; font-weight: 600"
+        [ngStyle]="{ color: (isDarkTheme | async) ? '#7B8AA0' : '#0B112A' }">
+        Del {{ initDate | date : "dd MMM" : "" }} - Al
+        {{ endDate | date : "dd MMM" : "" }}
+      </div>
+      <div style="display: flex; justify-content: end">
+        <smc-custom-select-rounded [placeholder]="''" [options]="['Mes', 'Semana']" [selected]="'Mes'"
+          (newSelection)="changeSelection($event)">
+        </smc-custom-select-rounded>
+      </div>
+    </div>
+    <div>
+      <div *ngIf="viewGraph == 23 || viewGraph == 37" style="padding-left: 20px">
+        <app-bar-chart [sizex]="width > 1440 ? sizeXLarge : sizeX" [sizey]="sizeY" [data]="datesValue" [margin]="margin"
+          color="#FFB84B" [rx]="5" [showDomain]="true" [barWidth]="4" [showLimits]="true" [showXLabels]="true"
+          [scale]="scale" unit="" [showYLabels]="true"></app-bar-chart>
+      </div>
+      <div *ngIf="viewGraph == 24 || viewGraph == 38">
+        <ng-container *ngIf="isFull">            
+            <app-area 
+            [data]="datesValue" 
+            [areaType]="'average'"
+            [sizey]="width > 1440 ? 700 : 600" 
+            [sizex]="width > 1440 ? 1800 : 1300" 
+            [showXLabels]="true"
+            [showDomain]="true" 
+            color="#FDA700" 
+            linear-gradient="#FDA700" 
+            gradient-stop="#FDA700" 
+            tooltip-color="rgba(151,175,243, 0.2)"
+            tick-last-color="#FDA700" 
+            [showYLabels]="true"
+            [isDynamicRange]="true" 
+            [range]="[0, 100]"
+            [specialFormat]="true" 
+            [scale]="'week'" 
+            unit=" hrs"
+            [margin]="{ top: 80, right: -30, bottom: 10, left: 85 }" 
+            [full]="true" 
+            [variant]="true"
+            ></app-area>            
+        </ng-container>
+        <ng-container *ngIf="!isFull">
+          <app-area [data]="datesValue" [areaType]="'average'" [sizey]="190"
+            [sizex]="width > 1440 ? sizeXLarge - 10 : sizeX + 20" [showXLabels]="true" [showDomain]="true"
+            color="#FDA700" linear-gradient="#FDA700" gradient-stop="#FDA700" tooltip-color="rgba(151,175,243, 0.2)"
+            tick-last-color="#FDA700" [showYLabels]="true" [isDynamicRange]="true" [range]="[0, 100]"
+            [specialFormat]="true" scale="week" unit=" hrs" [margin]="{ top: 20, right: -20, bottom: 10, left: 80 }"
+            [variant]="true"></app-area>
+        </ng-container>
+      </div>
+      <div *ngIf="viewGraph == 25 || viewGraph == 39" style="padding-left: 10px; padding-right: 10px">
+        <ng-container *ngIf="isFull">
+          <app-lines-group [data]="enlace" [single]="true" [sizex]="width > 1440 ? sizeXLarge : sizeX" unidad="Hrs"
+            [sizey]="700" [color]="'#FDA700'" [margin]="marginLine" [icon]="false"></app-lines-group>
+        </ng-container>
+        <ng-container *ngIf="!isFull">
+          <app-lines-group [data]="enlace" [single]="true" [sizex]="width > 1440 ? sizeXLarge : sizeX" unidad="Hrs"
+            [sizey]="100" [color]="'#FDA700'" [margin]="marginLine" [icon]="false"></app-lines-group>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="errorCarga">
+  <div style="width: 100%; margin: 20px 0; padding: 0" fxLayout="column" fxLayoutAlign="center stretch"
+    fxLayoutGap="10px">
+    <app-service-error-dashboard [height]="isFull ? 'auto' : '170px'" [full]="isFull" [typeError]="errorCarga">
+    </app-service-error-dashboard>
+  </div>
+</ng-container>

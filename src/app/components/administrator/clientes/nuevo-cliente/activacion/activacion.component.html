@@ -1,0 +1,52 @@
+<div class="admin-clientes-container" style="margin-top: 30px;">
+  <div class="row w100m0p0">
+    <div class="col-1" style="margin: 0; padding: 0;">
+      <div class="image-workspace-back" style="width: 30px; height: 20px; float: right; cursor: pointer;" (click)="goBack()"></div>
+    </div>
+    <div class="col-5">
+      <div class="row w100m0p0">
+        <div class="col" style="margin: 0; padding: 0; padding-top: 1px; font-size: 21px; font-weight: 400;">
+          NUEVO CLIENTE
+        </div>
+      </div>
+    </div>
+    <div class="col-6"></div>
+  </div>
+  <div class="row w100m0p0" style="margin-top: 30px !important;">
+    <div class="col-1" style="margin: 0; padding: 0;">
+    </div>
+    <div class="col-5">
+      <div id="flowBoxes">
+        <div style="padding-left: 0px;">
+          PASO 1
+        </div>
+        <div>
+          PASO 2
+        </div>
+        <div>
+          PASO 3
+        </div>  
+      </div>
+      <smc-stteper-admin [initial]="initialStep" [steps]="steps"></smc-stteper-admin>
+    </div>
+    <div class="col-6"></div>
+  </div>
+</div>
+
+
+<div class="home-container">
+  <div class="row w100m0p0">
+      <div class="col-1"></div>
+      <div class="col-10 px-3 p-3" style="padding: 0;">
+      </div>
+      <div class="col-1"></div>
+  </div>
+  <div class="row w100m0p0">
+    <div class="col-1"></div>
+    <div class="col-10 px-4 p-4" style="background-color: #FFFFFF; min-height: 350px;">
+      <app-puntas [accionGuardar]=true></app-puntas>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+

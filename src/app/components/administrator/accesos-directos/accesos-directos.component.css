@@ -1,0 +1,46 @@
+.home-container-accesos{
+    width: 100%!important;
+    margin: 0;
+    padding: 0;
+}
+
+.home-acceso-card{
+    background-color: #FFFFFF; 
+    height: 130px; 
+    border: 2px solid #E6EDF6; 
+    box-shadow: 4px 8px 16px #E6EDF6;
+    cursor: pointer;
+}
+
+.acceso-ico{
+    width: 30px; 
+    height: 30px; 
+    background-color: #E6EDF6; 
+    border-radius: 8px; 
+    position: relative; 
+    top: 10px; 
+    left: 10px;
+}
+
+.acceso-tittle{
+    font-weight: 600;
+    word-wrap: break-word;
+    position: relative; 
+    top: 0px; 
+    left: 10px;
+    font-size: 18px;
+    color: #0B112A;
+    /* max-width: 50%; */
+}
+
+.acceso-arrow{
+    height: 40px;
+    width: 70px;
+    margin-left: auto;
+    background-color: #285CED;
+    position: relative; 
+    border-radius: 2px 0px 0px 2px;
+    top: 0px;
+    left: 4px;
+    right: 0px;
+}

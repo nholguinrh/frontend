@@ -1,0 +1,60 @@
+<div class="dashboard-container">
+    <div class="box boxbtns">
+        <div class="dashboard-tittle">
+            <button mat-flat-button class="btn-back-totalplay" style="min-width: 20px!important;" [disableRipple]="true" (click)="goToPerfil()">
+                <mat-icon class="image-back" style="position: absolute; left: -40px; top: 10px;"></mat-icon>                
+            </button>
+            <p><span style="font-size: 24px; font-weight: 500; line-height: 30px;">¿QU&Eacute; DISEÑO SE ADAPTA<br>MEJOR A TUS NECESIDADES?</span></p>
+            <p style="margin-top: 10px; color: #7B8AA0;"><span>Podrás personalizarlo cuando quieras.</span></p>
+        </div>        
+        <div class="dashboards">
+            <div class="item-dashboard" *ngFor="let item of dashboardList; let i = index;">
+                <smc-option-button [class]="item.icono" [recomendado]="item.recommended" [selected]="item.selected" [index]="i" [tittle]="item.descripcion" (seleccionado)="seleccionaCuadrante($event)"></smc-option-button>
+            </div>                    
+        </div>  
+        <button class="btn-totalplay card-function-btn" style="height: 40px; font-size: 14px; line-height: 25px; width: 110px; margin-top: -20px!important;" (click)="comenzar()">Continuar</button>
+    </div>
+    <div class="box bxpt">
+        <div class="grafana">
+            <div class="grafana-view" *ngIf="cuadrantes === 'Monitoreo de Mapas'">
+                <div class="preview-dashboard-mapa" style="background-color: #FFFFFF; color: #7B8AA0; font-weight: 600; font-size: 18px; display: flex; align-items: center; justify-content: center; align-content: center; text-align: center; border-radius: 8px; min-height: 300px;
+                height: 420px; min-width: 590px; max-width: 650px">
+                </div>
+            </div>
+            <div class="grafana-view" *ngIf="cuadrantes === 'Monitoreo Ejecutivo'">
+                <div class="preview-dashboard-ejecutivo" style="background-color: #FFFFFF; color: #7B8AA0; font-weight: 600; font-size: 18px; display: flex; align-items: center; justify-content: center; align-content: center; text-align: center; border-radius: 8px; min-height: 300px;
+                height: 420px; min-width: 590px; max-width: 650px">
+                </div>
+            </div>
+            <div class="grafana-view" *ngIf="cuadrantes === 'Monitoreo Global'">
+                <div class="preview-dashboard-enlaces" style="background-color: #FFFFFF; color: #7B8AA0; font-weight: 600; font-size: 18px; display: flex; align-items: center; justify-content: center; align-content: center; text-align: center; border-radius: 8px; min-height: 300px;
+                height: 420px; min-width: 590px; max-width: 650px">
+                </div>
+            </div>
+            <div class="grafana-view" *ngIf="cuadrantes === 'Monitoreo de Voz'">
+                <div class="preview-dashboard-voz" style="background-color: #FFFFFF; color: #7B8AA0; font-weight: 600; font-size: 18px; display: flex; align-items: center; justify-content: center; align-content: center; text-align: center; border-radius: 8px; min-height: 300px;
+                height: 420px; min-width: 590px; max-width: 650px">
+                </div>
+            </div>
+        </div>
+        <div class="container preview" style="margin: 0; padding: 0;">
+            <div class="row" style="margin: 0; padding: 0; padding-top: 20px;">
+                <div class="col-sm-3">                       
+                </div>
+                <div class="col-sm-9" style="margin: 0;">
+                    <p style="text-align: right; font-size: .9rem; margin: 0; color: #7B8AA0;">
+                        <span>Vista previa</span>
+                        <span style="font-size: .9rem; font-weight: 600; margin-left: 5px;"> {{cuadrantes}}</span>
+                    </p>  
+                </div>
+            </div>
+            <div class="row" style="margin: 0; padding: 0; margin-top: 20px;" *ngIf="false">
+                <div style="width: 100%; margin: 0; padding: 0;">
+                    <div style="width: 200px; float: right!important; margin: 0; padding: 0;">
+                        <button class="btn-totalplay">Comenzar</button>                       
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

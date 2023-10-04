@@ -1,0 +1,38 @@
+.dashboard-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.enlace {
+  width: 269px;
+  height: 78px;
+}
+
+::ng-deep .mat-tab-body:has(.ocultar-scroll), 
+::ng-deep .mat-tab-body:has(.ocultar-scroll) .mat-tab-body-content{
+  overflow: hidden !important;
+
+}
+
+::ng-deep .remove-border-bottom .mat-tab-header {
+  border-bottom: none;
+}
+
+
+.dashboard-card ::ng-deep  .add-blue{
+  margin-top: 40px !important ;
+}
+
+@media (min-width: 1441px) {
+  .enlace {
+    width: 299px;
+    height: 98px;
+  }
+
+  .dashboard-card ::ng-deep .add-blue{
+    margin-top: 50px !important ;
+  }
+}
+
+

@@ -1,0 +1,37 @@
+<div class="select-dialog checkbox-metrica-dialog">
+  <mat-dialog-content>
+      <div class="container" style="width: 100%; margin: 0; padding: 0; overflow: hidden;">
+          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+              <div class="col-9"  style="padding: 0; font-weight: 600; font-size: 15px; color: #000000;">
+                {{ data.title }}
+              </div>
+              <div class="col-3">
+                  <button mat-flat-button style="float: right; position: relative; top: -10px; right: -12px; width: 10px!important;  min-width: unset!important;" (click)="closeDialog()">
+                      <mat-icon style="margin-left: -12px!important;">
+                          close
+                      </mat-icon>
+                  </button>
+              </div>
+          </div>
+      </div>
+      <mat-divider></mat-divider>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+      <div class="container" style="width: 100%; margin: 0; padding: 0;">
+          <div class="row" style="width: 100%; margin: 0; padding: 0;">
+              <div class="col-12">
+                <ul style=" margin: 20px 0px; list-style:none; padding: 0px;">
+                    <li *ngFor="let metrica of data.listadoItems" style="padding: 0; display: flex; justify-content: center;">
+                        <button mat-stroked-button type="button" class="boton-dialogo" (click)="cambiarEstatusMetrica(metrica)" 
+                        style="font-weight: 500; font-size: 12px; color: #697181;"
+                        [style.background]="metrica.selected == null || metrica.selected == false ? '' : '#E6EDF6'">
+                            {{ metrica.metrica }}
+                        </button>
+                    </li>
+                </ul>
+              </div>
+          </div>
+      </div>
+  </mat-dialog-actions>
+</div>
