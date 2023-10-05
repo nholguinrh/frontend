@@ -13,7 +13,7 @@ RUN npm update
 RUN npm run build --prod
 
 # Stage 2: Serve app with nginx server
-FROM registry.access.redhat.com/ubi8/nginx
+FROM docker.io/nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist /usr/share/nginx/html
