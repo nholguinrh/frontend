@@ -2,11 +2,12 @@
 
 # Use official node image as the base image
 #FROM registry.access.redhat.com/ubi8/nodejs-14 as build
-FROM docker.io/node:14-slim as build
+FROM docker.io/node:14 as build
 # Set the working directory
 WORKDIR /usr/src/app
-USER root
 COPY ./Frontend/* .
+USER root
+RUN npm install
 RUN npm update
 # Generate the build of the application
 RUN npm run build --prod
